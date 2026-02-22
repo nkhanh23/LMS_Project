@@ -17,11 +17,24 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    //Tất cả các cột đều được bảo vệ
+    protected $guarded = [];
+
+    //Check role
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isInstructor()
+    {
+        return $this->role === 'instructor';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
+    }
 
     /**
      * The attributes that should be hidden for serialization.
