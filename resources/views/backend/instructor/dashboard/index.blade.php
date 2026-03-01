@@ -1,6 +1,15 @@
 @extends('backend.instructor.master')
 @section('content')
     <div class="page-content">
+        @if (!isApprovedUser())
+            <div class="alert alert-danger border-0 bg-danger alert-dismissible fade show">
+                <div class="text-white">
+                    <p style="font-size: 20px">Tài khoản của bạn chưa được duyệt. Vui lòng chờ quản trị viên duyệt.</p>
+                </div>
+
+            </div>
+        @endif
+
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
             <div class="col">
                 <div class="card radius-10 border-start border-0 border-4 border-info">

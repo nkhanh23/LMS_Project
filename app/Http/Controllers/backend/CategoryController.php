@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\SubCategory;
 use App\Service\CategoryService;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         //Pass dữ liệu và file sang service
-        $this->categoryService->saveCategory($request->all(), $request->file('image'));
+        $this->categoryService->saveCategory($request->all(), $request->file('photo'));
         return redirect()->back()->with('success', 'Danh mục đã được thêm thành công');
     }
 
@@ -72,5 +73,11 @@ class CategoryController extends Controller
         }
         $category->delete();
         return redirect()->back()->with('success', 'Danh mục đã được xóa thành công');
+    }
+
+    public function getSubcategories($categoryId)
+    {
+        $subcategories = SubCategory::where('category_id', $categoryId)->get();
+        return response()->json($subcategories);
     }
 }

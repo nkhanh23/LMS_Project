@@ -36,3 +36,7 @@
 
 <!-- DataTable -->
 <link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+
+{{-- Flora Editor --}}
+<link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet'
+    type='text/css' />

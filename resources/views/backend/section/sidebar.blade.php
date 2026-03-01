@@ -35,6 +35,41 @@
             </ul>
         </li>
 
+        <li class="{{ setSidebar(['admin.instructor*']) }}">
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Quản lý giảng viên</div>
+            </a>
+            <ul>
+                <li class="{{ setSidebar(['admin.instructor*']) }}">
+                    <a href="{{ route('admin.instructor.index') }}"><i class='bx bx-radio-circle'></i>Giảng viên</a>
+                </li>
+                <li class="{{ setSidebar(['admin.instructor*']) }}">
+                    <a href="{{ route('admin.instructor.active') }}"><i class='bx bx-radio-circle'></i>Đang hoạt
+                        động</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="{{ setSidebar(['admin.slider*']) }}">
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Quản lý ứng dụng</div>
+            </a>
+            <ul>
+                <li class="{{ setSidebar(['admin.slider*']) }}">
+                    <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>Slider</a>
+                </li>
+                <li class="{{ setSidebar(['admin.info*']) }}">
+                    <a href="{{ route('admin.info.index') }}"><i class='bx bx-radio-circle'></i>Thông tin</a>
+                </li>
+            </ul>
+        </li>
+
+
+
 
 
     </ul>

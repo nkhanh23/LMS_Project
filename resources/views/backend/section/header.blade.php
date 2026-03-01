@@ -113,7 +113,8 @@
             <div class="user-box dropdown px-3">
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset(auth()->user()->photo) }}" class="user-img" alt="user avatar">
+                    <img src="{{ auth()->user()->photo ? asset(auth()->user()->photo) : asset('backend/assets/images/avatars/avatar-1.png') }}"
+                        class="user-img" alt="user avatar">
                     <div class="user-info">
                         <p class="user-name mb-0">{{ auth()->user()->name }}</p>
                     </div>

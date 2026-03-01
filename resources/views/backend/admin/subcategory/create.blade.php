@@ -3,7 +3,10 @@
 @section('content')
     <div class="page-content">
         <!--breadcrumb-->
-        @include('backend.section.breadcrumb')
+        @include('backend.section.breadcrumb', [
+            'title' => 'Danh mục con',
+            'sub_title' => 'Thêm danh mục con',
+        ])
 
         <!--end breadcrumb-->
         <div class="row">
