@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\SiteInfo;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $site_info = SiteInfo::first();
+        View::share('site_info', $site_info);
+
+        Paginator::useBootstrapFive();
     }
 }

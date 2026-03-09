@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\AdminCourseController;
 use App\Http\Controllers\backend\AdminInstructorController;
+use App\Http\Controllers\backend\AdminUserController;
 use App\Http\Controllers\backend\BackendOrderController;
 use App\Http\Controllers\backend\CartController;
 use App\Http\Controllers\backend\CategoryController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\backend\InstructorProfileController;
 use App\Http\Controllers\backend\LectureController;
 use App\Http\Controllers\backend\PartnerController;
 use App\Http\Controllers\backend\SettingController;
+use App\Http\Controllers\backend\SiteSettingController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\SocialController;
 use App\Http\Controllers\backend\Subcategory;
@@ -70,6 +72,11 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
     Route::post('/update-status', [AdminInstructorController::class, 'updateStatus'])->name('instructor.status');
     Route::get('/instructor-active-list', [AdminInstructorController::class, 'instructorActive'])->name('instructor.active');
 
+    /* Control User */
+    Route::resource('user', AdminUserController::class);
+    Route::post('/user-status', [AdminUserController::class, 'updateStatus'])->name('user.status');
+    Route::get('/user-active-list', [AdminUserController::class, 'userActive'])->name('user.active');
+
     /* Setting Controller */
     Route::get('/mail-setting', [SettingController::class, 'mailSetting'])->name('mail-setting');
     Route::put('/mail-setting/update', [SettingController::class, 'updateMailSettings'])->name('mail-setting.update');
@@ -89,6 +96,9 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
 
     /* Partner Controller */
     Route::resource('partner', PartnerController::class);
+
+    /* Manage Site Seetings */
+    Route::resource('site-setting', SiteSettingController::class);
 });
 
 /*  INSTRUCTOR LOGIN  */

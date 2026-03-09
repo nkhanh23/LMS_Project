@@ -4,17 +4,34 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Services\AdminCourseService;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminCourseController extends Controller
 {
+    protected $courseService;
+
+    public function __construct(AdminCourseService $courseService)
+    {
+        $this->courseService = $courseService;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $all_courses = Course::latest()->with('user', 'category')->get();
-        return view('backend.admin.course.index', compact('all_courses'));
+        $search = $request->input('search');
+        $categoryId = $request->input('category_id');
+        $instructorId = $request->input('instructor_id');
+
+        $all_courses = $this->courseService->getCourses($search, $categoryId, $instructorId, 10);
+        $categories = Category::orderBy('name', 'asc')->get();
+        $instructors = User::where('role', 'instructor')->orderBy('name', 'asc')->get();
+
+        return view('backend.admin.course.index', compact('all_courses', 'categories', 'instructors'));
     }
 
     public function courseStatus(Request $request)

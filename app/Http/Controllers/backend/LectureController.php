@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LectureRequest;
 use App\Models\CourseLecture;
-use App\Service\LectureService;
+use App\\Services\\LectureService;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 

@@ -14,10 +14,23 @@
             <a href="{{ route('admin.instructor.index') }}" class="btn btn-primary">Quay lại</a>
         </div>
         <hr />
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <form action="{{ route('admin.instructor.active') }}" method="GET" class="d-flex">
+                    <input type="text" name="search" class="form-control me-2"
+                        placeholder="Tìm kiếm tên, email hoặc SĐT..." value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
+                    @if (request('search'))
+                        <a href="{{ route('admin.instructor.active') }}" class="btn btn-light ms-2">Xóa</a>
+                    @endif
+                </form>
+            </div>
+        </div>
+
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>STT</th>
@@ -34,8 +47,8 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>
-                                        @if ($item->image)
-                                            <img src="{{ asset($item->image) }}" width="70" height="70" />
+                                        @if ($item->photo)
+                                            <img src="{{ asset($item->photo) }}" width="70" height="70" />
                                         @else
                                             <span>Không có hình ảnh</span>
                                         @endif
@@ -61,9 +74,10 @@
                                 </tr>
                             @endforeach
                         </tbody>
-
-
                     </table>
+                </div>
+                <div class="mt-4">
+                    {{ $active_instructor->appends(['search' => request('search')])->links() }}
                 </div>
             </div>
         </div>

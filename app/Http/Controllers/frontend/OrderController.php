@@ -7,7 +7,7 @@ use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Payment;
-use App\Service\PaymentService;
+use App\\Services\\PaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Stripe\StripeClient;

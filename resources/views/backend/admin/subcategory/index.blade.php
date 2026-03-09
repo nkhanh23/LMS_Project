@@ -13,6 +13,24 @@
             <h6 class="mb-0 text-uppercase">Tất cả danh mục con</h6>
             <a href="{{ route('admin.subcategory.create') }}" class="btn btn-primary">Thêm danh mục con</a>
         </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <form action="{{ route('admin.subcategory.index') }}" method="GET" class="d-flex gap-2">
+                    <select name="category_id" class="form-select" style="width: 250px;">
+                        <option value="">-- Tất cả danh mục --</option>
+                        @foreach($all_categories as $cat)
+                            <option value="{{ $cat->id }}" {{ request('category_id') == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+                        @endforeach
+                    </select>
+                    <input type="text" name="search" class="form-control" placeholder="Tìm kiếm danh mục con..."
+                        value="{{ request('search') }}" style="width: 300px;">
+                    <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
+                    @if (request('search') || request('category_id'))
+                        <a href="{{ route('admin.subcategory.index') }}" class="btn btn-light">Xóa</a>
+                    @endif
+                </form>
+            </div>
+        </div>
         <hr />
         <div class="card">
             <div class="card-body">
@@ -67,6 +85,8 @@
 
                     </table>
                 </div>
+                {{ $all_subcategories->appends(['search' => request('search'), 'category_id' => request('category_id')])->links() }}
+
             </div>
         </div>
 

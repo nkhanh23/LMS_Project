@@ -52,6 +52,23 @@
             </ul>
         </li>
 
+        <li class="{{ setSidebar(['admin.user*']) }}">
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Quản lý người dùng</div>
+            </a>
+            <ul>
+                <li class="{{ setSidebar(['admin.user*']) }}">
+                    <a href="{{ route('admin.user.index') }}"><i class='bx bx-radio-circle'></i>Người dùng</a>
+                </li>
+                <li class="{{ setSidebar(['admin.user*']) }}">
+                    <a href="{{ route('admin.user.active') }}"><i class='bx bx-radio-circle'></i>Đang hoạt
+                        động</a>
+                </li>
+            </ul>
+        </li>
+
         <li class="{{ setSidebar(['admin.slider*']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -64,6 +81,13 @@
                 </li>
                 <li class="{{ setSidebar(['admin.info*']) }}">
                     <a href="{{ route('admin.info.index') }}"><i class='bx bx-radio-circle'></i>Thông tin</a>
+                </li>
+                <li class="{{ setSidebar(['admin.partner*']) }}">
+                    <a href="{{ route('admin.partner.index') }}"><i class='bx bx-radio-circle'></i>Nhà tài trợ</a>
+                </li>
+                <li class="{{ setSidebar(['admin.site-setting*']) }}">
+                    <a href="{{ route('admin.site-setting.index') }}"><i class='bx bx-radio-circle'></i>Cấu hình
+                        Site</a>
                 </li>
             </ul>
         </li>
@@ -87,9 +111,6 @@
                     <a href="{{ route('admin.google-setting') }}"><i class='bx bx-radio-circle'></i>Google</a>
                 </li>
 
-                <li class="{{ setSidebar(['admin.partner*']) }}">
-                    <a href="{{ route('admin.partner.index') }}"><i class='bx bx-radio-circle'></i>Nhà tài trợ</a>
-                </li>
             </ul>
         </li>
 
@@ -103,10 +124,6 @@
                 <li class="{{ setSidebar(['admin.course*']) }}">
                     <a href="{{ route('admin.course.index') }}"><i class='bx bx-radio-circle'></i>Khóa học</a>
                 </li>
-                <li class="{{ setSidebar(['admin.course*']) }}">
-                    <a href="{{ route('admin.course.index') }}"><i class='bx bx-radio-circle'></i>Khóa học</a>
-                </li>
-
             </ul>
         </li>
 

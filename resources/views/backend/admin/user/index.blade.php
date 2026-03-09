@@ -4,32 +4,31 @@
     <div class="page-content">
 
         @include('backend.section.breadcrumb', [
-            'title' => 'Giảng viên',
-            'sub_title' => 'Tất cả giảng viên',
+            'title' => 'Người dùng',
+            'sub_title' => 'Tất cả người dùng',
         ])
 
 
         <div style="display: flex; align-items:center; justify-content:space-between">
-            <h6 class="mb-0 text-uppercase">Tất cả giảng viên</h6>
+            <h6 class="mb-0 text-uppercase">Tất cả người dùng</h6>
         </div>
         <hr />
         <div class="row mb-3">
             <div class="col-md-6">
-                <form action="{{ route('admin.instructor.index') }}" method="GET" class="d-flex">
+                <form action="{{ route('admin.user.index') }}" method="GET" class="d-flex">
                     <input type="text" name="search" class="form-control me-2"
                         placeholder="Tìm kiếm tên, email hoặc SĐT..." value="{{ request('search') }}">
                     <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
                     @if (request('search'))
-                        <a href="{{ route('admin.instructor.index') }}" class="btn btn-light ms-2">Xóa</a>
+                        <a href="{{ route('admin.user.index') }}" class="btn btn-light ms-2">Xóa</a>
                     @endif
                 </form>
             </div>
         </div>
-
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped table-bordered" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>STT</th>
@@ -37,12 +36,13 @@
                                 <th>Tên</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
+                                <th>Địa chỉ</th>
                                 <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($all_instructor as $index => $item)
+                            @foreach ($all_users as $index => $item)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>
@@ -55,6 +55,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->address }}</td>
                                     <td>
                                         @if ($item->status == 1)
                                             <span class="badge bg-success">Hoạt động</span>
@@ -73,10 +74,12 @@
                                 </tr>
                             @endforeach
                         </tbody>
+
+
                     </table>
                 </div>
                 <div class="mt-4">
-                    {{ $all_instructor->appends(['search' => request('search')])->links() }}
+                    {{ $all_users->appends(['search' => request('search')])->links() }}
                 </div>
             </div>
         </div>
@@ -94,7 +97,7 @@
                 const row = $(this).closest('tr'); // Find the parent row of the checkbox
 
                 $.ajax({
-                    url: '{{ route('admin.instructor.status') }}',
+                    url: '{{ route('admin.user.status') }}',
                     type: 'POST',
                     data: {
                         _token: '{{ csrf_token() }}', // CSRF token for security

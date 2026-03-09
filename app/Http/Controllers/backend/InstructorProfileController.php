@@ -7,8 +7,8 @@ use App\Http\Requests\PasswordUpdateRequest;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Service\ProfileService;
-use App\Service\PasswordUpdateService;
+use App\\Services\\ProfileService;
+use App\\Services\\PasswordUpdateService;
 
 class InstructorProfileController extends Controller
 {

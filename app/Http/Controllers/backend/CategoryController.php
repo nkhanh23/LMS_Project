@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\CategoryService as AppCategoryService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Models\SubCategory;
-use App\Service\CategoryService;
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -17,10 +18,12 @@ class CategoryController extends Controller
         $this->categoryService = $categoryService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $all_categories = Category::orderBy('name', 'asc')->get();
-        return view('backend.admin.category.index', compact('all_categories'));
+        $search = $request->input('search');
+        $all_categories = $this->categoryService->getAllCategories($search, 10);
+
+        return view('backend.admin.category.index', compact('all_categories', 'search'));
     }
 
     /**

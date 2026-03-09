@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SubCategoryRequest;
 use App\Models\Category;
 use App\Models\SubCategory;
-use App\Service\SubCategoryService;
+use App\Services\SubCategoryService;
 use Illuminate\Http\Request;
 
 class SubcategoryController extends Controller
@@ -21,10 +21,15 @@ class SubcategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $all_subcategories = SubCategory::orderBy('id', 'asc')->with('category')->get();
-        return view('backend.admin.subcategory.index', compact('all_subcategories'));
+        $search = $request->input('search');
+        $categoryId = $request->input('category_id');
+        
+        $all_categories = Category::orderBy('name', 'asc')->get();
+        $all_subcategories = $this->subCategoryService->getAllSubCategories($search, $categoryId, 10);
+        
+        return view('backend.admin.subcategory.index', compact('all_subcategories', 'all_categories', 'search', 'categoryId'));
     }
 
     /**

@@ -26,9 +26,8 @@
     <!-- Off-canvas Mobile Menu -->
     @include('frontend.section.offCanvas')
 
-    @yield('content')
     <!-- ========== MAIN CONTENT ========== -->
-
+    @yield('content')
 
     <!-- ========== FOOTER AREA ========== -->
     @include('frontend.section.footer')

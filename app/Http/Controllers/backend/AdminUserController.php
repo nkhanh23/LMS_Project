@@ -4,23 +4,22 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Services\AdminInstructorService;
+use App\Services\AdminUserService;
 use Illuminate\Http\Request;
 
-class AdminInstructorController extends Controller
+class AdminUserController extends Controller
 {
-    protected $instructorService;
+    protected $userService;
 
-    public function __construct(AdminInstructorService $instructorService)
+    public function __construct(AdminUserService $userService)
     {
-        $this->instructorService = $instructorService;
+        $this->userService = $userService;
     }
-
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $all_instructor = $this->instructorService->getInstructors($search, null, 10);
-        return view('backend.admin.instructor.index', compact('all_instructor'));
+        $all_users = $this->userService->getUsers($search, null, 10);
+        return view('backend.admin.user.index', compact('all_users'));
     }
 
     public function updateStatus(Request $request)
@@ -34,10 +33,9 @@ class AdminInstructorController extends Controller
         return response()->json(['success' => false, 'message' => 'Không tìm thấy giảng viên']);
     }
 
-    public function instructorActive(Request $request)
+    public function userActive(Request $request)
     {
-        $search = $request->input('search');
-        $active_instructor = $this->instructorService->getInstructors($search, 1, 10);
-        return view('backend.admin.instructor.active', compact('active_instructor'));
+        $active_user = User::where('status', 1)->where('role', 'user')->latest()->get();
+        return view('backend.admin.user.active', compact('active_user'));
     }
 }

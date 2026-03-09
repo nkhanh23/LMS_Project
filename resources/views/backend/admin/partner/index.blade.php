@@ -15,11 +15,23 @@
 
         </div>
 
-        <hr />
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <form action="{{ route('admin.partner.index') }}" method="GET" class="d-flex">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Tìm kiếm tên..."
+                        value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
+                    @if (request('search'))
+                        <a href="{{ route('admin.partner.index') }}" class="btn btn-light ms-2">Xóa</a>
+                    @endif
+                </form>
+            </div>
+        </div>
+
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>STT</th>
@@ -56,17 +68,14 @@
                                             @csrf
                                             @method('DELETE')
                                         </form>
-
-
-
-
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
-
-
                     </table>
+                </div>
+                <div class="mt-4">
+                    {{ $all_partners->appends(['search' => request('search')])->links() }}
                 </div>
             </div>
         </div>

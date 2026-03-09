@@ -5,8 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordUpdateRequest;
 use App\Http\Requests\ProfileRequest;
-use App\Service\PasswordUpdateService;
-use App\Service\ProfileService;
+use App\\Services\\PasswordUpdateService;
+use App\\Services\\ProfileService;
 use Illuminate\Http\Request;
 
 class UserProfileController extends Controller

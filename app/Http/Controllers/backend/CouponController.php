@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ApplyCouponRequest;
 use App\Http\Requests\CouponRequest;
 use App\Models\Coupon;
-use App\Service\ApplyCouponService;
-use App\Service\CouponService;
+use App\\Services\\ApplyCouponService;
+use App\\Services\\CouponService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
 use App\Models\SubCategory;
 use App\Repositories\SubCategoryRepository;
@@ -23,5 +23,10 @@ class SubCategoryService
         $subCategory = SubCategory::find($id);
         $subCategory->update($data);
         return $subCategory;
+    }
+
+    public function getAllSubCategories($search = null, $categoryId = null, $perPage = 10)
+    {
+        return $this->subCategoryRepository->getAllSubCategories($search, $categoryId, $perPage);
     }
 }

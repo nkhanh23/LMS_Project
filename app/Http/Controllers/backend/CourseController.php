@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseGoal;
 use Illuminate\Http\Request;
-use App\Service\CourseService;
+use App\\Services\\CourseService;
 use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller

@@ -5,18 +5,25 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PartnerRequest;
 use App\Models\Partner;
-use App\Traits\FileUploadTrait;
+use App\Services\PartnerService;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
 {
-    use FileUploadTrait;
+    protected $partnerService;
+
+    public function __construct(PartnerService $partnerService)
+    {
+        $this->partnerService = $partnerService;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $all_partners = Partner::all();
+        $search = $request->input('search');
+        $all_partners = $this->partnerService->getAllPartners($search, 10);
         return view('backend.admin.partner.index', compact('all_partners'));
     }
 
