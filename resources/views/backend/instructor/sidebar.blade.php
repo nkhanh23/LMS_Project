@@ -34,20 +34,20 @@
                 </ul>
             </li>
 
-            {{-- <li class="{{ setSidebar(['instructor.coupon*']) }}">
+            <li class="{{ setSidebar(['instructor.coupon*']) }}">
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="bx bx-category"></i>
                     </div>
-                    <div class="menu-title">Managed Coupon</div>
+                    <div class="menu-title">Quản lý mã giảm giá</div>
                 </a>
                 <ul>
                     <li class="{{ setSidebar(['instructor.coupon*']) }}">
-                        <a href="{{ route('instructor.coupon.index') }}"><i class='bx bx-radio-circle'></i>All
-                            Coupon</a>
+                        <a href="{{ route('instructor.coupon.index') }}"><i class='bx bx-radio-circle'></i>Tất cả mã
+                            giảm giá</a>
                     </li>
 
                 </ul>
-            </li> --}}
+            </li>
         @endif
 
 

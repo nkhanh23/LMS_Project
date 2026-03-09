@@ -23,7 +23,7 @@
                 <button
                     class="w-full p-4 flex justify-between items-center text-left hover:bg-slate-800 transition-colors">
                     <span class="font-bold text-sm">Phần {{ $index + 1 }}: {{ $item->section_title }}</span>
-                    <span class="text-xs text-slate-400 shrink-0">3 lectures • 10m</span>
+                    <span class="text-xs text-slate-400 shrink-0">{{ $item->lecture->count() }} lectures • 10m</span>
                 </button>
                 <div class="p-4 border-t border-slate-700 space-y-3 bg-cyber-dark text-sm">
                     @foreach ($item->lecture as $lecture)

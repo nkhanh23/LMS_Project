@@ -278,30 +278,9 @@
             </div>
         </section>
 
-        <!-- ===== CLIENT-LOGO AREA ===== -->
-        <section class="max-w-7xl mx-auto px-6 py-16">
-            <h2 class="font-pixel text-sm text-text-secondary mb-8 text-center fade-up">TRUSTED BY TOP COMPANIES</h2>
-            <div class="owl-carousel client-carousel items-center">
-                <div class="flex items-center justify-center h-16 opacity-40 hover:opacity-100 transition-opacity">
-                    <span class="font-pixel text-xl text-text-secondary">Google</span>
-                </div>
-                <div class="flex items-center justify-center h-16 opacity-40 hover:opacity-100 transition-opacity">
-                    <span class="font-pixel text-xl text-text-secondary">Microsoft</span>
-                </div>
-                <div class="flex items-center justify-center h-16 opacity-40 hover:opacity-100 transition-opacity">
-                    <span class="font-pixel text-xl text-text-secondary">Amazon</span>
-                </div>
-                <div class="flex items-center justify-center h-16 opacity-40 hover:opacity-100 transition-opacity">
-                    <span class="font-pixel text-xl text-text-secondary">Meta</span>
-                </div>
-                <div class="flex items-center justify-center h-16 opacity-40 hover:opacity-100 transition-opacity">
-                    <span class="font-pixel text-xl text-text-secondary">Apple</span>
-                </div>
-                <div class="flex items-center justify-center h-16 opacity-40 hover:opacity-100 transition-opacity">
-                    <span class="font-pixel text-xl text-text-secondary">Netflix</span>
-                </div>
-            </div>
-        </section>
+        <!-- ===== PARTNER-LOGO AREA ===== -->
+        @include('frontend.section.partner-logo-area')
+
 
         <!-- ===== BLOG AREA ===== -->
         <section class="max-w-7xl mx-auto px-6 py-16">

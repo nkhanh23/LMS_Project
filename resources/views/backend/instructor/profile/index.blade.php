@@ -110,8 +110,7 @@
                                             <h6 class="mb-0">Experience</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" name="experience"
-                                                value="{{ auth()->user()->experience }}" />
+                                            <textarea class="form-control" name="experience">{{ auth()->user()->experience }}</textarea>
                                         </div>
                                     </div>
                                     <div class="row mb-3">

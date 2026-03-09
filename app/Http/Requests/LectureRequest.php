@@ -25,8 +25,10 @@ class LectureRequest extends FormRequest
             'course_id' => 'required|exists:courses,id', //không bắt buộc nhưng phải có trong bảng course nếu được cung cấp
             'section_id' => 'required|exists:course_sections,id', //bắt buộc phải có trong bảng course_sections
             'lecture_title' => 'required|string|max:255',
+            'type' => 'required|in:video,document,text',
             'url' => 'nullable|url|max:255',
-            'content' => 'required|string',
+            'document_file' => 'nullable|mimes:pdf,doc,docx,txt|max:10240',
+            'content' => 'nullable|string',
             'video_duration' => 'nullable',
         ];
     }
@@ -41,9 +43,13 @@ class LectureRequest extends FormRequest
             'lecture_title.required' => 'Vui lòng nhập tiêu đề bài học',
             'lecture_title.string' => 'Tiêu đề bài học phải là chuỗi',
             'lecture_title.max' => 'Tiêu đề bài học không được vượt quá 255 ký tự',
+            'type.required' => 'Vui lòng chọn loại bài học',
+            'type.in' => 'Loại bài học không hợp lệ',
+            // 'document_file.file' => 'Tài liệu phải là một file',
+            'document_file.mimes' => 'Tài liệu phải có định dạng pdf, doc, docx, txt',
+            'document_file.max' => 'Tài liệu không được vượt quá 10MB',
             'url.url' => 'URL không hợp lệ',
             'url.max' => 'URL không được vượt quá 255 ký tự',
-            'content.required' => 'Vui lòng nhập nội dung bài học',
             'content.string' => 'Nội dung bài học phải là chuỗi',
         ];
     }

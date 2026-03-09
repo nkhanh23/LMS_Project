@@ -29,8 +29,8 @@
                         <div class="h-44 bg-cyber-dark border-b-2 border-black relative overflow-hidden">
                             <a href="{{ route('course-details', $course->course_name_slug) }}"
                                 class="block w-full h-full">
-                                <img class="w-full h-full object-cover" src="{{ asset($course->course_image) }}"
-                                    alt="{{ $course->course_name }}">
+                                <img loading="lazy" class="w-full h-full object-cover"
+                                    src="{{ asset($course->course_image) }}" alt="{{ $course->course_name }}">
                             </a>
 
                             <span
@@ -48,10 +48,10 @@
 
                             <span
                                 class="absolute top-2 left-24 bg-brand text-black text-[9px] font-bold px-2 py-0.5 border border-black">
-                                {{ round((($course->selling_price - $course->discount_price) / $course->selling_price) * 100) }}%
+                                -{{ round((($course->selling_price - $course->discount_price) / $course->selling_price) * 100) }}%
                             </span>
 
-                            {{-- @php
+                            @php
                                 if (auth()->check()) {
                                     $user_id = auth()->user()->id;
                                     $isWishlisted = \App\Models\Wishlist::where('user_id', $user_id)
@@ -60,35 +60,7 @@
                                 } else {
                                     $isWishlisted = null;
                                 }
-
-                                $discountPercent = 0;
-                                if (
-                                    !empty($course->selling_price) &&
-                                    !empty($course->discount_price) &&
-                                    $course->selling_price > 0
-                                ) {
-                                    $discountPercent = round(
-                                        (($course->selling_price - $course->discount_price) / $course->selling_price) *
-                                            100,
-                                    );
-                                }
-                            @endphp --}}
-
-                            <button class="absolute top-2 right-2 text-red-500 text-lg wishlist-icon"
-                                title="Thêm vào danh sách yêu thích" data-course-id="{{ $course->id }}">
-                                {{-- @if ($isWishlisted)
-                                    ♥
-                                @else
-                                    ♡
-                                @endif --}}
-                            </button>
-
-                            {{-- @if ($discountPercent > 0)
-                                <span
-                                    class="absolute bottom-2 left-2 bg-brand text-black text-[10px] font-bold px-2 py-1 border border-black">
-                                    -{{ $discountPercent }}%
-                                </span>
-                            @endif --}}
+                            @endphp
                         </div>
 
                         <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
@@ -120,10 +92,14 @@
                                     </span>
                                 </div>
 
-                                <a href="#"
-                                    class="bg-brand text-black px-3 py-1.5 text-xs font-bold uppercase border border-black pixel-button-hover">
-                                    View
-                                </a>
+                                <button class="text-lg hover:scale-110 transition-transform wishlist-icon p-2"
+                                    title="Thêm vào danh sách yêu thích" data-course-id="{{ $course->id }}">
+                                    @if ($isWishlisted)
+                                        <i class="fas fa-heart text-red-600"></i>
+                                    @else
+                                        <i class="far fa-heart text-white"></i>
+                                    @endif
+                                </button>
                             </div>
                         </div>
                     </article>

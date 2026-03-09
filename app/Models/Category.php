@@ -15,6 +15,6 @@ class Category extends Model
 
     public function course()
     {
-        return $this->hasMany(Course::class, 'category_id', 'id');
+        return $this->hasMany(Course::class, 'category_id', 'id')->where('status', 1);
     }
 }

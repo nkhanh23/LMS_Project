@@ -14,6 +14,12 @@ class PasswordUpdateRequest extends FormRequest
         return true;
     }
 
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        session()->flash('error_tab', 'password');
+        parent::failedValidation($validator);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

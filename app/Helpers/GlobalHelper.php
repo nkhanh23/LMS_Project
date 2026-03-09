@@ -4,6 +4,7 @@
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 
 if (!function_exists('isApprovedUser')) {
@@ -47,5 +48,40 @@ if (!function_exists('getCourseCategory')) {
     function getCourseCategory()
     {
         return Category::with('course, course.user, course.course_goals')->orderBy('name', 'asc')->get();
+    }
+}
+
+//get wishlist
+if (!function_exists('getWishlist')) {
+    function getWishlist()
+    {
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+            return Wishlist::where('user_id', $user_id)->with('course', 'course.user')->get();
+        }
+        return collect();
+    }
+}
+
+//get cart items
+if (!function_exists('getCartItems')) {
+    function getCartItems()
+    {
+        $guestToken = request()->cookie('guest_token');
+        if ($guestToken) {
+            return \App\Models\Cart::where('guest_token', $guestToken)->with('course', 'course.user')->get();
+        }
+        return collect();
+    }
+}
+
+//global auth check
+function auth_check_json()
+{
+    if (!Auth::check()) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Bạn cần đăng nhập để thực hiện chức năng này',
+        ], 401);
     }
 }

@@ -5,10 +5,13 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\CourseLecture;
 use App\Models\CourseSection;
 use App\Models\InfoBox;
+use App\Models\Partner;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontEndDashBoardController extends Controller
 {
@@ -17,17 +20,49 @@ class FrontEndDashBoardController extends Controller
         $all_slider = Slider::latest()->get();
         $all_info = InfoBox::latest()->get();
         $all_category = Category::inRandomOrder()->limit(6)->get();
+        $all_partners = Partner::latest()->get();
 
         $categories = Category::all();
         $course_category = Category::with('course', 'course.user', 'course.goals')->get();
-        return view('frontend.pages.home.index', compact('all_slider', 'all_info', 'all_category', 'categories', 'course_category'));
+        return view('frontend.index', compact('all_slider', 'all_info', 'all_category', 'categories', 'course_category', 'all_partners'));
     }
 
     public function view($slug)
     {
+        //lấy khóa học
         $course = Course::where('course_name_slug', $slug)->with('category', 'subcategory', 'user', 'goals')->first();
+        //lấy số lượng bài giảng
         $total_lecture = CourseSection::where('course_id', $course->id)->with('lecture')->get()->count();
+        //lấy khóa học có cùng category_id
         $course_content = CourseSection::where('course_id', $course->id)->with('lecture')->get();
-        return view('frontend.pages.course-details.index', compact('course', 'course_content', 'total_lecture'));
+        //lấy id người dùng hiện tại
+        $userId = Auth::user()->id;
+        //lấy khóa học có cùng category_id
+        $similarCourse = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->with('user')->inRandomOrder()->limit(6)->get();
+        //lấy khóa học có cùng instructor_id
+        $more_course_instructor = Course::where('instructor_id', $course->instructor_id)->where('id', '!=', $course->id)->with('user')->limit(6)->get();
+        //lấy tất cả danh mục
+        $all_category = Category::orderBy('name', 'asc')->get();
+        //lấy tổng số phút của khóa học
+        $total_minutes = CourseLecture::where('course_id', $course->id)->sum('video_duration');
+        $hours = floor($total_minutes / 60);
+        $minutes = floor($total_minutes % 60);
+        $seconds = round(($total_minutes - floor($total_minutes)) * 60);
+        $total_lecture_duration = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+        //lấy tổng số khóa học của instructor
+        $total_course_instructor = Course::where('instructor_id', $course->instructor_id)->where('id', '!=', $course->id)->with('user')->get();
+        return view('frontend.pages.course-details.index', compact(
+            'course',
+            'course_content',
+            'total_lecture',
+            'userId',
+            'similarCourse',
+            'more_course_instructor',
+            'all_category',
+            'hours',
+            'minutes',
+            'seconds',
+            'total_lecture_duration'
+        ));
     }
 }

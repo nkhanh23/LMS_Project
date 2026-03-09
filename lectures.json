@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "course_id": 1,
+        "section_id": 1,
+        "lecture_title": "dfhfghrfthfhfghfgbfghfghf",
+        "type": "video",
+        "url": "https:\/\/www.youtube.com\/watch?v=DQZETSiKmdk&list=PLv3GDHjO7q5279yxfq3822NmvieQjn5Vt",
+        "content": "<p>dfgdf<\/p>",
+        "video_duration": "56.00",
+        "created_at": "2026-03-02T02:29:32.000000Z",
+        "updated_at": "2026-03-02T02:29:32.000000Z"
+    },
+    {
+        "id": 2,
+        "course_id": 1,
+        "section_id": 1,
+        "lecture_title": "fhdfdgbdfbvsdfvs",
+        "type": "video",
+        "url": null,
+        "content": "<p>dsavsdghfgnfghkjkljk.23432534<\/p>",
+        "video_duration": null,
+        "created_at": "2026-03-02T02:29:48.000000Z",
+        "updated_at": "2026-03-02T02:29:48.000000Z"
+    },
+    {
+        "id": 3,
+        "course_id": 1,
+        "section_id": 1,
+        "lecture_title": "111111",
+        "type": "video",
+        "url": null,
+        "content": "<p>1111111111<\/p>",
+        "video_duration": null,
+        "created_at": "2026-03-02T02:30:12.000000Z",
+        "updated_at": "2026-03-02T02:30:12.000000Z"
+    }
+]
