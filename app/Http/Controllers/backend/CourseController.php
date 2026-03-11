@@ -7,8 +7,9 @@ use App\Http\Requests\CourseRequest;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseGoal;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
-use App\\Services\\CourseService;
+use App\Services\CourseService;
 use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
@@ -24,11 +25,26 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+        $categoryId = $request->input('category_id');
+        $subCategoryId = $request->input('sub_category_id');
+        $min_amount = $request->input('min_amount');
+        $max_amount = $request->input('max_amount');
+
         $instructor_id = Auth::user()->id;
-        $all_courses = Course::with(['category', 'subcategory'])->where('instructor_id', $instructor_id)->latest()->get();
-        return view('backend.instructor.course.index', compact('all_courses'));
+
+        $all_courses = $this->courseService->getCourses($search, $categoryId, $subCategoryId, $instructor_id, 5, $min_amount, $max_amount);
+        $categories = Category::orderBy('name', 'asc')->get();
+        $subcategories = $categoryId ? SubCategory::where('category_id', $categoryId)->orderBy('name', 'asc')->get() : collect();
+
+        $filters = [
+            'min_amount' => $min_amount,
+            'max_amount' => $max_amount,
+        ];
+
+        return view('backend.instructor.course.index', compact('all_courses', 'categories', 'subcategories', 'filters'));
     }
 
     /**

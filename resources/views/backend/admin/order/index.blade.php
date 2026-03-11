@@ -7,7 +7,54 @@
         <div style="display: flex; align-items:center; justify-content:space-between">
             <h6 class="mb-0 text-uppercase">Tất cả đơn hàng</h6>
         </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <form action="{{ route('admin.order.index') }}" method="GET" id="filter-form">
+                    <div class="row align-items-end">
 
+                        <div class="col-md-3">
+                            <label class="form-label font-weight-bold">Từ ngày</label>
+                            <input type="date" name="start_date" class="form-control"
+                                value="{{ $filters['start_date'] ?? '' }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label font-weight-bold">Đến ngày</label>
+                            <input type="date" name="end_date" class="form-control"
+                                value="{{ $filters['end_date'] ?? '' }}">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label font-weight-bold">Khoảng giá (VND/USD): <span id="amount-show"
+                                    class="text-danger"></span></label>
+                            <div id="slider-range" class="mt-2 mb-3"></div>
+
+                            <input type="hidden" name="min_amount" id="min_amount"
+                                value="{{ $filters['min_amount'] ?? 0 }}">
+                            <input type="hidden" name="max_amount" id="max_amount"
+                                value="{{ $filters['max_amount'] ?? 10000 }}">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label class="form-label font-weight-bold">Thanh toán</label>
+                            <select name="payment_method" class="form-select">
+                                <option value="">-- Tất cả --</option>
+                                <option value="stripe"
+                                    {{ ($filters['payment_method'] ?? '') == 'stripe' ? 'selected' : '' }}>Stripe</option>
+                                <option value="paypal"
+                                    {{ ($filters['payment_method'] ?? '') == 'paypal' ? 'selected' : '' }}>PayPal</option>
+                                <option value="cash" {{ ($filters['payment_method'] ?? '') == 'cash' ? 'selected' : '' }}>
+                                    Tiền mặt</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary w-100 mb-1">Lọc</button>
+                            <a href="{{ route('admin.order.index') }}" class="btn btn-secondary w-100">Xóa</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <hr />
         <div class="card">
             <div class="card-body">
@@ -17,21 +64,21 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Ngày</th>
-                                <th>Transaction Id</th>
-                                <th>Amount</th>
-                                <th>Payment</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Mã giao dịch</th>
+                                <th>Số tiền</th>
+                                <th>Thanh toán</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($all_payments as $index => $item)
+                            @foreach ($orders as $index => $item)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y, h:i A') }}</td>
                                     <td>{{ $item->transaction_id }}</td>
                                     <td>
-                                        {{ $item->total_amount }}
+                                        {{ number_format($item->total_amount, 0) }}
                                     </td>
                                     <td>
                                         {{ $item->payment_type }}
@@ -68,3 +115,33 @@
 
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            // Lấy giá trị min/max từ hidden input (đã có từ URL nếu user đang ở trạng thái lọc)
+            let currentMin = parseInt($('#min_amount').val()) || 0;
+            let currentMax = parseInt($('#max_amount').val()) || 10000; // Thay 10000 bằng Max Price hệ thống
+
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 10000000, // Cấu hình Max Limit của thanh trượt
+                step: 10, // Bước nhảy của thanh trượt
+                values: [currentMin, currentMax],
+                slide: function(event, ui) {
+                    // Khi kéo trượt, update Text hiển thị cho user
+                    $("#amount-show").text("VNĐ " + ui.values[0].toLocaleString() + " - VNĐ " + ui
+                        .values[1].toLocaleString());
+                    // Gắn value vào hidden input để đẩy lên URL
+                    $("#min_amount").val(ui.values[0]);
+                    $("#max_amount").val(ui.values[1]);
+                }
+            });
+
+            // Khởi tạo text hiển thị khi trang vừa load xong
+            $("#amount-show").text("VNĐ " + $("#slider-range").slider("values", 0).toLocaleString() +
+                " - VNĐ " + $("#slider-range").slider("values", 1).toLocaleString());
+        });
+    </script>
+@endpush

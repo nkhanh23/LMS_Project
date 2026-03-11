@@ -26,6 +26,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <link href="{{ asset('backend/assets/css/app.css') }}" rel="stylesheet">
 <link href="{{ asset('backend/assets/css/icons.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <!-- Theme Style CSS -->
 <link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}" />
 <link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}" />

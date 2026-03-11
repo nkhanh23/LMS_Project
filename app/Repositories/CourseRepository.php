@@ -60,4 +60,28 @@ class CourseRepository
             }
         }
     }
+
+    public function getCourses($search = null, $categoryId = null, $subCategoryId = null, $instructorId = null, $perPage = 5, $minAmount = null, $maxAmount = null)
+    {
+        $query = Course::with(['category', 'subcategory'])->when($search, function ($query, $search) {
+            return $query->where('course_name', 'like', "%{$search}%");
+        })
+            ->when($categoryId, function ($query, $categoryId) {
+                return $query->where('category_id', $categoryId);
+            })
+            ->when($subCategoryId, function ($query, $subCategoryId) {
+                return $query->where('sub_category_id', $subCategoryId);
+            })
+            ->when($instructorId, function ($query, $instructorId) {
+                return $query->where('instructor_id', $instructorId);
+            })
+            ->when(filled($minAmount), function ($query) use ($minAmount) {
+                return $query->where('selling_price', '>=', $minAmount);
+            })
+            ->when(filled($maxAmount), function ($query) use ($maxAmount) {
+                return $query->where('selling_price', '<=', $maxAmount);
+            });
+
+        return $query->latest()->paginate($perPage);
+    }
 }

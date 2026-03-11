@@ -2,19 +2,60 @@
 
 @section('content')
     <div class="page-content">
-
+        <!--breadcrumb-->
         @include('backend.section.breadcrumb', ['title' => 'Khóa học', 'sub_title' => 'Tất cả khóa học'])
-
-
-        <div style="display: flex; align-items:center; justify-content:space-between">
+        <!--end breadcrumb-->
+        <div class="d-flex align-items-center justify-content-between">
             <h6 class="mb-0 text-uppercase">Tất cả khóa học</h6>
             <a href="{{ route('instructor.course.create') }}" class="btn btn-primary">Thêm khóa học</a>
         </div>
         <hr />
+
         <div class="card">
             <div class="card-body">
+                <form action="{{ route('instructor.course.index') }}" method="GET" class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <label class="form-label">Tìm kiếm</label>
+                        <input type="text" name="search" class="form-control" placeholder="Tên khóa học..."
+                            value="{{ request('search') }}">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Danh mục</label>
+                        <select name="category_id" id="category_id" class="form-select">
+                            <option value="">Tất cả danh mục</option>
+                            @foreach ($categories as $cat)
+                                <option value="{{ $cat->id }}"
+                                    {{ request('category_id') == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3" id="sub_category_container">
+                        <label class="form-label">Danh mục con</label>
+                        <select name="sub_category_id" id="sub_category_id" class="form-select" {{ request('category_id') ? '' : 'disabled' }}>
+                            <option value="">Tất cả danh mục con</option>
+                            @foreach ($subcategories as $subcat)
+                                <option value="{{ $subcat->id }}"
+                                    {{ request('sub_category_id') == $subcat->id ? 'selected' : '' }}>{{ $subcat->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label font-weight-bold">Khoảng giá (VND/USD): <span id="amount-show"
+                                class="text-danger"></span></label>
+                        <div id="slider-range" class="mt-2 mb-3"></div>
+
+                        <input type="hidden" name="min_amount" id="min_amount" value="{{ $filters['min_amount'] ?? 0 }}">
+                        <input type="hidden" name="max_amount" id="max_amount"
+                            value="{{ $filters['max_amount'] ?? 10000000 }}">
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary me-2">Lọc</button>
+                        <a href="{{ route('instructor.course.index') }}" class="btn btn-secondary">Xóa lọc</a>
+                    </div>
+                </form>
                 <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>STT</th>
@@ -91,17 +132,14 @@
                                                     d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
                                             </svg>
                                         </a>
-
-
-
-
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
-
-
                     </table>
+                </div>
+                <div class="mt-4">
+                    {{ $all_courses->appends(request()->query())->links() }}
                 </div>
             </div>
         </div>
@@ -111,6 +149,7 @@
 @endsection
 
 @push('script')
+    {{-- Delete Course Script --}}
     <script>
         $(document).on('click', '.delete-course', function(e) {
             e.preventDefault();
@@ -129,6 +168,63 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#delete-form').attr('action', deleteUrl).submit();
+                }
+            });
+        });
+    </script>
+    {{-- Price Range Script --}}
+    <script>
+        $(document).ready(function() {
+            // Lấy giá trị min/max từ hidden input (đã có từ URL nếu user đang ở trạng thái lọc)
+            let currentMin = parseInt($('#min_amount').val()) || 0;
+            let currentMax = parseInt($('#max_amount').val()) || 10000; // Thay 10000 bằng Max Price hệ thống
+
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 10000000, // Cấu hình Max Limit của thanh trượt
+                step: 10, // Bước nhảy của thanh trượt
+                values: [currentMin, currentMax],
+                slide: function(event, ui) {
+                    // Khi kéo trượt, update Text hiển thị cho user
+                    $("#amount-show").text("VNĐ " + ui.values[0].toLocaleString() + " - VNĐ " + ui
+                        .values[1].toLocaleString());
+                    // Gắn value vào hidden input để đẩy lên URL
+                    $("#min_amount").val(ui.values[0]);
+                    $("#max_amount").val(ui.values[1]);
+                }
+            });
+
+            // Khởi tạo text hiển thị khi trang vừa load xong
+            $("#amount-show").text("VNĐ " + $("#slider-range").slider("values", 0).toLocaleString() +
+                " - VNĐ " + $("#slider-range").slider("values", 1).toLocaleString());
+        });
+    </script>
+    {{-- Dependent Category/Subcategory Script --}}
+    <script>
+        $(document).ready(function() {
+            $('#category_id').on('change', function() {
+                var categoryId = $(this).val();
+                if (categoryId) {
+                    $.ajax({
+                        url: "{{ url('/instructor/get-subcategories') }}/" + categoryId,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('#sub_category_id').empty();
+                            $('#sub_category_id').append(
+                                '<option value="">Tất cả danh mục con</option>');
+                            $.each(data, function(key, value) {
+                                $('#sub_category_id').append('<option value="' + value
+                                    .id + '">' + value.name + '</option>');
+                            });
+                            $('#sub_category_id').prop('disabled', false);
+                        },
+                    });
+                } else {
+                    $('#sub_category_id').empty();
+                    $('#sub_category_id').append('<option value="">Tất cả danh mục con</option>');
+                    $('#sub_category_id').prop('disabled', true);
                 }
             });
         });

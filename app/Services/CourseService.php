@@ -1,6 +1,6 @@
 <?php
 
-namespace App\\Services;
+namespace App\Services;
 
 use App\Models\CourseGoal;
 use App\Models\User;
@@ -32,5 +32,10 @@ class CourseService
     public function updateCourseGoals($courseId, array $goals)
     {
         return $this->courseRepository->updateCourseGoals($courseId, $goals);
+    }
+
+    public function getCourses($search = null, $categoryId = null, $subCategoryId = null, $instructorId = null, $perPage = 5, $minAmount = null, $maxAmount = null)
+    {
+        return $this->courseRepository->getCourses($search, $categoryId, $subCategoryId, $instructorId, $perPage, $minAmount, $maxAmount);
     }
 }

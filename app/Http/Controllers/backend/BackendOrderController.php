@@ -3,19 +3,36 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderRequest;
 use App\Models\Payment;
 use App\Models\User;
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 
 class BackendOrderController extends Controller
 {
+    protected $orderService;
+
+    public function __construct(OrderService $orderService)
+    {
+        $this->orderService = $orderService;
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $orders = $this->orderService->getAdminOrders($request->all());
+        // Lấy lại filter để flash ra View (Giữ trạng thái input của user)
+        $filters = $request->only([
+            'start_date',
+            'end_date',
+            'min_amount',
+            'max_amount',
+            'payment_method'
+        ]);
         $all_payments = Payment::latest()->get();
-        return view('backend.admin.order.index', compact('all_payments'));
+        return view('backend.admin.order.index', compact('all_payments', 'orders', 'filters'));
     }
 
     /**
