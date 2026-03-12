@@ -1,21 +1,20 @@
-<div class="modal" id="course-edit-{{ $lecture->id }}">
+<div class="modal fade" id="course-edit-{{ $lecture->id }}">
     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
         <div class="modal-content">
 
-            <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Cập nhật bài học</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
-            <!-- Modal body -->
             <div class="modal-body">
                 <form method="post" action="{{ route('instructor.lecture.update', $lecture->id) }}"
-                    enctype="multipart/form-data">
+                    enctype="multipart/form-data" class="lecture-edit-form">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="course_id" value="{{ $course->id }}" />
                     <input type="hidden" name="section_id" value="{{ $data->id }}" />
+
                     <div class="col-md-12">
                         <label for="lecture_title_{{ $lecture->id }}" class="form-label">Tiêu đề bài học</label>
                         <input type="text" class="form-control" name="lecture_title"
@@ -29,6 +28,8 @@
                             id="lecture_type_{{ $lecture->id }}" required>
                             <option value="video" {{ ($lecture->type ?? 'video') == 'video' ? 'selected' : '' }}>Video
                                 (YouTube)</option>
+                            <option value="r2_video" {{ ($lecture->type ?? '') == 'r2_video' ? 'selected' : '' }}>
+                                Upload Video (Cloudflare R2)</option>
                             <option value="text" {{ ($lecture->type ?? '') == 'text' ? 'selected' : '' }}>Văn bản
                                 (Text)</option>
                             <option value="document" {{ ($lecture->type ?? '') == 'document' ? 'selected' : '' }}>Tài
@@ -36,14 +37,14 @@
                         </select>
                     </div>
 
+                    {{-- YouTube fields --}}
                     <div class="video-fields"
                         style="{{ ($lecture->type ?? 'video') == 'video' ? 'display: block;' : 'display: none;' }}">
                         <div class="col-md-12 mt-3">
                             <label for="video_url_{{ $lecture->id }}" class="form-label">YouTube Video URL</label>
                             <input type="url" class="form-control video_url" name="url"
-                                id="video_url_{{ $lecture->id }}" placeholder="Enter the YouTube video URL"
-                                value="{{ old('url', $lecture->url) }}"
-                                {{ ($lecture->type ?? 'video') == 'video' ? 'required' : '' }}>
+                                id="video_url_{{ $lecture->id }}" placeholder="Nhập URL video YouTube"
+                                value="{{ old('url', $lecture->url) }}">
 
                             <iframe class="videoPreview" id="videoPreview_{{ $lecture->id }}"
                                 style="margin-top: 15px; width: 100%; height: 400px; display: none;" frameborder="0"
@@ -51,14 +52,50 @@
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for="video_duration_{{ $lecture->id }}" class="form-label">Thời lượng video</label>
+                            <label for="video_duration_{{ $lecture->id }}" class="form-label">Thời lượng video
+                                (Phút)</label>
                             <input type="number" step="0.01" class="form-control" name="video_duration"
                                 value="{{ old('video_duration', $lecture->video_duration) }}"
-                                id="video_duration_{{ $lecture->id }}"
-                                {{ ($lecture->type ?? 'video') == 'video' ? 'required' : '' }} />
+                                id="video_duration_{{ $lecture->id }}" />
                         </div>
                     </div>
 
+                    {{-- R2 Video Upload fields --}}
+                    <div class="form-group mt-3 lecture-r2-upload"
+                        style="{{ ($lecture->type ?? '') == 'r2_video' ? 'display: block;' : 'display: none;' }}">
+                        <label class="form-label">Tải lên Video mới (MP4/MOV)</label>
+                        <input type="file" class="form-control video-file-r2" accept="video/mp4,video/x-m4v,video/*">
+                        <small class="text-muted">Chỉ chọn file nếu bạn muốn thay đổi video hiện tại.</small>
+
+                        <input type="hidden" name="r2_video_key" class="r2-video-key">
+
+                        <div class="progress mt-2 upload-progress-container" style="height: 20px; display: none;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success upload-progress-bar"
+                                role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
+                                aria-valuemax="100">0%</div>
+                        </div>
+
+                        {{-- Thông báo upload thành công --}}
+                        <div class="upload-success-msg mt-2" style="display: none;">
+                            <span class="badge bg-success"><i class="bi bi-check-circle"></i> Video mới đã tải lên thành
+                                công! Xem lại bên dưới trước khi cập nhật.</span>
+                        </div>
+
+                        {{-- Video preview --}}
+                        <video class="r2-video-preview mt-3" controls
+                            style="display: {{ (($lecture->type ?? '') == 'r2_video' && $lecture->url) ? 'block' : 'none' }}; width: 100%; max-height: 400px; border-radius: 8px; background: #000;"
+                            @if(($lecture->type ?? '') == 'r2_video' && $lecture->url) src="{{ config('filesystems.disks.r2.url') }}/{{ $lecture->url }}" @endif>
+                        </video>
+
+                        @if (($lecture->type ?? '') == 'r2_video' && $lecture->url)
+                            <div class="mt-2">
+                                <small class="text-success"><i class="bi bi-check-circle"></i> Video hiện tại đã được
+                                    tải lên ({{ $lecture->url }}).</small>
+                            </div>
+                        @endif
+                    </div>
+
+                    {{-- Document fields --}}
                     <div class="document-fields"
                         style="{{ ($lecture->type ?? '') == 'document' ? 'display: block;' : 'display: none;' }}">
                         <div class="col-md-12 mt-3">
@@ -70,116 +107,18 @@
                         </div>
                     </div>
 
+                    {{-- Content / Description --}}
                     <div class="col-md-12 mt-3 text-fields">
                         <label for="content_{{ $lecture->id }}"
                             class="form-label content-label">{{ ($lecture->type ?? '') == 'text' ? 'Nội dung bài học' : 'Mô tả bài học (Tùy chọn)' }}</label>
-                        <textarea class="form-control editor" name="content" id="content_{{ $lecture->id }}"
-                            {{ ($lecture->type ?? '') == 'text' ? 'required' : '' }}>{{ $lecture->content }}</textarea>
+                        <textarea class="form-control editor" name="content" id="content_{{ $lecture->id }}">{{ $lecture->content }}</textarea>
                     </div>
 
-
-                    <div class="mt-3">
-                        <button type="submit" class="btn btn-primary w-100">Cập nhật</button>
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary w-100 btn-submit-lecture">Cập nhật</button>
                     </div>
                 </form>
             </div>
-
-
-
         </div>
     </div>
 </div>
-
-
-@push('script')
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let modal = document.getElementById("course-edit-{{ $lecture->id }}");
-            if (!modal) return;
-
-            let videoInput = modal.querySelector("#video_url_{{ $lecture->id }}");
-            let videoPreview = modal.querySelector("#videoPreview_{{ $lecture->id }}");
-
-            let typeSelect = modal.querySelector("#lecture_type_{{ $lecture->id }}");
-            let videoFields = modal.querySelector(".video-fields");
-            let documentFields = modal.querySelector(".document-fields");
-            let contentLabel = modal.querySelector(".content-label");
-            let videoDurationInput = modal.querySelector("#video_duration_{{ $lecture->id }}");
-            let documentFileInput = modal.querySelector("#document_file_{{ $lecture->id }}");
-            let contentInput = modal.querySelector("textarea[name='content']");
-
-            function toggleLectureFields() {
-                let type = typeSelect.value;
-                if (type === 'video') {
-                    videoFields.style.display = 'block';
-                    documentFields.style.display = 'none';
-
-                    videoInput.setAttribute('required', 'required');
-                    videoDurationInput.setAttribute('required', 'required');
-                    if (documentFileInput) documentFileInput.removeAttribute('required');
-                    contentInput.removeAttribute('required');
-                    if (contentLabel) contentLabel.innerText = "Mô tả bài học (Tùy chọn)";
-                } else if (type === 'document') {
-                    videoFields.style.display = 'none';
-                    documentFields.style.display = 'block';
-
-                    videoInput.removeAttribute('required');
-                    videoDurationInput.removeAttribute('required');
-                    if (documentFileInput) documentFileInput.removeAttribute('required');
-                    contentInput.removeAttribute('required');
-                    if (contentLabel) contentLabel.innerText = "Mô tả bài học (Tùy chọn)";
-                } else if (type === 'text') {
-                    videoFields.style.display = 'none';
-                    documentFields.style.display = 'none';
-
-                    videoInput.removeAttribute('required');
-                    videoDurationInput.removeAttribute('required');
-                    if (documentFileInput) documentFileInput.removeAttribute('required');
-                    contentInput.setAttribute('required', 'required');
-                    if (contentLabel) contentLabel.innerText = "Nội dung bài học";
-                }
-            }
-
-            modal.addEventListener("shown.bs.modal", function() {
-                toggleLectureFields(); // trigger on load
-                if (typeSelect) {
-                    typeSelect.addEventListener("change", toggleLectureFields);
-                }
-
-                videoInput.addEventListener("input", function() {
-                    let url = videoInput.value;
-                    let videoId = extractYouTubeVideoID(url);
-
-                    if (videoId) {
-                        videoPreview.src = `https://www.youtube.com/embed/${videoId}`;
-                        videoPreview.style.display = "block";
-                    } else {
-                        videoPreview.src = "";
-                        videoPreview.style.display = "none";
-                    }
-                });
-
-                // Trigger preview if already has value
-                if (videoInput.value.trim() !== "") {
-                    let videoId = extractYouTubeVideoID(videoInput.value);
-                    if (videoId) {
-                        videoPreview.src = `https://www.youtube.com/embed/${videoId}`;
-                        videoPreview.style.display = "block";
-                    }
-                }
-            });
-
-            modal.addEventListener("hidden.bs.modal", function() {
-                videoPreview.src = ""; // Reset video when modal closes
-                videoPreview.style.display = "none";
-            });
-
-            function extractYouTubeVideoID(url) {
-                let regex =
-                    /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-                let match = url.match(regex);
-                return match ? match[1] : null;
-            }
-        });
-    </script>
-@endpush

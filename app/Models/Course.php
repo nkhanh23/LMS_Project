@@ -33,4 +33,14 @@ class Course extends Model
     {
         return $this->hasMany(CourseGoal::class, 'course_id', 'id');
     }
+
+    public function sections()
+    {
+        return $this->hasMany(CourseSection::class, 'course_id', 'id');
+    }
+
+    public function instructor()
+    {
+        return $this->belongsTo(User::class, 'instructor_id', 'id');
+    }
 }

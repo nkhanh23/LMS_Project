@@ -27,6 +27,7 @@ use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserProfileController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\FrontEndDashBoardController;
+use App\Http\Controllers\frontend\LearningController;
 use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
@@ -124,6 +125,8 @@ Route::middleware('auth', 'verified', 'role:instructor')->prefix('instructor')->
 
     /*  INSTRUCTOR COURSE LECTURE  */
     Route::resource('lecture', LectureController::class);
+    Route::post('/lecture/get-presigned-url', [LectureController::class, 'generatePresignedUrl'])
+        ->name('lecture.get-presigned-url');
 
     /*  INSTRUCTOR COUPON  */
     Route::resource('coupon', CouponController::class);
@@ -156,7 +159,7 @@ Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.'
 
 /*  FRONTEND ROUTES  */
 Route::get('/', [FrontEndDashBoardController::class, 'home'])->name('frontend.home');
-Route::get('/course-details/{slug}', [FrontEndDashBoardController::class, 'view'])->name('course-details');
+Route::get('/chi-tiet/{slug}', [FrontEndDashBoardController::class, 'view'])->name('chi-tiet');
 
 /*  WISHLIST ROUTES  */
 Route::get('/wishlist/all', [WishlistController::class, 'allWishlist'])->name('wishlist');
@@ -178,6 +181,13 @@ Route::post('/apply-coupon', [CouponController::class, 'applyCoupon']);
 /*  CHECKOUT COUPON  */
 Route::post('/apply-checkout-coupon', [CouponController::class, 'applyCheckoutCoupon'])->name('checkoutCoupon');
 Route::post('/remove-coupon', [CouponController::class, 'removeCoupon'])->name('removeCoupon');
+
+/*  COURSE PLAY  */
+// Route mở bài học đầu tiên hoặc bài học cuối cùng đang học dở
+Route::get('/khoa-hoc/{slug}/hoc', [LearningController::class, 'playCourse'])->name('course.play');
+// Route xem một bài giảng cụ thể
+Route::get('/khoa-hoc/{slug}/bai-hoc/{lecture_id}', [LearningController::class, 'watchLecture'])->name('course.lecture.watch');
+
 
 /*  AUTH PROTECTED ROUTES  */
 Route::middleware('auth')->group(function () {

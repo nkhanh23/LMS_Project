@@ -27,8 +27,7 @@
                         class="bg-cyber-surface border-2 border-black pixel-shadow hover:-translate-y-1 transition-transform cursor-pointer h-full flex flex-col">
 
                         <div class="h-44 bg-cyber-dark border-b-2 border-black relative overflow-hidden">
-                            <a href="{{ route('course-details', $course->course_name_slug) }}"
-                                class="block w-full h-full">
+                            <a href="{{ route('chi-tiet', $course->course_name_slug) }}" class="block w-full h-full">
                                 <img loading="lazy" class="w-full h-full object-cover"
                                     src="{{ asset($course->course_image) }}" alt="{{ $course->course_name }}">
                             </a>

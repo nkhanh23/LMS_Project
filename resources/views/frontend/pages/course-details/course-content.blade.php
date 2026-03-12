@@ -30,9 +30,8 @@
                         <div class="flex justify-between items-center group">
                             <div class="flex items-center gap-3">
                                 <i class="fas fa-play-circle text-cyber-cyan"></i>
-                                <a href="#" class="hover:text-cyber-cyan group-hover:underline preview-trigger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#previewModal">{{ $lecture->lecture_title }}</a>
+                                <a href="{{ route('course.lecture.watch', [$course->course_name_slug, $lecture->id]) }}"
+                                    class="hover:text-cyber-cyan group-hover:underline">{{ $lecture->lecture_title }}</a>
                             </div>
                             <span class="text-xs text-slate-500">Preview <span class="ml-2">02:30</span></span>
                         </div>

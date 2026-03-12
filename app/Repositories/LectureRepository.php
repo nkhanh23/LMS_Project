@@ -19,4 +19,9 @@ class LectureRepository
         $lecture->update($data);
         return $lecture->fresh();
     }
+
+    public function getLectureById($id)
+    {
+        return CourseLecture::findOrFail($id);
+    }
 }

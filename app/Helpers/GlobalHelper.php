@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 if (!function_exists('isApprovedUser')) {
     function isApprovedUser()
@@ -84,4 +85,18 @@ function auth_check_json()
             'message' => 'Bạn cần đăng nhập để thực hiện chức năng này',
         ], 401);
     }
+}
+
+
+function getVideoUrl($type, $url)
+{
+    if ($type === 'r2_video') {
+        return Storage::disk('r2')->url($url);
+    }
+
+    if (filter_var($url, FILTER_VALIDATE_URL)) {
+        return $url;
+    }
+
+    return asset($url);
 }

@@ -12,4 +12,9 @@ class CourseSection extends Model
     {
         return $this->hasMany(CourseLecture::class, 'section_id', 'id')->orderBy('id', 'asc');
     }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id', 'id');
+    }
 }

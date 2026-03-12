@@ -148,5 +148,199 @@
 </script>
 
 <!-- -----------------  PRICE RANGE SCRIPT  ------------------>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
+<!-- -----------------  LECTURE CREATE SCRIPT  ------------------>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // 1. Logic ẩn/hiện các block khi thay đổi loại bài giảng (Áp dụng cho mọi modal)
+        document.addEventListener('change', function(e) {
+            if (e.target && e.target.classList.contains('lecture-type-select')) {
+                let form = e.target.closest('form');
+                let type = e.target.value;
+
+                // Tìm các block trong nội bộ form này
+                let r2Block = form.querySelector('.lecture-r2-upload');
+                let youtubeBlock = form.querySelector('.video-fields');
+                let docBlock = form.querySelector('.document-fields');
+
+                // Xử lý logic ẩn hiện
+                r2Block.style.display = (type === 'r2_video') ? 'block' : 'none';
+                youtubeBlock.style.display = (type === 'video') ? 'block' : 'none';
+                docBlock.style.display = (type === 'document') ? 'block' : 'none';
+            }
+        });
+
+        // 2. Logic can thiệp khi bấm nút Submit form (Bắt sự kiện Upload R2)
+        document.addEventListener('submit', async function(e) {
+            // Kiểm tra xem form đang submit có đúng là form tạo lecture không
+            if (e.target && (e.target.classList.contains('lecture-create-form') || e.target
+                    .classList.contains('lecture-edit-form'))) {
+                let form = e.target;
+                let selectType = form.querySelector('.lecture-type-select').value;
+                let fileInput = form.querySelector('.video-file-r2');
+
+                // Chỉ can thiệp nếu là r2_video VÀ có file được chọn VÀ chưa upload xong
+                if (selectType === 'r2_video' && fileInput.files.length > 0) {
+                    e.preventDefault(); // CHẶN LẠI KHÔNG CHO TRÌNH DUYỆT SUBMIT FORM
+
+                    let file = fileInput.files[0];
+                    let extension = file.name.split('.').pop();
+
+                    // Lưu lại blob URL để preview sau khi upload xong
+                    let previewUrl = URL.createObjectURL(file);
+
+                    let submitBtn = form.querySelector('.btn-submit-lecture');
+                    let progressContainer = form.querySelector('.upload-progress-container');
+                    let progressBar = form.querySelector('.upload-progress-bar');
+                    let hiddenKeyInput = form.querySelector('.r2-video-key');
+                    let videoPreview = form.querySelector('.r2-video-preview');
+                    let successMsg = form.querySelector('.upload-success-msg');
+
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = "Đang tải video lên R2...";
+                    progressContainer.style.display = 'flex';
+
+                    try {
+                        // 1. Xin Presigned URL từ Laravel API
+                        const response = await fetch(
+                            "{{ route('instructor.lecture.get-presigned-url') }}", {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                },
+                                body: JSON.stringify({
+                                    extension: extension
+                                })
+                            });
+
+                        const data = await response.json();
+
+                        // 2. Upload file trực tiếp lên R2
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('PUT', data.upload_url, true);
+                        xhr.setRequestHeader('Content-Type', file.type);
+
+                        // Lắng nghe % tải lên
+                        xhr.upload.onprogress = function(event) {
+                            if (event.lengthComputable) {
+                                const percentComplete = Math.round((event.loaded / event
+                                    .total) * 100);
+                                progressBar.style.width = percentComplete + '%';
+                                progressBar.innerText = percentComplete + '%';
+                            }
+                        };
+
+                        xhr.onload = function() {
+                            if (xhr.status === 200) {
+                                // 3. Xong -> Gán key vào input ẩn
+                                hiddenKeyInput.value = data.file_key;
+                                fileInput.value = '';
+
+                                // 4. Hiện video preview để người dùng xem lại
+                                videoPreview.src = previewUrl;
+                                videoPreview.style.display = 'block';
+                                successMsg.style.display = 'block';
+                                progressContainer.style.display = 'none';
+
+                                // 5. Mở khóa nút Submit để người dùng bấm lưu khi sẵn sàng
+                                submitBtn.disabled = false;
+                                submitBtn.innerText = "✓ Lưu bài học";
+                                submitBtn.classList.remove('btn-primary');
+                                submitBtn.classList.add('btn-success');
+                            } else {
+                                alert("Lỗi khi tải video lên Cloudflare R2.");
+                                submitBtn.disabled = false;
+                                submitBtn.innerText = "Lưu bài học";
+                            }
+                        };
+
+                        xhr.onerror = function() {
+                            alert("Lỗi mạng khi tải video.");
+                            submitBtn.disabled = false;
+                            submitBtn.innerText = "Lưu bài học";
+                        };
+
+                        // Thực thi upload
+                        xhr.send(file);
+
+                    } catch (error) {
+                        alert("Lỗi hệ thống: " + error.message);
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "Lưu bài học";
+                    }
+                }
+                // Nếu không phải r2_video, form sẽ tự động submit bình thường
+            }
+        });
+
+        // 3. Logic xử lý Video YouTube Preview
+        function extractYouTubeVideoID(url) {
+            let regex =
+                /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            let match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        document.body.addEventListener("input", function(e) {
+            if (e.target && e.target.classList.contains('video_url')) {
+                let url = e.target.value;
+                let modal = e.target.closest('.modal');
+                if (modal) {
+                    let preview = modal.querySelector('.videoPreview');
+                    if (preview) {
+                        let videoId = extractYouTubeVideoID(url);
+                        if (videoId) {
+                            preview.src = `https://www.youtube.com/embed/${videoId}`;
+                            preview.style.display = "block";
+                        } else {
+                            preview.src = "";
+                            preview.style.display = "none";
+                        }
+                    }
+                }
+            }
+        });
+
+        // 4. Khi mở/đóng File Modal thì format lại iframe và logic
+        document.body.addEventListener('shown.bs.modal', function(e) {
+            let modal = e.target;
+            if (modal.id.startsWith("course-edit-")) {
+                let videoInput = modal.querySelector(".video_url");
+                let videoPreview = modal.querySelector(".videoPreview");
+                let typeSelect = modal.querySelector(".lecture-type-select");
+
+                // Kích hoạt ẩn hiện panel
+                if (typeSelect) {
+                    typeSelect.dispatchEvent(new Event('change', {
+                        bubbles: true
+                    }));
+                }
+
+                // Kích hoạt YouTube link
+                if (videoInput && videoPreview && videoInput.value.trim() !== "") {
+                    let videoId = extractYouTubeVideoID(videoInput.value);
+                    if (videoId) {
+                        videoPreview.src = `https://www.youtube.com/embed/${videoId}`;
+                        videoPreview.style.display = "block";
+                    }
+                }
+            }
+        });
+
+        document.body.addEventListener('hidden.bs.modal', function(e) {
+            let modal = e.target;
+            if (modal.id.startsWith("course-edit-")) {
+                let videoPreview = modal.querySelector(".videoPreview");
+                // Reset iframe src để tắt video nếu đang phát
+                if (videoPreview) {
+                    videoPreview.src = "";
+                    videoPreview.style.display = "none";
+                }
+            }
+        });
+    });
+</script>

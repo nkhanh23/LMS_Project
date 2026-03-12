@@ -5,9 +5,11 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LectureRequest;
 use App\Models\CourseLecture;
-use App\\Services\\LectureService;
+use App\Services\LectureService;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
+use Aws\S3\S3Client;
+use Illuminate\Support\Str;
 
 class LectureController extends Controller
 {
@@ -41,27 +43,19 @@ class LectureController extends Controller
      */
     public function store(LectureRequest $request)
     {
-        $validatedData = $request->validated();
-
-        if ($validatedData['type'] === 'document') {
-            if ($request->hasFile('document_file')) {
-                $validatedData['url'] = $this->uploadFile($request->file('document_file'), 'lectures');
-            } else {
-                $validatedData['url'] = null;
-            }
-            $validatedData['video_duration'] = null;
-        } elseif ($validatedData['type'] === 'text') {
-            $validatedData['url'] = null;
-            $validatedData['video_duration'] = null;
-        }
-
-        // Prevent Eloquent from trying to save the UploadedFile object to the database
-        if (isset($validatedData['document_file'])) {
-            unset($validatedData['document_file']);
-        }
-
-        $this->lectureService->createLecture($validatedData);
+        $this->lectureService->createLecture($request->validated());
         return back()->with('success', 'Bài học đã được thêm thành công');
+    }
+
+    //
+    public function generatePresignedUrl(Request $request)
+    {
+        $extension = $request->input('extension', 'mp4');
+
+        // Gọi Service xử lý logic tạo URL
+        $data = $this->lectureService->generatePresignedUrl($extension);
+
+        return response()->json($data);
     }
 
     /**
@@ -85,28 +79,7 @@ class LectureController extends Controller
      */
     public function update(LectureRequest $request, string $id)
     {
-        $validatedData = $request->validated();
-        $lecture = CourseLecture::findOrFail($id);
-
-        if ($validatedData['type'] === 'document') {
-            if ($request->hasFile('document_file')) {
-                $validatedData['url'] = $this->uploadFile($request->file('document_file'), 'lectures', $lecture->url);
-            } else {
-                // Keep existing URL if it was already a document, otherwise clear it to avoid YouTube URL leakage
-                $validatedData['url'] = $lecture->type === 'document' ? $lecture->url : null;
-            }
-            $validatedData['video_duration'] = null;
-        } elseif ($validatedData['type'] === 'text') {
-            $validatedData['url'] = null;
-            $validatedData['video_duration'] = null;
-        }
-
-        // Prevent Eloquent from trying to save the UploadedFile object to the database
-        if (isset($validatedData['document_file'])) {
-            unset($validatedData['document_file']);
-        }
-
-        $this->lectureService->updateLecture($validatedData, $id);
+        $this->lectureService->updateLecture($request->validated(), $id);
         return back()->with('success', 'Bài học đã được cập nhật thành công');
     }
 

@@ -14,7 +14,6 @@ trait FileUploadTrait
             if (!file_exists($targetFolder)) {
                 mkdir($targetFolder, 0755, true);
             }
-
             //xóa file nếu tồn tại
             if (!empty($existingFile) && is_string($existingFile)) {
                 $path = parse_url($existingFile, PHP_URL_PATH);
@@ -25,7 +24,6 @@ trait FileUploadTrait
                     }
                 }
             }
-
             //tạo ra file duy nhất
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move($targetFolder, $fileName);

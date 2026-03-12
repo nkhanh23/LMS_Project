@@ -21,15 +21,18 @@ class LectureRequest extends FormRequest
      */
     public function rules(): array
     {
+        $isUpdate = $this->isMethod('PUT') || $this->isMethod('PATCH');
+
         return [
-            'course_id' => 'required|exists:courses,id', //không bắt buộc nhưng phải có trong bảng course nếu được cung cấp
-            'section_id' => 'required|exists:course_sections,id', //bắt buộc phải có trong bảng course_sections
+            'course_id' => 'required|exists:courses,id',
+            'section_id' => 'required|exists:course_sections,id',
             'lecture_title' => 'required|string|max:255',
-            'type' => 'required|in:video,document,text',
+            'type' => 'required|in:video,document,text,r2_video',
             'url' => 'nullable|url|max:255',
             'document_file' => 'nullable|mimes:pdf,doc,docx,txt|max:10240',
             'content' => 'nullable|string',
             'video_duration' => 'nullable',
+            'r2_video_key' => $isUpdate ? 'nullable|string' : 'required_if:type,r2_video|nullable|string',
         ];
     }
 

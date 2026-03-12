@@ -30,13 +30,13 @@ class FrontEndDashBoardController extends Controller
     public function view($slug)
     {
         //lấy khóa học
-        $course = Course::where('course_name_slug', $slug)->with('category', 'subcategory', 'user', 'goals')->first();
+        $course = Course::where('course_name_slug', $slug)->with('category', 'subcategory', 'user', 'goals')->firstOrFail();
         //lấy số lượng bài giảng
         $total_lecture = CourseSection::where('course_id', $course->id)->with('lecture')->get()->count();
         //lấy khóa học có cùng category_id
         $course_content = CourseSection::where('course_id', $course->id)->with('lecture')->get();
         //lấy id người dùng hiện tại
-        $userId = Auth::user()->id;
+        $userId = Auth::id();
         //lấy khóa học có cùng category_id
         $similarCourse = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->with('user')->inRandomOrder()->limit(6)->get();
         //lấy khóa học có cùng instructor_id
