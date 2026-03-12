@@ -7,11 +7,19 @@ use App\Http\Requests\CourseReviewsRequest;
 use App\Models\Course;
 use App\Models\CourseReviews;
 use App\Models\Order;
+use App\Services\CourseReviewService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CourseReviewController extends Controller
 {
+    protected $courseReviewService;
+
+    public function __construct(CourseReviewService $courseReviewService)
+    {
+        $this->courseReviewService = $courseReviewService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -40,92 +48,39 @@ class CourseReviewController extends Controller
             ], 401);
         }
 
-        $course = Course::where('course_name_slug', $slug)->firstOrFail();
-
-        if ((int) $request->course_id !== (int) $course->id) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Khóa học không hợp lệ'
-            ], 422);
-        }
-
-        $hasPurchased = Order::where('user_id', Auth::id())
-            ->where('course_id', $course->id)
-            ->exists();
-
-        if (!$hasPurchased) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Bạn cần mua khóa học trước khi đánh giá'
-            ], 403);
-        }
-
-        $alreadyReviewed = CourseReviews::where('course_id', $course->id)
-            ->where('user_id', Auth::id())
-            ->exists();
-
-        if ($alreadyReviewed) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Bạn đã đánh giá khóa học này rồi'
-            ], 422);
-        }
-
-        $review = CourseReviews::create([
-            'course_id'     => $course->id,
-            'user_id'       => Auth::id(),
-            'instructor_id' => $course->instructor_id,
-            'rating'        => $request->rating,
-            'comment'       => $request->comment,
-            'is_approved'   => 1,
-        ]);
-
-        $review->load('user');
-
-        $ratingAverage = round(
-            CourseReviews::where('course_id', $course->id)
-                ->where('is_approved', true)
-                ->avg('rating') ?? 0,
-            1
+        $result = $this->courseReviewService->storeReview(
+            $request->validated(),
+            $slug,
+            Auth::id()
         );
 
-        $ratingCount = CourseReviews::where('course_id', $course->id)
-            ->where('is_approved', true)
-            ->count();
-
-        $ratingBreakdown = CourseReviews::selectRaw('rating, COUNT(*) as total')
-            ->where('course_id', $course->id)
-            ->where('is_approved', true)
-            ->groupBy('rating')
-            ->pluck('total', 'rating')
-            ->toArray();
-
-        $ratingPercent = [];
-        for ($i = 1; $i <= 5; $i++) {
-            $count = $ratingBreakdown[$i] ?? 0;
-            $ratingPercent[$i] = $ratingCount > 0 ? round(($count / $ratingCount) * 100) : 0;
+        if ($result['status'] === 'error') {
+            return response()->json([
+                'status' => 'error',
+                'message' => $result['message']
+            ], $result['code']);
         }
 
         $reviewHtml = view('frontend.pages.course-details.partials.review-item', [
-            'review' => $review
+            'review' => $result['review']
         ])->render();
 
         $studentFeedbackHtml = view('frontend.pages.course-details.student-feedback', [
-            'ratingAverage' => $ratingAverage,
-            'ratingCount' => $ratingCount,
-            'ratingBreakdown' => $ratingBreakdown,
-            'ratingPercent' => $ratingPercent,
+            'ratingAverage' => $result['ratingAverage'],
+            'ratingCount' => $result['ratingCount'],
+            'ratingBreakdown' => $result['ratingBreakdown'],
+            'ratingPercent' => $result['ratingPercent'],
         ])->render();
 
         $heroTitleHtml = view('frontend.pages.course-details.hero-title', [
-            'course' => $course,
-            'ratingAverage' => $ratingAverage,
-            'ratingCount' => $ratingCount,
+            'course' => $result['course'],
+            'ratingAverage' => $result['ratingAverage'],
+            'ratingCount' => $result['ratingCount'],
         ])->render();
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Đánh giá của bạn đã được gửi thành công',
+            'message' => $result['message'],
             'review_html' => $reviewHtml,
             'student_feedback_html' => $studentFeedbackHtml,
             'hero_title_html' => $heroTitleHtml,
