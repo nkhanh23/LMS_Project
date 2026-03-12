@@ -7,7 +7,9 @@
             <!-- 4) Main content area – cột trái -->
             <div class="lg:col-span-8 flex flex-col gap-8 flex-1 course-details-content-wrap">
                 <!-- Hero Title -->
-                @include('frontend.pages.course-details.hero-title')
+                <div id="heroTitleWrapper">
+                    @include('frontend.pages.course-details.hero-title')
+                </div>
 
                 <!-- 4.1. What you'll learn -->
                 @include('frontend.pages.course-details.learn-section')
@@ -28,12 +30,16 @@
 
 
                 <!-- 4.9. Student feedback -->
-                @include('frontend.pages.course-details.student-feedback')
+                <div id="studentFeedbackWrapper">
+                    @include('frontend.pages.course-details.student-feedback')
+                </div>
 
 
                 {{-- 4.10 den 4.11 --}}
                 <!-- 4.10. Reviews -->
-                @include('frontend.pages.course-details.reviews')
+                <div id="reviewsWrapper">
+                    @include('frontend.pages.course-details.reviews')
+                </div>
 
             </div>
 

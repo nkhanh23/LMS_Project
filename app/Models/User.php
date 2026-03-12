@@ -36,6 +36,13 @@ class User extends Authenticatable
         return $this->role === 'user';
     }
 
+    //Review
+
+    public function courseReviews()
+    {
+        return $this->hasMany(CourseReviews::class, 'user_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

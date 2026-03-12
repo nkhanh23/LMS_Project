@@ -37,13 +37,13 @@
   @push('scripts')
       <script>
           document.addEventListener("DOMContentLoaded", function() {
-              let videoInputs = document.querySelectorAll(".video_url"); // সব ভিডিও ইনপুট খুঁজে বের করো
+              let videoInputs = document.querySelectorAll(".video_url");
 
               videoInputs.forEach(videoInput => {
                   let videoPreview = videoInput.closest('.col-md-12').querySelector(
-                  ".videoPreview"); // সংশ্লিষ্ট প্রিভিউ iframe
+                      ".videoPreview");
 
-                  // ইউটিউব ভিডিও আইডি এক্সট্রাক্ট ফাংশন
+
                   function extractYouTubeVideoID(url) {
                       let regex =
                           /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
@@ -51,7 +51,6 @@
                       return match ? match[1] : null;
                   }
 
-                  // ভিডিও প্রিভিউ আপডেট ফাংশন
                   function updateVideoPreview() {
                       let url = videoInput.value;
                       let videoId = extractYouTubeVideoID(url);
@@ -65,10 +64,8 @@
                       }
                   }
 
-                  // ইনপুট পরিবর্তন হলে প্রিভিউ আপডেট করো
                   videoInput.addEventListener("input", updateVideoPreview);
 
-                  // প্রথমবার যদি ভিডিও ইউআরএল থাকে, তাহলে প্রিভিউ দেখাও
                   if (videoInput.value.trim() !== "") {
                       updateVideoPreview();
                   }

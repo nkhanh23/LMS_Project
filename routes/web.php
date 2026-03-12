@@ -26,6 +26,7 @@ use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserProfileController;
 use App\Http\Controllers\frontend\CheckoutController;
+use App\Http\Controllers\frontend\CourseReviewController;
 use App\Http\Controllers\frontend\FrontEndDashBoardController;
 use App\Http\Controllers\frontend\LearningController;
 use App\Http\Controllers\frontend\OrderController;
@@ -194,6 +195,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/order', [OrderController::class, 'order'])->name('order');
     Route::get('/payment-success', [OrderController::class, 'success'])->name('success');
     Route::get('/payment-cancel', [OrderController::class, 'cancel'])->name('cancel');
+
+    /*  COURSE REVIEW ROUTES  */
+    Route::post('/chi-tiet/{slug}/review', [CourseReviewController::class, 'store'])->name('course-review.store');
 });
 
 

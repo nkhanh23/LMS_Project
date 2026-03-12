@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ApplyCoupontRequest;
 use App\Models\Cart;
-use App\\Services\\CartService;
+use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
