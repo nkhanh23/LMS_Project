@@ -25,10 +25,10 @@
                 <button
                     class="w-full p-4 flex justify-between items-center text-left hover:bg-slate-800 transition-colors">
                     <span class="font-bold text-sm">
-                        Phần {{ $index + 1 }}: {{ $item->section_title }}
+                        {{ $item->section_title }}
                     </span>
                     <span class="text-xs text-slate-400 shrink-0">
-                        {{ $item->lecture->count() }} lectures
+                        {{ $item->lecture->count() }} bài học
                     </span>
                 </button>
 
