@@ -16,10 +16,12 @@ return new class extends Migration
             $table->unsignedBigInteger('course_id')->nullable();
             $table->unsignedBigInteger('section_id')->nullable();
             $table->string('lecture_title')->nullable();
-            // THIẾT KẾ CHO PGSQL: Dùng string(20) thay vì enum để dễ dàng mở rộng (Scale)
-            // Các giá trị hợp lệ: 'video', 'document', 'text', 'quiz'
             $table->string('type', 20)->default('video');
             $table->string('url')->nullable();
+            $table->string('file_name')->nullable();
+            $table->string('mime_type')->nullable();
+            $table->unsignedBigInteger('file_size')->nullable();
+            $table->string('storage_disk')->nullable();
             $table->text('content')->nullable();
             $table->decimal('video_duration', 8, 2)->nullable();
             $table->timestamps();

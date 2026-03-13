@@ -128,6 +128,8 @@ Route::middleware('auth', 'verified', 'role:instructor')->prefix('instructor')->
     Route::resource('lecture', LectureController::class);
     Route::post('/lecture/get-presigned-url', [LectureController::class, 'generatePresignedUrl'])
         ->name('lecture.get-presigned-url');
+    Route::post('/lecture/get-presigned-document-url', [LectureController::class, 'generateDocumentPresignedUrl'])
+        ->name('lecture.getPresignedDocumentUrl');
 
     /*  INSTRUCTOR COUPON  */
     Route::resource('coupon', CouponController::class);
@@ -198,6 +200,10 @@ Route::middleware('auth')->group(function () {
 
     /*  COURSE REVIEW ROUTES  */
     Route::post('/chi-tiet/{slug}/review', [CourseReviewController::class, 'store'])->name('course-review.store');
+
+    /*  COURSE DOWNLOAD DOCUMENT ROUTES  */
+    Route::get('/lecture/{lecture}/download-document', [LectureController::class, 'downloadDocument'])
+        ->name('lecture.downloadDocument');
 });
 
 

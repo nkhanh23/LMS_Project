@@ -29,9 +29,18 @@ class LectureRequest extends FormRequest
             'lecture_title' => 'required|string|max:255',
             'type' => 'required|in:video,document,text,r2_video',
             'url' => 'nullable|url|max:255',
-            'document_file' => 'nullable|mimes:pdf,doc,docx,txt|max:10240',
-            'content' => 'nullable|string',
             'video_duration' => 'nullable',
+            'content' => 'nullable|string',
+
+            // document R2
+            'r2_document_key' => $isUpdate
+                ? 'nullable|string|max:255'
+                : 'required_if:type,document|nullable|string|max:255',
+
+            'file_name' => 'nullable|string|max:255',
+            'mime_type' => 'nullable|string|max:255',
+            'file_size' => 'nullable|integer|min:1',
+            'storage_disk' => 'nullable|string|max:255',
             'r2_video_key' => $isUpdate ? 'nullable|string' : 'required_if:type,r2_video|nullable|string',
         ];
     }

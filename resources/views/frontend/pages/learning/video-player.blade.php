@@ -13,15 +13,23 @@
             </div>
         </div>
 
-        @if ($currentLecture->type === 'video' || $currentLecture->type === 'r2_video')
-            <video id="actual-video-player" class="w-full h-full object-cover z-10 absolute inset-0">
-                <source src="{{ getVideoUrl($currentLecture->type, $currentLecture->url) }}" type="video/mp4" />
-                Trình duyệt của bạn không hỗ trợ thẻ video.
-            </video>
+        @if ($currentLecture)
+            @if ($currentLecture->type === 'video' || $currentLecture->type === 'r2_video')
+                <video id="actual-video-player" class="w-full h-full object-cover z-10 absolute inset-0">
+                    <source src="{{ getVideoUrl($currentLecture->type, $currentLecture->url) }}" type="video/mp4" />
+                    Trình duyệt của bạn không hỗ trợ thẻ video.
+                </video>
+            @else
+                <div class="absolute inset-0 flex items-center justify-center bg-cyber-dark z-10">
+                    <p class="text-slate-400 uppercase font-bold tracking-widest text-sm">
+                        <i class="fa-solid fa-file-lines mr-2"></i> Document Content
+                    </p>
+                </div>
+            @endif
         @else
             <div class="absolute inset-0 flex items-center justify-center bg-cyber-dark z-10">
                 <p class="text-slate-400 uppercase font-bold tracking-widest text-sm">
-                    <i class="fa-solid fa-file-lines mr-2"></i> Document Content
+                    <i class="fa-solid fa-triangle-exclamation mr-2"></i> No Lecture Selected
                 </p>
             </div>
         @endif
@@ -97,7 +105,7 @@
                     <i class="fa-solid fa-circle-info text-brand"></i> Về khóa học này
                 </h2>
                 <p class="text-white text-xl font-bold leading-relaxed mb-4">
-                    {{ $currentLecture->course->course_name }}
+                    {{ $currentLecture->course->course_name ?? $course->course_name }}
                 </p>
                 <div class="flex flex-wrap gap-4 md:gap-6 text-sm font-bold uppercase tracking-widest text-slate-400">
                     <span class="text-yellow-400 flex items-center gap-2"><i class="fa-solid fa-star"></i> 4.4/5 (223
@@ -116,7 +124,7 @@
                     <li class="flex items-center gap-4">
                         <i class="fa-solid fa-chart-simple text-slate-500 w-5 text-center"></i>
                         <span class="text-slate-400 w-32">Trình độ:</span>
-                        <span class="text-white font-bold uppercase">{{ $currentLecture->course->label }}</span>
+                        <span class="text-white font-bold uppercase">{{ $currentLecture->course->label ?? $course->label }}</span>
                     </li>
                     <li class="flex items-center gap-4">
                         <i class="fa-solid fa-users text-slate-500 w-5 text-center"></i>
@@ -153,7 +161,7 @@
                         class="size-12 shrink-0 bg-black border-2 border-yellow-400 flex items-center justify-center group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-award text-yellow-400 text-2xl"></i>
                     </div>
-                    @if ($currentLecture->course->certificate == 'yes')
+                    @if (($currentLecture->course->certificate ?? $course->certificate) == 'yes')
                         <div>
                             <h4 class="text-white font-bold uppercase tracking-wider mb-1">Giấy chứng nhận</h4>
                             <p class="text-sm text-slate-400">Nhận chứng nhận Udemy khi hoàn thành khóa học.</p>
@@ -182,7 +190,7 @@
 
                 <div class="space-y-5 text-base text-slate-200 leading-relaxed mt-4 font-sans">
                     <p>
-                        {{ $currentLecture->course->description }}
+                        {{ $currentLecture->course->description ?? $course->description }}
                     </p>
                 </div>
             </div>
@@ -198,8 +206,8 @@
                         <div class="w-32 h-32 bg-black border-2 border-brand p-1 relative group cursor-pointer">
                             <div
                                 class="w-full h-full bg-slate-800 flex items-center justify-center border border-slate-700 overflow-hidden">
-                                <img src="{{ asset($currentLecture->course->instructor->photo) }}"
-                                    alt="{{ $currentLecture->course->instructor->name }}"
+                                <img src="{{ asset($currentLecture->course->instructor->photo ?? ($course->instructor->photo ?? '')) }}"
+                                    alt="{{ $currentLecture->course->instructor->name ?? ($course->instructor->name ?? '') }}"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                             </div>
                             <div class="absolute -bottom-2 -right-2 size-4 bg-brand border border-black"></div>
@@ -208,7 +216,7 @@
 
                     <div class="flex-1">
                         <h4 class="text-3xl font-black text-brand hover:underline cursor-pointer mb-1">
-                            {{ $currentLecture->course->instructor->name }}</h4>
+                            {{ $currentLecture->course->instructor->name ?? ($course->instructor->name ?? '') }}</h4>
                         <p class="text-sm text-cyber-cyan font-bold uppercase tracking-widest mb-6">Developer ||
                             Freelancer || Instructor</p>
 
@@ -218,7 +226,7 @@
                                 <strong class="text-white">{{ $currentLecture->course->instructor->name }}</strong>
                             </p>
                             <p>
-                                {{ $currentLecture->course->instructor->bio }}
+                                {{ $currentLecture->course->instructor->bio ?? ($course->instructor->bio ?? '') }}
                             </p>
                         </div>
                     </div>

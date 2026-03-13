@@ -99,11 +99,32 @@
                     <div class="document-fields"
                         style="{{ ($lecture->type ?? '') == 'document' ? 'display: block;' : 'display: none;' }}">
                         <div class="col-md-12 mt-3">
-                            <label for="document_file_{{ $lecture->id }}" class="form-label">Upload tài liệu (PDF,
-                                Word...)</label>
-                            <input type="file" class="form-control" name="document_file"
-                                id="document_file_{{ $lecture->id }}" accept=".pdf,.doc,.docx,.txt">
-                            <small class="text-muted">Chỉ chọn file nếu bạn muốn thay đổi tài liệu hiện tại.</small>
+                            <label class="form-label">Tải lên tài liệu (R2)</label>
+                            <input type="file" class="form-control document-file-r2"
+                                accept=".pdf,.doc,.docx,.ppt,.pptx,.txt">
+
+                            <input type="hidden" name="r2_document_key" class="r2-document-key">
+                            <input type="hidden" name="file_name" class="document-original-name">
+                            <input type="hidden" name="mime_type" class="document-mime-type">
+                            <input type="hidden" name="file_size" class="document-file-size">
+
+                            <div class="progress mt-2 document-upload-progress-container"
+                                style="height: 20px; display: none;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success document-upload-progress-bar"
+                                    role="progressbar" style="width: 0%;">0%</div>
+                            </div>
+
+                            <div class="document-upload-success-msg mt-2" style="display:none;">
+                                <span class="badge bg-success">
+                                    <i class="bi bi-check-circle"></i> Tài liệu đã tải lên Cloudflare R2 thành công!
+                                </span>
+                            </div>
+
+                            @if (($lecture->type ?? '') == 'document' && $lecture->url)
+                                <div class="mt-2 text-info">
+                                    <small><i class="bi bi-file-earmark-check"></i> Tài liệu hiện tại: {{ $lecture->file_name ?? $lecture->url }}</small>
+                                </div>
+                            @endif
                         </div>
                     </div>
 

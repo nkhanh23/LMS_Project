@@ -24,4 +24,9 @@ class LectureRepository
     {
         return CourseLecture::findOrFail($id);
     }
+
+    public function deleteLecture(int $id)
+    {
+        return CourseLecture::destroy($id);
+    }
 }

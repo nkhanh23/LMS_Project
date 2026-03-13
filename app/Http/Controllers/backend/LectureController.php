@@ -5,10 +5,12 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LectureRequest;
 use App\Models\CourseLecture;
+use App\Models\Order;
 use App\Services\LectureService;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use Aws\S3\S3Client;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class LectureController extends Controller
@@ -58,6 +60,21 @@ class LectureController extends Controller
         return response()->json($data);
     }
 
+    public function generateDocumentPresignedUrl(Request $request)
+    {
+        $request->validate([
+            'extension' => 'required|string|max:10',
+            'mime_type' => 'required|string|max:255',
+        ]);
+
+        $data = $this->lectureService->generateDocumentPresignedUrl(
+            $request->input('extension'),
+            $request->input('mime_type')
+        );
+
+        return response()->json($data);
+    }
+
     /**
      * Display the specified resource.
      */
@@ -88,8 +105,30 @@ class LectureController extends Controller
      */
     public function destroy(string $id)
     {
-        $lecture = CourseLecture::findOrFail($id);
-        $lecture->delete();
+        $this->lectureService->deleteLecture($id);
         return redirect()->back()->with('success', 'Bài học đã được xóa thành công');
+    }
+
+    public function downloadDocument(CourseLecture $lecture)
+    {
+        abort_if($lecture->type !== 'document', 404);
+        abort_if(empty($lecture->url), 404);
+        abort_unless(Auth::check(), 403);
+
+        $hasPurchased = \App\Models\Order::where('user_id', Auth::id())
+            ->where('course_id', $lecture->course_id)
+            ->exists();
+
+        abort_unless($hasPurchased, 403);
+
+        if ($lecture->storage_disk === 'r2') {
+            $downloadUrl = $this->lectureService->generateDocumentDownloadUrl(
+                $lecture->url,
+                $lecture->file_name
+            );
+            return redirect()->away($downloadUrl);
+        }
+
+        abort(404);
     }
 }

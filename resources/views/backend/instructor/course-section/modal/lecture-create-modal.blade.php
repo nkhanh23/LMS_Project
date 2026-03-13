@@ -16,8 +16,8 @@
 
                     <div class="col-md-12">
                         <label for="lecture_title_{{ $data->id }}" class="form-label">Tiêu đề bài học</label>
-                        <input type="text" class="form-control" name="lecture_title" id="lecture_title_{{ $data->id }}"
-                            placeholder="Nhập tiêu đề bài học" required>
+                        <input type="text" class="form-control" name="lecture_title"
+                            id="lecture_title_{{ $data->id }}" placeholder="Nhập tiêu đề bài học" required>
                     </div>
 
                     <div class="col-md-12 mt-3">
@@ -60,19 +60,37 @@
 
                         {{-- Thông báo upload thành công --}}
                         <div class="upload-success-msg mt-2" style="display: none;">
-                            <span class="badge bg-success"><i class="bi bi-check-circle"></i> Video đã tải lên thành công! Xem lại bên dưới trước khi lưu.</span>
+                            <span class="badge bg-success"><i class="bi bi-check-circle"></i> Video đã tải lên thành
+                                công! Xem lại bên dưới trước khi lưu.</span>
                         </div>
 
                         {{-- Video preview sau khi upload --}}
-                        <video class="r2-video-preview mt-3" controls style="display: none; width: 100%; max-height: 400px; border-radius: 8px; background: #000;"></video>
+                        <video class="r2-video-preview mt-3" controls
+                            style="display: none; width: 100%; max-height: 400px; border-radius: 8px; background: #000;"></video>
                     </div>
 
                     <div class="document-fields" style="display: none;">
                         <div class="col-md-12 mt-3">
-                            <label for="document_file_{{ $data->id }}" class="form-label">Upload tài liệu (PDF,
-                                Word...)</label>
-                            <input type="file" class="form-control" name="document_file"
-                                id="document_file_{{ $data->id }}" accept=".pdf,.doc,.docx,.txt">
+                            <label class="form-label">Tải lên tài liệu (R2)</label>
+                            <input type="file" class="form-control document-file-r2"
+                                accept=".pdf,.doc,.docx,.ppt,.pptx,.txt">
+
+                            <input type="hidden" name="r2_document_key" class="r2-document-key">
+                            <input type="hidden" name="file_name" class="document-original-name">
+                            <input type="hidden" name="mime_type" class="document-mime-type">
+                            <input type="hidden" name="file_size" class="document-file-size">
+
+                            <div class="progress mt-2 document-upload-progress-container"
+                                style="height: 20px; display: none;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success document-upload-progress-bar"
+                                    role="progressbar" style="width: 0%;">0%</div>
+                            </div>
+
+                            <div class="document-upload-success-msg mt-2" style="display:none;">
+                                <span class="badge bg-success">
+                                    <i class="bi bi-check-circle"></i> Tài liệu đã tải lên Cloudflare R2 thành công!
+                                </span>
+                            </div>
                         </div>
                     </div>
 
@@ -90,8 +108,3 @@
         </div>
     </div>
 </div>
-
-
-
-@push('script')
-@endpush
