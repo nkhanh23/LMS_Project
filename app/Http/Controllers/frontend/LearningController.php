@@ -7,7 +7,9 @@ use App\Models\Course;
 use App\Models\CourseLecture;
 use App\Models\CourseSection;
 use App\Models\LectureDiscussion;
+use App\Models\LectureNote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LearningController extends Controller
 {
@@ -25,14 +27,14 @@ class LearningController extends Controller
 
     public function watchLecture($slug, $lecture_id)
     {
-        // 1. Lấy dữ liệu khóa học
+        // Lấy dữ liệu khóa học
         $course = Course::where('course_name_slug', $slug)->first();
 
         if (!$course) {
             abort(404);
         }
 
-        // 2. Lấy dữ liệu bài học hiện tại và kiểm tra tính hợp lệ
+        // Lấy dữ liệu bài học hiện tại và kiểm tra tính hợp lệ
         $currentLecture = CourseLecture::with('course.instructor', 'section')
             ->where('id', $lecture_id)
             ->where('course_id', $course->id)
@@ -43,7 +45,7 @@ class LearningController extends Controller
             return redirect()->route('course.play', $slug);
         }
 
-        // 3. Lấy toàn bộ nội dung khóa học để hiển thị sidebar
+        // Lấy toàn bộ nội dung khóa học để hiển thị sidebar
         $sections = CourseSection::where('course_id', $course->id)->with('lecture')->get();
 
         $discussions = LectureDiscussion::with('user')
@@ -53,8 +55,14 @@ class LearningController extends Controller
             ->latest()
             ->paginate(10);
 
-        // 4. Trả về view
-        return view('frontend.pages.learning.index', compact('course', 'sections', 'currentLecture', 'discussions'));
+        // Lấy ghi chú của người dùng
+        $notes = LectureNote::where('lecture_id', $currentLecture->id)
+            ->where('user_id', Auth::id())
+            ->latest()
+            ->get();
+
+        // Trả về view
+        return view('frontend.pages.learning.index', compact('course', 'sections', 'currentLecture', 'discussions', 'notes'));
     }
 
     public function getLectureData(CourseLecture $lecture)
@@ -79,6 +87,17 @@ class LearningController extends Controller
             'currentLecture' => $lecture,
         ])->render();
 
+        $notes = LectureNote::where('lecture_id', $lecture->id)
+            ->where('user_id', Auth::id())
+            ->latest()
+            ->get();
+
+        $notesHtml = view('frontend.pages.learning.partials.note-list', [
+            'notes' => $notes,
+            'course' => $lecture->course,
+            'currentLecture' => $lecture,
+        ])->render();
+
         return response()->json([
             'status' => 'success',
             'lecture' => [
@@ -92,6 +111,7 @@ class LearningController extends Controller
             ],
             'player_html' => $playerHtml,
             'qna_html' => $qnaHtml,
+            'notes_html' => $notesHtml,
         ]);
     }
 }

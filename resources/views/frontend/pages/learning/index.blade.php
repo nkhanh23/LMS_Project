@@ -173,6 +173,27 @@
                             discussionForm.querySelector('input[name="course_id"]').value = data.lecture.course_id;
                         }
 
+                        // 3.1 Update Note List
+                        const noteListWrapper = document.getElementById('noteListWrapper');
+                        if (noteListWrapper && data.notes_html) {
+                            noteListWrapper.innerHTML = data.notes_html;
+                            
+                            // Update note count
+                            const noteCountDisplay = document.getElementById('noteCountDisplay');
+                            const currentCount = noteListWrapper.querySelectorAll('.note-item').length;
+                            if (noteCountDisplay) noteCountDisplay.innerText = `${currentCount} Ghi chú`;
+                        }
+
+                        // 3.2 Sync Note Form
+                        const noteForm = document.getElementById('noteForm');
+                        if (noteForm) {
+                            noteForm.querySelector('input[name="lecture_id"]').value = data.lecture.id;
+                            noteForm.querySelector('input[name="course_id"]').value = data.lecture.course_id;
+                            // Reset form state
+                            document.getElementById('noteFormContainer')?.classList.add('hidden');
+                            document.getElementById('noteContent').value = '';
+                        }
+
                         // 4. Update browser URL without reload
                         const newUrl = window.location.pathname.replace(/\/bai-hoc\/\d+/, `/bai-hoc/${lectureId}`);
                         window.history.pushState({ lectureId }, '', newUrl);

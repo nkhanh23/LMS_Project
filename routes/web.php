@@ -30,6 +30,7 @@ use App\Http\Controllers\frontend\CourseReviewController;
 use App\Http\Controllers\frontend\FrontEndDashBoardController;
 use App\Http\Controllers\frontend\LearningController;
 use App\Http\Controllers\frontend\LectureDiscussionController;
+use App\Http\Controllers\frontend\LectureNoteController;
 use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
@@ -217,6 +218,12 @@ Route::middleware('auth')->group(function () {
         ->name('lecture.discussion.destroy');
     Route::get('/learning/lecture/{lecture}/data', [LearningController::class, 'getLectureData'])
         ->name('learning.lecture.data');
+
+    /*  LECTURE NOTE ROUTES  */
+    Route::get('/learning/lecture/{lecture}/notes', [LectureNoteController::class, 'index'])->name('lecture.notes.index');
+    Route::post('/learning/notes', [LectureNoteController::class, 'store'])->name('lecture.notes.store');
+    Route::patch('/learning/notes/{id}', [LectureNoteController::class, 'update'])->name('lecture.notes.update');
+    Route::delete('/learning/notes/{id}', [LectureNoteController::class, 'destroy'])->name('lecture.notes.destroy');
 });
 
 
