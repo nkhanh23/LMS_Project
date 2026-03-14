@@ -46,7 +46,7 @@
 
                                 <div class="flex-1 min-w-0 flex flex-col gap-2">
                                     <a href="{{ route('course.lecture.watch', [$course->course_name_slug, $lecture->id]) }}"
-                                        class="block">
+                                        class="block lecture-item-link" data-lecture-id="{{ $lecture->id }}">
                                         <h4
                                             class="text-sm font-bold {{ $currentLecture->id == $lecture->id ? 'text-brand' : 'text-slate-200' }} group-hover/lecture:text-cyber-cyan transition-colors truncate">
                                             {{ $loop->iteration }}. {{ $lecture->lecture_title }}

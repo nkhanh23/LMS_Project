@@ -29,6 +29,7 @@ use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\CourseReviewController;
 use App\Http\Controllers\frontend\FrontEndDashBoardController;
 use App\Http\Controllers\frontend\LearningController;
+use App\Http\Controllers\frontend\LectureDiscussionController;
 use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
@@ -204,6 +205,18 @@ Route::middleware('auth')->group(function () {
     /*  COURSE DOWNLOAD DOCUMENT ROUTES  */
     Route::get('/lecture/{lecture}/download-document', [LectureController::class, 'downloadDocument'])
         ->name('lecture.downloadDocument');
+
+    /*  LECTURE DISCUSSION ROUTES  */
+    Route::post('/lecture/discussion', [LectureDiscussionController::class, 'store'])
+        ->name('lecture.discussion.store');
+    // lấy tất cả bình luận của bài giảng
+    Route::get('/lecture/{lecture}/discussions', [LectureDiscussionController::class, 'index'])
+        ->name('lecture.discussion.index');
+    // xóa bình luận
+    Route::delete('/lecture/discussion/{discussion}', [LectureDiscussionController::class, 'destroy'])
+        ->name('lecture.discussion.destroy');
+    Route::get('/learning/lecture/{lecture}/data', [LearningController::class, 'getLectureData'])
+        ->name('learning.lecture.data');
 });
 
 

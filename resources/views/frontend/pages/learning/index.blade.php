@@ -138,7 +138,67 @@
     </main>
 
     @include('frontend.section.script')
-    @stack('scripts')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lecture AJAX Switching
+            $(document).on('click', '.lecture-item-link', async function(e) {
+                e.preventDefault();
+                const lectureId = $(this).data('lecture-id');
+                const $link = $(this);
+                const $allLinks = $('.lecture-item-link');
+                const $sidebarItems = $('.group\\/lecture');
+
+                try {
+                    // Update active state in sidebar
+                    $sidebarItems.removeClass('bg-brand/5 border-l-4 border-l-brand');
+                    $link.closest('.group\\/lecture').addClass('bg-brand/5 border-l-4 border-l-brand');
+                    $allLinks.find('h4').removeClass('text-brand').addClass('text-slate-200');
+                    $link.find('h4').removeClass('text-slate-200').addClass('text-brand');
+
+                    const response = await fetch(`/learning/lecture/${lectureId}/data`);
+                    const data = await response.json();
+
+                    if (data.status === 'success') {
+                        // 1. Update Player & Content
+                        document.getElementById('learningPlayerWrapper').innerHTML = data.player_html;
+                        
+                        // 2. Update Q&A List
+                        document.getElementById('discussionList').innerHTML = data.qna_html;
+
+                        // 3. Sync Discussion Form (Critical for newly loaded content)
+                        const discussionForm = document.getElementById('discussionForm');
+                        if (discussionForm) {
+                            discussionForm.querySelector('input[name="lecture_id"]').value = data.lecture.id;
+                            discussionForm.querySelector('input[name="course_id"]').value = data.lecture.course_id;
+                        }
+
+                        // 4. Update browser URL without reload
+                        const newUrl = window.location.pathname.replace(/\/bai-hoc\/\d+/, `/bai-hoc/${lectureId}`);
+                        window.history.pushState({ lectureId }, '', newUrl);
+
+                        // 5. Update Title
+                        document.title = `${data.lecture.title} - StackLearn`;
+                        document.querySelector('h1').textContent = data.lecture.title;
+
+                        // Force re-initialize scrollbars if needed
+                        // Scroll to top of video/content
+                        document.querySelector('.video-content').scrollTop = 0;
+                    }
+                } catch (err) {
+                    console.error('Failed to load lecture:', err);
+                    Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Không thể tải bài học.' });
+                }
+            });
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', function(e) {
+                if (e.state && e.state.lectureId) {
+                    $(`.lecture-item-link[data-lecture-id="${e.state.lectureId}"]`).click();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
