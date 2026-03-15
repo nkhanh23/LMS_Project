@@ -48,6 +48,36 @@
 
                 </ul>
             </li>
+
+            <li class="{{ setSidebar(['instructor.order*']) }}">
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-category"></i>
+                    </div>
+                    <div class="menu-title">Quản lý đơn hàng</div>
+                </a>
+                <ul>
+                    <li class="{{ setSidebar(['instructor.order*']) }}">
+                        <a href="{{ route('instructor.orders.index') }}"><i class='bx bx-radio-circle'></i>Tất cả đơn
+                            hàng</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="{{ setSidebar(['instructor.revenue*']) }}">
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-category"></i>
+                    </div>
+                    <div class="menu-title">Quản lý doanh thu</div>
+                </a>
+                <ul>
+                    <li class="{{ setSidebar(['instructor.revenue*']) }}">
+                        <a href="{{ route('instructor.revenue.dashboard') }}"><i class='bx bx-radio-circle'></i>Tổng
+                            quan</a>
+                    </li>
+
+                </ul>
+            </li>
         @endif
 
 

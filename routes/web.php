@@ -14,7 +14,9 @@ use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\CourseSectionController;
 use App\Http\Controllers\backend\InfoController;
 use App\Http\Controllers\backend\InstructorController;
+use App\Http\Controllers\backend\InstructorOrderController;
 use App\Http\Controllers\backend\InstructorProfileController;
+use App\Http\Controllers\backend\InstructorRevenueController;
 use App\Http\Controllers\backend\LectureController;
 use App\Http\Controllers\backend\PartnerController;
 use App\Http\Controllers\backend\SettingController;
@@ -52,56 +54,82 @@ Route::get('/auth/google/callback', [SocialController::class, 'googleAuthenticat
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admin.')->group(function () {
+    //Dashboard
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    //Logout
     Route::post('/logout', [AdminController::class, 'destroy'])->name('logout');
 
     /*   ADMIN PROFILE   */
+    //Profile
     Route::get('/profile', [AdminProfileController::class, 'index'])->name('profile');
+    //Lưu profile
     Route::post('/profile/store', [AdminProfileController::class, 'store'])->name('profile.store');
+    //Setting
     Route::get('/setting', [AdminProfileController::class, 'setting'])->name('setting');
+    //Lưu setting
     Route::post('/password/setting', [AdminProfileController::class, 'passwordSetting'])->name('passwordSetting');
 
     /*   ADMIN CATEGORY   */
+    //Danh sách category
     Route::resource('category', CategoryController::class);
+    //Danh sách subcategory
     Route::resource('subcategory', SubcategoryController::class);
 
     /*   ADMIN SLIDER   */
+    //Danh sách slider
     Route::resource('slider', SliderController::class);
 
     /*   ADMIN INFO   */
     Route::resource('info', InfoController::class);
 
     /* Control Instructor */
+    //Danh sách instructor
     Route::resource('instructor', AdminInstructorController::class);
+    //Cập nhật trạng thái
     Route::post('/update-status', [AdminInstructorController::class, 'updateStatus'])->name('instructor.status');
+    //Danh sách instructor active
     Route::get('/instructor-active-list', [AdminInstructorController::class, 'instructorActive'])->name('instructor.active');
 
     /* Control User */
+    //Danh sách user
     Route::resource('user', AdminUserController::class);
+    //Cập nhật trạng thái
     Route::post('/user-status', [AdminUserController::class, 'updateStatus'])->name('user.status');
+    //Danh sách user active
     Route::get('/user-active-list', [AdminUserController::class, 'userActive'])->name('user.active');
 
     /* Setting Controller */
+    //Mail setting
     Route::get('/mail-setting', [SettingController::class, 'mailSetting'])->name('mail-setting');
+    //Lưu mail setting
     Route::put('/mail-setting/update', [SettingController::class, 'updateMailSettings'])->name('mail-setting.update');
 
+    //Stripe setting
     Route::get('/stripe-setting', [SettingController::class, 'stripeSetting'])->name('stripe-setting');
+    //Lưu stripe setting
     Route::post('/stripe-setting/update', [SettingController::class, 'updateStripeSettings'])->name('stripe-setting.update');
 
+    //Google setting
     Route::get('/google-setting', [SettingController::class, 'googleSetting'])->name('google-setting');
+    //Lưu google setting
     Route::post('/google-settings/update', [SettingController::class, 'updateGoogleSettings'])->name('google-setting.update');
 
     /* Control Course */
+    //Danh sách khóa học
     Route::resource('course', AdminCourseController::class);
+    //Cập nhật trạng thái
     Route::post('/course-status', [AdminCourseController::class, 'courseStatus'])->name('course.status');
 
     /* Order Controller */
+    //Danh sách đơn hàng
     Route::resource('order', BackendOrderController::class);
 
     /* Partner Controller */
+    //Danh sách partner
     Route::resource('partner', PartnerController::class);
 
     /* Manage Site Seetings */
+    //Danh sách site setting
     Route::resource('site-setting', SiteSettingController::class);
 });
 
@@ -109,32 +137,64 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
 Route::get('/instructor/login', [InstructorController::class, 'login'])->name('instructor.login');
 
 Route::middleware('auth', 'verified', 'role:instructor')->prefix('instructor')->name('instructor.')->group(function () {
+    //Dashboard
     Route::get('/dashboard', [InstructorController::class, 'dashboard'])->name('dashboard');
+    //Logout
     Route::post('/logout', [InstructorController::class, 'destroy'])->name('logout');
 
     /*   INSTRUCTOR PROFILE   */
+    //Profile
     Route::get('/profile', [InstructorProfileController::class, 'index'])->name('profile');
+    //Lưu profile
     Route::post('/profile/store', [InstructorProfileController::class, 'store'])->name('profile.store');
 
+    //Setting
     Route::get('/setting', [InstructorProfileController::class, 'setting'])->name('setting');
+    //Lưu setting
     Route::post('/password/setting', [InstructorProfileController::class, 'passwordSetting'])->name('passwordSetting');
 
     /*  INSTRUCTOR COURSE  */
+    //Danh sách khóa học
     Route::resource('course', CourseController::class);
+    //Lấy danh sách subcategory
     Route::get('/get-subcategories/{categoryId}', [CategoryController::class, 'getSubcategories']);
 
     /*  INSTRUCTOR COURSE SECTION  */
+    //Danh sách section
     Route::resource('course-section', CourseSectionController::class);
 
     /*  INSTRUCTOR COURSE LECTURE  */
+    //Danh sách lecture
     Route::resource('lecture', LectureController::class);
+    //Get presigned url
     Route::post('/lecture/get-presigned-url', [LectureController::class, 'generatePresignedUrl'])
         ->name('lecture.get-presigned-url');
+    //Get presigned document url
     Route::post('/lecture/get-presigned-document-url', [LectureController::class, 'generateDocumentPresignedUrl'])
         ->name('lecture.getPresignedDocumentUrl');
 
     /*  INSTRUCTOR COUPON  */
+    //Danh sách coupon
     Route::resource('coupon', CouponController::class);
+
+    /*  INSTRUCTOR REVENUE  */
+    //Dashboard doanh thu
+    Route::get('/revenue-dashboard', [InstructorRevenueController::class, 'dashboard'])
+        ->name('revenue.dashboard');
+
+    /*  INSTRUCTOR ORDER  */
+    //Danh sách đơn hàng
+    Route::get('/orders', [InstructorOrderController::class, 'index'])
+        ->name('orders.index');
+    //Export đơn hàng
+    Route::get('/orders/export/csv', [InstructorOrderController::class, 'exportCsv'])
+        ->name('orders.export.csv');
+    //Export đơn hàng excel
+    Route::get('/orders/export/excel', [InstructorOrderController::class, 'exportExcel'])
+        ->name('orders.export.excel');
+    //Chi tiết đơn hàng
+    Route::get('/orders/{id}', [InstructorOrderController::class, 'show'])
+        ->name('orders.show');
 });
 
 Route::middleware('auth')->group(function () {

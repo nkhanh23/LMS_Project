@@ -19,7 +19,19 @@ return new class extends Migration
             $table->integer('instructor_id')->nullable();
             $table->string('course_title')->nullable();
             $table->integer('price')->nullable();
+            $table->string('status')->default('completed');
+            $table->timestamp('paid_at')->nullable();
+            $table->decimal('gross_amount', 12, 2)->nullable();
+            $table->decimal('net_amount', 12, 2)->nullable();
+            $table->decimal('platform_amount', 12, 2)->default(0);
             $table->timestamps();
+
+            //index
+            $table->index('instructor_id');
+            $table->index('course_id');
+            $table->index('payment_id');
+            $table->index('status');
+            $table->index('paid_at');
         });
     }
 

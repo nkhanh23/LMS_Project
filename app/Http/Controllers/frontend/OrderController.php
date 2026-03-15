@@ -81,11 +81,16 @@ class OrderController extends Controller
         foreach ($stripeData['course_id'] as $index => $courseId) {
             Order::create([
                 'payment_id' => $paymentId, // Associate with the created payment record
-                'user_id' => auth()->user()->id, // Assuming user is authenticated
+                'user_id' => Auth::user()->id, // Assuming user is authenticated
                 'course_id' => $courseId,
                 'instructor_id' => $stripeData['instructor_id'][$index], // Add logic to retrieve instructor ID if needed
                 'course_title' => $stripeData['course_name'][$index],
                 'price' => $stripeData['course_price'][$index],
+                'gross_amount'    => $stripeData['course_price'][$index],
+                'platform_amount' => 0,
+                'net_amount'      => $stripeData['course_price'][$index],
+                'status' => 'completed',
+                'paid_at' => now(),
             ]);
         }
     }
