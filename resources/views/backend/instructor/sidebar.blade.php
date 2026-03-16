@@ -49,6 +49,22 @@
                 </ul>
             </li>
 
+            <li class="{{ setSidebar(['instructor.lecture-discussions*']) }}">
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-category"></i>
+                    </div>
+                    <div class="menu-title">Quản lý thảo luận</div>
+                </a>
+                <ul>
+                    <li class="{{ setSidebar(['instructor.lecture-discussions*']) }}">
+                        <a href="{{ route('instructor.lecture-discussions.index') }}"><i
+                                class='bx bx-radio-circle'></i>Tất cả thảo
+                            luận</a>
+                    </li>
+
+                </ul>
+            </li>
+
             <li class="{{ setSidebar(['instructor.order*']) }}">
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="bx bx-category"></i>

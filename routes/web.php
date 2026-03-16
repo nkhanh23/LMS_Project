@@ -14,6 +14,7 @@ use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\CourseSectionController;
 use App\Http\Controllers\backend\InfoController;
 use App\Http\Controllers\backend\InstructorController;
+use App\Http\Controllers\backend\InstructorLectureDiscussionController;
 use App\Http\Controllers\backend\InstructorOrderController;
 use App\Http\Controllers\backend\InstructorProfileController;
 use App\Http\Controllers\backend\InstructorRevenueController;
@@ -195,6 +196,29 @@ Route::middleware('auth', 'verified', 'role:instructor')->prefix('instructor')->
     //Chi tiết đơn hàng
     Route::get('/orders/{id}', [InstructorOrderController::class, 'show'])
         ->name('orders.show');
+
+    /*  INSTRUCTOR LECTURE DISCUSSION  */
+    //Lấy danh sách bài học theo khóa học
+    Route::get('/lecture-discussions/lectures-by-course', [InstructorLectureDiscussionController::class, 'getLecturesByCourse'])
+        ->name('lecture-discussions.lectures-by-course');
+    //Danh sách thảo luận
+    Route::get('/lecture-discussions', [InstructorLectureDiscussionController::class, 'index'])
+        ->name('lecture-discussions.index');
+    //Chi tiết thảo luận
+    Route::get('/lecture-discussions/{id}', [InstructorLectureDiscussionController::class, 'show'])
+        ->name('lecture-discussions.show');
+    //Duyệt thảo luận
+    Route::patch('/lecture-discussions/{id}/approve', [InstructorLectureDiscussionController::class, 'approve'])
+        ->name('lecture-discussions.approve');
+    //Bỏ duyệt thảo luận
+    Route::patch('/lecture-discussions/{id}/unapprove', [InstructorLectureDiscussionController::class, 'unapprove'])
+        ->name('lecture-discussions.unapprove');
+    //Xóa thảo luận
+    Route::delete('/lecture-discussions/{id}', [InstructorLectureDiscussionController::class, 'destroy'])
+        ->name('lecture-discussions.destroy');
+    //Trả lời thảo luận
+    Route::post('/lecture-discussions/{id}/reply', [InstructorLectureDiscussionController::class, 'reply'])
+        ->name('lecture-discussions.reply');
 });
 
 Route::middleware('auth')->group(function () {

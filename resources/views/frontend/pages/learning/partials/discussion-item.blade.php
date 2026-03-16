@@ -7,7 +7,7 @@
 
     <div class="flex gap-4">
         <div class="size-10 bg-slate-700 border-2 border-brand overflow-hidden shrink-0">
-            <img src="{{ $discussion->user->photo ?? 'https://api.dicebear.com/7.x/avataaars/svg?seed={{ urlencode($discussion->user->name) ?>' }}' }}"
+            <img src="{{ $discussion->user->photo ?? 'https://api.dicebear.com/7.x/avataaars/svg?seed=' . urlencode($discussion->user->name) }}"
                 alt="{{ $discussion->user->name }}" class="w-full h-full object-cover">
         </div>
 
@@ -25,16 +25,24 @@
                 </span>
             </div>
 
-            <p class="text-slate-300 text-sm leading-relaxed mb-3 whitespace-pre-line">
-                {{ $discussion->content }}
-            </p>
+            @if ($discussion->is_approved)
+                <p class="text-slate-300 text-sm leading-relaxed mb-3 whitespace-pre-line">
+                    {{ $discussion->content }}
+                </p>
+            @else
+                <p class="text-slate-500 text-sm italic leading-relaxed mb-3">
+                    <i class="fa-solid fa-eye-slash mr-1"></i> Bình luận bị ẩn bởi giáo viên
+                </p>
+            @endif
 
             <div class="flex items-center gap-4 text-xs font-bold text-slate-500 mb-3">
                 @auth
-                    <button type="button" class="discussion-reply-toggle hover:text-cyber-cyan flex items-center gap-1"
-                        data-discussion-id="{{ $discussion->id }}">
-                        <i class="fa-regular fa-comment"></i> Trả lời
-                    </button>
+                    @if ($discussion->is_approved)
+                        <button type="button" class="discussion-reply-toggle hover:text-cyber-cyan flex items-center gap-1"
+                            data-discussion-id="{{ $discussion->id }}">
+                            <i class="fa-regular fa-comment"></i> Trả lời
+                        </button>
+                    @endif
                 @endauth
 
                 @auth

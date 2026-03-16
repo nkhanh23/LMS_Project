@@ -9,11 +9,6 @@
                     <h4 class="mb-0">My Orders</h4>
                     <small class="text-muted">Danh sách đơn hàng thuộc các course của bạn</small>
                 </div>
-                <div>
-                    <a href="{{ route('instructor.orders.export.csv', request()->query()) }}" class="btn btn-outline-success">
-                        Export CSV
-                    </a>
-                </div>
                 <div class="d-flex gap-2">
                     <a href="{{ route('instructor.orders.export.csv', request()->query()) }}" class="btn btn-success">
                         Export CSV

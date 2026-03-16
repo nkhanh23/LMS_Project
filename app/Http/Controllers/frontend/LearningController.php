@@ -51,7 +51,6 @@ class LearningController extends Controller
         $discussions = LectureDiscussion::with('user')
             ->where('lecture_id', $currentLecture->id)
             ->whereNull('parent_id')
-            ->where('is_approved', true)
             ->latest()
             ->paginate(10);
 
@@ -72,7 +71,6 @@ class LearningController extends Controller
         $discussions = LectureDiscussion::with(['user', 'replies.user', 'replies'])
             ->where('lecture_id', $lecture->id)
             ->whereNull('parent_id')
-            ->where('is_approved', true)
             ->latest()
             ->paginate(10);
 
