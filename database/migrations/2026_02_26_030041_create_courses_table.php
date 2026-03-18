@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
 
 return new class extends Migration
 {
@@ -13,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id');
-            $table->integer('subcategory_id');
-            $table->integer('instructor_id');
+            $table->unsignedBigInteger('category_id')->index();
+            $table->unsignedBigInteger('subcategory_id')->index();
+            $table->unsignedBigInteger('instructor_id')->index();
             $table->string('course_image')->nullable();
             $table->text('course_title')->nullable();
             $table->text('course_name')->nullable();
-            $table->text('course_name_slug')->nullable();
+            $table->string('course_name_slug')->nullable()->index();
             $table->longText('description')->nullable();
             $table->string('video_url')->nullable();
             $table->string('label')->nullable();
@@ -33,7 +35,11 @@ return new class extends Migration
             $table->string('featured')->nullable();
             $table->string('highestrated')->nullable();
             $table->json('course_goals')->nullable();
-            $table->tinyInteger('status')->default(0)->comment('0=inactive, 1=active');
+            $table->tinyInteger('status')->default(0)->index()->comment('0=inactive, 1=active');
+            $table->string('approval_status')->default('approved')->index();
+            $table->text('approval_note')->nullable();
+            $table->timestamp('submitted_for_review_at')->nullable();
+            $table->timestamp('approved_at')->nullable();
             $table->timestamps();
         });
     }
@@ -43,6 +49,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        DB::statement('DROP TABLE IF EXISTS "courses" CASCADE');
     }
 };

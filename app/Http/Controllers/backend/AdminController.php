@@ -4,11 +4,19 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\AdminDashboardService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
+    protected $dashboardService;
+
+    public function __construct(AdminDashboardService $dashboardService)
+    {
+        $this->dashboardService = $dashboardService;
+    }
+
     public function login()
     {
         return view('backend.admin.login.index');
@@ -16,7 +24,8 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('backend.admin.dashboard.index');
+        $data = $this->dashboardService->getDashboardData();
+        return view('backend.admin.dashboard.index', $data);
     }
 
     public function destroy(Request $request): RedirectResponse

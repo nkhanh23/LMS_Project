@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\AdminCourseController;
 use App\Http\Controllers\backend\AdminInstructorController;
+use App\Http\Controllers\backend\AdminInstructorRequestController;
 use App\Http\Controllers\backend\AdminUserController;
 use App\Http\Controllers\backend\BackendOrderController;
 use App\Http\Controllers\backend\CartController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\backend\InstructorController;
 use App\Http\Controllers\backend\InstructorLectureDiscussionController;
 use App\Http\Controllers\backend\InstructorOrderController;
 use App\Http\Controllers\backend\InstructorProfileController;
+use App\Http\Controllers\backend\InstructorRequestController;
 use App\Http\Controllers\backend\InstructorRevenueController;
 use App\Http\Controllers\backend\LectureController;
 use App\Http\Controllers\backend\PartnerController;
@@ -134,6 +136,17 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
     /* Manage Site Seetings */
     //Danh sách site setting
     Route::resource('site-setting', SiteSettingController::class);
+
+    /* Manage Instructor Requests */
+    //Danh sách yêu cầu trở thành instructor
+    Route::get('/instructor-requests', [AdminInstructorRequestController::class, 'index'])
+        ->name('instructor-requests.index');
+    //Duyệt yêu cầu trở thành instructor
+    Route::post('/instructor-requests/{id}/approve', [AdminInstructorRequestController::class, 'approve'])
+        ->name('instructor-requests.approve');
+    //Từ chối yêu cầu trở thành instructor
+    Route::post('/instructor-requests/{id}/reject', [AdminInstructorRequestController::class, 'reject'])
+        ->name('instructor-requests.reject');
 });
 
 /*  INSTRUCTOR LOGIN  */
@@ -254,6 +267,13 @@ Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.'
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
     Route::get('/wishlist-data', [WishlistController::class, 'getWishlist']);
     Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+
+    /*  USER BECOME INSTRUCTOR  */
+    Route::get('/become-instructor', [InstructorRequestController::class, 'create'])
+        ->name('become-instructor.create');
+
+    Route::post('/become-instructor', [InstructorRequestController::class, 'store'])
+        ->name('become-instructor.store');
 });
 
 /*  FRONTEND ROUTES  */
