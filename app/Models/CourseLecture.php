@@ -19,4 +19,9 @@ class CourseLecture extends Model
     {
         return $this->belongsTo(CourseSection::class);
     }
+
+    public function quiz()
+    {
+        return $this->hasOne(Quiz::class, 'lecture_id', 'id');
+    }
 }

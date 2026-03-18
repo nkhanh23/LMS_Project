@@ -194,15 +194,26 @@
                             document.getElementById('noteContent').value = '';
                         }
 
-                        // 4. Update browser URL without reload
+                        // 4. Update Padding if it's a quiz
+                        const tabSectionContainer = document.getElementById('tabSectionContainer');
+                        if (tabSectionContainer) {
+                            if (data.lecture.has_quiz) {
+                                tabSectionContainer.classList.add('hidden');
+                                tabSectionContainer.classList.remove('p-4', 'md:p-8');
+                            } else {
+                                tabSectionContainer.classList.remove('hidden');
+                                tabSectionContainer.classList.add('p-4', 'md:p-8');
+                            }
+                        }
+
+                        // 5. Update browser URL without reload
                         const newUrl = window.location.pathname.replace(/\/bai-hoc\/\d+/, `/bai-hoc/${lectureId}`);
                         window.history.pushState({ lectureId }, '', newUrl);
 
-                        // 5. Update Title
+                        // 6. Update Title
                         document.title = `${data.lecture.title} - StackLearn`;
                         document.querySelector('h1').textContent = data.lecture.title;
 
-                        // Force re-initialize scrollbars if needed
                         // Scroll to top of video/content
                         document.querySelector('.video-content').scrollTop = 0;
                     }

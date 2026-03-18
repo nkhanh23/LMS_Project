@@ -102,6 +102,12 @@ class LectureService
             case 'video':
                 // Link youtube mặc định
                 break;
+
+            case 'quiz':
+                $data['url'] = null;
+                $data['content'] = null;
+                $data['video_duration'] = null;
+                break;
         }
 
         // Xóa các dữ liệu rác để khỏi lỗi Eloquent Missing Column

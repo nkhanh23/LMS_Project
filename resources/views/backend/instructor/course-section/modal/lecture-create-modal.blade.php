@@ -28,6 +28,7 @@
                             <option value="r2_video">Upload Video (Cloudflare R2)</option>
                             <option value="text">Văn bản (Text)</option>
                             <option value="document">Tài liệu (PDF, Word...)</option>
+                            <option value="quiz">Quiz</option>
                         </select>
                     </div>
 

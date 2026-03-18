@@ -34,6 +34,8 @@
                                 (Text)</option>
                             <option value="document" {{ ($lecture->type ?? '') == 'document' ? 'selected' : '' }}>Tài
                                 liệu (PDF, Word...)</option>
+                            <option value="quiz" {{ ($lecture->type ?? '') == 'quiz' ? 'selected' : '' }}>Bài tập
+                                (Quiz)</option>
                         </select>
                     </div>
 
@@ -134,6 +136,14 @@
                             class="form-label content-label">{{ ($lecture->type ?? '') == 'text' ? 'Nội dung bài học' : 'Mô tả bài học (Tùy chọn)' }}</label>
                         <textarea class="form-control editor" name="content" id="content_{{ $lecture->id }}">{{ $lecture->content }}</textarea>
                     </div>
+
+                    @if(isset($lecture) && $lecture->type === 'quiz')
+                        <div class="col-md-12 mt-3">
+                            <a href="{{ route('instructor.quiz.edit', $lecture->id) }}" class="btn btn-primary w-100">
+                                <i class="bi bi-pencil-square"></i> Edit Quiz
+                            </a>
+                        </div>
+                    @endif
 
                     <div class="mt-4">
                         <button type="submit" class="btn btn-primary w-100 btn-submit-lecture">Cập nhật</button>

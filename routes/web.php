@@ -20,6 +20,7 @@ use App\Http\Controllers\backend\InstructorProfileController;
 use App\Http\Controllers\backend\InstructorRevenueController;
 use App\Http\Controllers\backend\LectureController;
 use App\Http\Controllers\backend\PartnerController;
+use App\Http\Controllers\backend\QuizController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\SiteSettingController;
 use App\Http\Controllers\backend\SliderController;
@@ -35,6 +36,7 @@ use App\Http\Controllers\frontend\LearningController;
 use App\Http\Controllers\frontend\LectureDiscussionController;
 use App\Http\Controllers\frontend\LectureNoteController;
 use App\Http\Controllers\frontend\OrderController;
+use App\Http\Controllers\frontend\QuizAttempController;
 use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -219,6 +221,14 @@ Route::middleware('auth', 'verified', 'role:instructor')->prefix('instructor')->
     //Trả lời thảo luận
     Route::post('/lecture-discussions/{id}/reply', [InstructorLectureDiscussionController::class, 'reply'])
         ->name('lecture-discussions.reply');
+
+    /*  INSTRUCTOR QUIZ  */
+    //Danh sách quiz
+    Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
+    //Edit quiz
+    Route::get('/quiz/{lecture}/edit', [QuizController::class, 'edit'])->name('quiz.edit');
+    //Lưu quiz
+    Route::post('/quiz/{lecture}', [QuizController::class, 'storeOrUpdate'])->name('quiz.store_or_update');
 });
 
 Route::middleware('auth')->group(function () {
@@ -308,6 +318,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/learning/notes', [LectureNoteController::class, 'store'])->name('lecture.notes.store');
     Route::patch('/learning/notes/{id}', [LectureNoteController::class, 'update'])->name('lecture.notes.update');
     Route::delete('/learning/notes/{id}', [LectureNoteController::class, 'destroy'])->name('lecture.notes.destroy');
+    Route::post('/quiz/{quiz}/submit', [QuizAttempController::class, 'submit'])->name('quiz.submit');
 });
 
 

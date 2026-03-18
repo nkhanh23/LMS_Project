@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <img src="{{ asset($course->course_image) }}" class="rounded-circle p-1 border" width="90"
-                                height="90" alt="...">
+                                height="90" alt="">
                             <div class="flex-grow-1 ms-3">
                                 <h6 class="mt-0">{{ $course->course_name }}</h6>
                                 <p class="mb-0">{{ $course->course_title }}
@@ -103,8 +103,10 @@
                                             <p>{{ $lecture->lecture_title }}</p>
                                         </div>
                                         <div>
-                                            <a class="btn btn-dark" data-bs-toggle="modal"
-                                                data-bs-target="#course-edit-{{ $lecture->id }}">
+                                            <a class="btn btn-dark"
+                                                @if ($lecture->type == 'quiz') href="{{ route('instructor.quiz.edit', $lecture->id) }}"
+                                                @else
+                                                    data-bs-toggle="modal" data-bs-target="#course-edit-{{ $lecture->id }}" @endif>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path

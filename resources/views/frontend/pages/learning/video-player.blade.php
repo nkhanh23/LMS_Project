@@ -7,7 +7,7 @@
 
 
     <!-- Learning Tabs & Info with padding -->
-    <div class="p-4 md:p-8">
+    <div id="tabSectionContainer" class="{{ $currentLecture->quiz ? 'hidden' : 'p-4 md:p-8' }}">
         <div class="flex items-end border-b-2 border-black">
             <button onclick="switchTab('overview', this)"
                 class="tab-btn active px-8 py-3 bg-cyber-surface text-white font-bold uppercase border-2 border-black border-b-0 relative z-10 -mb-[2px] transition-all">

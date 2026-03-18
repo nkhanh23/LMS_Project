@@ -49,6 +49,9 @@
                                         class="block lecture-item-link" data-lecture-id="{{ $lecture->id }}">
                                         <h4
                                             class="text-sm font-bold {{ $currentLecture->id == $lecture->id ? 'text-brand' : 'text-slate-200' }} group-hover/lecture:text-cyber-cyan transition-colors truncate">
+                                            @if($lecture->quiz)
+                                                <i class="fa-solid fa-file-circle-question mr-1 text-brand"></i>
+                                            @endif
                                             {{ $loop->iteration }}. {{ $lecture->lecture_title }}
                                         </h4>
                                     </a>
@@ -56,8 +59,13 @@
                                     <div class="flex items-center justify-between">
                                         <div
                                             class="flex items-center gap-2 text-[10px] font-bold text-slate-500 uppercase">
-                                            <i class="fa-solid fa-play-circle text-xs"></i>
-                                            <span>{{ $lecture->video_duration ?: '0' }} phút</span>
+                                            @if($lecture->quiz)
+                                                <i class="fa-solid fa-brain text-xs"></i>
+                                                <span>{{ $lecture->quiz->questions->count() }} câu hỏi</span>
+                                            @else
+                                                <i class="fa-solid fa-play-circle text-xs"></i>
+                                                <span>{{ $lecture->video_duration ?: '0' }} phút</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

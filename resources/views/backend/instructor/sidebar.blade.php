@@ -34,6 +34,22 @@
                 </ul>
             </li>
 
+            <li class="{{ setSidebar(['instructor.quiz*']) }}">
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-category"></i>
+                    </div>
+                    <div class="menu-title">Quản lý Quiz</div>
+                </a>
+                <ul>
+                    <li class="{{ setSidebar(['instructor.quiz*']) }}">
+                        <a href="{{ route('instructor.quiz.index') }}"><i class='bx bx-radio-circle'></i>Tất cả Quiz</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
             <li class="{{ setSidebar(['instructor.coupon*']) }}">
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="bx bx-category"></i>

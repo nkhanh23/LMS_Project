@@ -185,4 +185,28 @@
         .course-card-wrap:hover .course-tooltip {
             display: block;
         }
+
+        /* Quiz Selection Styles */
+        .quiz-option-input:checked + .quiz-option-content {
+            border-color: #A6E22E !important;
+            background-color: rgba(166, 226, 46, 0.1) !important;
+        }
+        
+        .quiz-option-input:checked + .quiz-option-content .quiz-option-letter {
+            border-color: #A6E22E !important;
+            color: #A6E22E !important;
+        }
+
+        .quiz-option-input:checked + .quiz-option-content .quiz-option-text {
+            color: #fff !important;
+        }
+
+        .quiz-option-input:checked + .quiz-option-content .quiz-option-circle {
+            border-color: #A6E22E !important;
+            background-color: #A6E22E !important;
+        }
+
+        .quiz-option-input:checked + .quiz-option-content .quiz-option-dot {
+            opacity: 1 !important;
+        }
     </style>

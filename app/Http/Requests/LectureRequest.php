@@ -27,7 +27,7 @@ class LectureRequest extends FormRequest
             'course_id' => 'required|exists:courses,id',
             'section_id' => 'required|exists:course_sections,id',
             'lecture_title' => 'required|string|max:255',
-            'type' => 'required|in:video,document,text,r2_video',
+            'type' => 'required|in:video,document,text,r2_video,quiz',
             'url' => 'nullable|url|max:255',
             'video_duration' => 'nullable',
             'content' => 'nullable|string',
