@@ -49,6 +49,10 @@
                     <a href="{{ route('admin.instructor.active') }}"><i class='bx bx-radio-circle'></i>Đang hoạt
                         động</a>
                 </li>
+                <li class="{{ setSidebar(['admin.instructor*']) }}">
+                    <a href="{{ route('admin.instructor-requests.index') }}"><i class='bx bx-radio-circle'></i>Yêu
+                        cầu</a>
+                </li>
             </ul>
         </li>
 
@@ -124,6 +128,10 @@
                 <li class="{{ setSidebar(['admin.course*']) }}">
                     <a href="{{ route('admin.course.index') }}"><i class='bx bx-radio-circle'></i>Khóa học</a>
                 </li>
+                <li class="{{ setSidebar(['admin.course-approvals*']) }}">
+                    <a href="{{ route('admin.course-approvals.index') }}"><i class='bx bx-radio-circle'></i>Duyệt
+                        khóa học</a>
+                </li>
             </ul>
         </li>
 
@@ -141,17 +149,6 @@
 
             </ul>
         </li>
-
-        <li class="{{ setSidebar(['admin.approval-center*']) }}">
-            <a href="{{ route('admin.approval-center.index') }}">
-                <div class="parent-icon"><i class="bx bx-category"></i></div>
-                <div class="menu-title">Approval Center</div>
-            </a>
-        </li>
-
-
-
-
     </ul>
     <!--end navigation-->
 </div>
