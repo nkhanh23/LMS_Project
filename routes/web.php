@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\backend\AdminApprovalCenterController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\AdminCourseController;
 use App\Http\Controllers\backend\AdminInstructorController;
@@ -122,8 +123,7 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
     /* Control Course */
     //Danh sách khóa học
     Route::resource('course', AdminCourseController::class);
-    //Cập nhật trạng thái
-    Route::post('/course-status', [AdminCourseController::class, 'courseStatus'])->name('course.status');
+
 
     /* Order Controller */
     //Danh sách đơn hàng
@@ -147,12 +147,32 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
     //Từ chối yêu cầu trở thành instructor
     Route::post('/instructor-requests/{id}/reject', [AdminInstructorRequestController::class, 'reject'])
         ->name('instructor-requests.reject');
+
+    /* Manage Approval Center */
+    //Danh sách approval center
+    Route::get('/approval-center', [AdminApprovalCenterController::class, 'index'])
+        ->name('approval-center.index');
+    //Duyệt yêu cầu trở thành instructor
+    Route::post('/approval-center/instructors/{id}/approve', [AdminApprovalCenterController::class, 'approveInstructor'])
+        ->name('approval-center.instructors.approve');
+    //Từ chối yêu cầu trở thành instructor
+    Route::post('/approval-center/instructors/{id}/suspend', [AdminApprovalCenterController::class, 'suspendInstructor'])
+        ->name('approval-center.instructors.suspend');
+    //Duyệt khóa học
+    Route::post('/approval-center/courses/{id}/publish', [AdminApprovalCenterController::class, 'publishCourse'])
+        ->name('approval-center.courses.publish');
+    //Từ chối khóa học
+    Route::post('/approval-center/courses/{id}/reject', [AdminApprovalCenterController::class, 'rejectCourse'])
+        ->name('approval-center.courses.reject');
+    //Ẩn khóa học
+    Route::post('/approval-center/courses/{id}/hide', [AdminApprovalCenterController::class, 'hideCourse'])
+        ->name('approval-center.courses.hide');
 });
 
 /*  INSTRUCTOR LOGIN  */
 Route::get('/instructor/login', [InstructorController::class, 'login'])->name('instructor.login');
 
-Route::middleware('auth', 'verified', 'role:instructor')->prefix('instructor')->name('instructor.')->group(function () {
+Route::middleware('auth', 'verified', 'role:instructor', 'instructor.approved')->prefix('instructor')->name('instructor.')->group(function () {
     //Dashboard
     Route::get('/dashboard', [InstructorController::class, 'dashboard'])->name('dashboard');
     //Logout
@@ -174,6 +194,9 @@ Route::middleware('auth', 'verified', 'role:instructor')->prefix('instructor')->
     Route::resource('course', CourseController::class);
     //Lấy danh sách subcategory
     Route::get('/get-subcategories/{categoryId}', [CategoryController::class, 'getSubcategories']);
+    //Gửi khóa học để admin review
+    Route::post('/course/{id}/submit-review', [CourseController::class, 'submitForReview'])
+        ->name('course.submit-review');
 
     /*  INSTRUCTOR COURSE SECTION  */
     //Danh sách section

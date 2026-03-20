@@ -142,6 +142,12 @@
             </ul>
         </li>
 
+        <li class="{{ setSidebar(['admin.approval-center*']) }}">
+            <a href="{{ route('admin.approval-center.index') }}">
+                <div class="parent-icon"><i class="bx bx-category"></i></div>
+                <div class="menu-title">Approval Center</div>
+            </a>
+        </li>
 
 
 

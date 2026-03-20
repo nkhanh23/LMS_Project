@@ -81,6 +81,7 @@ class InstructorSalesDemoSeeder extends Seeder
                         'category_id' => 1,
                         'subcategory_id' => 1,
                         'status' => 1,
+                        'approval_status' => 'published',
                     ]);
 
                     $courses->push($course);

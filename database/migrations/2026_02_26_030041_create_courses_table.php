@@ -38,6 +38,8 @@ return new class extends Migration
             $table->tinyInteger('status')->default(0)->index()->comment('0=inactive, 1=active');
             $table->string('approval_status')->default('approved')->index();
             $table->text('approval_note')->nullable();
+            $table->unsignedBigInteger('reviewed_by')->nullable();
+            $table->timestamp('reviewed_at')->nullable();
             $table->timestamp('submitted_for_review_at')->nullable();
             $table->timestamp('approved_at')->nullable();
             $table->timestamps();

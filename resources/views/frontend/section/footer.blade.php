@@ -10,33 +10,36 @@
                 </div>
                 <span class="font-bold text-lg uppercase italic">{{ $site_info->meta_title ?? 'StackLearn' }}</span>
             </div>
-            <p class="text-text-secondary text-sm mb-4">{{ $site_info->meta_description ?? 'The ultimate 16-bit learning platform for modern developers. Build, learn, level up.' }}</p>
+            <p class="text-text-secondary text-sm mb-4">
+                {{ $site_info->meta_description ?? 'The ultimate 16-bit learning platform for modern developers. Build, learn, level up.' }}
+            </p>
             <div class="flex items-center gap-2 text-sm text-text-secondary mb-2"><i
-                    class="fas fa-map-marker-alt text-brand w-5"></i>{{ $site_info->address ?? 'Ho Chi Minh City, Vietnam' }}</div>
+                    class="fas fa-map-marker-alt text-brand w-5"></i>{{ $site_info->address ?? 'Ho Chi Minh City, Vietnam' }}
+            </div>
             <div class="flex items-center gap-2 text-sm text-text-secondary mb-2"><i
                     class="fas fa-phone text-brand w-5"></i>{{ $site_info->phone ?? '+84 123 456 789' }}</div>
             <div class="flex items-center gap-2 text-sm text-text-secondary mb-4"><i
                     class="fas fa-envelope text-brand w-5"></i>{{ $site_info->mail ?? 'contact@stacklearn.dev' }}</div>
             <div class="flex gap-3">
-                @if($site_info->facebook)
-                <a href="{{ $site_info->facebook }}"
-                    class="w-9 h-9 bg-cyber-surface border border-black flex items-center justify-center hover:bg-brand hover:text-black transition-colors"><i
-                        class="fab fa-facebook-f text-sm"></i></a>
+                @if ($site_info->facebook)
+                    <a href="{{ $site_info->facebook }}"
+                        class="w-9 h-9 bg-cyber-surface border border-black flex items-center justify-center hover:bg-brand hover:text-black transition-colors"><i
+                            class="fab fa-facebook-f text-sm"></i></a>
                 @endif
-                @if($site_info->twitter)
-                <a href="{{ $site_info->twitter }}"
-                    class="w-9 h-9 bg-cyber-surface border border-black flex items-center justify-center hover:bg-brand hover:text-black transition-colors"><i
-                        class="fab fa-twitter text-sm"></i></a>
+                @if ($site_info->twitter)
+                    <a href="{{ $site_info->twitter }}"
+                        class="w-9 h-9 bg-cyber-surface border border-black flex items-center justify-center hover:bg-brand hover:text-black transition-colors"><i
+                            class="fab fa-twitter text-sm"></i></a>
                 @endif
-                @if($site_info->linkedin)
-                <a href="{{ $site_info->linkedin }}"
-                    class="w-9 h-9 bg-cyber-surface border border-black flex items-center justify-center hover:bg-brand hover:text-black transition-colors"><i
-                        class="fab fa-linkedin-in text-sm"></i></a>
+                @if ($site_info->linkedin)
+                    <a href="{{ $site_info->linkedin }}"
+                        class="w-9 h-9 bg-cyber-surface border border-black flex items-center justify-center hover:bg-brand hover:text-black transition-colors"><i
+                            class="fab fa-linkedin-in text-sm"></i></a>
                 @endif
-                @if($site_info->instagram)
-                <a href="{{ $site_info->instagram }}"
-                    class="w-9 h-9 bg-cyber-surface border border-black flex items-center justify-center hover:bg-brand hover:text-black transition-colors"><i
-                        class="fab fa-instagram text-sm"></i></a>
+                @if ($site_info->instagram)
+                    <a href="{{ $site_info->instagram }}"
+                        class="w-9 h-9 bg-cyber-surface border border-black flex items-center justify-center hover:bg-brand hover:text-black transition-colors"><i
+                            class="fab fa-instagram text-sm"></i></a>
                 @endif
             </div>
         </div>
@@ -98,7 +101,8 @@
     <!-- Copyright -->
     <div
         class="max-w-7xl mx-auto px-6 pt-8 border-t-2 border-black/50 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="text-text-secondary text-xs">&copy; {{ date('Y') }} {{ $site_info->copyright ?? 'StackLearn. All rights reserved.' }} Crafted with <span
+        <p class="text-text-secondary text-xs">&copy; {{ date('Y') }}
+            {{ $site_info->copyright ?? 'StackLearn. All rights reserved.' }} Crafted with <span
                 class="text-red-500">♥</span> by Khánh.</p>
         <div class="flex items-center gap-2">
             <i class="fas fa-globe text-brand text-xs"></i>

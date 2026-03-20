@@ -31,7 +31,8 @@
                     </div>
                     <div class="col-md-3" id="sub_category_container">
                         <label class="form-label">Danh mục con</label>
-                        <select name="sub_category_id" id="sub_category_id" class="form-select" {{ request('category_id') ? '' : 'disabled' }}>
+                        <select name="sub_category_id" id="sub_category_id" class="form-select"
+                            {{ request('category_id') ? '' : 'disabled' }}>
                             <option value="">Tất cả danh mục con</option>
                             @foreach ($subcategories as $subcat)
                                 <option value="{{ $subcat->id }}"
@@ -65,6 +66,8 @@
                                 <th>Danh mục con</th>
                                 <th>Giá</th>
                                 <th>Giá khuyến mãi</th>
+                                <th>Trạng thái</th>
+                                <th>Ghi chú</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -94,7 +97,20 @@
                                     <td>
                                         {{ $item->discount_price }}
                                     </td>
-
+                                    <td>
+                                        @if ($item->approval_status === 'draft')
+                                            <span class="badge bg-secondary">Draft</span>
+                                        @elseif($item->approval_status === 'pending_review')
+                                            <span class="badge bg-warning text-dark">Pending Review</span>
+                                        @elseif($item->approval_status === 'published')
+                                            <span class="badge bg-success">Published</span>
+                                        @elseif($item->approval_status === 'rejected')
+                                            <span class="badge bg-danger">Rejected</span>
+                                        @elseif($item->approval_status === 'hidden')
+                                            <span class="badge bg-dark">Hidden</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $item->approval_note ?? '---' }}</td>
 
                                     <td>
                                         <a href="{{ route('instructor.course.edit', $item->id) }}" class="btn btn-primary">
@@ -123,7 +139,7 @@
                                         </form>
 
                                         <a href="{{ route('instructor.course-section.show', $item->id) }}"
-                                            class="btn btn-success" style="margin-left:10px">
+                                            class="btn btn-success" style="margin-left:10px" title="Show Sections">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
                                                 <path
@@ -132,6 +148,16 @@
                                                     d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
                                             </svg>
                                         </a>
+                                        @if (in_array($item->approval_status, ['draft', 'rejected'], true))
+                                            <form method="POST"
+                                                action="{{ route('instructor.course.submit-review', $item->id) }}"
+                                                style="display: inline-block; margin-left:10px;">
+                                                @csrf
+                                                <button class="btn btn-warning btn-sm" title="Submit for review">
+                                                    <i class="bx bx-send"></i> Submit
+                                                </button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

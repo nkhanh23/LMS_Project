@@ -24,9 +24,8 @@ class CourseRepository
         return Course::create($data);
     }
 
-    public function updateCourse($data, $photo, $id)
+    public function updateCourse($course, $data, $photo)
     {
-        $course = Course::find($id);
         //Xóa key course_goals khỏi $data
         unset($data['course_goals']);
         if ($photo) {
@@ -34,6 +33,13 @@ class CourseRepository
         }
         $course->update($data);
         return $course->fresh();
+    }
+
+    public function findCourseByIdAndInstructor(int $id, int $instructorId)
+    {
+        return Course::where('id', $id)
+            ->where('instructor_id', $instructorId)
+            ->firstOrFail();
     }
 
     public function createCourseGoals($courseId, array $goals)

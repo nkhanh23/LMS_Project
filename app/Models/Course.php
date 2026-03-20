@@ -48,4 +48,14 @@ class Course extends Model
     {
         return $this->hasMany(CourseReviews::class, 'course_id', 'id');
     }
+
+    public function isPublished(): bool
+    {
+        return $this->approval_status === 'published' && (int) $this->status === 1;
+    }
+
+    public function canBeSubmittedForReview(): bool
+    {
+        return in_array($this->approval_status, ['draft', 'rejected'], true);
+    }
 }

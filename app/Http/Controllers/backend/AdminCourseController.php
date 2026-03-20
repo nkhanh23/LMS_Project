@@ -34,18 +34,6 @@ class AdminCourseController extends Controller
         return view('backend.admin.course.index', compact('all_courses', 'categories', 'instructors'));
     }
 
-    public function courseStatus(Request $request)
-    {
-        $course = Course::find($request->course_id);
-        if ($course) {
-            $course->status = $request->status;
-            $course->save();
-            return response()->json([
-                'success' => true,
-                'message' => 'Trạng thái khóa học đã được cập nhật',
-            ]);
-        }
-    }
 
     /**
      * Show the form for creating a new resource.

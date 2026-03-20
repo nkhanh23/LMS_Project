@@ -107,7 +107,11 @@
                                 @if (!empty($course->video_url))
                                     @php
                                         // Tìm video id từ youtube url (hỗ trợ watch?v=... hoặc youtu.be/...)
-                                        preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $course->video_url, $matches);
+                                        preg_match(
+                                            '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/',
+                                            $course->video_url,
+                                            $matches,
+                                        );
                                         $video_id = isset($matches[1]) ? $matches[1] : '';
                                     @endphp
                                     @if ($video_id)
@@ -146,81 +150,5 @@
             </div>
 
         </div>
-
-
-
-
-
-
     </div>
 @endsection
-
-@push('script')
-    <script>
-        $(document).ready(function() {
-            $('.form-check-input').on('change', function() {
-                const courseId = $(this).data('course-id');
-
-                const status = $(this).is(':checked') ? 1 : 0; // (1: Active, 0: Inactive)
-                const row = $(this).closest('tr'); // Tìm dòng cha của checkbox
-
-                $.ajax({
-                    url: '{{ route('admin.course.status') }}',
-                    type: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        course_id: courseId,
-                        status: status
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            // Cập nhật trạng thái
-                            const statusBadge = row.find('td:nth-child(6) .badge');
-                            if (status === 1) {
-                                statusBadge
-                                    .removeClass('bg-danger')
-                                    .addClass('bg-primary')
-                                    .text('Active');
-                            } else {
-                                statusBadge
-                                    .removeClass('bg-primary')
-                                    .addClass('bg-danger')
-                                    .text('Inactive');
-                            }
-
-                            // Hiển thị thông báoSweetAlert Toast Notification
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'success',
-                                title: response.message,
-                                showConfirmButton: false,
-                                timer: 3000
-                            });
-                        } else {
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'error',
-                                title: 'Error: ' + response.message,
-                                showConfirmButton: false,
-                                timer: 3000
-                            });
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('AJAX Error:', error);
-                        Swal.fire({
-                            toast: true,
-                            position: 'top-end',
-                            icon: 'error',
-                            title: 'Lỗi khi cập nhật trạng thái.',
-                            showConfirmButton: false,
-                            timer: 3000
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-@endpush

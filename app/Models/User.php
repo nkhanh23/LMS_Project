@@ -95,6 +95,24 @@ class User extends Authenticatable
     ];
 
     /**
+     * Check if user is approved instructor
+     *
+     * @return bool
+     */
+    public function isApprovedInstructor(): bool
+    {
+        return $this->role === 'instructor'
+            && $this->instructor_approval_status === 'approved'
+            && $this->status === '1';
+    }
+
+    public function isSuspendedInstructor(): bool
+    {
+        return $this->role === 'instructor'
+            && $this->instructor_approval_status === 'suspended';
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

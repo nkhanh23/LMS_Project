@@ -120,4 +120,24 @@ class CourseController extends Controller
         $course->delete();
         return redirect()->route('instructor.course.index')->with('success', 'Khóa học đã được xóa thành công');
     }
+
+    public function submitForReview($id)
+    {
+        $course = Course::where('id', $id)
+            ->where('instructor_id', Auth::user()->id)
+            ->firstOrFail();
+
+        if (!in_array($course->approval_status, ['draft', 'rejected'], true)) {
+            return back()->with('error', 'Khóa học này không thể gửi review ở trạng thái hiện tại.');
+        }
+
+        $course->update([
+            'approval_status' => 'pending_review',
+            'approval_note' => null,
+            'submitted_for_review_at' => now(),
+            'status' => 0,
+        ]);
+
+        return back()->with('success', 'Khóa học đã được gửi để admin review.');
+    }
 }

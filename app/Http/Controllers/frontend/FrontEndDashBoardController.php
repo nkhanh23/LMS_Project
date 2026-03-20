@@ -32,7 +32,11 @@ class FrontEndDashBoardController extends Controller
     public function view($slug)
     {
         //lấy khóa học
-        $course = Course::where('course_name_slug', $slug)->with('category', 'subcategory', 'user', 'goals')->firstOrFail();
+        $course = Course::where('course_name_slug', $slug)
+            ->where('approval_status', 'published')
+            ->where('status', 1)
+            ->with('category', 'subcategory', 'user', 'goals')
+            ->firstOrFail();
 
         //lấy số lượng bài giảng
         $total_lecture = CourseSection::where('course_id', $course->id)->with('lecture')->get()->count();
@@ -44,10 +48,23 @@ class FrontEndDashBoardController extends Controller
         $userId = Auth::id();
 
         //lấy khóa học có cùng category_id
-        $similarCourse = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->with('user')->inRandomOrder()->limit(6)->get();
+        $similarCourse = Course::where('category_id', $course->category_id)
+            ->where('id', '!=', $course->id)
+            ->where('approval_status', 'published')
+            ->where('status', 1)
+            ->with('user')
+            ->inRandomOrder()
+            ->limit(6)
+            ->get();
 
         //lấy khóa học có cùng instructor_id
-        $more_course_instructor = Course::where('instructor_id', $course->instructor_id)->where('id', '!=', $course->id)->with('user')->limit(6)->get();
+        $more_course_instructor = Course::where('instructor_id', $course->instructor_id)
+            ->where('id', '!=', $course->id)
+            ->where('approval_status', 'published')
+            ->where('status', 1)
+            ->with('user')
+            ->limit(6)
+            ->get();
 
         //lấy tất cả danh mục
         $all_category = Category::orderBy('name', 'asc')->get();
@@ -60,7 +77,12 @@ class FrontEndDashBoardController extends Controller
         $total_lecture_duration = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
 
         //lấy tổng số khóa học của instructor
-        $total_course_instructor = Course::where('instructor_id', $course->instructor_id)->where('id', '!=', $course->id)->with('user')->get();
+        $total_course_instructor = Course::where('instructor_id', $course->instructor_id)
+            ->where('id', '!=', $course->id)
+            ->where('approval_status', 'published')
+            ->where('status', 1)
+            ->with('user')
+            ->get();
 
         //lấy đánh giá của khóa học
         $reviews = CourseReviews::where('course_id', $course->id)

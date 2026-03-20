@@ -38,9 +38,11 @@ class AdminDashboardRepository
                 ->whereDate('paid_at', '>=', $startOfMonth)
                 ->sum(DB::raw('COALESCE(gross_amount, price, 0)')),
 
-            'pending_courses' => Course::where('approval_status', 'pending')->count(),
+            'pending_courses' => Course::where('approval_status', 'pending_review')->count(),
 
-            'pending_instructors' => InstructorRequest::where('status', 'pending')->count(),
+            'pending_instructors' => User::where('role', 'instructor')
+                ->where('instructor_approval_status', 'pending')
+                ->count(),
 
             'payment_success' => $successPayments,
             'payment_pending' => $pendingPayments,

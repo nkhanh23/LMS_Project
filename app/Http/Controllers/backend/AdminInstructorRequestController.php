@@ -33,6 +33,10 @@ class AdminInstructorRequestController extends Controller
                 'bio' => $requestItem->bio ?? $requestItem->user->bio,
                 'experience' => $requestItem->experience ?? $requestItem->user->experience,
                 'status' => '1',
+                'instructor_approval_status' => 'approved',
+                'instructor_review_note' => null,
+                'instructor_reviewed_by' => auth()->id(),
+                'instructor_reviewed_at' => now(),
             ]);
 
             $requestItem->update([
@@ -47,18 +51,27 @@ class AdminInstructorRequestController extends Controller
 
     public function reject(Request $request, $id)
     {
-        $requestItem = InstructorRequest::findOrFail($id);
+        $requestItem = InstructorRequest::with('user')->findOrFail($id);
 
         $validated = $request->validate([
-            'admin_note' => 'required|string',
+            'admin_note' => 'required|string|max:2000',
         ]);
 
-        $requestItem->update([
-            'status' => 'rejected',
-            'admin_note' => $validated['admin_note'],
-            'reviewed_by' => auth()->id(),
-            'reviewed_at' => now(),
-        ]);
+        DB::transaction(function () use ($requestItem, $validated) {
+            $requestItem->update([
+                'status' => 'rejected',
+                'admin_note' => $validated['admin_note'],
+                'reviewed_by' => auth()->id(),
+                'reviewed_at' => now(),
+            ]);
+
+            $requestItem->user->update([
+                'instructor_approval_status' => 'pending',
+                'instructor_review_note' => $validated['admin_note'],
+                'instructor_reviewed_by' => auth()->id(),
+                'instructor_reviewed_at' => now(),
+            ]);
+        });
 
         return back()->with('success', 'Đã từ chối yêu cầu.');
     }

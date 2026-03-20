@@ -24,6 +24,10 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->enum('role', ['user', 'instructor', 'admin'])->default('user');
             $table->enum('status', ['0', '1'])->default('1');
+            $table->string('instructor_approval_status')->default('pending')->index();
+            $table->text('instructor_review_note')->nullable();
+            $table->unsignedBigInteger('instructor_reviewed_by')->nullable();
+            $table->timestamp('instructor_reviewed_at')->nullable();
             $table->longText('bio')->nullable();
             $table->integer('day')->nullable();
             $table->integer('month')->nullable();

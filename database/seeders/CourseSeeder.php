@@ -64,7 +64,7 @@ class CourseSeeder extends Seeder
                 'featured' => rand(0, 1) ? 'yes' : 'no',
                 'highestrated' => rand(0, 1) ? 'yes' : 'no',
                 'status' => 1,
-                'approval_status' => 'approved',
+                'approval_status' => 'published',
                 'course_goals' => [
                     'Nắm vững kiến thức cơ bản',
                     'Thực hành dự án thực tế',

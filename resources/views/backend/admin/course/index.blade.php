@@ -67,7 +67,7 @@
                                 <th>Giảng viên</th>
                                 <th>Danh mục</th>
                                 <th>Giá</th>
-                                <th>Hiển thị</th>
+                                <th>Trạng thái</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -105,12 +105,19 @@
 
                                     </td>
                                     <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" style="cursor: pointer" type="checkbox"
-                                                role="switch" id="flexSwitchCheckDefault{{ $item->id }}"
-                                                data-course-id="{{ $item->id }}"
-                                                {{ $item->status == 1 ? 'checked' : '' }}>
-                                        </div>
+                                        @if ($item->approval_status === 'draft')
+                                            <span class="badge bg-secondary">Draft</span>
+                                        @elseif($item->approval_status === 'pending_review')
+                                            <span class="badge bg-warning text-dark">Pending Review</span>
+                                        @elseif($item->approval_status === 'published')
+                                            <span class="badge bg-success">Published</span>
+                                        @elseif($item->approval_status === 'rejected')
+                                            <span class="badge bg-danger">Rejected</span>
+                                        @elseif($item->approval_status === 'hidden')
+                                            <span class="badge bg-dark">Hidden</span>
+                                        @else
+                                            <span class="badge bg-info">{{ $item->approval_status }}</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -148,70 +155,5 @@
                 theme: 'default',
                 width: '100%',
                 placeholder: 'Chọn giảng viên'
-            });
-            $('.form-check-input').on('change', function() {
-                const courseId = $(this).data('course-id');
-
-                const status = $(this).is(':checked') ? 1 : 0; //(1: Active, 0: Inactive)
-                const row = $(this).closest('tr'); // Tìm dòng cha của checkbox
-
-                $.ajax({
-                    url: '{{ route('admin.course.status') }}',
-                    type: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        course_id: courseId,
-                        status: status
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            // Cập nhật trạng thái
-                            const statusBadge = row.find('td:nth-child(6) .badge');
-                            if (status === 1) {
-                                statusBadge
-                                    .removeClass('bg-danger')
-                                    .addClass('bg-primary')
-                                    .text('Active');
-                            } else {
-                                statusBadge
-                                    .removeClass('bg-primary')
-                                    .addClass('bg-danger')
-                                    .text('Inactive');
-                            }
-
-                            // Hiển thị thông báoSweetAlert Toast Notification
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'success',
-                                title: response.message,
-                                showConfirmButton: false,
-                                timer: 3000
-                            });
-                        } else {
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'error',
-                                title: 'Error: ' + response.message,
-                                showConfirmButton: false,
-                                timer: 3000
-                            });
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('AJAX Error:', error);
-                        Swal.fire({
-                            toast: true,
-                            position: 'top-end',
-                            icon: 'error',
-                            title: 'Lỗi: ' + error,
-                            showConfirmButton: false,
-                            timer: 3000
-                        });
-                    }
-                });
-            });
-        });
     </script>
 @endpush
