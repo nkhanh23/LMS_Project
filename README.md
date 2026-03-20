@@ -39,7 +39,7 @@ Hệ thống StackLearn hướng tới việc tối ưu hóa trải nghiệm h�
 ## 🛠️ Công nghệ Sử dụng
 - **Backend**: Laravel 11.x (PHP 8.2+)
 - **Frontend**: Blade Template engine, CSS Vanilla, JavaScript.
-- **Cơ sở dữ liệu**: MySQL
+- **Cơ sở dữ liệu**: PostgreSQL
 - **Tích hợp**: Stripe (Thanh toán), Mailgun/SMTP (Email thông báo).
 
 ---
