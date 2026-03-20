@@ -1,59 +1,56 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# StackLearn - Hệ thống Quản lý Học tập Trực tuyến (LMS)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+StackLearn là một nền tảng quản lý học tập (LMS) hiện đại, được xây dựng trên nền tảng **Laravel**, cung cấp giải pháp toàn diện cho việc dạy và học trực tuyến. Hệ thống được thiết kế để kết nối Giảng viên và Học viên một cách hiệu quả, hỗ trợ quy trình từ đăng ký khóa học đến kiểm tra đánh giá.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🎯 Mục tiêu Nghiệp vụ
+Hệ thống StackLearn hướng tới việc tối ưu hóa trải nghiệm học tập thông qua:
+- **Quản lý nội dung học tập**: Bài giảng video, tài liệu, và ghi chú.
+- **Tương tác trực tiếp**: Thảo luận ngay trong bài giảng và hệ thống câu hỏi trắc nghiệm.
+- **Kinh doanh khóa học**: Tích hợp thanh toán trực tuyến, mã giảm giá và quản lý đơn hàng.
+- **Quản lý chất lượng**: Quy trình phê duyệt nghiêm ngặt đối với khóa học và giảng viên.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Các Tính năng Chính
 
-## Learning Laravel
+### 👨‍🎓 Dành cho Học viên (Student)
+- **Danh mục khóa học**: Tìm kiếm và lọc khóa học theo danh mục (Category) và danh mục con (Sub-category).
+- **Hành trình học tập**: Theo dõi tiến độ bài học, xem video bài giảng, ghi chú cá nhân (Lecture Notes).
+- **Tương tác**: Tham gia thảo luận trong từng bài giảng (Lecture Discussions).
+- **Kiểm tra & Đánh giá**: Làm bài kiểm tra (Quizzes) cuối chương/khóa học, xem kết quả và điểm số tức thì.
+- **Mua sắm & Thanh toán**: Thêm khóa học vào giỏ hàng (Cart), danh sách yêu thích (Wishlist), sử dụng mã giảm giá (Coupon) và thanh toán an toàn qua Stripe.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 👨‍🏫 Dành cho Giảng viên (Instructor)
+- **Đăng ký Giảng viên**: Quy trình gửi yêu cầu (Instructor Request) và chờ Admin phê duyệt.
+- **Quản lý Khóa học**: Tạo và chỉnh sửa thông tin khóa học, thêm chương (Section) và bài giảng (Lecture).
+- **Hệ thống Trắc nghiệm**: Tạo bộ câu hỏi, tùy chọn đáp án và thiết lập điểm đạt cho Quiz.
+- **Theo dõi Hiệu quả**: Xem danh sách học viên đăng ký và quản lý các thảo luận liên quan đến bài giảng của mình.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🛡️ Dành cho Quản trị viên (Admin)
+- **Trung tâm Phê duyệt Khóa học**: Xem xét nội dung khóa học trước khi cho phép xuất bản (Published/Rejected).
+- **Quản lý Giảng viên**: Phê duyệt yêu cầu làm giảng viên, quản lý và đình chỉ (Suspended) tài khoản nếu cần.
+- **Quản lý Hệ thống**: Cấu hình thông tin site, quản lý banner (Sliders), đối tác (Partners), và cài đặt SMTP.
+- **Báo cáo & Thống kê**: Theo dõi đơn hàng, doanh thu và lưu lượng người dùng.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Công nghệ Sử dụng
+- **Backend**: Laravel 11.x (PHP 8.2+)
+- **Frontend**: Blade Template engine, CSS Vanilla, JavaScript.
+- **Cơ sở dữ liệu**: PostgreSQL
+- **Tích hợp**: Stripe (Thanh toán), Mailgun/SMTP (Email thông báo).
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 📦 Cài đặt & Triển khai
+1. **Clone repository**: `git clone https://github.com/stacklearn/lms.git`
+2. **Cài đặt dependencies**: `composer install` & `npm install`
+3. **Cấu hình môi trường**: Sao chép `.env.example` thành `.env` và cập nhật thông tin Database, Stripe, Mail.
+4. **Khởi tạo Database**: `php artisan migrate --seed`
+5. **Chạy server**: `php artisan serve`
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+© 2026 StackLearn. Phát triển bởi đội ngũ đam mê giáo dục.
