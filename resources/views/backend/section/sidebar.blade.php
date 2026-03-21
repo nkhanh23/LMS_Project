@@ -145,7 +145,10 @@
                 <li class="{{ setSidebar(['admin.order*']) }}">
                     <a href="{{ route('admin.order.index') }}"><i class='bx bx-radio-circle'></i>Đơn hàng</a>
                 </li>
-
+                <li class="{{ setSidebar(['admin.orders.refund_requests*']) }}">
+                    <a href="{{ route('admin.orders.refund_requests.index') }}"><i class='bx bx-radio-circle'></i>Yêu
+                        cầu hoàn tiền</a>
+                </li>
 
             </ul>
         </li>

@@ -7,6 +7,7 @@ use App\Http\Controllers\backend\AdminCourseApprovalController;
 use App\Http\Controllers\backend\AdminCourseController;
 use App\Http\Controllers\backend\AdminInstructorController;
 use App\Http\Controllers\backend\AdminInstructorRequestController;
+use App\Http\Controllers\backend\AdminRefundController;
 use App\Http\Controllers\backend\AdminUserController;
 use App\Http\Controllers\backend\BackendOrderController;
 use App\Http\Controllers\backend\CartController;
@@ -40,6 +41,7 @@ use App\Http\Controllers\frontend\LectureDiscussionController;
 use App\Http\Controllers\frontend\LectureNoteController;
 use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\QuizAttempController;
+use App\Http\Controllers\frontend\UserOrderController;
 use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -126,8 +128,24 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
 
 
     /* Order Controller */
-    //Danh sách đơn hàng
+    // Danh sách đơn hàng admin
     Route::resource('order', BackendOrderController::class);
+
+    // Refund requests - admin
+    Route::get('orders/refund-requests', [AdminRefundController::class, 'index'])
+        ->name('orders.refund_requests.index');
+
+    Route::post('orders/refund-requests/{refundRequest}/approve', [AdminRefundController::class, 'approve'])
+        ->name('orders.refund_requests.approve');
+
+    Route::post('orders/refund-requests/{refundRequest}/reject', [AdminRefundController::class, 'reject'])
+        ->name('orders.refund_requests.reject');
+
+    Route::post('orders/{order}/manual-refund', [AdminRefundController::class, 'manualRefund'])
+        ->name('orders.manual_refund');
+
+    Route::post('orders/{order}/manual-cancel', [AdminRefundController::class, 'manualCancel'])
+        ->name('orders.manual_cancel');
 
     /* Partner Controller */
     //Danh sách partner
@@ -340,6 +358,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/order', [OrderController::class, 'order'])->name('order');
     Route::get('/payment-success', [OrderController::class, 'success'])->name('success');
     Route::get('/payment-cancel', [OrderController::class, 'cancel'])->name('cancel');
+
+    Route::get('user/orders', [UserOrderController::class, 'index'])->name('user.orders.index');
+    Route::get('user/orders/{order}', [UserOrderController::class, 'show'])->name('user.orders.show');
+    Route::post('user/orders/{order}/refund-request', [UserOrderController::class, 'requestRefund'])->name('user.orders.refund.request');
 
     /*  COURSE REVIEW ROUTES  */
     Route::post('/chi-tiet/{slug}/review', [CourseReviewController::class, 'store'])->name('course-review.store');

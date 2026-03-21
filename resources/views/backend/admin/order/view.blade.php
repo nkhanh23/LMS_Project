@@ -122,6 +122,54 @@
         </div>
 
 
+        <div class="mt-5">
+            @foreach($payment_info->order as $order)
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p><strong>Order #{{ $order->id }}</strong></p>
+                        <p>Course: {{ $order->course->course_name ?? $order->course_title }}</p>
+                        <p>Status: {{ $order->status }}</p>
+                        <p>Refund Status: {{ $order->refund_status }}</p>
+
+                        @if(in_array($order->status, ['pending']))
+                            <!-- Manual Cancel Modal Trigger -->
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#manualCancelModal{{ $order->id }}">
+                                Manual Cancel
+                            </button>
+
+                            <!-- Manual Cancel Modal -->
+                            <div class="modal fade" id="manualCancelModal{{ $order->id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="{{ route('admin.orders.manual_cancel', $order) }}" method="POST">
+                                            @csrf
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Manual Cancel Order #{{ $order->id }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Lý do cancel</label>
+                                                    <textarea name="reason" class="form-control" rows="2" required placeholder="Nhập lý do hủy..."></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Ghi chú admin</label>
+                                                    <textarea name="admin_note" class="form-control" rows="2" placeholder="Ghi chú nội bộ..."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                <button type="submit" class="btn btn-danger">Xác nhận Hủy đơn</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
     </div>
 @endsection

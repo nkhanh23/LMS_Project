@@ -56,9 +56,11 @@ class BackendOrderController extends Controller
      */
     public function show(string $id)
     {
-        $payment_info = Payment::where('id', $id)->with('order', 'order.user', 'order.instructor', 'order.course')->first();
-        $user_info = User::where('email', $payment_info->email)->first();
-        return view('backend.admin.order.view', compact('payment_info', 'user_info'));
+        $order = $this->orderService->getAdminOrderDetail($id);
+        $payment_info = $order->payment;
+        $user_info = $order->user;
+
+        return view('backend.admin.order.view', compact('order', 'payment_info', 'user_info'));
     }
 
     /**

@@ -69,7 +69,12 @@ class User extends Authenticatable
             return true;
         }
 
-        return $this->orders()->where('course_id', $course->id)->exists();
+        return $this->orders()
+            ->where('course_id', $course->id)
+            ->where('status', 'completed')
+            ->whereNotIn('refund_status', ['approved', 'processed'])
+            ->whereNull('access_revoked_at')
+            ->exists();
     }
 
     /**

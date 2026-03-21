@@ -76,18 +76,18 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y, h:i A') }}</td>
-                                    <td>{{ $item->transaction_id }}</td>
+                                    <td>{{ $item->payment->transaction_id ?? 'N/A' }}</td>
                                     <td>
-                                        {{ number_format($item->total_amount, 0) }}
+                                        {{ number_format($item->price, 0) }}
                                     </td>
                                     <td>
-                                        {{ $item->payment_type }}
+                                        {{ $item->payment->payment_type ?? 'N/A' }}
                                     </td>
                                     <td>
                                         {{ $item->status }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.order.show', $item->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.order.show', $item->id) }}" class="btn btn-primary" title="Xem chi tiết">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
@@ -95,6 +95,50 @@
                                                     d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
                                             </svg>
                                         </a>
+
+                                        @if($item->status === 'completed' && !in_array($item->refund_status, ['requested', 'approved', 'processed']))
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#manualRefundModal{{ $item->id }}" title="Hoàn tiền">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966a.25.25 0 0 0 .41-.192"/>
+                                                </svg>
+                                            </button>
+
+                                            <!-- Manual Refund Modal -->
+                                            <div class="modal fade" id="manualRefundModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form action="{{ route('admin.orders.manual_refund', $item->id) }}" method="POST">
+                                                            @csrf
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Manual Refund Order #{{ $item->id }}</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body text-start">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Số tiền hoàn (Approved Amount)</label>
+                                                                    <input type="number" step="0.01" name="approved_amount" class="form-control"
+                                                                        value="{{ $item->total_amount }}" required>
+                                                                    <small class="text-muted">Tổng tiền đơn hàng: {{ number_format($item->total_amount) }}</small>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Lý do hoàn tiền (Reason)</label>
+                                                                    <textarea name="reason" class="form-control" rows="3" required placeholder="Nhập lý do..."></textarea>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Ghi chú admin (Internal Note)</label>
+                                                                    <textarea name="admin_note" class="form-control" rows="2" placeholder="Ghi chú thêm..."></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                                <button type="submit" class="btn btn-warning">Xác nhận Hoàn tiền</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
 
 
 

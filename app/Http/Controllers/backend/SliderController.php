@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SliderRequest;
 use App\Models\Slider;
-use App\\Services\\SliderService;
+use App\Services\SliderService;
 use Illuminate\Http\Request;
 
 class SliderController extends Controller

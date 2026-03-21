@@ -18,8 +18,23 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
+            // phương thức thanh toán
             $table->string('cash_delivery')->nullable();
+            // tổng số tiền
             $table->string('total_amount')->nullable();
+            // số tiền refund
+            $table->decimal('refunded_amount', 12, 2)->default(0);
+            // thời gian refund
+            $table->timestamp('refunded_at')->nullable();
+            // tham chiếu refund
+            $table->string('refund_reference')->nullable();
+            // dữ liệu provider
+            $table->json('provider_payload')->nullable();
+            // trạng thái provider
+            $table->string('provider_status')->nullable();
+
+            $table->index(['status']);
+            $table->index(['transaction_id']);
             $table->string('payment_type')->nullable();
             $table->string('invoice_no')->nullable();
             $table->string('order_date')->nullable();

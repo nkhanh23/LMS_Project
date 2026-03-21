@@ -1,6 +1,6 @@
 <?php
 
-namespace App\\Services;
+namespace App\Services;
 
 use App\Models\User;
 use App\Repositories\SliderRepository;

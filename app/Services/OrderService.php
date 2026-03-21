@@ -18,18 +18,36 @@ class OrderService
      */
     public function getAdminOrders(array $requestData)
     {
-        // Tại đây, bạn có thể thêm các Business Rules
-        // Ví dụ: Nếu người dùng chọn start_date lớn hơn end_date, bạn có thể swap (hoán đổi) chúng ở đây.
-        // Hoặc set giá trị mặc định nếu cần.
-
         $filters = [
             'start_date'     => $requestData['start_date'] ?? null,
             'end_date'       => $requestData['end_date'] ?? null,
             'min_amount'     => $requestData['min_amount'] ?? null,
             'max_amount'     => $requestData['max_amount'] ?? null,
             'payment_method' => $requestData['payment_method'] ?? null,
+            'status'         => $requestData['status'] ?? null,
+            'refund_status'  => $requestData['refund_status'] ?? null,
         ];
 
         return $this->orderRepository->getFilteredOrdersPaginated($filters);
+    }
+
+    public function getUserOrders(int $userId, int $perPage = 10)
+    {
+        return $this->orderRepository->getUserOrdersPaginated($userId, $perPage);
+    }
+
+    public function getUserOrderDetail(int $userId, int $orderId)
+    {
+        return $this->orderRepository->getUserOrderDetail($userId, $orderId);
+    }
+
+    public function getAdminOrderDetail(int $orderId)
+    {
+        return $this->orderRepository->getAdminOrderDetail($orderId);
+    }
+
+    public function userHasActivePurchasedOrder(int $userId, int $courseId): bool
+    {
+        return $this->orderRepository->userHasActivePurchasedOrder($userId, $courseId);
     }
 }

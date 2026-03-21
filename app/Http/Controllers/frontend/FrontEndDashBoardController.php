@@ -116,6 +116,9 @@ class FrontEndDashBoardController extends Controller
         if (Auth::check()) {
             $hasPurchased = Order::where('user_id', Auth::id())
                 ->where('course_id', $course->id)
+                ->where('status', 'completed')
+                ->whereNotIn('refund_status', ['approved', 'processed'])
+                ->whereNull('access_revoked_at')
                 ->exists();
         }
 

@@ -32,7 +32,7 @@
             <div
                 class="shrink-0 w-[calc(80%)] md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333333%-0.66rem)] snap-start bg-cyber-surface border border-slate-700 p-3 hover:border-brand transition-colors group relative">
                 <div class="h-32 bg-black flex items-center justify-center mb-3">
-                    <a href="{{ route('course-details', $item->course_name_slug) }}">
+                    <a href="{{ route('chi-tiet', $item->course_name_slug) }}">
                         <img class="w-full h-full object-cover" src="{{ asset($item->course_image) }}"
                             alt="{{ $item->course_name }}">
                     </a>
@@ -50,7 +50,7 @@
                     @endif
                 </span>
                 <h4 class="font-bold text-sm text-slate-100 group-hover:text-brand line-clamp-2">
-                    <a href="{{ route('course-details', $item->course_name_slug) }}">
+                    <a href="{{ route('chi-tiet', $item->course_name_slug) }}">
                         {{ $item->course_name }}
                     </a>
                 </h4>

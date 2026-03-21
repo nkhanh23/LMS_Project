@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('highestrated')->nullable();
             $table->json('course_goals')->nullable();
             $table->tinyInteger('status')->default(0)->index()->comment('0=inactive, 1=active');
-            $table->string('approval_status')->default('approved')->index();
+            $table->string('approval_status')->default('draft')->index();
             $table->text('approval_note')->nullable();
             $table->unsignedBigInteger('reviewed_by')->nullable();
             $table->timestamp('reviewed_at')->nullable();
