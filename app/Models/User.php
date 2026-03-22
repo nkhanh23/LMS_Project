@@ -129,4 +129,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //Admin Audit Log
+    public function adminAuditLogs()
+    {
+        return $this->hasMany(AdminAuditLog::class, 'admin_id', 'id');
+    }
+
+    //Content Report
+    public function contentReports()
+    {
+        return $this->hasMany(ContentReport::class, 'reporter_id', 'id');
+    }
 }

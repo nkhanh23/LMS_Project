@@ -4,10 +4,18 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Services\AdminAuditLogService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminCourseApprovalController extends Controller
 {
+    protected $adminAuditLogService;
+
+    public function __construct(AdminAuditLogService $adminAuditLogService)
+    {
+        $this->adminAuditLogService = $adminAuditLogService;
+    }
     public function index(Request $request)
     {
         $courseStatus = $request->input('course_status');
@@ -26,15 +34,39 @@ class AdminCourseApprovalController extends Controller
     public function publish($id)
     {
         $course = Course::findOrFail($id);
-
+        $old = $course->only([
+            'approval_status',
+            'approval_note',
+            'status',
+            'approved_at',
+            'reviewed_by',
+            'reviewed_at',
+        ]);
         $course->update([
             'approval_status' => 'published',
             'approval_note' => null,
             'status' => 1,
             'approved_at' => now(),
-            'reviewed_by' => auth()->id(),
+            'reviewed_by' => Auth::id(),
             'reviewed_at' => now(),
         ]);
+
+        $this->adminAuditLogService->log(
+            'course_published',
+            'course',
+            $course->id,
+            $old,
+            $course->fresh()->only([
+                'approval_status',
+                'approval_note',
+                'status',
+                'approved_at',
+                'reviewed_by',
+                'reviewed_at',
+            ]),
+            null,
+            ['source' => 'admin_course_approval']
+        );
 
         return back()->with('success', 'Khóa học đã được publish.');
     }
@@ -46,28 +78,75 @@ class AdminCourseApprovalController extends Controller
         ]);
 
         $course = Course::findOrFail($id);
-
+        $old = $course->only([
+            'approval_status',
+            'approval_note',
+            'status',
+            'reviewed_by',
+            'reviewed_at',
+        ]);
         $course->update([
             'approval_status' => 'rejected',
             'approval_note' => $validated['review_note'],
             'status' => 0,
-            'reviewed_by' => auth()->id(),
+            'reviewed_by' => Auth::id(),
             'reviewed_at' => now(),
         ]);
+
+        $this->adminAuditLogService->log(
+            'course_rejected',
+            'course',
+            $course->id,
+            $old,
+            $course->fresh()->only([
+                'approval_status',
+                'approval_note',
+                'status',
+                'reviewed_by',
+                'reviewed_at',
+            ]),
+            $validated['review_note'],
+            ['source' => 'admin_course_approval']
+        );
 
         return back()->with('success', 'Khóa học đã bị reject.');
     }
 
-    public function hide($id)
+    public function hide(Request $request, $id)
     {
+        $validated = $request->validate([
+            'review_note' => 'required|string|max:5000',
+        ]);
         $course = Course::findOrFail($id);
-
+        $old = $course->only([
+            'approval_status',
+            'approval_note',
+            'status',
+            'reviewed_by',
+            'reviewed_at',
+        ]);
         $course->update([
             'approval_status' => 'hidden',
             'status' => 0,
-            'reviewed_by' => auth()->id(),
+            'reviewed_by' => Auth::id(),
             'reviewed_at' => now(),
         ]);
+
+        $this->adminAuditLogService->log(
+            'course_hidden',
+            'course',
+            $course->id,
+            $old,
+            $course->fresh()->only([
+                'approval_status',
+                'approval_note',
+                'status',
+                'reviewed_by',
+                'reviewed_at',
+            ]),
+            $validated['review_note'],
+            ['source' => 'admin_course_approval']
+        );
 
         return back()->with('success', 'Khóa học đã bị hidden.');
     }

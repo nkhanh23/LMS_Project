@@ -5,11 +5,19 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\InstructorRequest;
 use App\Models\User;
+use App\Services\AdminAuditLogService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminInstructorRequestController extends Controller
 {
+    protected $adminAuditLogService;
+
+    public function __construct(AdminAuditLogService $adminAuditLogService)
+    {
+        $this->adminAuditLogService = $adminAuditLogService;
+    }
     public function index(Request $request)
     {
         $requestStatus = $request->input('request_status');
@@ -67,6 +75,11 @@ class AdminInstructorRequestController extends Controller
     public function approve($id)
     {
         $requestItem = InstructorRequest::with('user')->findOrFail($id);
+        $old = $requestItem->only([
+            'status',
+            'reviewed_by',
+            'reviewed_at',
+        ]);
 
         if ($requestItem->status !== 'pending') {
             return back()->with('error', 'Yêu cầu này đã được xử lý.');
@@ -81,16 +94,36 @@ class AdminInstructorRequestController extends Controller
                 'status' => '1',
                 'instructor_approval_status' => 'approved',
                 'instructor_review_note' => null,
-                'instructor_reviewed_by' => auth()->id(),
+                'instructor_reviewed_by' => Auth::id(),
                 'instructor_reviewed_at' => now(),
             ]);
 
             $requestItem->update([
                 'status' => 'approved',
-                'reviewed_by' => auth()->id(),
+                'reviewed_by' => Auth::id(),
                 'reviewed_at' => now(),
             ]);
         });
+
+        $this->adminAuditLogService->log(
+            'instructor_request_approved',
+            'user',
+            $requestItem->user_id,
+            $old,
+            $requestItem->user->fresh()->only([
+                'role',
+                'phone',
+                'bio',
+                'experience',
+                'status',
+                'instructor_approval_status',
+                'instructor_review_note',
+                'instructor_reviewed_by',
+                'instructor_reviewed_at',
+            ]),
+            null,
+            ['source' => 'admin_instructor_request']
+        );
 
         return back()->with('success', 'Đã phê duyệt instructor.');
     }
@@ -98,7 +131,17 @@ class AdminInstructorRequestController extends Controller
     public function reject(Request $request, $id)
     {
         $requestItem = InstructorRequest::with('user')->findOrFail($id);
-
+        $old = $requestItem->user->only([
+            'role',
+            'phone',
+            'bio',
+            'experience',
+            'status',
+            'instructor_approval_status',
+            'instructor_review_note',
+            'instructor_reviewed_by',
+            'instructor_reviewed_at',
+        ]);
         $validated = $request->validate([
             'admin_note' => 'required|string|max:2000',
         ]);
@@ -111,17 +154,37 @@ class AdminInstructorRequestController extends Controller
             $requestItem->update([
                 'status' => 'rejected',
                 'admin_note' => $validated['admin_note'],
-                'reviewed_by' => auth()->id(),
+                'reviewed_by' => Auth::id(),
                 'reviewed_at' => now(),
             ]);
 
             $requestItem->user->update([
                 'instructor_approval_status' => 'pending',
                 'instructor_review_note' => $validated['admin_note'],
-                'instructor_reviewed_by' => auth()->id(),
+                'instructor_reviewed_by' => Auth::id(),
                 'instructor_reviewed_at' => now(),
             ]);
         });
+
+        $this->adminAuditLogService->log(
+            'instructor_request_rejected',
+            'user',
+            $requestItem->user_id,
+            $old,
+            $requestItem->user->fresh()->only([
+                'role',
+                'phone',
+                'bio',
+                'experience',
+                'status',
+                'instructor_approval_status',
+                'instructor_review_note',
+                'instructor_reviewed_by',
+                'instructor_reviewed_at',
+            ]),
+            $validated['admin_note'],
+            ['source' => 'admin_instructor_request']
+        );
 
         return back()->with('success', 'Đã từ chối yêu cầu.');
     }
@@ -129,14 +192,14 @@ class AdminInstructorRequestController extends Controller
     public function approveInstructor($id)
     {
         $user = User::findOrFail($id);
-
+        $old = $user->toArray();
         DB::transaction(function () use ($user) {
             $user->update([
                 'role' => 'instructor',
                 'status' => '1',
                 'instructor_approval_status' => 'approved',
                 'instructor_review_note' => null,
-                'instructor_reviewed_by' => auth()->id(),
+                'instructor_reviewed_by' => Auth::id(),
                 'instructor_reviewed_at' => now(),
             ]);
 
@@ -145,10 +208,20 @@ class AdminInstructorRequestController extends Controller
                 ->latest()
                 ->first()?->update([
                     'status' => 'approved',
-                    'reviewed_by' => auth()->id(),
+                    'reviewed_by' => Auth::id(),
                     'reviewed_at' => now(),
                 ]);
         });
+
+        $this->adminAuditLogService->log(
+            'instructor_approved',
+            'user',
+            $user->id,
+            $old,
+            $user->fresh()->toArray(),
+            null,
+            ['source' => 'admin_instructor_request']
+        );
 
         return back()->with('success', 'Đã approve instructor.');
     }
@@ -160,14 +233,24 @@ class AdminInstructorRequestController extends Controller
         ]);
 
         $user = User::findOrFail($id);
-
+        $old = $user->toArray();
         $user->update([
             'instructor_approval_status' => 'suspended',
             'instructor_review_note' => $validated['review_note'],
-            'instructor_reviewed_by' => auth()->id(),
+            'instructor_reviewed_by' => Auth::id(),
             'instructor_reviewed_at' => now(),
             'status' => '0',
         ]);
+
+        $this->adminAuditLogService->log(
+            'instructor_suspended',
+            'user',
+            $user->id,
+            $old,
+            $user->fresh()->toArray(),
+            $validated['review_note'],
+            ['source' => 'admin_instructor_request']
+        );
 
         return back()->with('success', 'Đã suspend instructor.');
     }

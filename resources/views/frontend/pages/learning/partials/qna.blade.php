@@ -225,6 +225,85 @@
                 }
             });
 
+            // --- Discussion Report Handling ---
+            tabQa.addEventListener('submit', async function(e) {
+                const reportForm = e.target.closest('.discussion-report-form');
+                if (!reportForm) return;
+
+                e.preventDefault();
+
+                const submitBtn = reportForm.querySelector('button[type="submit"]');
+                const discussionId = reportForm.dataset.discussionId;
+                const config = getCurrentConfig();
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Đang gửi...';
+                }
+
+                try {
+                    const response = await fetch(`/reports/discussions/${discussionId}`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': config.csrfToken,
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                        },
+                        body: new FormData(reportForm),
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.status === 'success') {
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: data.message || 'Báo cáo đã được gửi',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            background: '#2A2A3C',
+                            color: '#F8F8F2',
+                            iconColor: '#A6E22E'
+                        });
+                        reportForm.reset();
+                        reportForm.classList.add('hidden');
+                    } else {
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'error',
+                            title: data.message || 'Gửi báo cáo thất bại',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            background: '#2A2A3C',
+                            color: '#F8F8F2',
+                            iconColor: '#ff4d4f'
+                        });
+                    }
+                } catch (error) {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Có lỗi xảy ra',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        background: '#2A2A3C',
+                        color: '#F8F8F2',
+                        iconColor: '#ff4d4f'
+                    });
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Gửi report';
+                    }
+                }
+            });
+
             if (discussionForm) {
                 let isMainSubmitting = false;
                 discussionForm.addEventListener('submit', async function(e) {

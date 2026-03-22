@@ -2,11 +2,13 @@
 
 
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\backend\AdminAuditLogController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\AdminCourseApprovalController;
 use App\Http\Controllers\backend\AdminCourseController;
 use App\Http\Controllers\backend\AdminInstructorController;
 use App\Http\Controllers\backend\AdminInstructorRequestController;
+use App\Http\Controllers\backend\AdminModerationController;
 use App\Http\Controllers\backend\AdminRefundController;
 use App\Http\Controllers\backend\AdminUserController;
 use App\Http\Controllers\backend\BackendOrderController;
@@ -34,6 +36,7 @@ use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserProfileController;
 use App\Http\Controllers\frontend\CheckoutController;
+use App\Http\Controllers\frontend\ContentReportController;
 use App\Http\Controllers\frontend\CourseReviewController;
 use App\Http\Controllers\frontend\FrontEndDashBoardController;
 use App\Http\Controllers\frontend\LearningController;
@@ -189,6 +192,23 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
 
     Route::post('/course-approvals/{id}/hide', [AdminCourseApprovalController::class, 'hide'])
         ->name('course-approvals.hide');
+
+
+    /* Moderation */
+    //Danh sách report
+    Route::get('/moderation/reports', [AdminModerationController::class, 'index'])
+        ->name('moderation.reports.index');
+    //Xem chi tiết report
+    Route::get('/moderation/reports/{report}', [AdminModerationController::class, 'show'])
+        ->name('moderation.reports.show');
+    //Xử lý report
+    Route::post('/moderation/reports/{report}/resolve', [AdminModerationController::class, 'resolve'])
+        ->name('moderation.reports.resolve');
+
+    /* Audit Logs */
+    //Danh sách audit log
+    Route::get('/audit-logs', [AdminAuditLogController::class, 'index'])
+        ->name('audit-logs.index');
 });
 
 /*  INSTRUCTOR LOGIN  */
@@ -388,6 +408,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/learning/notes/{id}', [LectureNoteController::class, 'update'])->name('lecture.notes.update');
     Route::delete('/learning/notes/{id}', [LectureNoteController::class, 'destroy'])->name('lecture.notes.destroy');
     Route::post('/quiz/{quiz}/submit', [QuizAttempController::class, 'submit'])->name('quiz.submit');
+
+    /*  CONTENT REPORT ROUTES  */
+    // báo cáo review
+    Route::post('/reports/reviews/{review}', [ContentReportController::class, 'storeReview'])
+        ->name('reports.reviews.store');
+    // báo cáo discussion
+    Route::post('/reports/discussions/{discussion}', [ContentReportController::class, 'storeDiscussion'])
+        ->name('reports.discussions.store');
 });
 
 

@@ -43,15 +43,40 @@
                             <i class="fa-regular fa-comment"></i> Trả lời
                         </button>
                     @endif
-                @endauth
 
-                @auth
                     @if (auth()->id() === $discussion->user_id)
                         <button type="button" class="discussion-delete-btn hover:text-red-400 flex items-center gap-1"
                             data-discussion-id="{{ $discussion->id }}"
                             data-delete-url="{{ route('lecture.discussion.destroy', $discussion->id) }}">
                             <i class="fa-regular fa-trash-can"></i> Xóa
                         </button>
+                    @endif
+
+                    @if (auth()->id() !== $discussion->user_id)
+                        <button type="button" class="btn btn-sm btn-outline-danger mt-2"
+                            onclick="document.getElementById('discussion-report-form-{{ $discussion->id }}').classList.toggle('hidden')">
+                            <i class="fa-solid fa-flag mr-1"></i> Báo cáo
+                        </button>
+
+                        <form id="discussion-report-form-{{ $discussion->id }}" class="hidden mt-2 discussion-report-form"
+                            data-discussion-id="{{ $discussion->id }}">
+                            @csrf
+
+                            <select name="reason_code" class="w-full border rounded p-2 mb-2 bg-cyber-dark text-white border-slate-700" required>
+                                <option value="">-- Chọn lý do --</option>
+                                <option value="spam">Spam</option>
+                                <option value="abuse">Abuse</option>
+                                <option value="harassment">Harassment</option>
+                                <option value="hate_speech">Hate speech</option>
+                                <option value="adult">Adult</option>
+                                <option value="misinformation">Misinformation</option>
+                                <option value="other">Other</option>
+                            </select>
+
+                            <textarea name="description" class="w-full border rounded p-2 mb-2 bg-cyber-dark text-white border-slate-700 font-sans" rows="3" placeholder="Mô tả thêm"></textarea>
+
+                            <button type="submit" class="px-3 py-2 bg-red-600 text-white rounded font-bold uppercase text-[10px] tracking-widest pixel-shadow-sm hover:bg-red-700">Gửi report</button>
+                        </form>
                     @endif
                 @endauth
             </div>

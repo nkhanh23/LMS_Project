@@ -21,3 +21,35 @@
         </p>
     @endforelse
 </div>
+@push('script')
+    <script>
+        document.addEventListener('submit', async function(e) {
+            const form = e.target.closest('.discussion-report-form');
+            if (!form) return;
+
+            e.preventDefault();
+
+            const discussionId = form.dataset.discussionId;
+            const formData = new FormData(form);
+
+            const response = await fetch(`/reports/discussions/${discussionId}`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': form.querySelector('input[name="_token"]').value,
+                    'Accept': 'application/json',
+                },
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (data.status === 'success') {
+                alert(data.message);
+                form.reset();
+                form.classList.add('hidden');
+            } else {
+                alert(data.message || 'Gửi report thất bại');
+            }
+        });
+    </script>
+@endpush

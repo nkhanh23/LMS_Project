@@ -20,6 +20,7 @@ return new class extends Migration
             $blueprint->text('comment');
             $blueprint->boolean('is_approved')->default(false);
             $blueprint->timestamps();
+            $blueprint->softDeletes();
 
             // Add indexes for performance
             $blueprint->index(['course_id', 'is_approved']);

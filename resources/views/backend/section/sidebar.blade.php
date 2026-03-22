@@ -152,6 +152,29 @@
 
             </ul>
         </li>
+
+        <li class="{{ setSidebar(['admin.report*']) }}">
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Quản lý báo cáo</div>
+            </a>
+            <ul>
+                <li class="{{ setSidebar(['admin.moderation.reports*']) }}">
+                    <a href="{{ route('admin.moderation.reports.index') }}">
+                        <i class="fas fa-flag"></i>
+                        <span>Báo cáo</span>
+                    </a>
+                </li>
+
+                <li class="{{ setSidebar(['admin.audit-logs*']) }}">
+                    <a href="{{ route('admin.audit-logs.index') }}">
+                        <i class="fas fa-history"></i>
+                        <span>Nhật ký hoạt động</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
     <!--end navigation-->
 </div>

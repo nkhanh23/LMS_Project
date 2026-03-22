@@ -124,13 +124,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const reviewForm = document.getElementById('reviewForm');
-            if (!reviewForm) return;
+            if (reviewForm) {
+                const submitBtn = document.getElementById('reviewSubmitBtn');
+                const ratingError = document.getElementById('ratingError');
+                const commentError = document.getElementById('commentError');
 
-            const submitBtn = document.getElementById('reviewSubmitBtn');
-            const ratingError = document.getElementById('ratingError');
-            const commentError = document.getElementById('commentError');
-
-            reviewForm.addEventListener('submit', async function(e) {
+                reviewForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
                 if (ratingError) {
@@ -248,6 +247,88 @@
                         if (submitBtn.querySelector('span')) {
                             submitBtn.querySelector('span').textContent = 'Gửi đánh giá';
                         }
+                    }
+                    }
+                });
+            }
+
+            // Report Review Form Handling
+            document.addEventListener('submit', async function(e) {
+                const reportForm = e.target.closest('.report-review-form');
+                if (!reportForm) return;
+
+                e.preventDefault();
+
+                const submitBtn = reportForm.querySelector('button[type="submit"]');
+                const reviewId = reportForm.dataset.reviewId;
+                const url = reportForm.getAttribute('action') || `/reports/reviews/${reviewId}`;
+                const formData = new FormData(reportForm);
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Đang gửi...';
+                }
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                        },
+                        body: formData,
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.status === 'success') {
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: data.message || 'Báo cáo của bạn đã được gửi',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            background: '#2A2A3C',
+                            color: '#F8F8F2',
+                            iconColor: '#A6E22E'
+                        });
+                        reportForm.reset();
+                        reportForm.classList.add('hidden');
+                    } else {
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'error',
+                            title: data.message || 'Gửi báo cáo thất bại',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            background: '#2A2A3C',
+                            color: '#F8F8F2',
+                            iconColor: '#ff4d4f'
+                        });
+                    }
+                } catch (error) {
+                    console.error('Report submission error:', error);
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Có lỗi xảy ra',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        background: '#2A2A3C',
+                        color: '#F8F8F2',
+                        iconColor: '#ff4d4f'
+                    });
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Gửi report';
                     }
                 }
             });
