@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('course_id')->nullable();
             $table->unsignedBigInteger('section_id')->nullable();
             $table->string('lecture_title')->nullable();
+            $table->unsignedInteger('sort_order')->default(1);
+            $table->boolean('is_preview')->default(false);
             $table->string('type', 20)->default('video');
             $table->string('url')->nullable();
             $table->string('file_name')->nullable();

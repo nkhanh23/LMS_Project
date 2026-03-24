@@ -58,4 +58,26 @@ class Course extends Model
     {
         return in_array($this->approval_status, ['draft', 'rejected'], true);
     }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
+
+    public function courseProgressRecords()
+    {
+        return $this->hasMany(CourseProgress::class);
+    }
+
+    public function lectures()
+    {
+        return $this->hasManyThrough(
+            CourseLecture::class,
+            CourseSection::class,
+            'course_id',
+            'section_id',
+            'id',
+            'id'
+        );
+    }
 }

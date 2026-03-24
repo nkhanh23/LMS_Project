@@ -7,7 +7,16 @@
                     'userAttemptsCount' => $userAttemptsCount ?? 0,
                 ])
             @else
-                @if ($currentLecture->type === 'video' || $currentLecture->type === 'r2_video')
+                @php
+                    $youtubeEmbedUrl = getYoutubeEmbedUrl($currentLecture->url);
+                @endphp
+
+                @if ($youtubeEmbedUrl)
+                    <iframe id="actual-video-player" class="w-full h-full z-10 absolute inset-0" src="{{ $youtubeEmbedUrl }}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                @elseif ($currentLecture->type === 'video' || $currentLecture->type === 'r2_video')
                     <video id="actual-video-player" class="w-full h-full object-cover z-10 absolute inset-0" playsinline
                         preload="auto" src="{{ getVideoUrl($currentLecture->type, $currentLecture->url) }}"
                         type="video/mp4" controls
@@ -72,3 +81,29 @@
         @endif
 
     </div>
+
+    <!-- Complete Button Overlay/Section -->
+    @if ($currentLecture && !$currentLecture->quiz)
+        <div class="bg-cyber-darker border-b-4 border-black px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="size-2 bg-brand animate-pulse"></div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                    {{ $isCompleted ? 'Trạng thái: Đã hoàn thành' : 'Trạng thái: Đang học' }}
+                </span>
+            </div>
+
+            @if(!$isCompleted)
+                <button id="mark-complete-btn"
+                        data-lecture-id="{{ $currentLecture->id }}"
+                    class="bg-brand text-black px-4 py-2 text-xs font-bold uppercase pixel-border hover:bg-white transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-check"></i>
+                    Đánh dấu hoàn thành
+                </button>
+            @else
+                <div class="flex items-center gap-2 text-brand font-bold uppercase text-xs italic">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Đã hoàn thành
+                </div>
+            @endif
+        </div>
+    @endif

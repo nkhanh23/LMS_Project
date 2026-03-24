@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\AdminCourseApprovalController;
 use App\Http\Controllers\backend\AdminCourseController;
 use App\Http\Controllers\backend\AdminInstructorController;
 use App\Http\Controllers\backend\AdminInstructorRequestController;
+use App\Http\Controllers\backend\AdminLearningAnalyticsController;
 use App\Http\Controllers\backend\AdminModerationController;
 use App\Http\Controllers\backend\AdminRefundController;
 use App\Http\Controllers\backend\AdminUserController;
@@ -209,6 +210,11 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
     //Danh sách audit log
     Route::get('/audit-logs', [AdminAuditLogController::class, 'index'])
         ->name('audit-logs.index');
+
+    /* Learning Analytics */
+    //Danh sách learning analytics
+    Route::get('/learning-analytics', [AdminLearningAnalyticsController::class, 'index'])
+        ->name('learning.analytics');
 });
 
 /*  INSTRUCTOR LOGIN  */
@@ -367,10 +373,6 @@ Route::post('/apply-checkout-coupon', [CouponController::class, 'applyCheckoutCo
 Route::post('/remove-coupon', [CouponController::class, 'removeCoupon'])->name('removeCoupon');
 
 /*  COURSE PLAY  */
-// Route mở bài học đầu tiên hoặc bài học cuối cùng đang học dở
-Route::get('/khoa-hoc/{slug}/hoc', [LearningController::class, 'playCourse'])->name('course.play');
-// Route xem một bài giảng cụ thể
-Route::get('/khoa-hoc/{slug}/bai-hoc/{lecture_id}', [LearningController::class, 'watchLecture'])->name('course.lecture.watch');
 
 
 /*  AUTH PROTECTED ROUTES  */
@@ -416,8 +418,22 @@ Route::middleware('auth')->group(function () {
     // báo cáo discussion
     Route::post('/reports/discussions/{discussion}', [ContentReportController::class, 'storeDiscussion'])
         ->name('reports.discussions.store');
+
+    /*  LEARNING ROUTES  */
+    // cập nhật tiến độ học
+    Route::post('/learning/lecture/{lecture}/progress', [LearningController::class, 'updateProgress'])
+        ->name('learning.lecture.progress');
+    // hoàn thành bài học
+    Route::post('/learning/lecture/{lecture}/complete', [LearningController::class, 'completeLecture'])
+        ->name('learning.lecture.complete');
 });
 
-
+/*  LEARNING ROUTES  */
+Route::middleware(['auth', 'course.enrollment'])->group(function () {
+    // học khóa học
+    Route::get('/khoa-hoc/{slug}/hoc', [LearningController::class, 'playCourse'])->name('course.play');
+    // học khóa học
+    Route::get('/khoa-hoc/{slug}/bai-hoc/{lecture_id}', [LearningController::class, 'watchLecture'])->name('course.lecture.watch');
+});
 
 require __DIR__ . '/auth.php';

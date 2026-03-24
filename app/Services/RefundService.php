@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Services\EnrollmentService;
 use App\Models\Order;
 use App\Models\RefundRequest;
 use App\Models\User;
@@ -14,11 +15,13 @@ class RefundService
 {
     protected $refundRepository;
     protected $orderRepository;
+    protected $enrollmentService;
 
-    public function __construct(RefundRepository $refundRepository, OrderRepository $orderRepository)
+    public function __construct(RefundRepository $refundRepository, OrderRepository $orderRepository, EnrollmentService $enrollmentService)
     {
         $this->refundRepository = $refundRepository;
         $this->orderRepository = $orderRepository;
+        $this->enrollmentService = $enrollmentService;
     }
 
     public function getRefundRequests(array $filters = [], int $perPage = 15)
@@ -139,6 +142,8 @@ class RefundService
                 'cancelled_by'      => $refundRequest->type === 'cancel' ? $admin->id : $order->cancelled_by,
                 'access_revoked_at' => now(),
             ]);
+
+            $this->enrollmentService->revokeFromOrder($order, 'refund');
 
             if ($order->payment) {
                 $paymentTotal = $this->normalizeMoney($order->payment->total_amount);
@@ -268,6 +273,8 @@ class RefundService
                 'access_revoked_at' => now(),
             ]);
 
+            $this->enrollmentService->revokeFromOrder($order, 'refund');
+
             if ($order->payment) {
                 $paymentTotal = $this->normalizeMoney($order->payment->total_amount);
                 $newRefundedAmount = (float) $order->payment->refunded_amount + $approvedAmount;
@@ -346,6 +353,8 @@ class RefundService
                 'cancelled_by'      => $admin->id,
                 'access_revoked_at' => now(),
             ]);
+
+            $this->enrollmentService->revokeFromOrder($order, 'refund');
 
             $this->refundRepository->createStatusHistory([
                 'order_id'           => $order->id,

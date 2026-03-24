@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Course;
+use App\Models\CourseProgress;
+use App\Models\Enrollment;
 use App\Models\InstructorRequest;
 use App\Models\Order;
 use App\Models\Payment;
@@ -47,6 +49,10 @@ class AdminDashboardRepository
             'payment_success' => $successPayments,
             'payment_pending' => $pendingPayments,
             'payment_failed' => $failedPayments,
+            'total_enrollments' => Enrollment::count(),
+            'active_enrollments' => Enrollment::where('status', 'active')->count(),
+            'completed_enrollments' => Enrollment::where('status', 'completed')->count(),
+            'avg_learning_completion' => (int) round(CourseProgress::avg('completion_percent') ?? 0),
         ];
     }
 

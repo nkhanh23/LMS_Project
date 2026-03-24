@@ -7,18 +7,22 @@ use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Services\EnrollmentService;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Stripe\StripeClient;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     protected $paymentService;
-    public function __construct(PaymentService $paymentService)
+    protected $enrollmentService;
+    public function __construct(PaymentService $paymentService, EnrollmentService $enrollmentService)
     {
         $this->paymentService = $paymentService;
+        $this->enrollmentService = $enrollmentService;
     }
 
     public function order(OrderRequest $request)
@@ -29,19 +33,25 @@ class OrderController extends Controller
 
     public function success(Request $request)
     {
-        //Lấy session_id từ query string
         $sessionId = $request->query('session_id');
         $stripe = new StripeClient(config('stripe.stripe_sk'));
+
         try {
-            //Lấy thông tin session từ Stripe
             $session = $stripe->checkout->sessions->retrieve($sessionId);
             $paymentIntent = $stripe->paymentIntents->retrieve($session->payment_intent);
 
-            $this->createPayment($session, $paymentIntent);
+            DB::transaction(function () use ($session, $paymentIntent) {
+                $payment = $this->createPayment($session, $paymentIntent);
+                $orders = $this->createOrder($payment->id);
 
-            //xóa dữ liệu cart
+                foreach ($orders as $order) {
+                    $this->enrollmentService->grantFromOrder($order);
+                }
+            });
+
             $guestToken = $request->cookie('guest_token') ?? Str::uuid();
             Cart::where('guest_token', $guestToken)->delete();
+
             return redirect('/')->with('success', 'Đặt hàng thành công');
         } catch (\Exception $e) {
             return redirect('/checkout')->with('error', $e->getMessage());
@@ -53,15 +63,14 @@ class OrderController extends Controller
         return view('frontend.pages.checkout.stripe.cancel');
     }
 
-    private function createPayment($session, $paymentIntent)
+    private function createPayment($session, $paymentIntent): Payment
     {
-        //Tạo payment sử dụng thông tin từ session và paymentIntent
-        $payment = Payment::create([
+        return Payment::create([
             'transaction_id' => $paymentIntent->id,
             'name' => $session->customer_details->name,
             'email' => $session->customer_details->email,
             'phone' => $session->customer_details->phone,
-            'total_amount' => $session->amount_total, // No / 100 for VND
+            'total_amount' => $session->amount_total,
             'payment_type' => 'stripe',
             'invoice_no' => 'INV-' . strtoupper((uniqid())),
             'order_date' => now()->toDateString(),
@@ -69,29 +78,29 @@ class OrderController extends Controller
             'order_year' => now()->year,
             'status' => 'completed',
         ]);
-
-        $this->createOrder($payment->id);
     }
 
     private function createOrder($paymentId)
     {
-        //lấy lại dữ liệu từ session
         $stripeData = session('stripe_data');
-        // Tạo order cho mỗi khóa học
+        $orders = collect();
+
         foreach ($stripeData['course_id'] as $index => $courseId) {
-            Order::create([
-                'payment_id' => $paymentId, // Associate with the created payment record
-                'user_id' => Auth::user()->id, // Assuming user is authenticated
+            $orders->push(Order::create([
+                'payment_id' => $paymentId,
+                'user_id' => Auth::id(),
                 'course_id' => $courseId,
-                'instructor_id' => $stripeData['instructor_id'][$index], // Add logic to retrieve instructor ID if needed
+                'instructor_id' => $stripeData['instructor_id'][$index],
                 'course_title' => $stripeData['course_name'][$index],
                 'price' => $stripeData['course_price'][$index],
-                'gross_amount'    => $stripeData['course_price'][$index],
+                'gross_amount' => $stripeData['course_price'][$index],
                 'platform_amount' => 0,
-                'net_amount'      => $stripeData['course_price'][$index],
+                'net_amount' => $stripeData['course_price'][$index],
                 'status' => 'completed',
                 'paid_at' => now(),
-            ]);
+            ]));
         }
+
+        return $orders;
     }
 }

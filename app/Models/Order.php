@@ -72,4 +72,9 @@ class Order extends Model
     {
         return (float) ($this->gross_amount ?? $this->price ?? 0);
     }
+
+    public function enrollment()
+    {
+        return $this->hasOne(Enrollment::class, 'order_id');
+    }
 }

@@ -69,6 +69,16 @@ class User extends Authenticatable
             return true;
         }
 
+        $hasEnrollment = $this->enrollments()
+            ->where('course_id', $course->id)
+            ->where('status', 'active')
+            ->exists();
+
+        if ($hasEnrollment) {
+            return true;
+        }
+
+        // fallback tạm trong giai đoạn chuyển dữ liệu
         return $this->orders()
             ->where('course_id', $course->id)
             ->where('status', 'completed')
@@ -140,5 +150,27 @@ class User extends Authenticatable
     public function contentReports()
     {
         return $this->hasMany(ContentReport::class, 'reporter_id', 'id');
+    }
+
+    //Enrollment
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
+
+    public function activeEnrollments()
+    {
+        return $this->hasMany(Enrollment::class)->where('status', 'active');
+    }
+
+    //Course Progress
+    public function courseProgress()
+    {
+        return $this->hasMany(CourseProgress::class);
+    }
+
+    public function activeCourseProgress()
+    {
+        return $this->hasMany(CourseProgress::class)->where('status', 'active');
     }
 }

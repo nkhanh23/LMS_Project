@@ -10,7 +10,9 @@ class CourseSection extends Model
 
     public function lecture()
     {
-        return $this->hasMany(CourseLecture::class, 'section_id', 'id')->orderBy('id', 'asc');
+        return $this->hasMany(CourseLecture::class, 'section_id', 'id')
+            ->orderBy('sort_order')
+            ->orderBy('id');
     }
 
     public function course()

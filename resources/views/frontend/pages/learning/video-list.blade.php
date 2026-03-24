@@ -21,7 +21,16 @@
                                 {{ $section->section_title }}
                             </h3>
                             <div class="flex items-center gap-2 text-[10px] font-bold text-slate-500 uppercase">
-                                <span>0 / {{ $section->lecture->count() }}</span>
+                                @php
+                                    $sectionCompleted = $section->lecture
+                                        ->filter(function ($lecture) use ($lessonProgressMap) {
+                                            return optional($lessonProgressMap->get($lecture->id))->status ===
+                                                'completed';
+                                        })
+                                        ->count();
+                                @endphp
+
+                                <span>{{ $sectionCompleted }} / {{ $section->lecture->count() }}</span>
                                 <span class="text-slate-700">|</span>
                                 <span>{{ $section->lecture->sum('video_duration') ?: '0' }} phút</span>
                             </div>
@@ -32,34 +41,56 @@
 
                     <div class="bg-black/20">
                         @foreach ($section->lecture as $lecture)
+                            @php
+                                $lectureProgress = $lessonProgressMap->get($lecture->id);
+                                $isCompleted = optional($lectureProgress)->status === 'completed';
+                                $isUnlocked = app(\App\Services\LearningProgressService::class)->isLectureUnlocked(
+                                    $course,
+                                    $enrollment,
+                                    $lecture,
+                                );
+                            @endphp
                             <div
-                                class="p-4 flex items-start gap-4 border-b border-black/10 hover:bg-white/5 transition-all group/lecture {{ $currentLecture->id == $lecture->id ? 'bg-brand/5 border-l-4 border-l-brand' : '' }}">
-                                <!-- Custom Checkbox -->
-                                <label class="relative flex items-center cursor-pointer mt-1">
-                                    <input type="checkbox" class="sr-only peer">
-                                    <div
-                                        class="w-6 h-6 border-2 border-slate-700 bg-cyber-dark group-hover/lecture:border-cyber-cyan peer-checked:bg-brand peer-checked:border-black transition-all flex items-center justify-center">
-                                        <i
-                                            class="fa-solid fa-check text-[10px] text-black opacity-0 peer-checked:opacity-100"></i>
-                                    </div>
-                                </label>
+                                class="p-4 flex items-start gap-4 border-b border-black/10 hover:bg-white/5 transition-all group/lecture {{ $currentLecture->id == $lecture->id ? 'bg-brand/5 border-l-4 border-l-brand' : '' }} {{ !$isUnlocked ? 'opacity-50' : '' }}">
+
+                                <!-- Status Icon -->
+                                <div class="mt-1">
+                                    @if ($isCompleted)
+                                        <i class="fa-solid fa-circle-check text-green-400"></i>
+                                    @elseif(!$isUnlocked)
+                                        <i class="fa-solid fa-lock text-red-400"></i>
+                                    @else
+                                        <i class="fa-regular fa-circle text-slate-500"></i>
+                                    @endif
+                                </div>
 
                                 <div class="flex-1 min-w-0 flex flex-col gap-2">
-                                    <a href="{{ route('course.lecture.watch', [$course->course_name_slug, $lecture->id]) }}"
-                                        class="block lecture-item-link" data-lecture-id="{{ $lecture->id }}">
-                                        <h4
-                                            class="text-sm font-bold {{ $currentLecture->id == $lecture->id ? 'text-brand' : 'text-slate-200' }} group-hover/lecture:text-cyber-cyan transition-colors truncate">
-                                            @if($lecture->quiz)
-                                                <i class="fa-solid fa-file-circle-question mr-1 text-brand"></i>
-                                            @endif
-                                            {{ $loop->iteration }}. {{ $lecture->lecture_title }}
-                                        </h4>
-                                    </a>
+                                    @if ($isUnlocked)
+                                        <a href="{{ route('course.lecture.watch', [$course->course_name_slug, $lecture->id]) }}"
+                                            class="block lecture-item-link" data-lecture-id="{{ $lecture->id }}">
+                                            <h4
+                                                class="text-sm font-bold {{ $currentLecture->id == $lecture->id ? 'text-brand' : 'text-slate-200' }} group-hover/lecture:text-cyber-cyan transition-colors truncate">
+                                                @if ($lecture->quiz)
+                                                    <i class="fa-solid fa-file-circle-question mr-1 text-brand"></i>
+                                                @endif
+                                                {{ $loop->iteration }}. {{ $lecture->lecture_title }}
+                                            </h4>
+                                        </a>
+                                    @else
+                                        <div class="cursor-not-allowed">
+                                            <h4 class="text-sm font-bold text-slate-500 truncate">
+                                                @if ($lecture->quiz)
+                                                    <i class="fa-solid fa-file-circle-question mr-1"></i>
+                                                @endif
+                                                {{ $loop->iteration }}. {{ $lecture->lecture_title }}
+                                            </h4>
+                                        </div>
+                                    @endif
 
                                     <div class="flex items-center justify-between">
                                         <div
                                             class="flex items-center gap-2 text-[10px] font-bold text-slate-500 uppercase">
-                                            @if($lecture->quiz)
+                                            @if ($lecture->quiz)
                                                 <i class="fa-solid fa-brain text-xs"></i>
                                                 <span>{{ $lecture->quiz->questions->count() }} câu hỏi</span>
                                             @else

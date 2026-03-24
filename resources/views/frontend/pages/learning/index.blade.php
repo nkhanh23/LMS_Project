@@ -103,11 +103,15 @@
         </div>
 
         <div class="flex items-center gap-6">
-            <div class="hidden md:flex items-center gap-2">
-                <div class="w-32 h-2 bg-black border border-slate-700 rounded-full overflow-hidden">
-                    <div class="h-full bg-brand" style="width: 65%"></div>
+            <div class="hidden md:flex items-center gap-4">
+                <div class="w-48 bg-black border border-brand h-3">
+                    <div class="bg-brand h-full"
+                         style="width: {{ $courseProgress->completion_percent ?? 0 }}%"></div>
                 </div>
-                <span class="text-[10px] font-bold text-brand uppercase">65% Hoàn thành</span>
+                <span class="text-xs font-bold text-brand">
+                    {{ $courseProgress->completed_lectures ?? 0 }}/{{ $courseProgress->total_lectures ?? 0 }}
+                    ({{ $courseProgress->completion_percent ?? 0 }}%)
+                </span>
             </div>
             
             <div class="flex items-center gap-4 text-slate-400 text-sm font-bold uppercase">
@@ -227,6 +231,36 @@
             window.addEventListener('popstate', function(e) {
                 if (e.state && e.state.lectureId) {
                     $(`.lecture-item-link[data-lecture-id="${e.state.lectureId}"]`).click();
+                }
+            });
+
+            // Mark as Complete
+            $(document).on('click', '#mark-complete-btn', async function () {
+                const lectureId = this.dataset.lectureId;
+                const $btn = $(this);
+
+                try {
+                    $btn.prop('disabled', true).addClass('opacity-50 cursor-not-allowed');
+                    
+                    const response = await fetch(`/learning/lecture/${lectureId}/complete`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json',
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    if (data.status === 'success') {
+                        location.reload();
+                    } else {
+                        throw new Error(data.message || 'Failed to complete lecture');
+                    }
+                } catch (err) {
+                    console.error('Failed to complete lecture:', err);
+                    Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Không thể hoàn thành bài học.' });
+                    $btn.prop('disabled', false).removeClass('opacity-50 cursor-not-allowed');
                 }
             });
         });

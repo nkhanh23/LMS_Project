@@ -100,3 +100,15 @@ function getVideoUrl($type, $url)
 
     return asset($url);
 }
+
+function getYoutubeEmbedUrl($url)
+{
+    if (empty($url)) return null;
+
+    $regExp = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/';
+    if (preg_match($regExp, $url, $match) && strlen($match[2]) == 11) {
+        return 'https://www.youtube.com/embed/' . $match[2];
+    }
+
+    return null;
+}

@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('course_id');
             $table->string('section_title');
+            $table->unsignedInteger('sort_order')->default(1);
             $table->timestamps();
 
             // Add foreign key constraint
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->index('course_id');
+            $table->index('sort_order');
         });
     }
 
