@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->unsignedBigInteger('order_id');
                 $table->unsignedBigInteger('payment_id')->nullable();
                 $table->unsignedBigInteger('user_id');
+                $table->unsignedBigInteger('instructor_id')->nullable()->index();
                 // request source
                 $table->string('request_source')->default('user'); // user|admin
                 // loại
@@ -54,6 +55,7 @@ return new class extends Migration
                 $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
                 $table->foreign('payment_id')->references('id')->on('payments')->nullOnDelete();
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('instructor_id')->references('id')->on('users')->nullOnDelete();
                 $table->foreign('reviewed_by')->references('id')->on('users')->nullOnDelete();
                 $table->foreign('processed_by')->references('id')->on('users')->nullOnDelete();
             });

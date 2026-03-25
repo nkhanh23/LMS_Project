@@ -14,17 +14,17 @@
     <!-- Navigation -->
     <nav class="flex-1 p-4 flex flex-col gap-2 overflow-y-auto">
         <a class="sidebar-active flex items-center gap-3 px-4 py-3 border-2 border-black font-bold pixel-text text-sm"
-            href="#">
+            href="{{ route('user.dashboard') }}">
             <i class="fas fa-th-large"></i>
             <span>Trang chủ</span>
         </a>
         <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
-            href="#">
+            href="{{ route('user.profile') }}">
             <i class="fas fa-user text-cyber-cyan"></i>
             <span>Thông tin cá nhân</span>
         </a>
         <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
-            href="#">
+            href="{{ route('user.courses') }}">
             <i class="fas fa-book text-cyber-cyan"></i>
             <span>Khóa học của tôi</span>
         </a>

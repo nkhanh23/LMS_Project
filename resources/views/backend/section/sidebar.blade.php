@@ -175,6 +175,13 @@
                 </li>
             </ul>
         </li>
+
+        <li class="{{ setSidebar(['admin.approval-center*']) }}">
+            <a href="{{ route('admin.approval-center.index') }}">
+                <div class="parent-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="menu-title">Trung tâm phê duyệt</div>
+            </a>
+        </li>
     </ul>
     <!--end navigation-->
 </div>

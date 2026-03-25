@@ -52,6 +52,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('DROP TABLE IF EXISTS "courses" CASCADE');
+        Schema::dropIfExists('courses');
     }
 };

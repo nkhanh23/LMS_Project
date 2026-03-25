@@ -4,17 +4,22 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseQualityCheck;
 use App\Services\AdminAuditLogService;
+use App\Services\InstructorRiskScoreService;
+use App\Services\CourseQualityChecklistService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminCourseApprovalController extends Controller
 {
     protected $adminAuditLogService;
+    protected $instructorRiskScoreService;
 
-    public function __construct(AdminAuditLogService $adminAuditLogService)
+    public function __construct(AdminAuditLogService $adminAuditLogService, InstructorRiskScoreService $instructorRiskScoreService)
     {
         $this->adminAuditLogService = $adminAuditLogService;
+        $this->instructorRiskScoreService = $instructorRiskScoreService;
     }
     public function index(Request $request)
     {
@@ -29,6 +34,32 @@ class AdminCourseApprovalController extends Controller
             ->paginate(10);
 
         return view('backend.admin.course-approval.index', compact('courses', 'courseStatus'));
+    }
+
+    public function approve(Course $course, CourseQualityCheck $checklistService, AdminAuditLogService $auditLogService)
+    {
+        $checks = $checklistService->sync($course, Auth::id());
+
+        $canApprove = collect($checks)->every(fn($item) => $item['status'] === 'pass');
+
+        if (! $canApprove) {
+            return redirect()->back()->with('error', 'Khóa học chưa đạt quality checklist để publish');
+        }
+
+        $course->update([
+            'approval_status' => 'approved',
+        ]);
+
+        $auditLogService->log(
+            'course_approved',
+            'course',
+            $course->id,
+            null,
+            null,
+            'Khóa học đã được duyệt'
+        );
+
+        return redirect()->back()->with('success', 'Khóa học đã được duyệt');
     }
 
     public function publish($id)
@@ -109,6 +140,10 @@ class AdminCourseApprovalController extends Controller
             ['source' => 'admin_course_approval']
         );
 
+        if ($course->instructor_id) {
+            $this->instructorRiskScoreService->recalculate($course->instructor_id);
+        }
+
         return back()->with('success', 'Khóa học đã bị reject.');
     }
 
@@ -149,5 +184,13 @@ class AdminCourseApprovalController extends Controller
         );
 
         return back()->with('success', 'Khóa học đã bị hidden.');
+    }
+
+    public function show($id, CourseQualityChecklistService $checklistService)
+    {
+        $course = Course::with(['user', 'category', 'subcategory'])->findOrFail($id);
+        $qualityChecks = $checklistService->evaluate($course);
+
+        return view('backend.admin.course-approval.show', compact('course', 'qualityChecks'));
     }
 }

@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\backend\AdminApprovalCenterController;
 use App\Http\Controllers\backend\AdminAuditLogController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\AdminCourseApprovalController;
@@ -193,7 +194,8 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
 
     Route::post('/course-approvals/{id}/hide', [AdminCourseApprovalController::class, 'hide'])
         ->name('course-approvals.hide');
-
+    Route::get('/course-approvals/{id}', [AdminCourseApprovalController::class, 'show'])
+        ->name('course-approvals.show');
 
     /* Moderation */
     //Danh sách report
@@ -204,7 +206,7 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
         ->name('moderation.reports.show');
     //Xử lý report
     Route::post('/moderation/reports/{report}/resolve', [AdminModerationController::class, 'resolve'])
-        ->name('moderation.reports.resolve');
+        ->name('moderation.resolve');
 
     /* Audit Logs */
     //Danh sách audit log
@@ -215,6 +217,13 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
     //Danh sách learning analytics
     Route::get('/learning-analytics', [AdminLearningAnalyticsController::class, 'index'])
         ->name('learning.analytics');
+
+    /* Approval Center */
+    Route::get('/approval-center', [AdminApprovalCenterController::class, 'index'])
+        ->name('approval-center.index');
+
+    Route::get('/approval-center/{course}', [AdminApprovalCenterController::class, 'show'])
+        ->name('approval-center.show');
 });
 
 /*  INSTRUCTOR LOGIN  */
@@ -325,6 +334,7 @@ Route::middleware('auth')->group(function () {
 /*  USER ROUTE LIST  */
 Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/courses', [UserController::class, 'myCourses'])->name('courses');
     Route::post('/logout', [UserController::class, 'destroy'])->name('logout');
 
     /*   USER PROFILE   */

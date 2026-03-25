@@ -75,6 +75,11 @@
                                                 <td>{{ $course->submitted_for_review_at ?? '---' }}</td>
                                                 <td>
                                                     <div class="d-flex flex-column gap-2">
+                                                        <a href="{{ route('admin.course-approvals.show', $course->id) }}"
+                                                            class="btn btn-primary btn-sm w-100">
+                                                            Xem chi tiết
+                                                        </a>
+
                                                         @if (in_array($course->approval_status, ['pending_review', 'rejected', 'hidden']))
                                                             <form method="POST"
                                                                 action="{{ route('admin.course-approvals.publish', $course->id) }}">

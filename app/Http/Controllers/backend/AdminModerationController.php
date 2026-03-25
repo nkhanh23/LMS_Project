@@ -7,7 +7,10 @@ use App\Http\Requests\AdminResolveReportRequest;
 use App\Models\ContentReport;
 use App\Repositories\ContentReportRepository;
 use App\Services\ModerationService;
+use App\Models\ModerationPolicy;
+use App\Models\ModerationActionTemplate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class AdminModerationController extends Controller
@@ -40,19 +43,33 @@ class AdminModerationController extends Controller
 
     public function show(ContentReport $report)
     {
-        $report = $this->contentReportRepository->findById($report->id);
+        $policies = ModerationPolicy::where('is_active', true)->get();
+        $actionTemplates = ModerationActionTemplate::where('is_active', true)->get();
 
-        return view('backend.admin.moderation.show', compact('report'));
+        return view('backend.admin.moderation.show', compact(
+            'report',
+            'policies',
+            'actionTemplates'
+        ));
     }
 
-    public function resolve(AdminResolveReportRequest $request, ContentReport $report)
-    {
-        try {
-            $this->moderationService->resolveReport($report, $request->validated());
+    public function resolve(
+        Request $request,
+        ContentReport $report,
+        ModerationService $moderationService
+    ) {
+        $request->validate([
+            'policy_id' => ['required', 'exists:moderation_policies,id'],
+            'action_template_id' => ['required', 'exists:moderation_action_templates,id'],
+            'resolution_note' => ['nullable', 'string', 'max:2000'],
+        ]);
 
-            return back()->with('success', 'Xử lý report thành công.');
-        } catch (ValidationException $e) {
-            return back()->withErrors($e->errors())->withInput();
-        }
+        $moderationService->resolveReport($report, $request->only([
+            'policy_id',
+            'action_template_id',
+            'resolution_note',
+        ]), Auth::id());
+
+        return redirect()->back()->with('success', 'Đã xử lý report thành công');
     }
 }

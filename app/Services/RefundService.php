@@ -8,6 +8,7 @@ use App\Models\RefundRequest;
 use App\Models\User;
 use App\Repositories\OrderRepository;
 use App\Repositories\RefundRepository;
+use App\Services\InstructorRiskScoreService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -16,12 +17,18 @@ class RefundService
     protected $refundRepository;
     protected $orderRepository;
     protected $enrollmentService;
+    protected $instructorRiskScoreService;
 
-    public function __construct(RefundRepository $refundRepository, OrderRepository $orderRepository, EnrollmentService $enrollmentService)
-    {
+    public function __construct(
+        RefundRepository $refundRepository,
+        OrderRepository $orderRepository,
+        EnrollmentService $enrollmentService,
+        InstructorRiskScoreService $instructorRiskScoreService
+    ) {
         $this->refundRepository = $refundRepository;
         $this->orderRepository = $orderRepository;
         $this->enrollmentService = $enrollmentService;
+        $this->instructorRiskScoreService = $instructorRiskScoreService;
     }
 
     public function getRefundRequests(array $filters = [], int $perPage = 15)
@@ -67,6 +74,7 @@ class RefundService
                 'order_id'          => $order->id,
                 'payment_id'        => $order->payment_id,
                 'user_id'           => $user->id,
+                'instructor_id'     => $order->instructor_id,
                 'request_source'    => 'user',
                 'type'              => $data['type'] ?? 'refund',
                 'status'            => 'pending',
@@ -179,6 +187,10 @@ class RefundService
                 ],
             ]);
 
+            if ($order->instructor_id) {
+                $this->instructorRiskScoreService->recalculate($order->instructor_id);
+            }
+
             return $refundRequest->refresh();
         });
     }
@@ -249,6 +261,7 @@ class RefundService
                 'order_id'          => $order->id,
                 'payment_id'        => $order->payment_id,
                 'user_id'           => $order->user_id,
+                'instructor_id'     => $order->instructor_id,
                 'request_source'    => 'admin',
                 'type'              => 'refund',
                 'status'            => 'processed',
@@ -308,6 +321,10 @@ class RefundService
                 ],
             ]);
 
+            if ($order->instructor_id) {
+                $this->instructorRiskScoreService->recalculate($order->instructor_id);
+            }
+
             return $refundRequest;
         });
     }
@@ -333,6 +350,7 @@ class RefundService
                 'order_id'       => $order->id,
                 'payment_id'     => $order->payment_id,
                 'user_id'        => $order->user_id,
+                'instructor_id'  => $order->instructor_id,
                 'request_source' => 'admin',
                 'type'           => 'cancel',
                 'status'         => 'processed',
@@ -369,6 +387,10 @@ class RefundService
                 'note'               => $data['admin_note'] ?? null,
                 'meta_json'          => [],
             ]);
+
+            if ($order->instructor_id) {
+                $this->instructorRiskScoreService->recalculate($order->instructor_id);
+            }
 
             return $refundRequest;
         });

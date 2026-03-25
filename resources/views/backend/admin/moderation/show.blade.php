@@ -53,27 +53,35 @@
                     <strong>Xử lý report</strong>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.moderation.reports.resolve', $report->id) }}" method="POST">
+                    <form action="{{ route('admin.moderation.resolve', $report->id) }}" method="POST">
                         @csrf
 
                         <div class="mb-3">
-                            <label class="form-label">Action</label>
-                            <select name="action" class="form-control" required>
-                                <option value="">-- Chọn action --</option>
-                                <option value="dismiss">Bỏ qua report</option>
-                                <option value="hide_content">Ẩn nội dung</option>
-                                <option value="delete_content">Xóa mềm nội dung</option>
-                                <option value="lock_course">Khóa course</option>
-                                <option value="lock_instructor">Khóa instructor</option>
+                            <label class="form-label">Policy</label>
+                            <select name="policy_id" class="form-select" required>
+                                <option value="">-- Chọn policy --</option>
+                                @foreach($policies as $policy)
+                                    <option value="{{ $policy->id }}">{{ $policy->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Ghi chú xử lý</label>
-                            <textarea name="resolution_note" class="form-control" rows="5" required>{{ old('resolution_note') }}</textarea>
+                            <label class="form-label">Action Template</label>
+                            <select name="action_template_id" class="form-select" required>
+                                <option value="">-- Chọn action --</option>
+                                @foreach($actionTemplates as $action)
+                                    <option value="{{ $action->id }}">{{ $action->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <button class="btn btn-danger">Xử lý</button>
+                        <div class="mb-3">
+                            <label class="form-label">Resolution Note</label>
+                            <textarea name="resolution_note" class="form-control" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Resolve Report</button>
                         <a href="{{ route('admin.moderation.reports.index') }}" class="btn btn-secondary">Quay lại</a>
                     </form>
                 </div>

@@ -20,7 +20,7 @@
                 },
                 fontFamily: {
                     sans: ['"Space Grotesk"', 'sans-serif'],
-                    pixel: ['"Press Start 2P"', 'cursive'],
+                    pixel: ['"Pixelify Sans"', 'cursive'],
                     mono: ['"VT323"', 'monospace'],
                 },
             }
