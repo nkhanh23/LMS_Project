@@ -25,7 +25,7 @@ return new class extends Migration
             $table->enum('status', ['not_started', 'in_progress', 'completed'])->default('not_started');
             // Tiến độ
             $table->unsignedInteger('progress_percent')->default(0);
-            // Thời gian xem
+            // Số giây đã xem video
             $table->unsignedInteger('watch_seconds')->default(0);
 
             // Thời gian bắt đầu

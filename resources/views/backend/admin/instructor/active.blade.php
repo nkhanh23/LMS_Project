@@ -38,6 +38,7 @@
                                 <th>Tên</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
+                                <th>Điểm rủi ro</th>
                                 <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
@@ -56,6 +57,25 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
+                                    <td>
+                                        @php
+                                            $score = $item->risk_score ?? 0;
+                                            $badgeClass = 'bg-success';
+                                            $level = 'Thấp';
+                                            if ($score >= 100) {
+                                                $badgeClass = 'bg-danger';
+                                                $level = 'Rất cao';
+                                            } elseif ($score >= 60) {
+                                                $badgeClass = 'bg-warning text-dark';
+                                                $level = 'Cao';
+                                            } elseif ($score >= 30) {
+                                                $badgeClass = 'bg-info text-dark';
+                                                $level = 'Trung bình';
+                                            }
+                                        @endphp
+                                        <span class="badge {{ $badgeClass }}">{{ $score }}
+                                            ({{ $level }})</span>
+                                    </td>
                                     <td>
                                         @if ($item->status == 1)
                                             <span class="badge bg-success">Hoạt động</span>
@@ -104,18 +124,26 @@
                     },
                     success: function(response) {
                         if (response.success) {
-                            // Update the status badge dynamically
-                            const statusBadge = row.find('td:nth-child(6) .badge');
+                            // Update the status badge dynamically (now at column 7)
+                            const statusBadge = row.find('td:nth-child(7) .badge');
                             if (status === 1) {
                                 statusBadge
                                     .removeClass('bg-danger')
-                                    .addClass('bg-primary')
-                                    .text('Active');
+                                    .addClass('bg-success')
+                                    .text('Hoạt động');
                             } else {
                                 statusBadge
-                                    .removeClass('bg-primary')
+                                    .removeClass('bg-success')
                                     .addClass('bg-danger')
-                                    .text('Inactive');
+                                    .text('Không hoạt động');
+
+                                // Vì đây là trang Giảng viên đang hoạt động, nên khi ẩn (inactive) 
+                                // thì ta nên xóa hàng đó khỏi danh sách sau khi hiện thông báo
+                                setTimeout(() => {
+                                    row.fadeOut(400, function() {
+                                        $(this).remove();
+                                    });
+                                }, 1000);
                             }
 
                             // Show SweetAlert Toast Notification
@@ -127,8 +155,6 @@
                                 showConfirmButton: false,
                                 timer: 3000
                             });
-
-                            window.location.reload()
                         } else {
                             Swal.fire({
                                 toast: true,

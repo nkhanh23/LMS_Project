@@ -24,6 +24,15 @@
                     @endif
                 </form>
             </div>
+            <div class="col-md-6 text-end">
+                <div class="d-inline-block border p-2 rounded bg-light" style="font-size: 0.8rem;">
+                    <strong>Chú giải rủi ro:</strong>
+                    <span class="badge bg-success ms-2">Thấp (0-29)</span>
+                    <span class="badge bg-info text-dark ms-1">Trung bình (30-59)</span>
+                    <span class="badge bg-warning text-dark ms-1">Cao (60-99)</span>
+                    <span class="badge bg-danger ms-1">Rất cao (>=100)</span>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -35,8 +44,9 @@
                                 <th>STT</th>
                                 <th>Hình ảnh</th>
                                 <th>Tên</th>
-                                <th>Email</th>
+                                 <th>Email</th>
                                 <th>Số điện thoại</th>
+                                <th>Điểm rủi ro</th>
                                 <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
@@ -54,7 +64,25 @@
                                     </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->phone }}</td>
+                                     <td>{{ $item->phone }}</td>
+                                    <td>
+                                        @php
+                                            $score = $item->risk_score ?? 0;
+                                            $badgeClass = 'bg-success';
+                                            $level = 'Thấp';
+                                            if ($score >= 100) {
+                                                $badgeClass = 'bg-danger';
+                                                $level = 'Rất cao';
+                                            } elseif ($score >= 60) {
+                                                $badgeClass = 'bg-warning text-dark';
+                                                $level = 'Cao';
+                                            } elseif ($score >= 30) {
+                                                $badgeClass = 'bg-info text-dark';
+                                                $level = 'Trung bình';
+                                            }
+                                        @endphp
+                                        <span class="badge {{ $badgeClass }}">{{ $score }} ({{ $level }})</span>
+                                    </td>
                                     <td>
                                         @if ($item->status == 1)
                                             <span class="badge bg-success">Hoạt động</span>
@@ -104,15 +132,15 @@
                     success: function(response) {
                         if (response.success) {
                             // Update the status badge dynamically
-                            const statusBadge = row.find('td:nth-child(6) .badge');
+                            const statusBadge = row.find('td:nth-child(7) .badge');
                             if (status === 1) {
                                 statusBadge
                                     .removeClass('bg-danger')
-                                    .addClass('bg-primary')
-                                    .text('Hoạt     động');
+                                    .addClass('bg-success')
+                                    .text('Hoạt động');
                             } else {
                                 statusBadge
-                                    .removeClass('bg-primary')
+                                    .removeClass('bg-success')
                                     .addClass('bg-danger')
                                     .text('Không hoạt động');
                             }

@@ -56,7 +56,7 @@ class AdminCourseController extends Controller
      */
     public function show(string $id)
     {
-        $course = Course::where('id', $id)->with('user', 'category', 'subCategory')->first();
+        $course = Course::where('id', $id)->with('user.riskScore', 'category', 'subCategory')->first();
         return view('backend.admin.course.view', compact('course'));
     }
 

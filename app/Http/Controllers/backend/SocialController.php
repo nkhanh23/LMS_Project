@@ -13,6 +13,7 @@ class SocialController extends Controller
 {
     public function googleLogin()
     {
+        //chuyển hướng người dùng tới trang đăng nhập google
         return Socialite::driver('google')->redirect();
     }
 

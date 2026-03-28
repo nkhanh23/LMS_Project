@@ -2,11 +2,13 @@
 
 namespace App\Traits;
 
+use Illuminate\Http\UploadedFile;
+
 trait FileUploadTrait
 {
     public function uploadFile($file, $folder, $existingFile = null)
     {
-        if ($file && $file instanceof \Illuminate\Http\UploadedFile) {
+        if ($file && $file instanceof UploadedFile) {
             //thư mục đích
             $targetFolder = public_path("upload/{$folder}");
             //đảm bảo thư mục đó tồn tại

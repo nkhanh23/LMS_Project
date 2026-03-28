@@ -26,7 +26,7 @@ class AdminCourseApprovalController extends Controller
         $courseStatus = $request->input('course_status');
 
         $courses = Course::query()
-            ->with(['user', 'category'])
+            ->with(['user.riskScore', 'category'])
             ->when($courseStatus, function ($query) use ($courseStatus) {
                 $query->where('approval_status', $courseStatus);
             })
@@ -150,7 +150,7 @@ class AdminCourseApprovalController extends Controller
     public function hide(Request $request, $id)
     {
         $validated = $request->validate([
-            'review_note' => 'required|string|max:5000',
+            'review_note' => 'nullable|string|max:5000',
         ]);
         $course = Course::findOrFail($id);
         $old = $course->only([
@@ -179,7 +179,7 @@ class AdminCourseApprovalController extends Controller
                 'reviewed_by',
                 'reviewed_at',
             ]),
-            $validated['review_note'],
+            $validated['review_note'] ?? 'Khóa học đã bị ẩn bởi hệ thống quản trị',
             ['source' => 'admin_course_approval']
         );
 
@@ -188,7 +188,7 @@ class AdminCourseApprovalController extends Controller
 
     public function show($id, CourseQualityChecklistService $checklistService)
     {
-        $course = Course::with(['user', 'category', 'subcategory'])->findOrFail($id);
+        $course = Course::with(['user.riskScore', 'category', 'subcategory'])->findOrFail($id);
         $qualityChecks = $checklistService->evaluate($course);
 
         return view('backend.admin.course-approval.show', compact('course', 'qualityChecks'));

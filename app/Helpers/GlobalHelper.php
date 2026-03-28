@@ -104,9 +104,10 @@ function getVideoUrl($type, $url)
 function getYoutubeEmbedUrl($url)
 {
     if (empty($url)) return null;
-
+    // Biểu thức chính quy để tìm ID video (chuỗi 11 ký tự) từ nhiều dạng link YouTube khác nhau
     $regExp = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/';
     if (preg_match($regExp, $url, $match) && strlen($match[2]) == 11) {
+        // Trả về định dạng chuẩn để nhét vào iframe: 
         return 'https://www.youtube.com/embed/' . $match[2];
     }
 

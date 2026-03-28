@@ -197,6 +197,16 @@
                             document.getElementById('noteFormContainer')?.classList.add('hidden');
                             document.getElementById('noteContent').value = '';
                         }
+                        
+                        // 3.3 Sync Chatbot Form
+                        const chatbotForm = document.getElementById('chatbotForm');
+                        if (chatbotForm) {
+                            chatbotForm.querySelector('input[name="lecture_id"]').value = data.lecture.id;
+                            chatbotForm.querySelector('input[name="course_id"]').value = data.lecture.course_id;
+                            // Reset chatbot UI state
+                            document.getElementById('chat-result')?.classList.add('hidden');
+                            document.getElementById('chat-message').value = '';
+                        }
 
                         // 4. Update Padding if it's a quiz
                         const tabSectionContainer = document.getElementById('tabSectionContainer');

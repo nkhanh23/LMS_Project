@@ -59,6 +59,12 @@
 
                                 <span class="">
                                     {{ $course->user->name }}
+                                    @if(isset($course->user))
+                                        @php $risk = $course->user->risk_level; @endphp
+                                        <span class="badge {{ $risk['class'] }} ms-2">
+                                            Risk: {{ $risk['score'] }} ({{ $risk['label'] }})
+                                        </span>
+                                    @endif
                                 </span>
                             </li>
 

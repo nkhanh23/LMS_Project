@@ -33,6 +33,7 @@ class LectureService
      */
     public function generatePresignedUrl(string $extension): array
     {
+        //Tạo tên file ngẫu nhiên (UUID) để tránh trùng lặp trên R2
         $filename = 'course_videos/' . Str::uuid() . '.' . $extension;
 
         // Tạo S3 Client trực tiếp từ cấu hình r2
@@ -47,7 +48,8 @@ class LectureService
             ],
         ]);
 
-        // Yêu cầu quyền Upload (PutObject)
+        // Tạo một "Mệnh lệnh" (Command) dặn R2 rằng: Sắp có người tải một vật thể (PutObject) lên.
+        // Vật thể đó sẽ nằm ở cái 'Bucket' này, mang tên là 'Key' này, và có định dạng video.
         $command = $client->getCommand('PutObject', [
             'Bucket' => config('filesystems.disks.r2.bucket'),
             'Key'    => $filename,
@@ -168,6 +170,7 @@ class LectureService
      */
     public function generateDocumentPresignedUrl(string $extension, string $mimeType): array
     {
+        // Tạo tên file duy nhất trên R2 (ví dụ: course_documents/123e4567-e89b-12d3-a456-426614174000.pdf)
         $filename = 'course_documents/' . Str::uuid() . '.' . $extension;
 
         $client = new S3Client([
@@ -181,6 +184,8 @@ class LectureService
             ],
         ]);
 
+        // Tạo một "Mệnh lệnh" (Command) dặn R2 rằng: Sắp có người tải một vật thể (PutObject) lên.
+        // Vật thể đó sẽ nằm ở cái 'Bucket' này, mang tên là 'Key' này, và có định dạng video.
         $command = $client->getCommand('PutObject', [
             'Bucket' => config('filesystems.disks.r2.bucket'),
             'Key'    => $filename,
@@ -253,13 +258,18 @@ class LectureService
         ];
 
         if (!empty($downloadName)) {
+            // Bỏ các dấu nháy kép, dấu xuống dòng...
             $safeName = str_replace(['"', "\r", "\n"], '', $downloadName);
 
+            // 'attachment' ép trình duyệt phải TẢI XUỐNG thay vì mở xem trực tiếp trên tab mới.
+            // 'filename="..."' ép trình duyệt lưu file vào máy người dùng bằng tên $safeName thay vì tên chuỗi UUID xấu xí trên R2.
             $params['ResponseContentDisposition'] = 'attachment; filename="' . $safeName . '"';
         }
 
+        // Tạo một "Mệnh lệnh" (Command) dặn R2 rằng: Sắp có người tải một vật thể (GetObject) xuống.
         $command = $client->getCommand('GetObject', $params);
 
+        // Tạo URL tải xuống tạm thời (có hiệu lực trong 10 phút)
         $presignedRequest = $client->createPresignedRequest($command, '+10 minutes');
 
         return (string) $presignedRequest->getUri();

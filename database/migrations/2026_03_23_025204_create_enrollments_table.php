@@ -20,7 +20,7 @@ return new class extends Migration
 
             $table->foreignId('order_id')->nullable()->constrained('orders')->nullOnDelete();
 
-            // Nguồn đăng ký
+            // Nguồn đăng ký order (mua), admin (admin cấp), manual, coupon
             $table->enum('source', ['order', 'admin', 'manual', 'coupon'])->default('order');
             // Trạng thái
             $table->enum('status', ['active', 'completed', 'revoked', 'refunded'])->default('active');

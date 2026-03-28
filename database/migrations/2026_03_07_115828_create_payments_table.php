@@ -22,24 +22,30 @@ return new class extends Migration
             $table->string('cash_delivery')->nullable();
             // tổng số tiền
             $table->string('total_amount')->nullable();
-            // số tiền refund
+            // số tiền hoàn tiền
             $table->decimal('refunded_amount', 12, 2)->default(0);
-            // thời gian refund
+            // thời gian hoàn tiền
             $table->timestamp('refunded_at')->nullable();
-            // tham chiếu refund
+            // tham chiếu hoàn tiền
             $table->string('refund_reference')->nullable();
-            // dữ liệu provider
+            // Dữ liệu thô trả về từ Stripe
             $table->json('provider_payload')->nullable();
-            // trạng thái provider
+            // Trạng thái thanh toán (pending, success, failed, refunded)
             $table->string('provider_status')->nullable();
 
             $table->index(['status']);
             $table->index(['transaction_id']);
+            // Loại thanh toán
             $table->string('payment_type')->nullable();
+            // Số hoá đơn
             $table->string('invoice_no')->nullable();
+            // Ngày đặt hàng
             $table->string('order_date')->nullable();
+            // Tháng đặt hàng
             $table->string('order_month')->nullable();
+            // Năm đặt hàng
             $table->string('order_year')->nullable();
+            // Trạng thái thanh toán
             $table->string('status')->nullable();
             $table->timestamps();
         });

@@ -57,6 +57,18 @@
                     </div>
                 </form>
 
+                <div class="row mb-3">
+                    <div class="col-12 text-end">
+                        <div class="d-inline-block border p-2 rounded bg-light" style="font-size: 0.75rem;">
+                            <strong>Rủi ro giảng viên:</strong>
+                            <span class="badge bg-success ms-2">Thấp (0-29)</span>
+                            <span class="badge bg-info text-dark ms-1">Trung bình (30-59)</span>
+                            <span class="badge bg-warning text-dark ms-1">Cao (60-99)</span>
+                            <span class="badge bg-danger ms-1">Rất cao (>=100)</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" style="width:100%">
                         <thead>
@@ -65,6 +77,7 @@
                                 <th>Ảnh</th>
                                 <th>Tên khóa học</th>
                                 <th>Giảng viên</th>
+                                <th>Rủi ro GV</th>
                                 <th>Danh mục</th>
                                 <th>Giá</th>
                                 <th>Trạng thái</th>
@@ -84,6 +97,16 @@
                                     </td>
                                     <td>{{ $item->course_name }}</td>
                                     <td>{{ $item->user->name }}</td>
+                                    <td>
+                                        @if(isset($item->user))
+                                            @php $risk = $item->user->risk_level; @endphp
+                                            <span class="badge {{ $risk['class'] }}" style="font-size: 0.7rem;">
+                                                {{ $risk['score'] }} ({{ $risk['label'] }})
+                                            </span>
+                                        @else
+                                            ---
+                                        @endif
+                                    </td>
                                     <td>{{ $item->category->name }}</td>
                                     <td>
                                         @if ($item->discount_price)

@@ -65,6 +65,7 @@ class CourseController extends Controller
         //Pass dữ liệu và file sang service
         $course = $this->courseService->createCourse($validatedData, $request->file('image'));
         //quản lý mục tiêu khóa học
+        //nếu mảng mục tiêu khóa học không rỗng thì thêm vào database
         if (!empty($validatedData['course_goals'])) {
             $this->courseService->createCourseGoals($course->id, $validatedData['course_goals']);
         }

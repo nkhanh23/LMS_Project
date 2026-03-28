@@ -11,6 +11,7 @@ use App\Models\Quiz;
 use App\Models\Order;
 use App\Models\QuizAttempt;
 use App\Models\QuizAttemptAnswer;
+use App\Models\InstructorRiskScore;
 
 class User extends Authenticatable
 {
@@ -172,5 +173,40 @@ class User extends Authenticatable
     public function activeCourseProgress()
     {
         return $this->hasMany(CourseProgress::class)->where('status', 'active');
+    }
+
+    // Instructor Risk Score
+    public function riskScore()
+    {
+        return $this->hasOne(InstructorRiskScore::class, 'instructor_id');
+    }
+
+    /**
+     * Get Risk Level Badge Information
+     */
+    public function getRiskLevelAttribute()
+    {
+        $score = $this->riskScore->risk_score ?? 0;
+
+        if ($score >= 100) {
+            return ['class' => 'bg-danger', 'label' => 'Rất cao', 'score' => $score];
+        } elseif ($score >= 60) {
+            return ['class' => 'bg-warning text-dark', 'label' => 'Cao', 'score' => $score];
+        } elseif ($score >= 30) {
+            return ['class' => 'bg-info text-dark', 'label' => 'Trung bình', 'score' => $score];
+        }
+
+        return ['class' => 'bg-success', 'label' => 'Thấp', 'score' => $score];
+    }
+
+    //
+    public function aiChatSessions()
+    {
+        return $this->hasMany(AiChatSession::class);
+    }
+
+    public function aiChatMessages()
+    {
+        return $this->hasMany(AiChatMessage::class);
     }
 }

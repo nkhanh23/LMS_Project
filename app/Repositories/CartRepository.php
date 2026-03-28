@@ -12,6 +12,7 @@ class CartRepository
     public function createCart($course_id, $request)
     {
         try {
+            //trình duyệt chưa có (khách vào lần đầu) -> Str::uuid() tạo ra một chuỗi ngẫu nhiên
             // lấy guest_token từ cookie
             $guestToken = $request->cookie('guest_token') ?? Str::uuid();
             //set guest_token nếu chưa set

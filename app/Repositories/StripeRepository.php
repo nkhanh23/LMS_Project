@@ -8,24 +8,25 @@ class StripeRepository
 {
     public function handlePayment(array $data)
     {
+        // Khởi tạo Stripe với Secret Key
         $stripe = new StripeClient(config('stripe.stripe_sk'));
 
-        // Prepare line items for Stripe Checkout
+        // Chuẩn bị danh sách mặt hàng cho Stripe Checkout
         $lineItems = [];
         $totalItemsPrice = array_sum($data['course_price']);
         $finalTotal = (int)$data['total_price'];
-        
-        // Calculate the ratio to adjust each item's price
+
+        // Tính tỉ lệ để điều chỉnh giá của từng mặt hàng
         $discountRatio = $totalItemsPrice > 0 ? $finalTotal / $totalItemsPrice : 1;
         $runningTotal = 0;
         $count = count($data['course_id']);
 
         foreach ($data['course_id'] as $index => $courseId) {
             $originalPrice = (int)$data['course_price'][$index];
-            // Proportional price
+            // Giá tương ứng
             $adjustedPrice = (int)round($originalPrice * $discountRatio);
-            
-            // Adjust the last item to ensure the sum is exactly equal to finalTotal
+
+            // Điều chỉnh mặt hàng cuối cùng để đảm bảo tổng chính xác bằng finalTotal
             if ($index === $count - 1) {
                 $adjustedPrice = $finalTotal - $runningTotal;
             }
@@ -44,7 +45,7 @@ class StripeRepository
             ];
         }
 
-        // Create a Stripe Checkout session
+        // Tạo một phiên Stripe Checkout
         $session = $stripe->checkout->sessions->create([
             'line_items' => $lineItems,
             'mode' => 'payment',

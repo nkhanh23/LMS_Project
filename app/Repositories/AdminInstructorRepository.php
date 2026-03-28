@@ -9,6 +9,8 @@ class AdminInstructorRepository
     public function getInstructors($search = null, $status = null, $perPage = 10)
     {
         return User::where('role', 'instructor')
+            ->leftJoin('instructor_risk_scores', 'users.id', '=', 'instructor_risk_scores.instructor_id')
+            ->select('users.*', 'instructor_risk_scores.risk_score')
             ->when($search, function ($query, $search) {
                 return $query->where(function ($q) use ($search) {
                     $q->where('name', 'LIKE', "%{$search}%")
@@ -19,7 +21,7 @@ class AdminInstructorRepository
             ->when($status !== null, function ($query) use ($status) {
                 return $query->where('status', $status);
             })
-            ->latest()
+            ->latest('users.created_at')
             ->paginate($perPage);
     }
 }

@@ -30,6 +30,12 @@ class QuizController extends Controller
             ->orderBy('course_name')
             ->get();
 
+        /**
+         * Hàm collect() tạo ra một mảng rỗng
+         * nếu giảng viên mới vào trang, 
+         * chưa chọn khóa học nào ($courseId bị null), thì ô chọn Chương và Bài giảng phải trống không. 
+         * Tránh bị lỗi trắng trang.
+         */
         $sections = collect();
         if ($courseId) {
             $sections = CourseSection::where('course_id', $courseId)
@@ -52,8 +58,7 @@ class QuizController extends Controller
             'course',
             'section',
             'quiz.questions'
-        ])
-            ->where('type', 'quiz')
+        ])->where('type', 'quiz')
             ->whereHas('course', function ($query) {
                 $query->where('instructor_id', Auth::id());
             })

@@ -9,6 +9,14 @@
                 'sub_title' => 'Chi tiết phê duyệt',
             ])
             <!--end breadcrumb-->
+            
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
 
             <div class="row">
                 <div class="col-lg-8">
@@ -25,7 +33,15 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h4 class="mb-2">{{ $course->course_name }}</h4>
-                                    <p class="mb-1"><strong>Giảng viên:</strong> {{ $course->user->name ?? '---' }}</p>
+                                    <p class="mb-1"><strong>Giảng viên:</strong> 
+                                        {{ $course->user->name ?? '---' }}
+                                        @if(isset($course->user))
+                                            @php $risk = $course->user->risk_level; @endphp
+                                            <span class="badge {{ $risk['class'] }} ms-2" style="font-size: 0.75rem;">
+                                                Risk: {{ $risk['score'] }} ({{ $risk['label'] }})
+                                            </span>
+                                        @endif
+                                    </p>
                                     <p class="mb-1"><strong>Danh mục:</strong> {{ $course->category->category_name ?? '---' }} / {{ $course->subcategory->subcategory_name ?? '---' }}</p>
                                     <p class="mb-1"><strong>Giá:</strong> {{ number_format($course->selling_price, 0, ',', '.') }}đ</p>
                                     <p class="mb-1"><strong>Ngày gửi duyệt:</strong> {{ $course->submitted_for_review_at ?? '---' }}</p>

@@ -25,29 +25,38 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="GET" action="{{ route('admin.course-approvals.index') }}" class="row g-2 mb-3">
-                                <div class="col-md-3">
-                                    <select name="course_status" class="form-select">
-                                        <option value="">-- Tất cả trạng thái --</option>
-                                        <option value="draft" {{ request('course_status') == 'draft' ? 'selected' : '' }}>
-                                            Bản nháp</option>
-                                        <option value="pending_review"
-                                            {{ request('course_status') == 'pending_review' ? 'selected' : '' }}>Chờ
-                                            duyệt</option>
-                                        <option value="published"
-                                            {{ request('course_status') == 'published' ? 'selected' : '' }}>Đã xuất bản
-                                        </option>
-                                        <option value="rejected"
-                                            {{ request('course_status') == 'rejected' ? 'selected' : '' }}>Bị từ chối
-                                        </option>
-                                        <option value="hidden" {{ request('course_status') == 'hidden' ? 'selected' : '' }}>
-                                            Bị ẩn</option>
-                                    </select>
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-6">
+                                    <form method="GET" action="{{ route('admin.course-approvals.index') }}" class="d-flex g-2">
+                                        <select name="course_status" class="form-select me-2" style="width: 200px;">
+                                            <option value="">-- Tất cả trạng thái --</option>
+                                            <option value="draft" {{ request('course_status') == 'draft' ? 'selected' : '' }}>
+                                                Bản nháp</option>
+                                            <option value="pending_review"
+                                                {{ request('course_status') == 'pending_review' ? 'selected' : '' }}>Chờ
+                                                duyệt</option>
+                                            <option value="published"
+                                                {{ request('course_status') == 'published' ? 'selected' : '' }}>Đã xuất bản
+                                            </option>
+                                            <option value="rejected"
+                                                {{ request('course_status') == 'rejected' ? 'selected' : '' }}>Bị từ chối
+                                            </option>
+                                            <option value="hidden" {{ request('course_status') == 'hidden' ? 'selected' : '' }}>
+                                                Bị ẩn</option>
+                                        </select>
+                                        <button class="btn btn-primary">Lọc</button>
+                                    </form>
                                 </div>
-                                <div class="col-md-2">
-                                    <button class="btn btn-primary">Lọc</button>
+                                <div class="col-md-6 text-end">
+                                    <div class="d-inline-block border p-2 rounded bg-light" style="font-size: 0.75rem;">
+                                        <strong>Rủi ro giảng viên:</strong>
+                                        <span class="badge bg-success ms-2">Thấp (0-29)</span>
+                                        <span class="badge bg-info text-dark ms-1">Trung bình (30-59)</span>
+                                        <span class="badge bg-warning text-dark ms-1">Cao (60-99)</span>
+                                        <span class="badge bg-danger ms-1">Rất cao (>=100)</span>
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered align-middle">
@@ -67,7 +76,16 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $course->course_name }}</td>
-                                                <td>{{ $course->user->name ?? '---' }}</td>
+                                                <td>
+                                                    {{ $course->user->name ?? '---' }}
+                                                    @if(isset($course->user))
+                                                        <br>
+                                                        @php $risk = $course->user->risk_level; @endphp
+                                                        <span class="badge {{ $risk['class'] }}" style="font-size: 0.7rem;">
+                                                            Risk: {{ $risk['score'] }} ({{ $risk['label'] }})
+                                                        </span>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <span class="badge bg-info">{{ $course->approval_status }}</span>
                                                 </td>

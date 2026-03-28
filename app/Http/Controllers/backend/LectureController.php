@@ -62,6 +62,7 @@ class LectureController extends Controller
 
     public function generateDocumentPresignedUrl(Request $request)
     {
+        // Nhận extension và mime_type từ JavaScript gửi lên
         $request->validate([
             'extension' => 'required|string|max:10',
             'mime_type' => 'required|string|max:255',
@@ -72,7 +73,7 @@ class LectureController extends Controller
             $request->input('mime_type')
         );
 
-        return response()->json($data);
+        return response()->json($data); // Trả về link upload cho Frontend
     }
 
     /**
@@ -111,24 +112,32 @@ class LectureController extends Controller
 
     public function downloadDocument(CourseLecture $lecture)
     {
+        // Kiểm tra bài học có phải là loại 'document' không
         abort_if($lecture->type !== 'document', 404);
+        // Kiểm tra bài học có URL không
         abort_if(empty($lecture->url), 404);
+        // Kiểm tra người dùng đã đăng nhập chưa
         abort_unless(Auth::check(), 403);
 
-        $hasPurchased = \App\Models\Order::where('user_id', Auth::id())
+        // Kiểm tra người dùng đã mua khóa học chưa
+        $hasPurchased = Order::where('user_id', Auth::id())
             ->where('course_id', $lecture->course_id)
             ->exists();
 
         abort_unless($hasPurchased, 403);
 
+        // Kiểm tra xem file được lưu trên R2 hay không
         if ($lecture->storage_disk === 'r2') {
+            // Tạo URL tải xuống tạm thời
             $downloadUrl = $this->lectureService->generateDocumentDownloadUrl(
                 $lecture->url,
                 $lecture->file_name
             );
+            // Chuyển hướng người dùng đến URL tải xuống
             return redirect()->away($downloadUrl);
         }
 
+        // Nếu không phải R2 thì trả về lỗi 404
         abort(404);
     }
 }

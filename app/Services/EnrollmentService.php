@@ -3,10 +3,10 @@
 namespace App\Services;
 
 use App\Models\Course;
+use App\Models\CourseLecture;
 use App\Models\Enrollment;
 use App\Models\Order;
 use App\Models\User;
-use App\Repositories\EnrollmentRepository;
 use Illuminate\Support\Facades\DB;
 
 class EnrollmentService
@@ -30,7 +30,7 @@ class EnrollmentService
             );
 
             if (!$enrollment->courseProgress) {
-                $totalLectures = \App\Models\CourseLecture::where('course_id', $order->course_id)->count();
+                $totalLectures = CourseLecture::where('course_id', $order->course_id)->count();
 
                 $enrollment->courseProgress()->create([
                     'user_id' => $order->user_id,

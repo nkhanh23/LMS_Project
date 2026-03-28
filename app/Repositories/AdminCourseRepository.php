@@ -8,7 +8,7 @@ class AdminCourseRepository
 {
     public function getCourses($search = null, $categoryId = null, $instructorId = null, $perPage = 10)
     {
-        return Course::with(['user', 'category'])
+        return Course::with(['user.riskScore', 'category'])
             ->when($search, function ($query, $search) {
                 return $query->where('course_name', 'LIKE', "%{$search}%");
             })

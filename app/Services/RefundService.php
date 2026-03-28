@@ -40,36 +40,36 @@ class RefundService
     {
         return DB::transaction(function () use ($orderId, $user, $data) {
             $order = $this->orderRepository->lockOrderById($orderId);
-
+            //Order phải thuộc về User đang đăng nhập.
             if ((int) $order->user_id !== (int) $user->id) {
                 throw ValidationException::withMessages([
                     'order' => 'Bạn không có quyền thao tác order này.',
                 ]);
             }
-
+            //Order phải ở trạng thái completed.
             if ($order->status !== 'completed') {
                 throw ValidationException::withMessages([
                     'order' => 'Chỉ order completed mới được gửi yêu cầu refund.',
                 ]);
             }
-
+            //Order không được có workflow refund hoặc đã refund.
             if (in_array($order->refund_status, ['requested', 'approved', 'processed'])) {
                 throw ValidationException::withMessages([
                     'order' => 'Order đang có workflow refund hoặc đã refund.',
                 ]);
             }
-
+            //Order không được có yêu cầu refund đang mở.
             $openRequest = $this->refundRepository->findOpenRefundRequestByOrderId($order->id);
             if ($openRequest) {
                 throw ValidationException::withMessages([
                     'order' => 'Order này đã có yêu cầu refund đang mở.',
                 ]);
             }
-
+            //Số tiền refund phải nhỏ hơn hoặc bằng số tiền order.
             $requestedAmount = isset($data['requested_amount']) && $data['requested_amount'] !== null
                 ? (float) $data['requested_amount']
                 : (float) ($order->gross_amount ?? $order->price ?? 0);
-
+            //Tạo yêu cầu refund trong bảng refund_requests với status = pending
             $refundRequest = $this->refundRepository->createRefundRequest([
                 'order_id'          => $order->id,
                 'payment_id'        => $order->payment_id,
@@ -82,13 +82,13 @@ class RefundService
                 'reason'            => $data['reason'],
                 'requested_at'      => now(),
             ]);
-
+            //Cập nhật Order: refund_status = requested.
             $this->refundRepository->updateOrder($order, [
                 'refund_status'       => 'requested',
                 'refund_reason'       => $data['reason'],
                 'refund_requested_at' => now(),
             ]);
-
+            //Ghi log vào order_status_histories.
             $this->refundRepository->createStatusHistory([
                 'order_id'            => $order->id,
                 'payment_id'          => $order->payment_id,
@@ -116,18 +116,19 @@ class RefundService
             $refundRequest = $this->refundRepository->findRefundRequestById($refundRequestId);
             $order = $this->orderRepository->lockOrderById($refundRequest->order_id);
 
+            //Yêu cầu refund phải ở trạng thái pending.
             if ($refundRequest->status !== 'pending') {
                 throw ValidationException::withMessages([
                     'refund_request' => 'Yêu cầu này không còn ở trạng thái pending.',
                 ]);
             }
-
+            //Số tiền refund phải nhỏ hơn hoặc bằng số tiền order.
             $approvedAmount = isset($data['approved_amount']) && $data['approved_amount'] !== null
                 ? (float) $data['approved_amount']
                 : (float) ($refundRequest->requested_amount ?? $order->gross_amount ?? $order->price ?? 0);
-
+            //Xác định trạng thái mới của order.
             $newOrderStatus = $refundRequest->type === 'cancel' ? 'cancelled' : 'refunded';
-
+            //Cập nhật refund_request thành processed
             $this->refundRepository->updateRefundRequest($refundRequest, [
                 'status'          => 'processed',
                 'approved_amount' => $approvedAmount,
@@ -138,6 +139,7 @@ class RefundService
                 'processed_at'    => now(),
             ]);
 
+            //Cập nhật order thành cancelled hoặc refunded
             $this->refundRepository->updateOrder($order, [
                 'status'            => $newOrderStatus,
                 'refund_status'     => 'processed',
@@ -151,8 +153,10 @@ class RefundService
                 'access_revoked_at' => now(),
             ]);
 
+            //Thu hồi quyền truy cập vào khóa học.
             $this->enrollmentService->revokeFromOrder($order, 'refund');
 
+            //Cập nhật trạng thái thanh toán.
             if ($order->payment) {
                 $paymentTotal = $this->normalizeMoney($order->payment->total_amount);
                 $newRefundedAmount = (float) $order->payment->refunded_amount + $approvedAmount;
@@ -169,7 +173,7 @@ class RefundService
                     'refund_reference' => 'manual-admin-' . now()->format('YmdHis'),
                 ]);
             }
-
+            //Ghi log vào order_status_histories.
             $this->refundRepository->createStatusHistory([
                 'order_id'           => $order->id,
                 'payment_id'         => $order->payment_id,

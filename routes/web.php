@@ -37,6 +37,7 @@ use App\Http\Controllers\backend\Subcategory;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserProfileController;
+use App\Http\Controllers\frontend\ChatbotController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\ContentReportController;
 use App\Http\Controllers\frontend\CourseReviewController;
@@ -436,6 +437,13 @@ Route::middleware('auth')->group(function () {
     // hoàn thành bài học
     Route::post('/learning/lecture/{lecture}/complete', [LearningController::class, 'completeLecture'])
         ->name('learning.lecture.complete');
+
+    // Chatbot
+    Route::post('/learning/chatbot/ask', [ChatbotController::class, 'ask'])
+        ->name('learning.chatbot.ask');
+
+    Route::get('/learning/chatbot/history', [ChatbotController::class, 'history'])
+        ->name('learning.chatbot.history');
 });
 
 /*  LEARNING ROUTES  */

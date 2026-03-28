@@ -11,19 +11,19 @@ $(document).on('click', '.add-to-cart-btn', function () {
     var courseId = $(this).data('course-id'); // lấy course id từ button
     var quantity = 1; // quantity mặc định là 1
 
-
+    //Gửi yêu cầu ngầm (AJAX) lên Server
     $.ajax({
         url: '/cart/add',
         method: 'POST',
         data: {
             course_id: courseId,
             quantity: quantity,
-            _token: $('meta[name="csrf-token"]').attr('content')
+            _token: $('meta[name="csrf-token"]').attr('content')// Bắt buộc để tránh lỗi bảo mật CSRF
         },
         success: function (response) {
             if (response.status === 'success') {
-
-                getCart();
+                //Nếu Server báo thành công: 
+                getCart(); // Cập nhật lại giao diện cái Mini Cart
                 // thông báo thành công
                 Swal.fire({
                     icon: 'success',
@@ -34,7 +34,7 @@ $(document).on('click', '.add-to-cart-btn', function () {
                     showConfirmButton: false,
                 });
 
-                // câp nhật số lượng
+                // câp nhật số lượng trên icon giỏ hàng
                 if (response.cart_item) {
                     $('.cart-count').text(response.cart_item.quantity);
                 }

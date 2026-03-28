@@ -20,12 +20,12 @@ class QuizService
                 if (!isset($questionData['options']) || count($questionData['options']) !== 4) {
                     throw new Exception('Mỗi câu hỏi phải có đúng 4 đáp án.');
                 }
-
+                //kiểm tra xem giá trị của đáp án đúng có nằm trong khoảng từ 0 đến 3 không
                 if (!isset($questionData['correct_option']) || !in_array((int)$questionData['correct_option'], [0, 1, 2, 3], true)) {
                     throw new Exception('Đáp án đúng không hợp lệ.');
                 }
             }
-
+            //update hoặc tạo mới quiz
             $quiz = Quiz::updateOrCreate(
                 ['lecture_id' => $lecture->id],
                 [

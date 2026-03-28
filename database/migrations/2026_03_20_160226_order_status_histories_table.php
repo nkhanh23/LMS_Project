@@ -17,11 +17,11 @@ return new class extends Migration
                 // khóa ngoại
                 $table->unsignedBigInteger('order_id');
                 $table->unsignedBigInteger('payment_id')->nullable();
-                // trạng thái trước
+                // trạng thái cũ
                 $table->string('from_status')->nullable();
-                // trạng thái sau
+                // trạng thái mới
                 $table->string('to_status')->nullable();
-                // trạng thái refund trước
+                // trạng thái refund cũ
                 $table->string('from_refund_status')->nullable();
                 // trạng thái refund sau
                 $table->string('to_refund_status')->nullable();

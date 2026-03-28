@@ -27,28 +27,37 @@ class OrderController extends Controller
 
     public function order(OrderRequest $request)
     {
+        // Đưa toàn bộ nội dung vừa đăng ký vào Session
+        // Để lát nữa sau khi redirect từ Web Stripe về còn biết user đã mua những gì.
         session()->put('stripe_data', $request->validated());
         return $this->paymentService->processPayment($request->validated());
     }
 
     public function success(Request $request)
     {
+        //lấy mã số mã kiểm soát do Stripe trả về trên URL
         $sessionId = $request->query('session_id');
         $stripe = new StripeClient(config('stripe.stripe_sk'));
 
         try {
+            // Gọi thẳng lên API Stripe kiểm tra xem sessionId này đã thực sự thu tiền thành công chưa
             $session = $stripe->checkout->sessions->retrieve($sessionId);
+            // Lấy thông tin thanh toán
             $paymentIntent = $stripe->paymentIntents->retrieve($session->payment_intent);
 
             DB::transaction(function () use ($session, $paymentIntent) {
+                // lưu lại Log Thanh toán (Payment) có mã transaction của Stripe
                 $payment = $this->createPayment($session, $paymentIntent);
+                // Kích xuất thông tin Đơn Hàng bằng biến Session `stripe_data` lưu ở bước đầu tiên
                 $orders = $this->createOrder($payment->id);
 
+                //Mỗi khoá học trong Đơn Hàng, gọi EnrollmentService "cấp quyền học viên" (Enrolled) cho khoá đó
                 foreach ($orders as $order) {
                     $this->enrollmentService->grantFromOrder($order);
                 }
             });
 
+            // Xoá giỏ hàng sau khi thanh toán thành công
             $guestToken = $request->cookie('guest_token') ?? Str::uuid();
             Cart::where('guest_token', $guestToken)->delete();
 
