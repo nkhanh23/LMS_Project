@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class AiChatSession extends Model
+class AiDocument extends Model
 {
     protected $guarded = [];
 
     protected $casts = [
-        'last_activity_at' => 'datetime',
+        'indexed_at' => 'datetime',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function course()
     {
@@ -28,8 +23,13 @@ class AiChatSession extends Model
         return $this->belongsTo(CourseLecture::class, 'lecture_id');
     }
 
-    public function messages()
+    public function uploader()
     {
-        return $this->hasMany(AiChatMessage::class, 'session_id');
+        return $this->belongsTo(User::class, 'uploaded_by');
+    }
+
+    public function chunks()
+    {
+        return $this->hasMany(AiDocumentChunk::class, 'document_id');
     }
 }

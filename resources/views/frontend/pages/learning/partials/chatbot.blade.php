@@ -84,18 +84,19 @@
 </style>
 
 <script>
+    const askUrl = @json(route('chatbot.ask'));
+    const historyUrl = @json(route('chatbot.history'));
+</script>
+
+<script>
 document.addEventListener('DOMContentLoaded', function () {
     const chatBox = document.getElementById('chat-messages');
     const sendButton = document.getElementById('send-chat-btn');
     const input = document.getElementById('chat-message');
 
-    const historyUrl = "{{ route('learning.chatbot.history') }}";
-    const askUrl = "{{ route('learning.chatbot.ask') }}";
-
     // Dynamic IDs
     const getCourseId = () => {{ $course->id }};
     const getLectureId = () => {
-        // Try to get from global lecture content if updated by AJAX
         return window.currentLectureId || {{ $currentLecture->id ?? $lecture->id }};
     };
 
@@ -105,7 +106,32 @@ document.addEventListener('DOMContentLoaded', function () {
         return div.innerHTML;
     }
 
-    function appendMessage(role, content) {
+    function renderCitations(citations = []) {
+        if (!citations || !citations.length) return '';
+
+        return `
+            <div class="mt-4 space-y-2 border-t border-slate-700/50 pt-3">
+                <div class="text-[10px] uppercase tracking-widest text-brand font-black flex items-center gap-2">
+                    <i class="fa-solid fa-book-open"></i> Nguồn tham khảo
+                </div>
+                <div class="grid gap-2">
+                    ${citations.map(c => `
+                        <div class="rounded-sm bg-black/40 border border-slate-800 p-2 text-[11px] text-slate-300 hover:border-brand/30 transition-colors group/cite relative">
+                            <div class="font-bold text-cyber-cyan mb-0.5">${c.document_title ?? 'Tài liệu'} <span class="text-[9px] opacity-40 ml-1 font-mono">#${c.chunk_id}</span></div>
+                            <div class="opacity-80 line-clamp-2 italic leading-relaxed">"${c.snippet ?? ''}"</div>
+                            
+                            <!-- Full snippet on hover -->
+                            <div class="hidden group-hover/cite:block absolute left-0 right-0 bottom-full mb-2 p-3 bg-cyber-dark border border-slate-700 shadow-2xl z-20 pointer-events-none text-xs not-italic">
+                                ${c.snippet}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    function appendMessage(role, content, citations = []) {
         const isUser = role === 'user';
         const alignClass = isUser ? 'ml-auto' : 'mr-auto';
         const bubbleClass = isUser ? 'chat-bubble-user' : 'chat-bubble-assistant';
@@ -119,10 +145,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span class="text-[10px] font-black uppercase tracking-tighter ${color}">${sender}</span>
                     <i class="fa-solid ${icon} text-[10px] ${color}"></i>
                 </div>
-                <div class="p-4 rounded-sm text-sm leading-relaxed text-slate-200 ${bubbleClass} font-sans">
+                <div class="p-4 rounded-sm text-sm leading-relaxed text-slate-200 ${bubbleClass} font-sans relative">
                     <div class="message-content">
                         ${content.replace(/\n/g, '<br>')}
                     </div>
+                    ${role === 'assistant' ? renderCitations(citations) : ''}
                 </div>
             </div>
         `;
@@ -146,19 +173,22 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
 
         try {
-            const url = `${historyUrl}?course_id=${getCourseId()}&lecture_id=${getLectureId()}`;
-            const response = await fetch(url, {
+            const params = new URLSearchParams({
+                course_id: getCourseId(),
+                lecture_id: getLectureId()
+            });
+
+            const response = await fetch(historyUrl + '?' + params.toString(), {
                 headers: { 'Accept': 'application/json' }
             });
 
             const data = await response.json();
+            chatBox.innerHTML = '';
 
             if (!data.success) {
-                chatBox.innerHTML = `<div class="text-red-400 p-4 border border-red-900 bg-red-950/20 uppercase font-black text-xs text-center">${data.message}</div>`;
+                chatBox.innerHTML = `<div class="text-red-400 p-4 border border-red-900 bg-red-950/20 uppercase font-black text-xs text-center">Không tải được lịch sử chat</div>`;
                 return;
             }
-
-            chatBox.innerHTML = '';
 
             if (!data.data.messages || data.data.messages.length === 0) {
                 chatBox.innerHTML = `
@@ -171,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             data.data.messages.forEach(message => {
-                appendMessage(message.role, message.content);
+                appendMessage(message.role, message.content, message.citations || []);
             });
         } catch (error) {
             console.error(error);
@@ -226,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            appendMessage('assistant', data.data.answer);
+            appendMessage('assistant', data.data.answer, data.data.citations || []);
         } catch (error) {
             document.getElementById(typingId)?.remove();
             appendMessage('assistant', '<span class="text-red-400">🚨 LỖI: Không thể kết nối đến máy chủ AI.</span>');
@@ -252,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function () {
         this.style.height = (this.scrollHeight) + 'px';
     });
 
-    // Handle tab focus if needed
+    // Handle tab focus
     window.addEventListener('chatbot-tab-focused', loadHistory);
     
     // Initial load

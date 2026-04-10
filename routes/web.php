@@ -13,6 +13,7 @@ use App\Http\Controllers\backend\AdminLearningAnalyticsController;
 use App\Http\Controllers\backend\AdminModerationController;
 use App\Http\Controllers\backend\AdminRefundController;
 use App\Http\Controllers\backend\AdminUserController;
+use App\Http\Controllers\backend\AiDocumentController;
 use App\Http\Controllers\backend\BackendOrderController;
 use App\Http\Controllers\backend\CartController;
 use App\Http\Controllers\backend\CategoryController;
@@ -127,6 +128,12 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
     Route::get('/google-setting', [SettingController::class, 'googleSetting'])->name('google-setting');
     //Lưu google setting
     Route::post('/google-settings/update', [SettingController::class, 'updateGoogleSettings'])->name('google-setting.update');
+
+    //Gemini setting
+    Route::get('/gemini-setting', [SettingController::class, 'geminiSetting'])->name('gemini-setting');
+    //Lưu gemini setting
+    Route::put('/gemini-setting/update', [SettingController::class, 'updateGeminiSettings'])->name('setting.gemini.update');
+
 
     /* Control Course */
     //Danh sách khóa học
@@ -438,12 +445,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/learning/lecture/{lecture}/complete', [LearningController::class, 'completeLecture'])
         ->name('learning.lecture.complete');
 
-    // Chatbot
-    Route::post('/learning/chatbot/ask', [ChatbotController::class, 'ask'])
-        ->name('learning.chatbot.ask');
+    // Chatbot (Throttled)
+    Route::middleware(['throttle:20,1'])->group(function () {
+        Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
+        Route::get('/chatbot/history', [ChatbotController::class, 'history'])->name('chatbot.history');
+    });
 
-    Route::get('/learning/chatbot/history', [ChatbotController::class, 'history'])
-        ->name('learning.chatbot.history');
+    Route::post('/instructor/ai/documents', [AiDocumentController::class, 'store'])->name('instructor.ai-documents.store');
+    Route::post('/instructor/ai/documents/{document}/reindex', [AiDocumentController::class, 'reindex'])->name('instructor.ai-documents.reindex');
+    Route::delete('/instructor/ai/documents/{document}', [AiDocumentController::class, 'destroy'])->name('instructor.ai-documents.destroy');
 });
 
 /*  LEARNING ROUTES  */

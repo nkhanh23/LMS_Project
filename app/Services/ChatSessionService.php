@@ -79,6 +79,18 @@ class ChatSessionService
             ->values();
     }
 
+    public function getSessionMessagesWithCitations(AiChatSession $session, int $limit = 50)
+    {
+        return AiChatMessage::query()
+            ->where('session_id', $session->id)
+            ->with(['citations.document'])
+            ->latest('id')
+            ->take($limit)
+            ->get()
+            ->sortBy('id')
+            ->values();
+    }
+
     protected function touchSession(AiChatSession $session): void
     {
         $session->update([

@@ -22,11 +22,17 @@ class ChatbotAskRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'message'    => ['required', 'string', 'min:2', 'max:2000'],
+        $rules = [
             'course_id'  => ['required', 'integer', 'exists:courses,id'],
             'lecture_id' => ['required', 'integer', 'exists:course_lectures,id'],
         ];
+
+        // Chỉ yêu cầu message khi gọi route 'ask'
+        if ($this->routeIs('learning.chatbot.ask')) {
+            $rules['message'] = ['required', 'string', 'min:2', 'max:2000'];
+        }
+
+        return $rules;
     }
     public function messages(): array
     {

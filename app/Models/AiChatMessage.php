@@ -21,4 +21,9 @@ class AiChatMessage extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function citations()
+    {
+        return $this->hasMany(\App\Models\AiMessageCitation::class, 'message_id');
+    }
 }

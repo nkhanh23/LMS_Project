@@ -115,6 +115,10 @@
                     <a href="{{ route('admin.google-setting') }}"><i class='bx bx-radio-circle'></i>Google</a>
                 </li>
 
+                <li class="{{ setSidebar(['admin.gemini-setting*']) }}">
+                    <a href="{{ route('admin.gemini-setting') }}"><i class='bx bx-radio-circle'></i>Gemini</a>
+                </li>
+
             </ul>
         </li>
 

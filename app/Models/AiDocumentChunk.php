@@ -4,18 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
-class AiChatSession extends Model
+class AiDocumentChunk extends Model
 {
     protected $guarded = [];
-
     protected $casts = [
-        'last_activity_at' => 'datetime',
+        'meta_json' => 'array',
     ];
 
-    public function user()
+    public function document()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(AiDocument::class, 'document_id');
     }
 
     public function course()
@@ -26,10 +24,5 @@ class AiChatSession extends Model
     public function lecture()
     {
         return $this->belongsTo(CourseLecture::class, 'lecture_id');
-    }
-
-    public function messages()
-    {
-        return $this->hasMany(AiChatMessage::class, 'session_id');
     }
 }
