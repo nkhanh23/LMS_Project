@@ -15,6 +15,7 @@ class GeminiConfigService
             'temperature' => (float) config('services.gemini.temperature', 0.2),
             'max_output_tokens' => (int) config('services.gemini.max_output_tokens', 1024),
             'enabled' => (bool) config('services.gemini.enabled', true),
+            'base_url' => config('services.gemini.base_url', 'https://generativelanguage.googleapis.com/v1'),
         ];
     }
 

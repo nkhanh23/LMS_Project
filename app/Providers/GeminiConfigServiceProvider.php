@@ -26,6 +26,9 @@ class GeminiConfigServiceProvider extends ServiceProvider
 
         if ($setting) {
             Config::set('services.gemini.api_key', $setting->api_key);
+            if ($setting->base_url) {
+                Config::set('services.gemini.base_url', $setting->base_url);
+            }
             Config::set('services.gemini.model', $setting->model_name);
             Config::set('services.gemini.timeout', $setting->timeout_seconds);
             Config::set('services.gemini.temperature', $setting->temperature);

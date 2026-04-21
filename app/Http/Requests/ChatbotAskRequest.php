@@ -28,7 +28,7 @@ class ChatbotAskRequest extends FormRequest
         ];
 
         // Chỉ yêu cầu message khi gọi route 'ask'
-        if ($this->routeIs('learning.chatbot.ask')) {
+        if ($this->routeIs('chatbot.ask')) {
             $rules['message'] = ['required', 'string', 'min:2', 'max:2000'];
         }
 

@@ -23,6 +23,7 @@ class GeminiSettingRequest extends FormRequest
     {
         return [
             'api_key' => ['nullable', 'string', 'max:2048'],
+            'base_url' => ['nullable', 'string', 'url', 'max:2048'],
             'model_name' => ['required', 'string', 'max:255'],
             'timeout_seconds' => ['required', 'integer', 'min:5', 'max:120'],
             'temperature' => ['required', 'numeric', 'min:0', 'max:2'],

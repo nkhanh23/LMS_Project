@@ -95,28 +95,4 @@ class AiChatOrchestratorService
         ];
     }
 
-    public function getRecentMessages(\App\Models\AiChatSession $session, int $limit = 8)
-    {
-        return $session->messages()
-            ->latest('id')
-            ->limit($limit)
-            ->get()
-            ->reverse()
-            ->values();
-    }
-
-    public function getSessionMessagesWithCitations(\App\Models\AiChatSession $session)
-    {
-        return $session->messages()
-            ->with('citations.document')
-            ->orderBy('id')
-            ->get();
-    }
-
-    protected function touchSession(\App\Models\AiChatSession $session): void
-    {
-        $session->update([
-            'last_activity_at' => now(),
-        ]);
-    }
 }

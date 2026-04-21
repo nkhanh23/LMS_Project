@@ -71,14 +71,13 @@ class SettingController extends Controller
     {
         $current = GeminiSetting::first();
 
-        $apiKey = $request->filled('api_key')
-            ? $request->string('api_key')->toString()
-            : ($current?->api_key);
+        $apiKey = $request->input('api_key');
 
         GeminiSetting::updateOrCreate(
             ['id' => 1],
             [
                 'api_key' => $apiKey,
+                'base_url' => $request->string('base_url')->toString() ?: null,
                 'model_name' => $request->string('model_name')->toString(),
                 'timeout_seconds' => $request->integer('timeout_seconds'),
                 'temperature' => (float) $request->input('temperature'),

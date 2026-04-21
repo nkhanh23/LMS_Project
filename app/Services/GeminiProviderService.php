@@ -31,7 +31,13 @@ class GeminiProviderService implements AIProviderInterface
         $temperature = (float) ($options['temperature'] ?? $config['temperature']);
         $maxOutputTokens = (int) ($options['max_output_tokens'] ?? $config['max_output_tokens']);
 
-        $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$config['api_key']}";
+        $baseUrl = rtrim($config['base_url'], '/');
+        $url = "{$baseUrl}/models/{$model}:generateContent?key={$config['api_key']}";
+
+        Log::debug('Gemini API Request', [
+            'url_masked' => "{$baseUrl}/models/{$model}:generateContent?key=***",
+            'model' => $model
+        ]);
 
         try {
             $response = Http::timeout($timeout)

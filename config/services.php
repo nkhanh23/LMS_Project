@@ -48,6 +48,7 @@ return [
         'temperature' => env('GEMINI_TEMPERATURE', 0.2),
         'max_output_tokens' => env('GEMINI_MAX_OUTPUT_TOKENS', 1024),
         'enabled' => env('GEMINI_ENABLED', true),
+        'base_url' => env('GEMINI_BASE_URL', 'https://generativelanguage.googleapis.com/v1'),
     ],
 
 ];

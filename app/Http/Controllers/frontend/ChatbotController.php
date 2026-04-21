@@ -30,7 +30,7 @@ class ChatbotController extends Controller
 
     public function ask(ChatbotAskRequest $request): JsonResponse
     {
-        if (!$this->geminiConfigService->isEnabled()) {
+        if (! $this->geminiConfigService->isEnabled()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Chatbot AI hiện đang được tắt bởi quản trị viên.',
@@ -38,31 +38,13 @@ class ChatbotController extends Controller
         }
 
         try {
-            /** @var \App\Models\User $user */
-            $user = Auth::user();
-
-            $course = Course::query()->findOrFail($request->integer('course_id'));
-            $lecture = CourseLecture::query()->findOrFail($request->integer('lecture_id'));
-
-            if ((int) $lecture->course_id !== (int) $course->id) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Lesson không thuộc course đã chọn.',
-                ], 422);
-            }
-
-            if (!method_exists($user, 'hasAccessToCourse') || !$user->hasAccessToCourse($course)) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Bạn không có quyền truy cập khóa học này.',
-                ], 403);
-            }
+            [$user, $course, $lecture] = $this->resolveAccessibleContext($request);
 
             $result = $this->aiChatOrchestratorService->handle(
                 userId: (int) $user->id,
                 course: $course,
                 lecture: $lecture,
-                question: $request->string('message')->toString()
+                question: trim($request->string('message')->toString())
             );
 
             return response()->json([
@@ -70,49 +52,86 @@ class ChatbotController extends Controller
                 'message' => 'AI đã trả lời thành công.',
                 'data' => $result,
             ]);
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             report($e);
 
             return response()->json([
                 'success' => false,
-                'message' => 'Không thể xử lý câu hỏi AI lúc này.',
+                'message' => 'LỖI HỆ THỐNG: ' . $e->getMessage(),
+                'debug_trace' => $e->getTraceAsString()
             ], 500);
         }
     }
 
     public function history(ChatbotAskRequest $request): JsonResponse
     {
+        try {
+            [$user, $course, $lecture] = $this->resolveAccessibleContext($request);
+
+            $session = $this->chatSessionService->getOrCreateSession(
+                userId: (int) $user->id,
+                courseId: (int) $course->id,
+                lectureId: (int) $lecture->id
+            );
+
+            $messages = $this->chatSessionService
+                ->getSessionMessagesWithCitations($session)
+                ->map(function ($message) {
+                    return [
+                        'id' => $message->id,
+                        'role' => $message->role,
+                        'content' => $message->content,
+                        'citations' => $message->citations->map(function ($citation) {
+                            return [
+                                'document_title' => $citation->document?->title,
+                                'chunk_id' => $citation->chunk_id,
+                                'snippet' => $citation->snippet,
+                                'rank' => $citation->rank,
+                            ];
+                        })->values(),
+                    ];
+                })->values();
+
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'session_id' => $session->id,
+                    'course_id' => $course->id,
+                    'lecture_id' => $lecture->id,
+                    'messages' => $messages,
+                ],
+            ]);
+        } catch (Throwable $e) {
+            report($e);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Không thể tải lịch sử chat lúc này.',
+            ], 500);
+        }
+    }
+
+    private function resolveAccessibleContext(ChatbotAskRequest $request): array
+    {
         $user = Auth::user();
 
-        $session = $this->chatSessionService->getOrCreateSession(
-            userId: (int) $user->id,
-            courseId: $request->integer('course_id'),
-            lectureId: $request->integer('lecture_id')
-        );
+        $course = Course::query()->findOrFail($request->integer('course_id'));
+        $lecture = CourseLecture::query()->findOrFail($request->integer('lecture_id'));
 
-        $messages = $this->chatSessionService->getSessionMessagesWithCitations($session)
-            ->map(function ($message) {
-                return [
-                    'id' => $message->id,
-                    'role' => $message->role,
-                    'content' => $message->content,
-                    'citations' => $message->citations->map(function ($citation) {
-                        return [
-                            'document_title' => $citation->document?->title,
-                            'chunk_id' => $citation->chunk_id,
-                            'snippet' => $citation->snippet,
-                            'rank' => $citation->rank,
-                        ];
-                    })->values(),
-                ];
-            });
+        if ((int) $lecture->course_id !== (int) $course->id) {
+            abort(response()->json([
+                'success' => false,
+                'message' => 'Lesson không thuộc course đã chọn.',
+            ], 422));
+        }
 
-        return response()->json([
-            'success' => true,
-            'data' => [
-                'session_id' => $session->id,
-                'messages' => $messages,
-            ],
-        ]);
+        if (! method_exists($user, 'hasAccessToCourse') || ! $user->hasAccessToCourse($course)) {
+            abort(response()->json([
+                'success' => false,
+                'message' => 'Bạn không có quyền truy cập khóa học này.',
+            ], 403));
+        }
+
+        return [$user, $course, $lecture];
     }
 }

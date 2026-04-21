@@ -141,6 +141,11 @@
         </div>
     </main>
 
+    @include('frontend.pages.learning.partials.chatbot-panel', [
+        'course' => $course,
+        'currentLecture' => $currentLecture,
+    ])
+
     @include('frontend.section.script')
 
     <script>
@@ -198,14 +203,13 @@
                             document.getElementById('noteContent').value = '';
                         }
                         
-                        // 3.3 Sync Chatbot Form
-                        const chatbotForm = document.getElementById('chatbotForm');
-                        if (chatbotForm) {
-                            chatbotForm.querySelector('input[name="lecture_id"]').value = data.lecture.id;
-                            chatbotForm.querySelector('input[name="course_id"]').value = data.lecture.course_id;
-                            // Reset chatbot UI state
-                            document.getElementById('chat-result')?.classList.add('hidden');
-                            document.getElementById('chat-message').value = '';
+                        // 3.3 Sync Chatbot (New Panel)
+                        if (window.StackLearnLessonChatbot) {
+                            window.StackLearnLessonChatbot.reload({
+                                courseId: data.lecture.course_id,
+                                lectureId: data.lecture.id,
+                                lectureTitle: data.lecture.title
+                            });
                         }
 
                         // 4. Update Padding if it's a quiz
@@ -275,6 +279,7 @@
             });
         });
     </script>
+    <script src="{{ asset('customjs/learning/chatbot.js') }}"></script>
 </body>
 
 </html>

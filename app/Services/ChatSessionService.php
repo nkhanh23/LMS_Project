@@ -91,6 +91,16 @@ class ChatSessionService
             ->values();
     }
 
+    public function getRecentMessages(AiChatSession $session, int $limit = 8)
+    {
+        return $session->messages()
+            ->latest('id')
+            ->limit($limit)
+            ->get()
+            ->reverse()
+            ->values();
+    }
+
     protected function touchSession(AiChatSession $session): void
     {
         $session->update([

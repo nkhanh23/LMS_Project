@@ -41,12 +41,17 @@
                         <div class="col-md-12">
                             <label for="api_key" class="form-label">GEMINI_API_KEY</label>
                             <input type="text" class="form-control" name="api_key" id="api_key"
-                                placeholder="Nhập API key mới nếu muốn thay đổi" value="{{ old('api_key') }}">
-                            @if ($geminiSettings && $geminiSettings->api_key)
-                                <small class="text-muted">
-                                    Key hiện tại: {{ $geminiSettings->maskedApiKey() }}
-                                </small>
-                            @endif
+                                placeholder="Nhập API key" value="{{ old('api_key', $geminiSettings->api_key ?? '') }}">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="base_url" class="form-label">GEMINI_BASE_URL (Tùy chọn)</label>
+                            <input type="text" class="form-control" name="base_url" id="base_url"
+                                placeholder="Ví dụ: https://generativelanguage.googleapis.com/v1"
+                                value="{{ old('base_url', $geminiSettings->base_url ?? '') }}">
+                            <small class="text-muted">
+                                Bỏ trống để sử dụng mặc định hoặc cấu hình ghi đè từ .env .
+                            </small>
                         </div>
 
                         <div class="col-md-12">
