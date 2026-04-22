@@ -15,6 +15,15 @@ class ChatbotAskRequest extends FormRequest
         return Auth::check();
     }
 
+    protected function prepareForValidation(): void
+    {
+        if ($this->has('message')) {
+            $this->merge([
+                'message' => trim((string) $this->input('message')),
+            ]);
+        }
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -23,11 +32,10 @@ class ChatbotAskRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'course_id'  => ['required', 'integer', 'exists:courses,id'],
+            'course_id' => ['required', 'integer', 'exists:courses,id'],
             'lecture_id' => ['required', 'integer', 'exists:course_lectures,id'],
         ];
 
-        // Chỉ yêu cầu message khi gọi route 'ask'
         if ($this->routeIs('chatbot.ask')) {
             $rules['message'] = ['required', 'string', 'min:2', 'max:2000'];
         }

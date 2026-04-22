@@ -16,6 +16,11 @@ class GeminiConfigService
             'max_output_tokens' => (int) config('services.gemini.max_output_tokens', 1024),
             'enabled' => (bool) config('services.gemini.enabled', true),
             'base_url' => config('services.gemini.base_url', 'https://generativelanguage.googleapis.com/v1'),
+            'embedding_enabled' => (bool) config('services.gemini.embedding_enabled', true),
+            'embedding_model' => config('services.gemini.embedding_model', 'gemini-embedding-2-preview'),
+            'embedding_dimension' => (int) config('services.gemini.embedding_dimension', 768),
+            'embedding_base_url' => config('services.gemini.embedding_base_url', 'https://generativelanguage.googleapis.com/v1beta'),
+            'embedding_task_type' => config('services.gemini.embedding_task_type', 'RETRIEVAL_DOCUMENT'),
         ];
     }
 

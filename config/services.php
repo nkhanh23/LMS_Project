@@ -49,6 +49,11 @@ return [
         'max_output_tokens' => env('GEMINI_MAX_OUTPUT_TOKENS', 1024),
         'enabled' => env('GEMINI_ENABLED', true),
         'base_url' => env('GEMINI_BASE_URL', 'https://generativelanguage.googleapis.com/v1'),
+        'embedding_enabled' => env('GEMINI_EMBEDDING_ENABLED', true),
+        'embedding_model' => env('GEMINI_EMBEDDING_MODEL', 'gemini-embedding-2-preview'),
+        'embedding_dimension' => (int) env('GEMINI_EMBEDDING_DIMENSION', 768),
+        'embedding_base_url' => env('GEMINI_EMBEDDING_BASE_URL', 'https://generativelanguage.googleapis.com/v1beta'),
+        'embedding_task_type' => env('GEMINI_EMBEDDING_TASK_TYPE', 'RETRIEVAL_DOCUMENT'),
     ],
 
 ];

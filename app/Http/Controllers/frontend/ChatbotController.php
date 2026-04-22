@@ -49,16 +49,15 @@ class ChatbotController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'AI đã trả lời thành công.',
+                'message' => $this->buildTopLevelMessage($result['answer_status']),
                 'data' => $result,
             ]);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             report($e);
 
             return response()->json([
                 'success' => false,
-                'message' => 'LỖI HỆ THỐNG: ' . $e->getMessage(),
-                'debug_trace' => $e->getTraceAsString()
+                'message' => 'Không thể xử lý câu hỏi lúc này.',
             ], 500);
         }
     }
@@ -81,16 +80,21 @@ class ChatbotController extends Controller
                         'id' => $message->id,
                         'role' => $message->role,
                         'content' => $message->content,
+                        'answer_status' => data_get($message->meta_json, 'answer_status'),
+                        'evidence_strength' => data_get($message->meta_json, 'evidence_strength'),
+                        'source_scope' => data_get($message->meta_json, 'source_scope'),
                         'citations' => $message->citations->map(function ($citation) {
                             return [
                                 'document_title' => $citation->document?->title,
                                 'chunk_id' => $citation->chunk_id,
                                 'snippet' => $citation->snippet,
                                 'rank' => $citation->rank,
+                                'score' => $citation->score,
                             ];
                         })->values(),
                     ];
-                })->values();
+                })
+                ->values();
 
             return response()->json([
                 'success' => true,
@@ -133,5 +137,16 @@ class ChatbotController extends Controller
         }
 
         return [$user, $course, $lecture];
+    }
+
+    private function buildTopLevelMessage(string $answerStatus): string
+    {
+        return match ($answerStatus) {
+            'success' => 'AI đã trả lời thành công.',
+            'weak_evidence' => 'AI đã trả lời, nhưng evidence còn yếu.',
+            'no_evidence' => 'Không tìm thấy evidence đủ mạnh trong tài liệu hiện có.',
+            'provider_error' => 'AI provider đang lỗi tạm thời.',
+            default => 'Yêu cầu đã được xử lý.',
+        };
     }
 }

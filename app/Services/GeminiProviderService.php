@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Services\Contracts\AIProviderInterface;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Log;
 use RuntimeException;
 use Throwable;
@@ -40,7 +40,7 @@ class GeminiProviderService implements AIProviderInterface
         ]);
 
         try {
-            $response = Http::timeout($timeout)
+            $response = \Http::timeout($timeout)
                 ->retry(2, 500, function (Throwable $exception) {
                     return true;
                 })
