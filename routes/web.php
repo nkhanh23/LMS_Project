@@ -38,6 +38,7 @@ use App\Http\Controllers\backend\Subcategory;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\backend\InstructorTranscriptController;
 use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\UserLearningController;
 use App\Http\Controllers\backend\UserProfileController;
 use App\Http\Controllers\frontend\ChatbotController;
 use App\Http\Controllers\frontend\CheckoutController;
@@ -377,6 +378,25 @@ Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.'
 
     Route::post('/become-instructor', [InstructorRequestController::class, 'store'])
         ->name('become-instructor.store');
+
+    /*  USER LEARNING  */
+    Route::get('/my-courses', [UserLearningController::class, 'myCourses'])
+        ->name('my-courses');
+
+    Route::get('/continue-learning', [UserLearningController::class, 'continueLearning'])
+        ->name('continue-learning');
+
+    Route::get('/quiz-history', [UserLearningController::class, 'quizHistory'])
+        ->name('quiz-history');
+
+    Route::get('/quiz-history/{attempt}', [UserLearningController::class, 'quizAttemptDetail'])
+        ->name('quiz-history.show');
+
+    Route::get('/ai-tutor/history', [UserLearningController::class, 'aiTutorHistory'])
+        ->name('ai-tutor.history');
+
+    Route::get('/ai-tutor/history/{session}', [UserLearningController::class, 'aiTutorSessionDetail'])
+        ->name('ai-tutor.show');
 });
 
 /*  FRONTEND ROUTES  */
@@ -464,8 +484,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
         Route::get('/chatbot/history', [ChatbotController::class, 'history'])->name('chatbot.history');
     });
-
-
 });
 
 /*  LEARNING ROUTES  */

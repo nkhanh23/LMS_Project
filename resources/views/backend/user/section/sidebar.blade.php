@@ -24,7 +24,7 @@
             <span>Thông tin cá nhân</span>
         </a>
         <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
-            href="{{ route('user.courses') }}">
+            href="{{ route('user.my-courses') }}">
             <i class="fas fa-book text-cyber-cyan"></i>
             <span>Khóa học của tôi</span>
         </a>
@@ -37,6 +37,23 @@
             href="{{ route('user.wishlist.index') }}">
             <i class="fas fa-bookmark text-yellow-400"></i>
             <span>Danh sách yêu thích</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
+            href="{{ route('user.continue-learning') }}">
+            <i class="fas fa-play-circle text-brand"></i>
+            <span>Tiếp tục học</span>
+        </a>
+
+        <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
+            href="{{ route('user.quiz-history') }}">
+            <i class="fas fa-clipboard-check text-cyber-cyan"></i>
+            <span>Lịch sử quiz</span>
+        </a>
+
+        <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
+            href="{{ route('user.ai-tutor.history') }}">
+            <i class="fas fa-robot text-pink-400"></i>
+            <span>AI Tutor</span>
         </a>
         <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
             href="#">
