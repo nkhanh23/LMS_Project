@@ -56,4 +56,17 @@ return [
         'embedding_task_type' => env('GEMINI_EMBEDDING_TASK_TYPE', 'RETRIEVAL_DOCUMENT'),
     ],
 
+    'openai_transcription' => [
+        'enabled' => env('OPENAI_TRANSCRIPTION_ENABLED', false),
+        'api_key' => env('OPENAI_API_KEY'),
+        'model' => env('OPENAI_TRANSCRIPTION_MODEL', 'gpt-4o-mini-transcribe'),
+        'base_url' => env('OPENAI_TRANSCRIPTION_BASE_URL', 'https://api.openai.com/v1'),
+        'timeout' => (int) env('OPENAI_TRANSCRIPTION_TIMEOUT', 600),
+        'language' => env('OPENAI_TRANSCRIPTION_LANGUAGE', 'vi'),
+    ],
+
+    'ffmpeg' => [
+        'bin' => env('FFMPEG_BIN', 'ffmpeg'),
+        'ffprobe' => env('FFPROBE_BIN', 'ffprobe'),
+    ],
 ];

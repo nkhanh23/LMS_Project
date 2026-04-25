@@ -51,4 +51,19 @@ class AiDocument extends Model
             'indexed_at' => null,
         ]);
     }
+
+    public function concepts()
+    {
+        return $this->belongsToMany(
+            Concept::class,
+            'document_concepts',
+            'document_id',
+            'concept_id'
+        )->withTimestamps();
+    }
+
+    public function transcriptJobs()
+    {
+        return $this->hasMany(\App\Models\TranscriptJob::class, 'document_id');
+    }
 }

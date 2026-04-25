@@ -32,4 +32,19 @@ class AiChatSession extends Model
     {
         return $this->hasMany(AiChatMessage::class, 'session_id');
     }
+
+    public function latestMessages(int $limit = 50)
+    {
+        return $this->messages()
+            ->with(['citations.document', 'citations.chunk'])
+            ->latest('id')
+            ->limit($limit);
+    }
+
+    public function close(): void
+    {
+        $this->update([
+            'status' => 'closed',
+        ]);
+    }
 }

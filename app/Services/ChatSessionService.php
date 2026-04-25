@@ -32,13 +32,23 @@ class ChatSessionService
         ]);
     }
 
-    public function storeUserMessage(AiChatSession $session, int $userId, string $content): AiChatMessage
-    {
+    public function storeUserMessage(
+        AiChatSession $session,
+        int $userId,
+        string $content,
+        ?array $meta = null
+    ): AiChatMessage {
         $message = AiChatMessage::query()->create([
             'session_id' => $session->id,
             'user_id' => $userId,
             'role' => 'user',
             'content' => $content,
+            'meta_json' => array_merge([
+                'answer_status' => null,
+                'evidence_strength' => null,
+                'source_scope' => 'lesson',
+                'retrieved_chunk_ids' => [],
+            ], $meta ?? []),
         ]);
 
         $this->touchSession($session);
@@ -60,7 +70,15 @@ class ChatSessionService
             'content' => $content,
             'provider' => $provider,
             'model' => $model,
-            'meta_json' => $meta,
+            'meta_json' => array_merge([
+                'answer_status' => 'success',
+                'evidence_strength' => null,
+                'source_scope' => null,
+                'retrieved_chunk_ids' => [],
+                'prompt_version' => null,
+                'finish_reason' => null,
+                'latency_ms' => null,
+            ], $meta ?? []),
         ]);
 
         $this->touchSession($session);
@@ -83,12 +101,41 @@ class ChatSessionService
     {
         return AiChatMessage::query()
             ->where('session_id', $session->id)
-            ->with(['citations.document'])
+            ->with([
+                'citations.document',
+                'citations.chunk',
+            ])
             ->latest('id')
             ->take($limit)
             ->get()
             ->sortBy('id')
             ->values();
+    }
+
+    public function getStructuredHistory(AiChatSession $session, int $limit = 50): array
+    {
+        return $this->getSessionMessagesWithCitations($session, $limit)
+            ->map(function (AiChatMessage $message) {
+                return [
+                    'id' => $message->id,
+                    'role' => $message->role,
+                    'content' => $message->content,
+                    'provider' => $message->provider,
+                    'model' => $message->model,
+                    'created_at' => optional($message->created_at)->toDateTimeString(),
+                    'answer_status' => $message->answer_status,
+                    'evidence_strength' => $message->evidence_strength,
+                    'source_scope' => $message->source_scope,
+                    'retrieved_chunk_ids' => $message->retrieved_chunk_ids,
+                    'citations' => $message->citations
+                        ->sortBy('rank')
+                        ->values()
+                        ->map(fn($citation) => $citation->toHistoryArray())
+                        ->all(),
+                ];
+            })
+            ->values()
+            ->all();
     }
 
     public function getRecentMessages(AiChatSession $session, int $limit = 8)

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AiDocumentStoreRequest;
 use App\Jobs\ProcessAiDocumentJob;
 use App\Models\AiDocument;
+use App\Models\Course;
+use App\Models\CourseLecture;
 use App\Services\AiDocumentIndexService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -23,10 +25,19 @@ class AiDocumentController extends Controller
     public function index()
     {
         $documents = AiDocument::query()
+            ->with(['chunks'])
             ->latest()
-            ->paginate(20);
+            ->paginate(15);
 
-        return view('backend.admin.ai-document.index', compact('documents'));
+        $courses = Course::query()
+            ->orderBy('course_title')
+            ->get(['id', 'course_title']);
+
+        $lectures = CourseLecture::query()
+            ->orderBy('lecture_title')
+            ->get(['id', 'course_id', 'lecture_title']);
+
+        return view('backend.instructor.ai-document.index', compact('documents', 'courses', 'lectures'));
     }
 
     public function store(AiDocumentStoreRequest $request): RedirectResponse

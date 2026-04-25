@@ -8,8 +8,9 @@
             </div>
 
             <div class="modal-body">
+                {{-- Main Update Form --}}
                 <form method="post" action="{{ route('instructor.lecture.update', $lecture->id) }}"
-                    enctype="multipart/form-data" class="lecture-edit-form">
+                    enctype="multipart/form-data" class="lecture-edit-form" id="lecture-update-form-{{ $lecture->id }}">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="course_id" value="{{ $course->id }}" />
@@ -144,11 +145,44 @@
                             </a>
                         </div>
                     @endif
-
-                    <div class="mt-4">
-                        <button type="submit" class="btn btn-primary w-100 btn-submit-lecture">Cập nhật</button>
-                    </div>
                 </form>
+
+                {{-- Separate Transcript Generation Form --}}
+                @if(in_array($lecture->type, ['video', 'r2_video']))
+                    <form method="POST"
+                          action="{{ route('instructor.transcript.generate', $lecture->id) }}"
+                          id="transcript-generate-form-{{ $lecture->id }}">
+                        @csrf
+                    </form>
+                @endif
+
+                {{-- Action Buttons Area --}}
+                <div class="mt-4 border-top pt-4">
+                    <div class="d-grid gap-2">
+                        <button type="submit" form="lecture-update-form-{{ $lecture->id }}" class="btn btn-primary w-100 btn-submit-lecture">
+                            <i class="bi bi-save"></i> Cập nhật bài học
+                        </button>
+
+                        @if(in_array($lecture->type, ['video', 'r2_video']))
+                            <button type="submit"
+                                    form="transcript-generate-form-{{ $lecture->id }}"
+                                    class="btn btn-outline-primary w-100"
+                                    onclick="return confirm('Tạo transcript cho bài học này?')">
+                                <i class="bi bi-mic-fill"></i> Generate Transcript
+                            </button>
+
+                            @if($lecture->transcriptJobs()->latest()->exists())
+                                @php $latestTranscriptJob = $lecture->transcriptJobs()->latest()->first(); @endphp
+                                <div class="small text-muted mt-2">
+                                    Transcript status: {{ $latestTranscriptJob->status }}
+                                    @if($latestTranscriptJob->error_message)
+                                        <div class="text-danger small">{{ $latestTranscriptJob->error_message }}</div>
+                                    @endif
+                                </div>
+                            @endif
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
     </div>

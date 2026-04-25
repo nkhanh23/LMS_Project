@@ -33,7 +33,12 @@ class AiChatOrchestratorService
         $this->chatSessionService->storeUserMessage(
             session: $session,
             userId: $userId,
-            content: $question
+            content: $question,
+            meta: [
+                'course_id' => (int) $course->id,
+                'lecture_id' => (int) $lecture->id,
+                'source_scope' => 'lesson',
+            ]
         );
 
         $history = $this->chatSessionService->getRecentMessages($session, 8);
@@ -61,6 +66,8 @@ class AiChatOrchestratorService
                 provider: null,
                 model: null,
                 meta: [
+                    'course_id' => (int) $course->id,
+                    'lecture_id' => (int) $lecture->id,
                     'answer_status' => 'no_evidence',
                     'source_scope' => $sourceScope,
                     'evidence_strength' => $evidenceStrength,
@@ -110,6 +117,8 @@ class AiChatOrchestratorService
                 provider: $answerPayload['provider'] ?? 'gemini',
                 model: $answerPayload['model'] ?? null,
                 meta: [
+                    'course_id' => (int) $course->id,
+                    'lecture_id' => (int) $lecture->id,
                     'answer_status' => $answerStatus,
                     'source_scope' => $sourceScope,
                     'evidence_strength' => $evidenceStrength,
@@ -137,6 +146,8 @@ class AiChatOrchestratorService
                 provider: 'gemini',
                 model: null,
                 meta: [
+                    'course_id' => (int) $course->id,
+                    'lecture_id' => (int) $lecture->id,
                     'answer_status' => 'provider_error',
                     'source_scope' => $sourceScope,
                     'evidence_strength' => $evidenceStrength,

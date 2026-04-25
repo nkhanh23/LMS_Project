@@ -14,6 +14,9 @@
                 </div>
 
                 <hr />
+                <a href="{{ route('instructor.ai-documents.index') }}" class="btn btn-dark mb-3">
+                    Quản lý AI Documents
+                </a>
                 <div class="card radius-10">
                     <div class="card-body">
                         <div class="d-flex align-items-center">

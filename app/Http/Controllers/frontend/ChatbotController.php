@@ -73,28 +73,7 @@ class ChatbotController extends Controller
                 lectureId: (int) $lecture->id
             );
 
-            $messages = $this->chatSessionService
-                ->getSessionMessagesWithCitations($session)
-                ->map(function ($message) {
-                    return [
-                        'id' => $message->id,
-                        'role' => $message->role,
-                        'content' => $message->content,
-                        'answer_status' => data_get($message->meta_json, 'answer_status'),
-                        'evidence_strength' => data_get($message->meta_json, 'evidence_strength'),
-                        'source_scope' => data_get($message->meta_json, 'source_scope'),
-                        'citations' => $message->citations->map(function ($citation) {
-                            return [
-                                'document_title' => $citation->document?->title,
-                                'chunk_id' => $citation->chunk_id,
-                                'snippet' => $citation->snippet,
-                                'rank' => $citation->rank,
-                                'score' => $citation->score,
-                            ];
-                        })->values(),
-                    ];
-                })
-                ->values();
+            $messages = $this->chatSessionService->getStructuredHistory($session, 50);
 
             return response()->json([
                 'success' => true,
@@ -102,6 +81,8 @@ class ChatbotController extends Controller
                     'session_id' => $session->id,
                     'course_id' => $course->id,
                     'lecture_id' => $lecture->id,
+                    'session_status' => $session->status,
+                    'last_activity_at' => optional($session->last_activity_at)->toDateTimeString(),
                     'messages' => $messages,
                 ],
             ]);

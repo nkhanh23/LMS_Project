@@ -36,6 +36,7 @@ use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\SocialController;
 use App\Http\Controllers\backend\Subcategory;
 use App\Http\Controllers\backend\SubcategoryController;
+use App\Http\Controllers\backend\InstructorTranscriptController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserProfileController;
 use App\Http\Controllers\frontend\ChatbotController;
@@ -330,6 +331,19 @@ Route::middleware('auth', 'verified', 'role:instructor', 'instructor.approved')-
     Route::get('/quiz/{lecture}/edit', [QuizController::class, 'edit'])->name('quiz.edit');
     //Lưu quiz
     Route::post('/quiz/{lecture}', [QuizController::class, 'storeOrUpdate'])->name('quiz.store_or_update');
+
+
+    /*  INSTRUCTOR AI DOCUMENT  */
+    Route::get('/ai-documents', [AiDocumentController::class, 'index'])->name('ai-documents.index');
+    Route::post('/ai-documents', [AiDocumentController::class, 'store'])->name('ai-documents.store');
+    Route::post('/ai-documents/{document}/reindex', [AiDocumentController::class, 'reindex'])->name('ai-documents.reindex');
+    Route::delete('/ai-documents/{document}', [AiDocumentController::class, 'destroy'])->name('ai-documents.destroy');
+
+    /*  INSTRUCTOR TRANSCRIPT  */
+    Route::post('/lectures/{lecture}/transcript/generate', [InstructorTranscriptController::class, 'generate'])
+        ->name('transcript.generate');
+    Route::get('/transcript-jobs/{transcriptJob}', [InstructorTranscriptController::class, 'show'])
+        ->name('transcript.show');
 });
 
 Route::middleware('auth')->group(function () {
@@ -451,9 +465,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/chatbot/history', [ChatbotController::class, 'history'])->name('chatbot.history');
     });
 
-    Route::post('/instructor/ai/documents', [AiDocumentController::class, 'store'])->name('instructor.ai-documents.store');
-    Route::post('/instructor/ai/documents/{document}/reindex', [AiDocumentController::class, 'reindex'])->name('instructor.ai-documents.reindex');
-    Route::delete('/instructor/ai/documents/{document}', [AiDocumentController::class, 'destroy'])->name('instructor.ai-documents.destroy');
+
 });
 
 /*  LEARNING ROUTES  */
