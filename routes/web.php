@@ -397,6 +397,11 @@ Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.'
 
     Route::get('/ai-tutor/history/{session}', [UserLearningController::class, 'aiTutorSessionDetail'])
         ->name('ai-tutor.show');
+    Route::get('/ai-tutor/history', [UserLearningController::class, 'aiTutorHistory'])
+        ->name('ai-tutor.history');
+
+    Route::get('/ai-tutor/history/{session}', [UserLearningController::class, 'aiTutorSessionDetail'])
+        ->name('ai-tutor.show');
 });
 
 /*  FRONTEND ROUTES  */

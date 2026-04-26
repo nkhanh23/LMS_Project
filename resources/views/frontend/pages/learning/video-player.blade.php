@@ -21,10 +21,7 @@
                 class="tab-btn px-8 py-3 bg-cyber-dark text-slate-400 font-bold uppercase border-2 border-black border-b-0 border-l-0 hover:bg-cyber-surface hover:text-white transition-all">
                 Ghi chú
             </button>
-            <button onclick="switchTab('chatbot', this)"
-                class="tab-btn px-8 py-3 bg-cyber-dark text-slate-400 font-bold uppercase border-2 border-black border-b-0 border-l-0 hover:bg-cyber-surface hover:text-white transition-all">
-                Hỏi AI
-            </button>
+
             <button onclick="switchTab('reviews', this)"
                 class="tab-btn px-8 py-3 bg-cyber-dark text-slate-400 font-bold uppercase border-2 border-black border-b-0 border-l-0 hover:bg-cyber-surface hover:text-white transition-all">
                 Đánh giá
@@ -41,8 +38,7 @@
             <!-- Notes Tab -->
             @include('frontend.pages.learning.partials.note')
 
-            <!-- Chatbot AI Tab -->
-            @include('frontend.pages.learning.partials.chatbot')
+
 
             <!-- Reviews Tab -->
             @include('frontend.pages.learning.partials.reviews')
