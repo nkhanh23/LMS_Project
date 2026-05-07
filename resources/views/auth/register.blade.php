@@ -227,7 +227,7 @@
                             </svg>
                             Google
                         </a>
-                        <a href="#"
+                        <a href="{{ route('auth.facebook') }}"
                             class="flex-1 flex items-center justify-center gap-2 h-12 bg-black border-2 border-cyber-blue/30 hover:border-cyber-blue hover:shadow-neon text-white font-bold text-sm uppercase tracking-wider transition-all duration-150">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="#1877F2">
                                 <path

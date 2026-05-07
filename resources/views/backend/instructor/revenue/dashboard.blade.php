@@ -87,6 +87,33 @@
                 </div>
             </div>
         </div>
+        
+        <div class="row">
+            <!-- Trong khu vực hiển thị Card thống kê -->
+            <div class="col-12 col-lg-4">
+                <div class="card radius-10 bg-gradient-deepblue">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <h5 class="mb-0 text-white">{{ number_format($available_balance, 0, ',', '.') }} VNĐ</h5>
+                            <div class="ms-auto">
+                                <i class='bx bx-wallet fs-3 text-white'></i>
+                            </div>
+                        </div>
+                        <div class="progress my-2 bg-opacity-25 bg-white" style="height:4px;">
+                            <div class="progress-bar bg-white" role="progressbar" style="width: 100%"></div>
+                        </div>
+                        <div class="d-flex align-items-center text-white">
+                            <p class="mb-0">Số dư khả dụng (Net)</p>
+                            <!-- Nút mở Modal Payout -->
+                            <button class="btn btn-light btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#payoutModal">
+                                Rút Tiền
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="row">
             {{-- Revenue By Day --}}
@@ -206,5 +233,95 @@
             </div>
         </div>
 
+        <!-- Bảng Lịch sử Rút tiền -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="mb-3">Lịch sử rút tiền</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered mb-0">
+                        <thead>
+                            <tr>
+                                <th>Ngày yêu cầu</th>
+                                <th>Ngân hàng</th>
+                                <th>Số tiền</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($payout_history as $history)
+                                <tr>
+                                    <td>{{ $history->created_at->format('d/m/Y H:i') }}</td>
+                                    <td>{{ $history->bank_name }} - {{ $history->account_number }}</td>
+                                    <td>{{ number_format($history->amount, 0, ',', '.') }} VNĐ</td>
+                                    <td>
+                                        @if($history->status == 'approved')
+                                            <span class="badge bg-success">Đã duyệt</span>
+                                            <div class="text-muted mt-1" style="font-size: 11px;">
+                                                Mã GD: {{ $history->transaction_reference }}
+                                            </div>
+                                        @elseif($history->status == 'rejected')
+                                            <span class="badge bg-danger" title="{{ $history->admin_note }}">Từ chối (Di chuột để xem)</span>
+                                        @else
+                                            <span class="badge bg-warning">Đang chờ</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="mt-3">
+                        {{ $payout_history->links() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+
+    <!-- Modal Rút Tiền -->
+    <div class="modal fade" id="payoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('instructor.revenue.request-payout') }}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title">Yêu cầu rút tiền</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Số dư có thể rút</label>
+                            <input type="text" class="form-control"
+                                value="{{ number_format($available_balance, 0, ',', '.') }} VNĐ" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Số tiền cần rút (VNĐ)</label>
+                            <input type="number" name="amount" class="form-control" min="100000"
+                                max="{{ $available_balance }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tên Ngân Hàng</label>
+                            <input type="text" name="bank_name" class="form-control" placeholder="VD: Vietcombank"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Số tài khoản</label>
+                            <input type="text" name="account_number" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tên chủ tài khoản</label>
+                            <input type="text" name="account_name" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary"
+                            {{ $available_balance < 100000 ? 'disabled' : '' }}>Gửi yêu cầu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @endsection

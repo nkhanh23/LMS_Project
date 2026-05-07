@@ -186,4 +186,61 @@ class FrontEndDashBoardController extends Controller
             'ratingPercent'
         ));
     }
+
+    public function courses(Request $request)
+    {
+        $rating = $request->get('rating');
+        $sort = $request->get('sort', 'relevant');
+
+        // Nhận thêm tham số lọc từ URL
+        $categoryId = $request->get('category');
+        $subcategoryId = $request->get('subcategory');
+
+        // Lấy danh sách Category kèm Subcategory để render bộ lọc ở View
+        $categories = Category::with('subcategory')->orderBy('name', 'asc')->get();
+
+        $query = Course::query()
+            ->where('approval_status', 'published')
+            ->where('status', 1)
+            ->with(['category', 'user', 'sections.lecture'])
+            ->withAvg(['reviews' => function ($q) {
+                $q->where('is_approved', true);
+            }], 'rating')
+            ->withCount(['reviews' => function ($q) {
+                $q->where('is_approved', true);
+            }]);
+
+        // Thêm logic lọc theo danh mục
+        $query->when($categoryId, function ($q, $categoryId) {
+            return $q->where('category_id', $categoryId);
+        });
+
+        // Thêm logic lọc theo danh mục con
+        $query->when($subcategoryId, function ($q, $subcategoryId) {
+            return $q->where('subcategory_id', $subcategoryId);
+        });
+
+        if ($rating) {
+            $query->where(function($q) use ($rating) {
+                $q->selectRaw('avg(rating)')
+                  ->from('course_reviews')
+                  ->whereColumn('course_id', 'courses.id')
+                  ->where('is_approved', 1)
+                  ->whereNull('deleted_at');
+            }, '>=', $rating);
+        }
+
+        if ($sort === 'newest') {
+            $query->orderBy('created_at', 'desc');
+        } elseif ($sort === 'highest_rated') {
+            $query->orderBy('reviews_avg_rating', 'desc');
+        } else {
+            $query->orderBy('created_at', 'desc'); // Default
+        }
+
+        $courses = $query->paginate(10)->withQueryString();
+
+        // Truyền thêm biến $categories sang View
+        return view('frontend.pages.courses.index', compact('courses', 'categories'));
+    }
 }

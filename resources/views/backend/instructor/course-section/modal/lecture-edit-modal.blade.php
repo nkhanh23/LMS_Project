@@ -156,34 +156,182 @@
                     </form>
                 @endif
 
+                {{-- ============================================ --}}
+                {{-- TRANSCRIPT MANAGEMENT PANEL --}}
+                {{-- ============================================ --}}
+                @if(in_array($lecture->type, ['video', 'r2_video']))
+                <div class="mt-4 border-top pt-3">
+                    <h6 class="mb-3"><i class="bi bi-file-text"></i> Quản lý Transcript</h6>
+
+                    {{-- Tab buttons --}}
+                    <ul class="nav nav-tabs nav-tabs-sm" id="transcriptTabs-{{ $lecture->id }}" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab"
+                                    data-bs-target="#tab-view-{{ $lecture->id }}" type="button">
+                                <i class="bi bi-eye"></i> Xem / Sửa
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab"
+                                    data-bs-target="#tab-auto-{{ $lecture->id }}" type="button">
+                                <i class="bi bi-mic-fill"></i> Tự động
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab"
+                                    data-bs-target="#tab-manual-{{ $lecture->id }}" type="button">
+                                <i class="bi bi-upload"></i> Thủ công
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content border border-top-0 rounded-bottom p-3" id="transcriptTabContent-{{ $lecture->id }}">
+
+                        {{-- ===== TAB 1: Xem / Sửa ===== --}}
+                        <div class="tab-pane fade show active" id="tab-view-{{ $lecture->id }}" role="tabpanel">
+                            <button type="button"
+                                    class="btn btn-sm btn-outline-secondary btn-load-transcript mb-3"
+                                    data-lecture-id="{{ $lecture->id }}"
+                                    data-url="{{ route('instructor.transcript.get', $lecture->id) }}">
+                                <i class="bi bi-arrow-clockwise"></i> Tải Transcript
+                            </button>
+
+                            <div class="transcript-panel" id="transcript-panel-{{ $lecture->id }}" style="display: none;">
+                                {{-- Info Bar --}}
+                                <div class="d-flex align-items-center justify-content-between mb-2 flex-wrap gap-2">
+                                    <div class="transcript-meta small text-muted" id="transcript-meta-{{ $lecture->id }}"></div>
+                                    <div class="d-flex gap-2">
+                                        <button type="button"
+                                                class="btn btn-sm btn-outline-primary btn-toggle-edit-transcript"
+                                                id="btn-edit-{{ $lecture->id }}"
+                                                data-lecture-id="{{ $lecture->id }}"
+                                                style="display: none;">
+                                            <i class="bi bi-pencil"></i> Sửa
+                                        </button>
+                                        <button type="button"
+                                                class="btn btn-sm btn-success btn-save-transcript"
+                                                id="btn-save-{{ $lecture->id }}"
+                                                data-lecture-id="{{ $lecture->id }}"
+                                                data-url="{{ route('instructor.transcript.update', $lecture->id) }}"
+                                                style="display: none;">
+                                            <i class="bi bi-check-lg"></i> Lưu
+                                        </button>
+                                        <button type="button"
+                                                class="btn btn-sm btn-outline-secondary btn-cancel-edit-transcript"
+                                                id="btn-cancel-{{ $lecture->id }}"
+                                                data-lecture-id="{{ $lecture->id }}"
+                                                style="display: none;">
+                                            Hủy
+                                        </button>
+                                        <button type="button"
+                                                class="btn btn-sm btn-outline-warning btn-reindex-transcript"
+                                                data-lecture-id="{{ $lecture->id }}"
+                                                data-url="{{ route('instructor.transcript.reindex', $lecture->id) }}">
+                                            <i class="bi bi-arrow-repeat"></i> Re-index
+                                        </button>
+                                        <button type="button"
+                                                class="btn btn-sm btn-outline-danger btn-delete-transcript"
+                                                data-lecture-id="{{ $lecture->id }}"
+                                                data-url="{{ route('instructor.transcript.delete', $lecture->id) }}">
+                                            <i class="bi bi-trash"></i> Xóa
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {{-- Read-only view --}}
+                                <div class="transcript-view-content border rounded p-3"
+                                     id="transcript-view-{{ $lecture->id }}"
+                                     style="max-height: 300px; overflow-y: auto; background: #f8f9fa; font-size: 14px; line-height: 1.7; white-space: pre-wrap; word-wrap: break-word;">
+                                </div>
+
+                                {{-- Editable textarea --}}
+                                <textarea class="form-control transcript-edit-content"
+                                          id="transcript-edit-{{ $lecture->id }}"
+                                          rows="12"
+                                          style="display: none; font-size: 14px; line-height: 1.7;"></textarea>
+
+                                <div class="transcript-save-feedback mt-2" id="transcript-feedback-{{ $lecture->id }}"></div>
+                            </div>
+
+                            {{-- No transcript message --}}
+                            <div class="transcript-empty-msg text-muted small" id="transcript-empty-{{ $lecture->id }}" style="display: none;">
+                                <i class="bi bi-info-circle"></i> Chưa có transcript. Hãy tạo tự động hoặc thêm thủ công.
+                            </div>
+                        </div>
+
+                        {{-- ===== TAB 2: Tự động generate ===== --}}
+                        <div class="tab-pane fade" id="tab-auto-{{ $lecture->id }}" role="tabpanel">
+                            <p class="small text-muted mb-3">
+                                <i class="bi bi-info-circle"></i>
+                                Hệ thống sẽ tự động lấy phụ đề từ YouTube (nếu có) hoặc dùng AI để tạo transcript từ audio.
+                            </p>
+                            <form method="POST"
+                                  action="{{ route('instructor.transcript.generate', $lecture->id) }}"
+                                  id="transcript-generate-form-{{ $lecture->id }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary w-100"
+                                        onclick="return confirm('Tạo transcript tự động cho bài học này?')">
+                                    <i class="bi bi-mic-fill"></i> Generate Transcript
+                                </button>
+                            </form>
+
+                            @if($lecture->transcriptJobs()->latest()->exists())
+                                @php $latestTranscriptJob = $lecture->transcriptJobs()->latest()->first(); @endphp
+                                <div class="small mt-3">
+                                    Trạng thái:
+                                    <span class="badge {{ $latestTranscriptJob->status === 'done' ? 'bg-success' : ($latestTranscriptJob->status === 'failed' ? 'bg-danger' : 'bg-warning') }}">
+                                        {{ $latestTranscriptJob->status }}
+                                    </span>
+                                    @if($latestTranscriptJob->error_message)
+                                        <div class="text-danger small mt-1">{{ $latestTranscriptJob->error_message }}</div>
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
+
+                        {{-- ===== TAB 3: Thêm thủ công ===== --}}
+                        <div class="tab-pane fade" id="tab-manual-{{ $lecture->id }}" role="tabpanel">
+                            <form method="POST"
+                                  action="{{ route('instructor.transcript.store-manual', $lecture->id) }}"
+                                  enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Upload file (PDF, DOCX, TXT)</label>
+                                    <input type="file" name="file" class="form-control" accept=".pdf,.doc,.docx,.txt">
+                                    <small class="text-muted">Tối đa 10MB. Nội dung sẽ được trích xuất tự động.</small>
+                                </div>
+
+                                <div class="text-center text-muted my-2">
+                                    <small>— hoặc —</small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Nhập nội dung thủ công</label>
+                                    <textarea name="manual_content" class="form-control" rows="6"
+                                              placeholder="Dán hoặc nhập nội dung transcript tại đây..."></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="bi bi-plus-circle"></i> Thêm Transcript
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                @endif
+
                 {{-- Action Buttons Area --}}
                 <div class="mt-4 border-top pt-4">
                     <div class="d-grid gap-2">
                         <button type="submit" form="lecture-update-form-{{ $lecture->id }}" class="btn btn-primary w-100 btn-submit-lecture">
                             <i class="bi bi-save"></i> Cập nhật bài học
                         </button>
-
-                        @if(in_array($lecture->type, ['video', 'r2_video']))
-                            <button type="submit"
-                                    form="transcript-generate-form-{{ $lecture->id }}"
-                                    class="btn btn-outline-primary w-100"
-                                    onclick="return confirm('Tạo transcript cho bài học này?')">
-                                <i class="bi bi-mic-fill"></i> Generate Transcript
-                            </button>
-
-                            @if($lecture->transcriptJobs()->latest()->exists())
-                                @php $latestTranscriptJob = $lecture->transcriptJobs()->latest()->first(); @endphp
-                                <div class="small text-muted mt-2">
-                                    Transcript status: {{ $latestTranscriptJob->status }}
-                                    @if($latestTranscriptJob->error_message)
-                                        <div class="text-danger small">{{ $latestTranscriptJob->error_message }}</div>
-                                    @endif
-                                </div>
-                            @endif
-                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

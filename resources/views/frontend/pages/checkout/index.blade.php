@@ -133,17 +133,22 @@
                             </label>
 
                             <label
-                                class="flex items-center justify-between p-4 retro-border cursor-pointer transition-colors hover:bg-[#1E1E2E]/80 bg-[#1E1E2E]">
-                                <div class="flex items-center space-x-3">
-                                    <input type="radio" id="vnpay" name="payment_type" value="vnpay"
-                                        class="w-5 h-5 accent-[#4bf425]">
-                                    <span class="font-bold text-slate-100 uppercase tracking-wide">VNPAY</span>
+                                class="flex flex-col p-4 retro-border cursor-pointer transition-colors hover:bg-[#1E1E2E]/80 bg-[#1E1E2E]">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <input type="radio" id="vnpay" name="payment_type" value="vnpay"
+                                            class="w-5 h-5 accent-[#4bf425]">
+                                        <span class="font-bold text-slate-100 uppercase tracking-wide">
+                                            <i class="fas fa-wallet text-[#4bf425]"></i> Ví điện tử / ATM (VnPay)
+                                        </span>
+                                    </div>
+                                    <div class="bg-white p-1 retro-border">
+                                        <img src="{{ asset('frontend/images/vnpay.png') }}"
+                                            onerror="this.onerror=null; this.src='https://cdn.brandfetch.io/idV02t6WJs/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1766490355643'"
+                                            alt="VNPAY" class="h-6 object-contain">
+                                    </div>
                                 </div>
-                                <div class="bg-white p-1 retro-border">
-                                    <img src="{{ asset('frontend/images/vnpay.png') }}"
-                                        onerror="this.onerror=null; this.src='https://cdn.brandfetch.io/idV02t6WJs/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1766490355643'"
-                                        alt="VNPAY" class="h-6 object-contain">
-                                </div>
+                                <small class="text-[#A6ACCD] text-xs font-bold mt-2 ml-8">Thanh toán qua ứng dụng ngân hàng hoặc ví điện tử trong nước.</small>
                             </label>
 
                             <label
@@ -400,6 +405,26 @@
                             background: '#28a745',
                             color: '#fff'
                         });
+                    }
+                });
+            });
+            // === Điều hướng Action Form theo phương thức thanh toán ===
+            const checkoutForm = document.getElementById('payment-form');
+            const paymentRadios = document.querySelectorAll('input[name="payment_type"]');
+
+            // Define các route thanh toán
+            const routes = {
+                'stripe': "{{ route('order') }}",
+                'vnpay': "{{ route('vnpay.payment') }}",
+                'paypal': "{{ route('order') }}"  // PayPal fallback về route order
+            };
+
+            // Lắng nghe sự kiện thay đổi lựa chọn
+            paymentRadios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    const selectedMethod = this.value;
+                    if (routes[selectedMethod]) {
+                        checkoutForm.action = routes[selectedMethod];
                     }
                 });
             });

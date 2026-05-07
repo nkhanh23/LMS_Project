@@ -107,7 +107,7 @@ $categories = getCategories();
         <!-- Desktop Nav -->
         <nav class="hidden lg:flex items-center gap-5 text-sm font-bold uppercase">
             <a href="#" class="text-brand">Home</a>
-            <a href="#" class="hover:text-brand transition-colors">Khóa học</a>
+            <a href="{{ route('frontend.courses.index') }}" class="hover:text-brand transition-colors">Khóa học</a>
             <a href="{{ route('cart') }}" class="hover:text-brand transition-colors">Giỏ hàng</a>
             <a href="#" class="hover:text-brand transition-colors">Blog</a>
         </nav>

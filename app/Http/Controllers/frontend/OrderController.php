@@ -14,15 +14,19 @@ use Illuminate\Support\Str;
 use Stripe\StripeClient;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Repositories\VnPayRepository;
 
 class OrderController extends Controller
 {
     protected $paymentService;
     protected $enrollmentService;
-    public function __construct(PaymentService $paymentService, EnrollmentService $enrollmentService)
+    protected $vnPayRepository;
+
+    public function __construct(PaymentService $paymentService, EnrollmentService $enrollmentService, VnPayRepository $vnPayRepository)
     {
         $this->paymentService = $paymentService;
         $this->enrollmentService = $enrollmentService;
+        $this->vnPayRepository = $vnPayRepository;
     }
 
     public function order(OrderRequest $request)
@@ -111,5 +115,130 @@ class OrderController extends Controller
         }
 
         return $orders;
+    }
+
+    public function vnpayPayment(Request $request)
+    {
+        // 1. Lưu thông tin đơn hàng vào Session (BẮT BUỘC để tạo Order sau khi thanh toán thành công)
+        session()->put('stripe_data', $request->all());
+        session()->save(); // Lưu session vào database/file trước khi chuyển hướng sang domain khác
+
+        // 2. Lấy cấu hình VnPay
+        $vnp_TmnCode = config('vnpay.vnp_TmnCode');
+        $vnp_HashSecret = config('vnpay.vnp_HashSecret');
+        $vnp_Url = config('vnpay.vnp_Url');
+        $vnp_Returnurl = config('vnpay.vnp_Returnurl');
+
+        // 3. Thông tin đơn hàng
+        $vnp_TxnRef = 'INV-' . strtoupper(uniqid());
+        $vnp_OrderInfo = "Thanh toan don hang khoa hoc StackLearn - " . $vnp_TxnRef;
+        $vnp_OrderType = 'billpayment';
+        $vnp_Amount = $request->input('total_price', 0) * 100; // VnPay yêu cầu x100
+        $vnp_Locale = 'vn';
+        $vnp_IpAddr = $request->ip();
+
+        // 4. Xây dựng mảng dữ liệu (Input Data)
+        $inputData = array(
+            "vnp_Version" => "2.1.0",
+            "vnp_TmnCode" => $vnp_TmnCode,
+            "vnp_Amount" => $vnp_Amount,
+            "vnp_Command" => "pay",
+            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CurrCode" => "VND",
+            "vnp_IpAddr" => $vnp_IpAddr,
+            "vnp_Locale" => $vnp_Locale,
+            "vnp_OrderInfo" => $vnp_OrderInfo,
+            "vnp_OrderType" => $vnp_OrderType,
+            "vnp_ReturnUrl" => $vnp_Returnurl,
+            "vnp_TxnRef" => $vnp_TxnRef
+        );
+
+        // 5. Sắp xếp dữ liệu theo thứ tự Alphabet (Bắt buộc)
+        ksort($inputData);
+
+        $query = "";
+        $i = 0;
+        $hashdata = "";
+
+        // 6. Chuẩn hóa chuỗi dữ liệu (Query String)
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+            } else {
+                $hashdata .= urlencode($key) . "=" . urlencode($value);
+                $i = 1;
+            }
+            $query .= urlencode($key) . "=" . urlencode($value) . '&';
+        }
+
+        $vnp_Url = $vnp_Url . "?" . $query;
+
+        // 7. Tạo Secure Hash
+        if (isset($vnp_HashSecret)) {
+            $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
+            $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+        }
+
+        // 8. Chuyển hướng người dùng sang cổng VnPay
+        return redirect()->away($vnp_Url);
+    }
+
+    public function vnpayReturn(Request $request)
+    {
+        $inputData = $request->all();
+
+        // 1. Kiểm tra chữ ký bảo mật
+        if (!$this->vnPayRepository->verifyResponse($inputData)) {
+            return redirect()->route('checkout')->with('error', 'Chữ ký thanh toán không hợp lệ');
+        }
+
+        // 2. Kiểm tra session data có tồn tại không
+        $stripeData = session('stripe_data');
+        if (!$stripeData || !isset($stripeData['course_id'])) {
+            return redirect()->route('checkout')->with('error', 'Phiên thanh toán đã hết hạn. Vui lòng thử lại.');
+        }
+
+        // 3. Kiểm tra mã phản hồi (00 là thành công)
+        if ($inputData['vnp_ResponseCode'] == '00') {
+            try {
+                DB::transaction(function () use ($inputData) {
+                    // 4. Lưu thông tin Payment
+                    $payment = Payment::create([
+                        'transaction_id' => $inputData['vnp_TransactionNo'],
+                        'name'           => Auth::user()->name,
+                        'email'          => Auth::user()->email,
+                        'phone'          => Auth::user()->phone,
+                        'total_amount'   => $inputData['vnp_Amount'] / 100,
+                        'payment_type'   => 'vnpay',
+                        'invoice_no'     => $inputData['vnp_TxnRef'],
+                        'order_date'     => now()->toDateString(),
+                        'order_month'    => now()->month,
+                        'order_year'     => now()->year,
+                        'status'         => 'completed',
+                        'provider_payload' => json_encode($inputData),
+                    ]);
+
+                    // 5. Tạo chi tiết đơn hàng (Orders) từ Session
+                    $orders = $this->createOrder($payment->id);
+
+                    // 6. Cấp quyền truy cập khóa học
+                    foreach ($orders as $order) {
+                        $this->enrollmentService->grantFromOrder($order);
+                    }
+                });
+
+                // Xóa giỏ hàng
+                $guestToken = $request->cookie('guest_token') ?? Str::uuid();
+                Cart::where('guest_token', $guestToken)->delete();
+
+                session()->forget('stripe_data');
+
+                return redirect('/')->with('success', 'Thanh toán qua VnPay thành công!');
+            } catch (\Exception $e) {
+                return redirect('/checkout')->with('error', 'Lỗi hệ thống: ' . $e->getMessage());
+            }
+        }
+
+        return redirect()->route('checkout')->with('error', 'Giao dịch thất bại hoặc bị hủy');
     }
 }

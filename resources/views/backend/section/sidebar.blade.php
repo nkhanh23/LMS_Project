@@ -177,12 +177,25 @@
                         <span>Nhật ký hoạt động</span>
                     </a>
                 </li>
+
+
             </ul>
         </li>
-
+        <li class="{{ setSidebar(['admin.system-health*']) }}">
+            <a href="{{ route('admin.system-health.index') }}">
+                <i class='bx bx-radio-circle'></i>
+                <div class="menu-title">Sức khỏe hệ thống</div>
+            </a>
+        </li>
+        <li class="{{ setSidebar(['admin.payouts*']) }}">
+            <a href="{{ route('admin.payouts.index') }}">
+                <i class='bx bx-radio-circle'></i>
+                <div class="menu-title">Rút tiền giảng viên</div>
+            </a>
+        </li>
         <li class="{{ setSidebar(['admin.approval-center*']) }}">
             <a href="{{ route('admin.approval-center.index') }}">
-                <div class="parent-icon"><i class="fas fa-check-circle"></i></div>
+                <i class='bx bx-radio-circle'></i>
                 <div class="menu-title">Trung tâm phê duyệt</div>
             </a>
         </li>

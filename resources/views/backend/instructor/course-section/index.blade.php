@@ -14,9 +14,7 @@
                 </div>
 
                 <hr />
-                <a href="{{ route('instructor.ai-documents.index') }}" class="btn btn-dark mb-3">
-                    Quản lý AI Documents
-                </a>
+
                 <div class="card radius-10">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -213,6 +211,196 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#delete-form-' + Id).attr('action', deleteUrl).submit();
+                }
+            });
+        });
+    </script>
+
+    {{-- Transcript Viewer/Editor JS --}}
+    <script>
+        $(document).on('click', '.btn-load-transcript', function() {
+            let btn = $(this);
+            let lectureId = btn.data('lecture-id');
+            let url = btn.data('url');
+            let panel = $('#transcript-panel-' + lectureId);
+
+            if (panel.is(':visible')) {
+                panel.slideUp(200);
+                btn.html('<i class="bi bi-eye"></i> Xem Transcript');
+                return;
+            }
+
+            btn.prop('disabled', true).html('<i class="bi bi-hourglass-split"></i> Đang tải...');
+
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function(res) {
+                    if (res.success) {
+                        let d = res.data;
+                        $('#transcript-view-' + lectureId).text(d.extracted_text);
+                        $('#transcript-edit-' + lectureId).val(d.extracted_text);
+                        $('#transcript-meta-' + lectureId).html(
+                            '<i class="bi bi-translate"></i> ' + d.language +
+                            ' &nbsp;|&nbsp; <i class="bi bi-fonts"></i> ' + d.char_count.toLocaleString() + ' ký tự' +
+                            ' &nbsp;|&nbsp; <i class="bi bi-clock"></i> ' + d.updated_at +
+                            ' &nbsp;|&nbsp; <span class="badge ' +
+                            (d.index_status === 'indexed' ? 'bg-success' : 'bg-warning') + '">' +
+                            d.index_status + '</span>'
+                        );
+                        $('#btn-edit-' + lectureId).show();
+                        panel.slideDown(200);
+                        btn.html('<i class="bi bi-eye-slash"></i> Ẩn Transcript');
+                    }
+                },
+                error: function(xhr) {
+                    if (xhr.status === 404) {
+                        $('#transcript-empty-' + lectureId).show();
+                        btn.html('<i class="bi bi-arrow-clockwise"></i> Tải Transcript');
+                    } else {
+                        let msg = xhr.responseJSON?.message || 'Không thể tải transcript.';
+                        Swal.fire('Thông báo', msg, 'info');
+                        btn.html('<i class="bi bi-arrow-clockwise"></i> Tải Transcript');
+                    }
+                },
+                complete: function() {
+                    btn.prop('disabled', false);
+                }
+            });
+        });
+
+        // Toggle Edit Mode
+        $(document).on('click', '.btn-toggle-edit-transcript', function() {
+            let lectureId = $(this).data('lecture-id');
+            $('#transcript-view-' + lectureId).hide();
+            $('#transcript-edit-' + lectureId).show().focus();
+            $('#btn-edit-' + lectureId).hide();
+            $('#btn-save-' + lectureId).show();
+            $('#btn-cancel-' + lectureId).show();
+        });
+
+        // Cancel Edit
+        $(document).on('click', '.btn-cancel-edit-transcript', function() {
+            let lectureId = $(this).data('lecture-id');
+            let originalText = $('#transcript-view-' + lectureId).text();
+            $('#transcript-edit-' + lectureId).val(originalText).hide();
+            $('#transcript-view-' + lectureId).show();
+            $('#btn-edit-' + lectureId).show();
+            $('#btn-save-' + lectureId).hide();
+            $('#btn-cancel-' + lectureId).hide();
+            $('#transcript-feedback-' + lectureId).html('');
+        });
+
+        // Save Transcript
+        $(document).on('click', '.btn-save-transcript', function() {
+            let btn = $(this);
+            let lectureId = btn.data('lecture-id');
+            let url = btn.data('url');
+            let newText = $('#transcript-edit-' + lectureId).val();
+
+            if (!newText.trim()) {
+                Swal.fire('Lỗi', 'Nội dung transcript không được để trống.', 'error');
+                return;
+            }
+
+            btn.prop('disabled', true).html('<i class="bi bi-hourglass-split"></i> Đang lưu...');
+
+            $.ajax({
+                url: url,
+                method: 'PUT',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    extracted_text: newText
+                },
+                success: function(res) {
+                    if (res.success) {
+                        // Update view content
+                        $('#transcript-view-' + lectureId).text(newText);
+                        // Switch back to view mode
+                        $('#transcript-edit-' + lectureId).hide();
+                        $('#transcript-view-' + lectureId).show();
+                        $('#btn-edit-' + lectureId).show();
+                        $('#btn-save-' + lectureId).hide();
+                        $('#btn-cancel-' + lectureId).hide();
+                        // Update meta
+                        $('#transcript-feedback-' + lectureId).html(
+                            '<div class="alert alert-success alert-dismissible fade show py-2 px-3 small" role="alert">' +
+                            '<i class="bi bi-check-circle"></i> ' + res.message +
+                            ' (' + res.data.char_count.toLocaleString() + ' ký tự)' +
+                            '<button type="button" class="btn-close btn-close-sm" data-bs-dismiss="alert"></button>' +
+                            '</div>'
+                        );
+                    }
+                },
+                error: function(xhr) {
+                    let msg = xhr.responseJSON?.message || 'Đã xảy ra lỗi khi lưu.';
+                    $('#transcript-feedback-' + lectureId).html(
+                        '<div class="alert alert-danger py-2 px-3 small">' +
+                        '<i class="bi bi-exclamation-triangle"></i> ' + msg +
+                        '</div>'
+                    );
+                },
+                complete: function() {
+                    btn.prop('disabled', false).html('<i class="bi bi-check-lg"></i> Lưu');
+                }
+            });
+        });
+
+        // Delete Transcript
+        $(document).on('click', '.btn-delete-transcript', function() {
+            let btn = $(this);
+            let lectureId = btn.data('lecture-id');
+            let url = btn.data('url');
+
+            Swal.fire({
+                title: 'Xóa transcript?',
+                text: 'Transcript và toàn bộ chunks/embedding sẽ bị xóa vĩnh viễn.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: url,
+                        method: 'DELETE',
+                        data: { _token: '{{ csrf_token() }}' },
+                        success: function(res) {
+                            if (res.success) {
+                                $('#transcript-panel-' + lectureId).hide();
+                                $('#transcript-empty-' + lectureId).show();
+                                Swal.fire('Đã xóa!', res.message, 'success');
+                            }
+                        },
+                        error: function(xhr) {
+                            Swal.fire('Lỗi', xhr.responseJSON?.message || 'Không thể xóa.', 'error');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Re-index Transcript
+        $(document).on('click', '.btn-reindex-transcript', function() {
+            let btn = $(this);
+            let url = btn.data('url');
+
+            btn.prop('disabled', true).html('<i class="bi bi-hourglass-split"></i> Đang gửi...');
+
+            $.ajax({
+                url: url,
+                method: 'POST',
+                data: { _token: '{{ csrf_token() }}' },
+                success: function(res) {
+                    Swal.fire('Thành công', res.message, 'success');
+                },
+                error: function(xhr) {
+                    Swal.fire('Lỗi', xhr.responseJSON?.message || 'Không thể re-index.', 'error');
+                },
+                complete: function() {
+                    btn.prop('disabled', false).html('<i class="bi bi-arrow-repeat"></i> Re-index');
                 }
             });
         });

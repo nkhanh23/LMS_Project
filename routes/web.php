@@ -11,7 +11,9 @@ use App\Http\Controllers\backend\AdminInstructorController;
 use App\Http\Controllers\backend\AdminInstructorRequestController;
 use App\Http\Controllers\backend\AdminLearningAnalyticsController;
 use App\Http\Controllers\backend\AdminModerationController;
+use App\Http\Controllers\backend\AdminPayoutController;
 use App\Http\Controllers\backend\AdminRefundController;
+use App\Http\Controllers\backend\AdminSystemHealthController;
 use App\Http\Controllers\backend\AdminUserController;
 use App\Http\Controllers\backend\AiDocumentController;
 use App\Http\Controllers\backend\BackendOrderController;
@@ -64,7 +66,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/auth/google', [SocialController::class, 'googleLogin'])->name('auth.google');
 Route::get('/auth/google/callback', [SocialController::class, 'googleAuthentication'])->name('auth.google-callback');
 
-
+/* FACEBOOK ROUTE */
+Route::get('/auth/facebook', [SocialController::class, 'facebookLogin'])->name('auth.facebook');
+Route::get('/auth/facebook/callback', [SocialController::class, 'facebookAuthentication'])->name('auth.facebook-callback');
 
 /*  ADMIN LOGIN  */
 
@@ -234,6 +238,15 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
 
     Route::get('/approval-center/{course}', [AdminApprovalCenterController::class, 'show'])
         ->name('approval-center.show');
+
+    /* System Health */
+    Route::get('/system-health', [AdminSystemHealthController::class, 'index'])
+        ->name('system-health.index');
+
+    /* Payouts */
+    Route::get('/payouts', [AdminPayoutController::class, 'index'])->name('payouts.index');
+    Route::post('/payouts/{id}/approve', [AdminPayoutController::class, 'approve'])->name('payouts.approve');
+    Route::post('/payouts/{id}/reject', [AdminPayoutController::class, 'reject'])->name('payouts.reject');
 });
 
 /*  INSTRUCTOR LOGIN  */
@@ -334,17 +347,26 @@ Route::middleware('auth', 'verified', 'role:instructor', 'instructor.approved')-
     Route::post('/quiz/{lecture}', [QuizController::class, 'storeOrUpdate'])->name('quiz.store_or_update');
 
 
-    /*  INSTRUCTOR AI DOCUMENT  */
-    Route::get('/ai-documents', [AiDocumentController::class, 'index'])->name('ai-documents.index');
-    Route::post('/ai-documents', [AiDocumentController::class, 'store'])->name('ai-documents.store');
-    Route::post('/ai-documents/{document}/reindex', [AiDocumentController::class, 'reindex'])->name('ai-documents.reindex');
-    Route::delete('/ai-documents/{document}', [AiDocumentController::class, 'destroy'])->name('ai-documents.destroy');
+
 
     /*  INSTRUCTOR TRANSCRIPT  */
     Route::post('/lectures/{lecture}/transcript/generate', [InstructorTranscriptController::class, 'generate'])
         ->name('transcript.generate');
     Route::get('/transcript-jobs/{transcriptJob}', [InstructorTranscriptController::class, 'show'])
         ->name('transcript.show');
+    Route::get('/lectures/{lecture}/transcript', [InstructorTranscriptController::class, 'getTranscript'])
+        ->name('transcript.get');
+    Route::put('/lectures/{lecture}/transcript', [InstructorTranscriptController::class, 'updateTranscript'])
+        ->name('transcript.update');
+    Route::post('/lectures/{lecture}/transcript/manual', [InstructorTranscriptController::class, 'storeManual'])
+        ->name('transcript.store-manual');
+    Route::delete('/lectures/{lecture}/transcript', [InstructorTranscriptController::class, 'deleteTranscript'])
+        ->name('transcript.delete');
+    Route::post('/lectures/{lecture}/transcript/reindex', [InstructorTranscriptController::class, 'reindex'])
+        ->name('transcript.reindex');
+
+    /*  INSTRUCTOR REVENUE  */
+    Route::post('/revenue/request-payout', [InstructorRevenueController::class, 'requestPayout'])->name('revenue.request-payout');
 });
 
 Route::middleware('auth')->group(function () {
@@ -406,6 +428,7 @@ Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.'
 
 /*  FRONTEND ROUTES  */
 Route::get('/', [FrontEndDashBoardController::class, 'home'])->name('frontend.home');
+Route::get('/khoa-hoc', [FrontEndDashBoardController::class, 'courses'])->name('frontend.courses.index');
 Route::get('/chi-tiet/{slug}', [FrontEndDashBoardController::class, 'view'])->name('chi-tiet');
 
 /*  WISHLIST ROUTES  */
@@ -435,6 +458,8 @@ Route::post('/remove-coupon', [CouponController::class, 'removeCoupon'])->name('
 /*  AUTH PROTECTED ROUTES  */
 Route::middleware('auth')->group(function () {
     Route::post('/order', [OrderController::class, 'order'])->name('order');
+    Route::post('/vnpay-payment', [OrderController::class, 'vnpayPayment'])->name('vnpay.payment');
+    Route::get('/vnpay-return', [OrderController::class, 'vnpayReturn'])->name('vnpay.return');
     Route::get('/payment-success', [OrderController::class, 'success'])->name('success');
     Route::get('/payment-cancel', [OrderController::class, 'cancel'])->name('cancel');
 

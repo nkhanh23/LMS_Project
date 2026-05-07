@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "3.0",
         "maatwebsite/excel": "^3.1",
+        "mrmysql/youtube-transcript": "^0.0.5",
         "smalot/pdfparser": "^2.12",
         "stripe/stripe-php": "^19.4"
     },

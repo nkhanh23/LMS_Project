@@ -12,6 +12,7 @@ use App\Models\Order;
 use App\Models\QuizAttempt;
 use App\Models\QuizAttemptAnswer;
 use App\Models\InstructorRiskScore;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -208,5 +209,23 @@ class User extends Authenticatable
     public function aiChatMessages()
     {
         return $this->hasMany(AiChatMessage::class);
+    }
+
+    public function getAvailableBalanceAttribute()
+    {
+        // 1. Tính tổng doanh thu Net từ bảng orders (trạng thái completed)
+        $totalRevenue = DB::table('orders')
+            ->where('instructor_id', $this->id)
+            ->where('status', 'completed')
+            ->sum('net_amount');
+
+        // 2. Tính tổng tiền ĐÃ RÚT HOẶC ĐANG CHỜ duyệt
+        $totalWithdrawnOrPending = DB::table('payout_requests')
+            ->where('instructor_id', $this->id)
+            ->whereIn('status', ['pending', 'approved'])
+            ->sum('amount');
+
+        // 3. Trừ đi để ra số dư khả dụng
+        return max(0, $totalRevenue - $totalWithdrawnOrPending);
     }
 }

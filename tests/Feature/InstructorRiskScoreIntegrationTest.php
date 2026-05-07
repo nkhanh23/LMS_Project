@@ -12,6 +12,7 @@ use App\Models\ModerationPolicy;
 use App\Models\ModerationActionTemplate;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class InstructorRiskScoreIntegrationTest extends TestCase
 {
@@ -20,7 +21,7 @@ class InstructorRiskScoreIntegrationTest extends TestCase
     protected $admin;
     protected $instructor;
 
-    /** @test */
+    #[Test]
     public function simple_test()
     {
         $this->assertTrue(true);
@@ -29,7 +30,7 @@ class InstructorRiskScoreIntegrationTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         $this->admin = User::create([
             'name' => 'Admin',
             'email' => 'admin@test.com',
@@ -45,7 +46,7 @@ class InstructorRiskScoreIntegrationTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function resolving_report_triggers_recalculation()
     {
         $course = Course::create([
