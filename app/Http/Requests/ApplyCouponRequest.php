@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Coupon;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ApplyCouponRequest extends FormRequest
@@ -27,16 +29,16 @@ class ApplyCouponRequest extends FormRequest
                 'string',
                 'exists:coupons,coupon_code',
                 function ($attribute, $value, $fail) {
-                    $coupon = \App\Models\Coupon::where('coupon_code', $value)->first();
-                    if ($coupon && \Carbon\Carbon::now()->greaterThan(\Carbon\Carbon::parse($coupon->coupon_validity))) {
+                    $coupon = Coupon::where('coupon_code', $value)->first();
+                    if ($coupon && Carbon::now()->greaterThan(Carbon::parse($coupon->coupon_validity))) {
                         $fail('Mã giảm giá đã hết hạn.');
                     }
                 },
             ],
             'course_id' => 'required|array',
-            'course_id.*' => 'exists:courses,id', // Validate each course_id
+            'course_id.*' => 'exists:courses,id',
             'instructor_id' => 'required|array',
-            'instructor_id.*' => 'exists:users,id', // Validate each instructor_id
+            'instructor_id.*' => 'exists:users,id',
         ];
     }
 

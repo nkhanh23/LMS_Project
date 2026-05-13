@@ -32,6 +32,7 @@ $(document).on('click', '.add-to-cart-btn', function () {
                     position: 'top-end',
                     timer: 3000,
                     showConfirmButton: false,
+                    backdrop: false
                 });
 
                 // câp nhật số lượng trên icon giỏ hàng
@@ -46,6 +47,7 @@ $(document).on('click', '.add-to-cart-btn', function () {
                     position: 'top-end',
                     timer: 3000,
                     showConfirmButton: false,
+                    backdrop: false
                 });
             }
         },
@@ -58,6 +60,7 @@ $(document).on('click', '.add-to-cart-btn', function () {
                 position: 'top-end',
                 timer: 3000,
                 showConfirmButton: false,
+                backdrop: false
             });
         }
     });
@@ -169,7 +172,8 @@ $(document).ready(function () {
                         icon: 'success',
                         title: 'Xóa sản phẩm khỏi giỏ hàng thành công!',
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 3000,
+                        backdrop: false
                     });
                     fetchCart(); // Refresh cart
 
@@ -188,7 +192,8 @@ $(document).ready(function () {
                     icon: 'error',
                     title: message,
                     showConfirmButton: false,
-                    timer: 3000
+                    timer: 3000,
+                    backdrop: false
                 });
                 console.error(message);
             }

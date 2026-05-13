@@ -4,22 +4,22 @@ $categories = getCategories();
 
 
 <!-- Header Top -->
-<div class="bg-black/60 border-b border-cyber-surface text-xs py-2 px-4 hidden md:block">
+<div class="header-top bg-black/60 border-b border-cyber-surface text-[10px] md:text-xs py-2 px-4 hidden sm:block">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-6 text-text-secondary">
+        <div class="hidden sm:flex items-center gap-6 text-text-secondary">
             <span><i class="fas fa-phone text-brand mr-1"></i> +84 123 456 789</span>
             <span><i class="fas fa-envelope text-brand mr-1"></i> contact@stacklearn.dev</span>
         </div>
         @if (!auth()->user())
-            <div class="flex items-center gap-4">
-                <span class="text-cyber-surface">|</span>
+            <div class="flex items-center gap-4 ml-auto sm:ml-0">
+                <span class="text-cyber-surface hidden sm:inline">|</span>
                 <a href="{{ route('login') }}" class="text-text-secondary hover:text-brand transition-colors"><i
                         class="fas fa-sign-in-alt mr-1"></i>Login</a>
                 <a href="{{ route('register') }}" class="text-brand font-bold hover:text-white transition-colors"><i
                         class="fas fa-user-plus mr-1"></i>Register</a>
             </div>
         @else
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4 ml-auto sm:ml-0">
                 @if (auth()->user()->role == 'user')
                     <a href="{{ route('user.dashboard') }}"
                         class="text-text-secondary hover:text-brand transition-colors"><i
@@ -35,8 +35,14 @@ $categories = getCategories();
                         class="text-text-secondary hover:text-brand transition-colors"><i
                             class="fas fa-sign-in-alt mr-1"></i>Trang chủ</a>
                 @endif
-                <a href="{{ route('logout') }}" class="text-text-secondary hover:text-brand transition-colors"><i
-                        class="fas fa-sign-in-alt mr-1"></i>Đăng xuất</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    @csrf
+                </form>
+                <a href="{{ route('logout') }}" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="text-text-secondary hover:text-brand transition-colors">
+                    <i class="fas fa-sign-in-alt mr-1"></i>Đăng xuất
+                </a>
             </div>
         @endif
     </div>

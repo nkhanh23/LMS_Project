@@ -12,7 +12,10 @@
 
 <body
     class="text-text-primary font-sans selection:bg-brand selection:text-black min-h-screen antialiased overflow-x-hidden">
-    <div class="flex h-screen w-full overflow-hidden">
+    <div class="flex h-screen w-full overflow-hidden relative">
+        <!-- Mobile Overlay -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
         <!-- ===== SIDEBAR ===== -->
         @include('backend.user.section.sidebar')
 
@@ -22,13 +25,32 @@
             @include('backend.user.section.header')
 
             <!-- Page Content -->
-            <div class="p-8 space-y-8">
+            <div class="p-4 sm:p-8 space-y-6 sm:space-y-8">
                 <!-- ===== WELCOME SECTION ===== -->
                 @include('backend.user.section.breadcrumb')
                 @yield('content')
             </div>
         </main>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const toggleBtns = document.querySelectorAll('.sidebar-toggle');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('-translate-x-full');
+                overlay.classList.toggle('hidden');
+            }
+
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', toggleSidebar);
+            });
+
+            overlay.addEventListener('click', toggleSidebar);
+        });
+    </script>
 
     {{-- SweetAlert2 Flash Messages --}}
     @if (session('success'))

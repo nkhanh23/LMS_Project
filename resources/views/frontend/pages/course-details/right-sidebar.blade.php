@@ -1,7 +1,9 @@
 <div class="lg:col-span-4 sidebar sidebar-negative mt-8 lg:mt-0">
     <div class="sticky top-24 flex flex-col gap-6">
         <!-- 5.1 Preview / purchase card -->
-        @include('frontend.pages.course-details.rightside-course-preview')
+        <div class="hidden lg:block">
+            @include('frontend.pages.course-details.rightside-course-preview')
+        </div>
 
         <!-- 5.2 Course Features -->
         @include('frontend.pages.course-details.rightside-course-feature')

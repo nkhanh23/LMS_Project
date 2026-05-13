@@ -1,13 +1,15 @@
-<section class="bg-cyber-surface p-6 pixel-border border-2 border-black relative">
-    <h3 class="mb-4 text-xl font-bold uppercase tracking-tighter text-brand">Bạn sẽ học được gì?</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        @foreach ($course['goals'] as $item)
-            <div class="flex items-start gap-3"><i class="fas fa-check text-brand mt-1"></i>
-                <p class="text-sm text-slate-300">{{ $item->goal_name }}</p>
-            </div>
-        @endforeach
-    </div>
-</section>
+@if ($course['goals']->count() > 0)
+    <section class="bg-cyber-surface p-6 pixel-border border-2 border-black relative">
+        <h3 class="mb-4 text-xl font-bold uppercase tracking-tighter text-brand">Bạn sẽ học được gì?</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            @foreach ($course['goals'] as $item)
+                <div class="flex items-start gap-3"><i class="fas fa-check text-brand mt-1"></i>
+                    <p class="text-sm text-slate-300">{{ $item->goal_name }}</p>
+                </div>
+            @endforeach
+        </div>
+    </section>
+@endif
 <!-- 4.2. Curated for Business -->
 <section
     class="bg-gradient-to-r from-pink-500/20 to-cyber-cyan/20 p-6 pixel-border border-2 border-black flex items-center justify-between">

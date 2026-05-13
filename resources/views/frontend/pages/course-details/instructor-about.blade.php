@@ -2,13 +2,14 @@
     <h3 class="mb-6 text-xl font-bold uppercase tracking-tighter text-brand">About the instructor</h3>
     <div class="flex flex-col md:flex-row gap-6">
         <div class="shrink-0">
-            <div class="w-32 h-32 bg-slate-800 border-2 border-slate-600 overflow-hidden">
+            <a href="{{ route('frontend.instructor.details', $course['user']['id']) }}" class="block w-32 h-32 bg-slate-800 border-2 border-slate-600 overflow-hidden">
                 <img loading="lazy" src="{{ $course['user']['photo'] }}" alt="{{ $course['user']['name'] }}"
                     class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
-            </div>
+            </a>
         </div>
         <div>
-            <h4 class="font-bold text-lg text-cyber-cyan hover:underline cursor-pointer">{{ $course['user']['name'] }}
+            <h4 class="font-bold text-lg text-cyber-cyan hover:underline cursor-pointer">
+                <a href="{{ route('frontend.instructor.details', $course['user']['id']) }}">{{ $course['user']['name'] }}</a>
             </h4>
             <p class="text-xs text-slate-400 mb-3">{{ $course['user']['experience'] }}</p>
             <div class="flex items-center gap-4 text-sm text-slate-300 mb-4">

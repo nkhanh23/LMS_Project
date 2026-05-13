@@ -88,7 +88,7 @@ class CouponController extends Controller
 
     public function applyCoupon(ApplyCouponRequest $request)
     {
-        // Validate the input
+        // validate
         $validated = $request->validated();
 
         $couponName = $validated['coupon'];
@@ -97,7 +97,7 @@ class CouponController extends Controller
 
         $discounts =  $this->applyCouponService->applyCoupon($couponName, $courseIds, $instructorIds);
 
-        // If no valid coupon found
+        // Nếu không tìm thấy coupon
         if (empty($discounts)) {
             return response()->json([
                 'success' => false,
@@ -105,14 +105,14 @@ class CouponController extends Controller
             ], 400);
         }
 
-        // Calculate total discount
+        // Tính tổng tiền giảm giá
         $totalDiscount = collect($discounts)->sum('discount');
 
-        // Store total discount in session
+        // Lưu tổng tiền giảm giá vào session
         session(['coupon' => $totalDiscount]);
 
 
-        // Success response
+        // Trả về response thành công
         return response()->json([
             'success' => true,
             'message' => 'Mã giảm giá đã được áp dụng thành công!',

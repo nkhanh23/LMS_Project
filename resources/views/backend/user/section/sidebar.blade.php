@@ -1,4 +1,4 @@
-<aside class="w-64 bg-cyber-surface border-r-4 border-black flex flex-col z-10 shrink-0">
+<aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-cyber-surface border-r-4 border-black flex flex-col shrink-0 transition-transform duration-300 -translate-x-full lg:translate-x-0 lg:static">
     <!-- Logo -->
     <div class="p-6 border-b-4 border-black">
         <a href="{{ route('frontend.home') }}" class="flex items-center gap-2">
@@ -64,6 +64,11 @@
             href="{{ route('user.orders.index') }}">
             <i class="fas fa-money-bill text-brand"></i>
             <span>Lịch sử thanh toán</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
+            href="{{ route('chat.index') }}">
+            <i class="fas fa-comment-dots text-cyber-cyan"></i>
+            <span>Tin nhắn</span>
         </a>
         <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
             href="#">

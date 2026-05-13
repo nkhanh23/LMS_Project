@@ -11,16 +11,16 @@
             </div>
         </div>
 
-        <div class="p-6">
-            <div class="overflow-x-auto">
+        <div class="p-4 sm:p-6">
+            <div class="hidden sm:block overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="border-b-2 border-black">
-                            <th class="p-4 pixel-text text-xs font-bold text-text-secondary">#ID</th>
-                            <th class="p-4 pixel-text text-xs font-bold text-text-secondary">KHÓA HỌC_MODULE</th>
-                            <th class="p-4 pixel-text text-xs font-bold text-text-secondary">TRẠNG THÁI</th>
-                            <th class="p-4 pixel-text text-xs font-bold text-text-secondary">REFUND_SYNC</th>
-                            <th class="p-4 pixel-text text-xs font-bold text-text-secondary">SỐ TIỀN_CREDITS</th>
+                            <th class="p-4 pixel-text text-[10px] font-bold text-text-secondary uppercase">#ID</th>
+                            <th class="p-4 pixel-text text-[10px] font-bold text-text-secondary uppercase">Course_Module</th>
+                            <th class="p-4 pixel-text text-[10px] font-bold text-text-secondary uppercase text-center">Status</th>
+                            <th class="p-4 pixel-text text-[10px] font-bold text-text-secondary uppercase text-center">Refund_Sync</th>
+                            <th class="p-4 pixel-text text-[10px] font-bold text-text-secondary uppercase text-right">Amount_Credits</th>
                             <th class="p-4"></th>
                         </tr>
                     </thead>
@@ -30,25 +30,25 @@
                                 <td class="p-4 font-mono text-brand font-bold">#{{ $order->id }}</td>
                                 <td class="p-4">
                                     <p class="font-bold text-sm">{{ $order->course->course_name ?? $order->course_title }}</p>
-                                    <p class="text-[10px] text-text-secondary pixel-text uppercase">Module Path: root/courses/{{ $order->course_id ?? 'null' }}</p>
+                                    <p class="text-[9px] text-text-secondary pixel-text uppercase">Module: root/courses/{{ $order->course_id ?? 'null' }}</p>
                                 </td>
-                                <td class="p-4">
-                                    <span class="px-2 py-1 border border-black text-[10px] font-bold uppercase {{ $order->status === 'completed' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400' }}">
+                                <td class="p-4 text-center">
+                                    <span class="px-2 py-0.5 border border-black text-[9px] font-bold uppercase {{ $order->status === 'completed' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400' }}">
                                         {{ $order->status }}
                                     </span>
                                 </td>
-                                <td class="p-4">
-                                    <span class="text-[10px] pixel-text {{ $order->refund_status === 'none' ? 'text-text-secondary' : 'text-cyber-cyan' }}">
+                                <td class="p-4 text-center">
+                                    <span class="text-[9px] pixel-text {{ $order->refund_status === 'none' ? 'text-text-secondary' : 'text-cyber-cyan' }}">
                                         {{ strtoupper($order->refund_status) }}
                                     </span>
                                 </td>
-                                <td class="p-4 font-pixel text-brand font-bold">
+                                <td class="p-4 font-pixel text-brand font-bold text-right">
                                     {{ number_format($order->gross_amount ?? ($order->price ?? 0), 0, ',', '.') }}đ
                                 </td>
                                 <td class="p-4 text-right">
                                     <a href="{{ route('user.orders.show', $order) }}"
-                                        class="bg-cyber-cyan text-black px-4 py-2 border-2 border-black pixel-shadow text-[10px] font-black pixel-button-hover uppercase">
-                                        VIEW_DETAILS
+                                        class="inline-block bg-cyber-cyan text-black px-3 py-1.5 border-2 border-black pixel-shadow text-[10px] font-black pixel-button-hover uppercase">
+                                        VIEW
                                     </a>
                                 </td>
                             </tr>
@@ -57,7 +57,7 @@
                                 <td colspan="6" class="p-10 text-center">
                                     <div class="flex flex-col items-center gap-4">
                                         <i class="fas fa-ghost text-4xl text-text-secondary opacity-20"></i>
-                                        <p class="pixel-text text-text-secondary text-sm">NO_DATA_FOUND: Order history is empty.</p>
+                                        <p class="pixel-text text-text-secondary text-xs uppercase">NO_DATA_FOUND</p>
                                     </div>
                                 </td>
                             </tr>
@@ -66,8 +66,46 @@
                 </table>
             </div>
 
-            <div class="mt-6">
-                {{ $orders->links() }}
+            <!-- Mobile View -->
+            <div class="sm:hidden space-y-4">
+                @forelse($orders as $order)
+                    <div class="bg-black/30 border-2 border-black p-4 space-y-3 relative overflow-hidden">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-brand font-mono text-xs font-bold">#{{ $order->id }}</p>
+                                <h4 class="font-bold text-sm text-white mt-1 leading-tight">{{ $order->course->course_name ?? $order->course_title }}</h4>
+                            </div>
+                            <span class="px-2 py-0.5 border border-black text-[8px] font-bold uppercase {{ $order->status === 'completed' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400' }}">
+                                {{ $order->status }}
+                            </span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t border-black/30 pt-3">
+                            <div class="space-y-1">
+                                <p class="text-[8px] text-text-secondary pixel-text uppercase">Sync Status</p>
+                                <p class="text-[9px] font-bold {{ $order->refund_status === 'none' ? 'text-text-secondary' : 'text-cyber-cyan' }}">
+                                    REFUND: {{ strtoupper($order->refund_status) }}
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-brand font-pixel font-bold text-lg">
+                                    {{ number_format($order->gross_amount ?? ($order->price ?? 0), 0, ',', '.') }}đ
+                                </p>
+                                <a href="{{ route('user.orders.show', $order) }}" class="inline-block mt-2 text-cyber-cyan text-[10px] font-bold uppercase underline">
+                                    VIEW_DETAILS_&raquo;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="py-10 text-center">
+                        <p class="pixel-text text-text-secondary text-xs uppercase">NO_DATA_FOUND</p>
+                    </div>
+                @endforelse
+            </div>
+
+            <div class="mt-8 border-t-2 border-black/20 pt-6 flex justify-center">
+                {{ $orders->links('vendor.pagination.cyber-pixel') }}
             </div>
         </div>
     </div>

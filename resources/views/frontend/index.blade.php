@@ -14,7 +14,7 @@
         @include('frontend.section.course-area-first')
 
         <!-- ===== COURSE CAROUSEL (Trending) ===== -->
-        <section class="max-w-7xl mx-auto px-6 py-16">
+        <section class="max-w-7xl mx-auto px-6 py-8 md:py-16">
             <h2 class="font-pixel text-xl lg:text-2xl text-cyber-cyan mb-10 fade-up">TRENDING STACKS</h2>
             <div class="owl-carousel course-carousel">
                 <div class="bg-cyber-surface border-2 border-black pixel-shadow p-4">

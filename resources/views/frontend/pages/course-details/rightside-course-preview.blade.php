@@ -3,7 +3,8 @@
     <div class="aspect-video bg-black relative flex items-center justify-center cursor-pointer group"
         data-bs-toggle="modal" data-bs-target="#previewModal">
         <img src="{{ asset($course->course_image) }}" alt="Video Preview"
-            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
+            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity"
+            fetchpriority="high">
         <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
             <button
                 class="w-16 h-16 bg-white/20 text-white rounded-full flex items-center justify-center group-hover:bg-brand group-hover:text-black transition-colors backdrop-blur-sm">

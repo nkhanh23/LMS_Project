@@ -110,6 +110,14 @@
 
                 </ul>
             </li>
+
+            <li class="{{ setSidebar(['chat.index']) }}">
+                <a href="{{ route('chat.index') }}">
+                    <div class="parent-icon"><i class='bx bx-message-square-detail'></i>
+                    </div>
+                    <div class="menu-title">Tin nhắn</div>
+                </a>
+            </li>
         @endif
 
 

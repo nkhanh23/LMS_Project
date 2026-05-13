@@ -34,7 +34,7 @@
                 <div class="h-32 bg-black flex items-center justify-center mb-3">
                     <a href="{{ route('chi-tiet', $item->course_name_slug) }}">
                         <img class="w-full h-full object-cover" src="{{ asset($item->course_image) }}"
-                            alt="{{ $item->course_name }}">
+                            alt="{{ $item->course_name }}" loading="lazy">
                     </a>
                 </div>
                 <span

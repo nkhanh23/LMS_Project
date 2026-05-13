@@ -1,5 +1,16 @@
-<div class="course-tooltip hidden lg:group-hover:block absolute left-full top-0 pl-3 w-80 z-20">
-    <div class="bg-cyber-dark border-2 border-brand p-4 space-y-3">
+<div
+    class="course-tooltip hidden lg:group-hover:block fixed lg:absolute inset-0 lg:inset-auto lg:left-full lg:top-0 lg:pl-3 w-full lg:w-80 h-full lg:h-auto bg-black/80 lg:bg-transparent z-[9999] lg:z-20 flex items-start justify-center lg:block p-4 pt-20 lg:p-0"
+    onclick="window.closeTooltipOverlay(this, event)">
+    
+    <!-- Close button for mobile - Moved outside inner content for maximum reliability -->
+    <button
+        class="lg:hidden fixed top-4 right-4 w-12 h-12 bg-red-600 text-white border-2 border-white rounded-none flex items-center justify-center close-tooltip z-[10000] shadow-xl"
+        onclick="window.closeMobileTooltip(this, event)">
+        <i class="fas fa-times text-2xl"></i>
+    </button>
+
+    <div class="bg-cyber-dark border-2 border-brand p-4 space-y-3 w-full max-w-sm lg:max-w-none relative pixel-shadow">
+
 
         <p class="text-xs text-text-secondary">
             By

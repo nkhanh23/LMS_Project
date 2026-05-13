@@ -14,7 +14,9 @@ use Illuminate\Support\Str;
 use Stripe\StripeClient;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Course;
 use App\Repositories\VnPayRepository;
+
 
 class OrderController extends Controller
 {
@@ -31,11 +33,15 @@ class OrderController extends Controller
 
     public function order(OrderRequest $request)
     {
-        // Đưa toàn bộ nội dung vừa đăng ký vào Session
-        // Để lát nữa sau khi redirect từ Web Stripe về còn biết user đã mua những gì.
-        session()->put('stripe_data', $request->validated());
-        return $this->paymentService->processPayment($request->validated());
+        // 1. Re-calculate and verify all prices from Database to prevent tampering
+        $verifiedData = $this->getVerifiedOrderData($request->course_id, $request->validated());
+
+        // 2. Store clean data into Session
+        session()->put('stripe_data', $verifiedData);
+        
+        return $this->paymentService->processPayment($verifiedData);
     }
+
 
     public function success(Request $request)
     {
@@ -54,7 +60,6 @@ class OrderController extends Controller
                 $payment = $this->createPayment($session, $paymentIntent);
                 // Kích xuất thông tin Đơn Hàng bằng biến Session `stripe_data` lưu ở bước đầu tiên
                 $orders = $this->createOrder($payment->id);
-
                 //Mỗi khoá học trong Đơn Hàng, gọi EnrollmentService "cấp quyền học viên" (Enrolled) cho khoá đó
                 foreach ($orders as $order) {
                     $this->enrollmentService->grantFromOrder($order);
@@ -119,21 +124,30 @@ class OrderController extends Controller
 
     public function vnpayPayment(Request $request)
     {
-        // 1. Lưu thông tin đơn hàng vào Session (BẮT BUỘC để tạo Order sau khi thanh toán thành công)
-        session()->put('stripe_data', $request->all());
-        session()->save(); // Lưu session vào database/file trước khi chuyển hướng sang domain khác
+        $courseIds = $request->input('course_id');
+        if (!$courseIds || !is_array($courseIds)) {
+            return redirect()->back()->with('error', 'Thông tin khóa học không hợp lệ.');
+        }
 
-        // 2. Lấy cấu hình VnPay
+        // 1. Re-calculate and verify all prices from Database to prevent tampering
+        $verifiedData = $this->getVerifiedOrderData($courseIds, $request->all());
+
+        // 2. Lưu thông tin đơn hàng "SẠCH" vào Session
+        session()->put('stripe_data', $verifiedData);
+        session()->save();
+
+        // 3. Lấy cấu hình VnPay
         $vnp_TmnCode = config('vnpay.vnp_TmnCode');
         $vnp_HashSecret = config('vnpay.vnp_HashSecret');
         $vnp_Url = config('vnpay.vnp_Url');
         $vnp_Returnurl = config('vnpay.vnp_Returnurl');
 
-        // 3. Thông tin đơn hàng
+        // 4. Thông tin đơn hàng
         $vnp_TxnRef = 'INV-' . strtoupper(uniqid());
         $vnp_OrderInfo = "Thanh toan don hang khoa hoc StackLearn - " . $vnp_TxnRef;
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $request->input('total_price', 0) * 100; // VnPay yêu cầu x100
+        $vnp_Amount = $verifiedData['total_price'] * 100; // Sử dụng giá đã được xác thực từ Server
+
         $vnp_Locale = 'vn';
         $vnp_IpAddr = $request->ip();
 
@@ -241,4 +255,43 @@ class OrderController extends Controller
 
         return redirect()->route('checkout')->with('error', 'Giao dịch thất bại hoặc bị hủy');
     }
+
+    /**
+     * Xác thực thông tin đơn hàng bằng cách lấy giá từ Database
+     */
+    private function getVerifiedOrderData(array $courseIds, array $originalData)
+    {
+        $courses = Course::whereIn('id', $courseIds)->get();
+        $totalPrice = 0;
+
+        $courseNames = [];
+        $coursePrices = [];
+        $instructorIds = [];
+
+        // Duyệt qua từng ID khóa học để đảm bảo tính đúng thứ tự và số lượng (nếu mua trùng - mặc dù giỏ hàng thường unique)
+        foreach ($courseIds as $id) {
+            $course = $courses->firstWhere('id', $id);
+            if ($course) {
+                // Ưu tiên discount_price nếu có, nếu không lấy selling_price
+                $price = ($course->discount_price && $course->discount_price > 0)
+                    ? $course->discount_price
+                    : $course->selling_price;
+
+                $totalPrice += $price;
+
+                $courseNames[] = $course->course_name;
+                $coursePrices[] = $price;
+                $instructorIds[] = $course->instructor_id;
+            }
+        }
+
+        // Ghi đè các thông tin nhạy cảm bằng dữ liệu đã xác thực
+        return array_merge($originalData, [
+            'course_name' => $courseNames,
+            'course_price' => $coursePrices,
+            'instructor_id' => $instructorIds,
+            'total_price' => $totalPrice
+        ]);
+    }
 }
+

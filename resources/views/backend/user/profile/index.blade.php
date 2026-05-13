@@ -69,39 +69,39 @@
             <div class="bg-cyber-surface border-4 border-black pixel-shadow h-full flex flex-col">
                 <!-- Terminal Title Bar -->
                 <div class="bg-black p-3 border-b-4 border-black flex justify-between items-center">
-                    <span class="text-brand font-bold pixel-text text-sm">CHARACTER_STATS.EXE</span>
+                    <span class="text-brand font-bold pixel-text text-[10px] sm:text-sm uppercase">CHARACTER_STATS.EXE</span>
                     <div class="flex gap-2">
-                        <div class="w-3 h-3 bg-red-500 border border-black"></div>
-                        <div class="w-3 h-3 bg-yellow-500 border border-black"></div>
-                        <div class="w-3 h-3 bg-green-500 border border-black"></div>
+                        <div class="w-2 h-2 sm:w-3 sm:h-3 bg-red-500 border border-black"></div>
+                        <div class="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-500 border border-black"></div>
+                        <div class="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 border border-black"></div>
                     </div>
                 </div>
                 <!-- Stats Content -->
-                <div class="p-8 flex-1 space-y-6 overflow-y-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-4 sm:p-8 flex-1 space-y-6 overflow-y-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                         <div class="space-y-4">
                             <div class="group">
-                                <p class="text-text-secondary text-xs uppercase font-bold mb-1 pixel-text">First Name</p>
+                                <p class="text-text-secondary text-[10px] uppercase font-bold mb-1 pixel-text">First Name</p>
                                 <p
-                                    class="text-cyber-cyan text-xl font-bold border-b-2 border-slate-700 group-hover:border-cyber-cyan pb-1 transition-colors">
+                                    class="text-cyber-cyan text-lg sm:text-xl font-bold border-b-2 border-slate-700 group-hover:border-cyber-cyan pb-1 transition-colors">
                                     @auth {{ auth()->user()->name }}
                                     @else
                                     GUEST @endauth
                                 </p>
                             </div>
                             <div class="group">
-                                <p class="text-text-secondary text-xs uppercase font-bold mb-1 pixel-text">User Name</p>
+                                <p class="text-text-secondary text-[10px] uppercase font-bold mb-1 pixel-text">User Name</p>
                                 <p
-                                    class="text-brand text-xl font-bold border-b-2 border-slate-700 group-hover:border-brand pb-1 transition-colors">
+                                    class="text-brand text-lg sm:text-xl font-bold border-b-2 border-slate-700 group-hover:border-brand pb-1 transition-colors">
                                     @auth {{ auth()->user()->username ?? auth()->user()->name }}
                                     @else
                                     GUEST @endauth
                                 </p>
                             </div>
                             <div class="group">
-                                <p class="text-text-secondary text-xs uppercase font-bold mb-1 pixel-text">Email</p>
+                                <p class="text-text-secondary text-[10px] uppercase font-bold mb-1 pixel-text">Email</p>
                                 <p
-                                    class="text-text-primary text-xl font-bold border-b-2 border-slate-700 group-hover:border-text-primary pb-1 transition-colors">
+                                    class="text-text-primary text-lg sm:text-xl font-bold border-b-2 border-slate-700 group-hover:border-text-primary pb-1 transition-colors truncate">
                                     @auth {{ auth()->user()->email }}
                                     @else
                                     N/A @endauth
@@ -110,28 +110,28 @@
                         </div>
                         <div class="space-y-4">
                             <div class="group">
-                                <p class="text-text-secondary text-xs uppercase font-bold mb-1 pixel-text">Class</p>
+                                <p class="text-text-secondary text-[10px] uppercase font-bold mb-1 pixel-text">Class</p>
                                 <div class="flex items-center gap-2">
                                     <i class="fas fa-brain text-brand"></i>
-                                    <p class="text-brand text-xl font-bold">FULL-STACK DEVELOPER</p>
+                                    <p class="text-brand text-lg sm:text-xl font-bold">FULL-STACK DEVELOPER</p>
                                 </div>
                             </div>
                             <div class="group">
-                                <p class="text-text-secondary text-xs uppercase font-bold mb-1 pixel-text">Experience</p>
-                                <p class="text-text-primary text-xl font-bold">12,450 XP / 15,000 XP</p>
+                                <p class="text-text-secondary text-[10px] uppercase font-bold mb-1 pixel-text">Experience</p>
+                                <p class="text-text-primary text-lg sm:text-xl font-bold">12,450 XP / 15,000 XP</p>
                             </div>
                             <div class="group">
-                                <p class="text-text-secondary text-xs uppercase font-bold mb-1 pixel-text">Reputation</p>
-                                <p class="text-cyber-cyan text-xl font-bold">LEGENDARY (98)</p>
+                                <p class="text-text-secondary text-[10px] uppercase font-bold mb-1 pixel-text">Reputation</p>
+                                <p class="text-cyber-cyan text-lg sm:text-xl font-bold">LEGENDARY (98)</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Biography -->
                     <div class="pt-6 border-t-2 border-slate-700">
-                        <p class="text-text-secondary text-xs uppercase font-bold mb-3 pixel-text">Biography</p>
+                        <p class="text-text-secondary text-[10px] uppercase font-bold mb-3 pixel-text">Biography</p>
                         <div
-                            class="bg-black/50 p-4 border-2 border-black text-text-secondary leading-relaxed font-mono text-sm">
+                            class="bg-black/50 p-4 border-2 border-black text-text-secondary leading-relaxed font-mono text-xs sm:text-sm">
                             A passionate coder wandering the neon alleys of the digital realm. Expert in
                             React, Node.js, and the fine art of 16-bit aesthetics. Currently building the
                             future of decentralized education.
@@ -139,18 +139,18 @@
                     </div>
 
                     <!-- Stats Counters -->
-                    <div class="grid grid-cols-3 gap-4 pt-4">
-                        <div class="bg-cyber-dark border-2 border-black p-3 text-center pixel-button-hover">
-                            <p class="text-[10px] text-text-secondary pixel-text font-bold">COURSES</p>
-                            <p class="text-2xl font-black text-brand font-pixel">12</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 pt-4">
+                        <div class="bg-cyber-dark border-2 border-black p-3 text-center pixel-button-hover col-span-1">
+                            <p class="text-[9px] sm:text-[10px] text-text-secondary pixel-text font-bold">COURSES</p>
+                            <p class="text-xl sm:text-2xl font-black text-brand font-pixel">12</p>
                         </div>
-                        <div class="bg-cyber-dark border-2 border-black p-3 text-center pixel-button-hover">
-                            <p class="text-[10px] text-text-secondary pixel-text font-bold">STUDENTS</p>
-                            <p class="text-2xl font-black text-cyber-cyan font-pixel">1.2K</p>
+                        <div class="bg-cyber-dark border-2 border-black p-3 text-center pixel-button-hover col-span-1">
+                            <p class="text-[9px] sm:text-[10px] text-text-secondary pixel-text font-bold">STUDENTS</p>
+                            <p class="text-xl sm:text-2xl font-black text-cyber-cyan font-pixel">1.2K</p>
                         </div>
-                        <div class="bg-cyber-dark border-2 border-black p-3 text-center pixel-button-hover">
-                            <p class="text-[10px] text-text-secondary pixel-text font-bold">ACHIEVEMENTS</p>
-                            <p class="text-2xl font-black text-yellow-500 font-pixel">45</p>
+                        <div class="bg-cyber-dark border-2 border-black p-3 text-center pixel-button-hover col-span-2 sm:col-span-1">
+                            <p class="text-[9px] sm:text-[10px] text-text-secondary pixel-text font-bold">ACHIEVEMENTS</p>
+                            <p class="text-xl sm:text-2xl font-black text-yellow-500 font-pixel">45</p>
                         </div>
                     </div>
                 </div>

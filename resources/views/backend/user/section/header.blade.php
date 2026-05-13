@@ -1,6 +1,10 @@
-<header class="h-20 border-b-4 border-black bg-cyber-dark px-8 flex items-center justify-between sticky top-0 z-20">
+<header class="h-20 border-b-4 border-black bg-cyber-dark px-4 sm:px-8 flex items-center justify-between sticky top-0 z-20">
+    <!-- Mobile Toggle -->
+    <button class="sidebar-toggle lg:hidden w-12 h-12 bg-cyber-surface border-2 border-black pixel-shadow-sm flex items-center justify-center mr-4">
+        <i class="fas fa-bars"></i>
+    </button>
     <!-- Search -->
-    <div class="flex-1 max-w-xl">
+    <div class="flex-1 max-w-xl hidden md:block">
         <div class="bg-black/50 border-2 border-slate-700 p-2 flex items-center gap-2">
             <span class="text-brand font-mono">&gt;</span>
             <input

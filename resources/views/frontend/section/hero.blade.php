@@ -8,7 +8,7 @@
                 </div>
                 <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col lg:flex-row items-center gap-12 relative z-10">
                     <div class="lg:w-1/2 space-y-6">
-                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-tight uppercase">
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-tight uppercase break-words">
                             {{ $item->title }}
                         </h1>
                         <p class="text-lg text-text-secondary max-w-lg font-mono">{{ $item->short_description }}</p>
@@ -24,7 +24,8 @@
                     <div class="lg:w-1/2 flex justify-center">
                         <div class="w-full bg-cyber-surface border-4 border-black overflow-hidden">
                             <img src="{{ asset($item->image) }}" alt="{{ $item->title }}"
-                                class="w-full h-[400px] object-contain">
+                                class="w-full h-[400px] object-contain"
+                                @if ($loop->first) fetchpriority="high" @else loading="lazy" @endif>
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,8 @@
     <title>StackLearn - Build Your Knowledge Stack</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @vite(['resources/js/app.js'])
+
     @include('frontend.section.link')
 
     @include('frontend.section.style')
@@ -34,7 +36,8 @@
 
     <!-- ========== SCROLL TOP ========== -->
     <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"
-        class="fixed bottom-8 left-8 z-50 w-12 h-12 bg-brand text-black border-2 border-black pixel-shadow flex items-center justify-center opacity-0 pointer-events-none transition-all hover:-translate-y-1">
+        class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-brand text-black border-2 border-black pixel-shadow flex items-center justify-center opacity-0 pointer-events-none transition-all hover:-translate-y-1"
+        style="position: fixed; bottom: 32px; right: 32px; visibility: hidden;">
         <i class="fas fa-chevron-up font-bold"></i>
     </button>
 

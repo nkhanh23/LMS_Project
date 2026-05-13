@@ -7,6 +7,7 @@ use App\Http\Requests\LectureDiscussionRequest;
 use App\Models\CourseLecture;
 use App\Models\LectureDiscussion;
 use App\Services\LectureDiscussionService;
+use App\Events\DiscussionCreated;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,6 +58,9 @@ class LectureDiscussionController extends Controller
                 'depth' => 0,
             ])->render();
         }
+
+        // Bắn sự kiện realtime cho các user khác (toOthers)
+        broadcast(new DiscussionCreated($discussion, $html))->toOthers();
 
         return response()->json([
             'status' => $result['status'],

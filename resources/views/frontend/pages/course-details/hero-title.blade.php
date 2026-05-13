@@ -3,28 +3,36 @@
         <span
             class="bg-primary/20 text-primary px-2 py-1 text-xs font-bold border border-primary/40 bestseller-ribbon">{{ $course['label'] }}</span>
     </div>
-    <h2 class="text-3xl md:text-5xl font-black text-primary leading-none pixel-text uppercase italic">
+    <h2 class="text-2xl md:text-5xl font-black text-primary leading-tight pixel-text uppercase italic">
         {{ $course->course_name }}
     </h2>
     <p class="text-slate-300 font-mono text-sm">{{ $course->course_title }}
     </p>
-    <div class="flex flex-wrap items-center gap-6">
+    <div class="flex flex-wrap items-center gap-4 md:gap-6">
         <div class="flex items-center gap-1 text-yellow-400 rating-block">
             <span class="font-bold text-lg mr-1 rating-number">{{ number_format($ratingAverage ?? 0, 1) }}</span>
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                class="fas fa-star-half-alt"></i>
-            <span class="ml-2 text-sm text-slate-100 total-ratings">({{ $ratingCount ?? 0 }} đánh giá)</span>
-            <span class="ml-2 text-sm text-slate-100 total-students">50 học viên</span>
+            <div class="flex text-xs md:text-sm">
+                @for ($i = 1; $i <= 5; $i++)
+                    @if ($i <= floor($ratingAverage ?? 0))
+                        <i class="fas fa-star"></i>
+                    @elseif($i == ceil($ratingAverage ?? 0) && ($ratingAverage ?? 0) - floor($ratingAverage ?? 0) >= 0.5)
+                        <i class="fas fa-star-half-alt"></i>
+                    @else
+                        <i class="far fa-star"></i>
+                    @endif
+                @endfor
+            </div>
+            <span class="ml-2 text-[10px] md:text-sm text-slate-100 total-ratings">({{ $ratingCount ?? 0 }} đánh giá)</span>
+            <span class="ml-2 text-[10px] md:text-sm text-slate-100 total-students">50 học viên</span>
         </div>
         <div class="flex items-center gap-2 instructor-line">
-            <span class="text-sm">Tạo bởi <a href="#"
+            <span class="text-xs md:text-sm">Tạo bởi <a href="#"
                     class="font-bold text-cyber-cyan uppercase hover:underline">{{ $course['user']['name'] }}</a></span>
         </div>
     </div>
-    <div class="flex flex-wrap items-center gap-4 text-xs text-slate-400 mt-2">
+    <div class="flex flex-wrap items-center gap-4 text-[10px] md:text-xs text-slate-400 mt-2">
         <span class="flex items-center gap-1"><i class="fas fa-exclamation-circle text-secondary"></i>
-            Cập nhật lần cuối {{ \Carbon\Carbon::parse($course->updated_at)->format('D M Y') }}</span>
-        updated {{ \Carbon\Carbon::parse($course->updated_at)->format('D M Y') }}</span>
+            Cập nhật lần cuối {{ \Carbon\Carbon::parse($course->updated_at)->format('d/m/Y') }}</span>
         <span class="flex items-center gap-1"><i class="fas fa-globe text-secondary"></i> English</span>
         <div class="flex items-center gap-3 ml-auto">
             <button class="flex items-center gap-1 hover:text-white transition-colors wishlist-btn"><i

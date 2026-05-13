@@ -61,6 +61,47 @@
                     csrfToken: document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
                 };
             };
+            
+            // --- Realtime Echo ---
+            const currentConfig = getCurrentConfig();
+            if (currentConfig.lectureId && window.Echo) {
+                window.Echo.join(`lecture.${currentConfig.lectureId}`)
+                    .here((users) => {
+                        console.log('Online users:', users);
+                    })
+                    .joining((user) => {
+                        console.log(user.name + ' joined the lecture.');
+                    })
+                    .leaving((user) => {
+                        console.log(user.name + ' left the lecture.');
+                    })
+                    .listen('.discussion.created', (e) => {
+                        console.log('New message received real-time:', e);
+                        
+                        const discussion = e.discussion;
+                        const html = e.html;
+
+                        // Nếu là reply (có parent_id)
+                        if (discussion.parent_id) {
+                            const childrenContainer = document.getElementById(`discussion-children-${discussion.parent_id}`);
+                            if (childrenContainer) {
+                                childrenContainer.insertAdjacentHTML('afterbegin', html);
+                            }
+                        } else {
+                            // Nếu là message gốc
+                            const discussionItems = document.getElementById('discussionItems');
+                            const emptyMessage = document.getElementById('emptyDiscussionMessage');
+                            
+                            if (emptyMessage) {
+                                emptyMessage.remove();
+                            }
+                            if (discussionItems) {
+                                discussionItems.insertAdjacentHTML('afterbegin', html);
+                                updateCount(1);
+                            }
+                        }
+                    });
+            }
 
             // --- Helpers ---
             function updateCount(delta) {

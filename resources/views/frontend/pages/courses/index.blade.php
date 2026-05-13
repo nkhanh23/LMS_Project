@@ -18,11 +18,16 @@
                     <form action="{{ route('frontend.courses.index') }}" method="GET" id="filterForm">
                         <input type="hidden" name="sort" id="sortInput" value="{{ request('sort', 'relevant') }}">
 
-                        <div class="bg-cyber-surface border-2 border-black pixel-shadow p-6 mb-6 lg:hidden">
+                        <div class="bg-cyber-surface border-2 border-black pixel-shadow p-4 mb-6 lg:hidden group active:translate-y-1 transition-transform">
                             <div
-                                class="font-bold mb-4 flex items-center justify-between cursor-pointer toggle-mobile-filters">
-                                <span class="flex items-center gap-2"><i class="fas fa-filter text-brand"></i> Bộ lọc</span>
-                                <i class="fas fa-chevron-down text-xs transition-transform filter-chevron"></i>
+                                class="font-bold flex items-center justify-between cursor-pointer toggle-mobile-filters">
+                                <span class="flex items-center gap-3 text-brand">
+                                    <i class="fas fa-sliders-h"></i> 
+                                    <span class="uppercase tracking-widest text-xs">Bộ lọc & Phân loại</span>
+                                </span>
+                                <div class="bg-black/40 w-8 h-8 flex items-center justify-center border border-slate-700">
+                                    <i class="fas fa-chevron-down text-[10px] transition-transform filter-chevron"></i>
+                                </div>
                             </div>
                         </div>
 
@@ -187,38 +192,41 @@
                                 </a>
 
                                 <!-- Details -->
-                                <div class="flex-grow flex flex-col justify-between">
-                                    <div>
-                                        <div class="flex justify-between items-start mb-1 gap-4">
-                                            <h3 class="font-bold text-lg leading-tight w-3/4">
+                                <div class="flex-grow flex flex-col justify-between min-w-0">
+                                    <div class="mb-2">
+                                        <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-2">
+                                            <h3 class="font-bold text-base sm:text-lg leading-tight w-full sm:w-3/4">
                                                 <a href="{{ route('chi-tiet', $course->course_name_slug) }}"
-                                                    class="hover:text-brand transition-colors">
+                                                    class="hover:text-brand transition-colors line-clamp-2">
                                                     {{ $course->course_name }}
                                                 </a>
                                             </h3>
 
-                                            <div class="text-right w-1/4">
-                                                <div class="text-brand font-bold whitespace-nowrap">
+                                            <div class="flex flex-row sm:flex-col items-center sm:items-end gap-2 w-full sm:w-1/4 sm:text-right shrink-0">
+                                                <div class="text-brand font-bold text-base whitespace-nowrap">
                                                     {{ number_format($course->discount_price, 0, ',', '.') }} ₫
                                                 </div>
                                                 @if ($course->selling_price > $course->discount_price)
-                                                    <div class="text-text-secondary text-xs line-through mt-1">
+                                                    <div class="text-text-secondary text-[10px] sm:text-xs line-through">
                                                         {{ number_format($course->selling_price, 0, ',', '.') }} ₫
                                                     </div>
                                                 @endif
                                             </div>
                                         </div>
 
-                                        <p class="text-text-secondary text-xs mb-2 line-clamp-1">
-                                            {{ strip_tags($course->description) }}</p>
+                                        <p class="text-text-secondary text-xs mb-2 line-clamp-1 hidden sm:block">
+                                            {{ strip_tags($course->description) }}
+                                        </p>
 
                                         <p class="text-[11px] text-text-secondary mb-1">
-                                            {{ $course->user->name ?? 'Instructor' }}</p>
+                                            {{ $course->user->name ?? 'Instructor' }}
+                                        </p>
 
-                                        <div class="flex items-center gap-1 mb-2">
-                                            <span
-                                                class="text-yellow-400 font-bold text-xs">{{ number_format($course->reviews_avg_rating ?? 0, 1) }}</span>
-                                            <div class="text-yellow-400 text-[10px]">
+                                        <div class="flex items-center gap-1">
+                                            <span class="text-yellow-400 font-bold text-xs">
+                                                {{ number_format($course->reviews_avg_rating ?? 0, 1) }}
+                                            </span>
+                                            <div class="text-yellow-400 text-[10px] flex">
                                                 @php
                                                     $rating = $course->reviews_avg_rating ?? 0;
                                                 @endphp
@@ -232,29 +240,26 @@
                                                     @endif
                                                 @endfor
                                             </div>
-                                            <span
-                                                class="text-[10px] text-text-secondary">({{ number_format($course->reviews_count ?? 0) }})</span>
+                                            <span class="text-[10px] text-text-secondary">
+                                                ({{ number_format($course->reviews_count ?? 0) }})
+                                            </span>
                                         </div>
                                     </div>
 
-                                    <div class="flex items-center gap-2 text-[11px] text-text-secondary flex-wrap">
+                                    <div class="flex items-center gap-2 text-[10px] sm:text-[11px] text-text-secondary flex-wrap border-t border-black/10 pt-2">
                                         @php
-                                            $total_minutes = $course->sections
-                                                ? $course->sections->flatMap->lecture->sum('video_duration')
-                                                : 0;
+                                            $total_minutes = $course->sections->flatMap->lecture->sum('video_duration');
                                             $hours = floor($total_minutes / 60);
                                             $minutes = floor($total_minutes % 60);
-                                            $duration_text =
-                                                $hours > 0 ? $hours . ' giờ ' . $minutes . ' phút' : $minutes . ' phút';
-                                            $lecture_count = $course->sections
-                                                ? $course->sections->flatMap->lecture->count()
-                                                : 0;
+                                            $lecture_count = $course->sections->flatMap->lecture->count();
                                         @endphp
-                                        <span>Tổng số {{ $hours > 0 ? $hours . ' giờ' : $minutes . ' phút' }}</span>
+                                        <span>
+                                            {{ $hours > 0 ? $hours . ' giờ' : '' }} {{ $minutes }} phút
+                                        </span>
                                         <span class="w-1 h-1 rounded-full bg-slate-600"></span>
                                         <span>{{ $lecture_count }} bài giảng</span>
                                         <span class="w-1 h-1 rounded-full bg-slate-600"></span>
-                                        <span>Tất cả các cấp độ</span>
+                                        <span class="uppercase tracking-tighter">Tất cả trình độ</span>
                                     </div>
                                 </div>
                             </article>
@@ -274,8 +279,8 @@
 
                     <!-- Pagination -->
                     @if ($courses->hasPages())
-                        <div class="mt-10 border-t-2 border-black/30 pt-8 flex justify-center">
-                            {{ $courses->links() }}
+                        <div class="mt-12 border-t-2 border-black/30 pt-10 flex justify-center fade-up">
+                            {{ $courses->links('vendor.pagination.cyber-pixel') }}
                         </div>
                     @endif
                 </div>

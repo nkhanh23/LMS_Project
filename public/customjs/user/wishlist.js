@@ -26,70 +26,69 @@ $(document).ready(function () {
                     $('#wishlist-course').html(response.html);
                 }
 
+                }
+
                 if (response.wishlist.data.length === 0) {
                     wishlistContainer.html(`
                         <div class="col-span-full py-16 px-4 text-center border-2 border-black border-dashed bg-cyber-surface/50">
-                            <div class="w-16 h-16 bg-cyber-dark border-2 border-black rounded-full flex items-center justify-center mx-auto mb-4 pixel-shadow-sm">
-                                <i class="far fa-heart text-2xl text-text-secondary"></i>
+                            <div class="w-16 h-16 bg-cyber-dark border-2 border-black flex items-center justify-center mx-auto mb-4 pixel-shadow-sm">
+                                <i class="far fa-heart text-2xl text-text-secondary opacity-30"></i>
                             </div>
-                            <h3 class="text-xl font-bold font-pixel text-brand mb-2">Danh sách trống</h3>
-                            <p class="text-text-secondary mb-6 max-w-md mx-auto">Bạn chưa có khóa học nào trong danh sách yêu thích. Hãy khám phá các khóa học hấp dẫn của chúng tôi!</p>
-                            <a href="/" class="inline-block px-6 py-3 bg-brand text-black font-bold uppercase transition hover:-translate-y-1 block border-2 border-black pixel-shadow hover:pixel-shadow-lg">
+                            <h3 class="text-lg font-bold font-pixel text-brand mb-2">DANH_SACH_TRONG</h3>
+                            <p class="text-[10px] text-text-secondary mb-6 max-w-md mx-auto uppercase">Bạn chưa có khóa học nào trong danh sách yêu thích.</p>
+                            <a href="/khoa-hoc" class="inline-block px-6 py-3 bg-brand text-black font-bold uppercase transition hover:-translate-y-1 border-2 border-black pixel-shadow text-xs">
                                 <i class="fas fa-search mr-2"></i> Khám phá ngay
                             </a>
                         </div>
                     `);
                 } else {
                     wishlistContainer.html(`
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="course-grid"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="course-grid"></div>
                     `);
 
                     response.wishlist.data.forEach(item => {
                         let courseName = item.course.course_name;
-                        if (courseName.length > 50) {
-                            courseName = courseName.substring(0, 50) + '...';
-                        }
-
+                        
                         let html = `
-                        <div class="course-item course-card-wrap relative group">
-                            <article class="bg-cyber-surface border-2 border-black pixel-shadow hover:-translate-y-1 transition-transform cursor-pointer h-full flex flex-col">
-                                <div class="h-44 bg-cyber-dark border-b-2 border-black relative overflow-hidden">
-                                    <a href="/course-details/${item.course.course_name_slug}" class="block w-full h-full">
-                                        <img loading="lazy" class="w-full h-full object-cover" src="${item.course.course_image}" alt="${courseName}">
+                        <div class="course-item group">
+                            <article class="bg-cyber-surface border-2 border-black pixel-shadow hover:-translate-y-1 transition-all p-3 flex flex-col h-full">
+                                <div class="relative aspect-video bg-cyber-dark border border-black mb-3 overflow-hidden">
+                                    <a href="/chi-tiet/${item.course.course_name_slug}" class="block w-full h-full">
+                                        <img loading="lazy" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" src="${item.course.course_image}" alt="${courseName}">
                                     </a>
-                                    <span class="absolute top-2 left-2 bg-yellow-400 text-black text-[9px] font-bold px-2 py-0.5 border border-black">
-                                        ${getBadge(item.course)}
-                                    </span>
-                                    <span class="absolute top-2 left-24 bg-brand text-black text-[9px] font-bold px-2 py-0.5 border border-black">
-                                        -${calculateDiscount(item.course.selling_price, item.course.discount_price)}%
-                                    </span>
+                                    <div class="absolute top-2 left-2 flex flex-col gap-1">
+                                        <span class="bg-yellow-400 text-black text-[8px] font-bold px-1.5 py-0.5 border border-black uppercase">
+                                            ${getBadge(item.course)}
+                                        </span>
+                                        ${item.course.discount_price ? `
+                                        <span class="bg-brand text-black text-[8px] font-bold px-1.5 py-0.5 border border-black uppercase">
+                                            -${calculateDiscount(item.course.selling_price, item.course.discount_price)}%
+                                        </span>` : ''}
+                                    </div>
+                                    <button class="absolute top-2 right-2 w-8 h-8 bg-black/80 border border-black text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors delete-wishlist-item" data-id="${item.id}">
+                                        <i class="fas fa-trash-alt text-xs"></i>
+                                    </button>
                                 </div>
-                                <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
-                                    <div class="space-y-3">
-                                        <h5 class="text-sm text-text-secondary">
-                                            <i class="fas fa-user mr-1 text-cyber-cyan"></i>
-                                            ${item.course.label || (item.course.user ? item.course.user.name : '')}
-                                        </h5>
-                                        <h3 class="font-bold text-lg leading-snug min-h-[56px]">
-                                            <a href="/course-details/${item.course.course_name_slug}">
+                                
+                                <div class="flex-1 flex flex-col">
+                                    <div class="mb-3">
+                                        <h3 class="font-bold text-sm text-white line-clamp-2 leading-tight group-hover:text-brand transition-colors mb-1">
+                                            <a href="/chi-tiet/${item.course.course_name_slug}">
                                                 ${courseName}
                                             </a>
                                         </h3>
-                                        <a href="/instructor/${item.course.user ? item.course.user.name : ''}/${item.course.user ? item.course.user.id : ''}" class="text-sm text-text-secondary hover:text-brand mt-1 block">
-                                            <i class="fas fa-chalkboard-teacher mr-1 text-cyber-cyan"></i>
-                                            ${item.course.user ? item.course.user.name : ''}
-                                        </a>
-                                        <div class="text-yellow-400 text-sm">
-                                            ★★★★☆ <span class="text-text-secondary">(4.4)</span>
-                                        </div>
+                                        <p class="text-[10px] text-text-secondary uppercase font-mono">
+                                            By <span class="text-cyber-cyan font-bold">${item.course.user ? item.course.user.name : 'Instructor'}</span>
+                                        </p>
                                     </div>
-                                    <div class="flex items-center justify-between pt-1">
-                                        <div class="flex items-center gap-2 flex-wrap">
+
+                                    <div class="mt-auto pt-3 border-t border-black/10 flex items-center justify-between">
+                                        <div class="flex flex-col">
                                             ${getPriceHtml(item.course)}
                                         </div>
-                                        <button class="text-lg hover:scale-110 transition-transform wishlist-icon p-2 delete-wishlist-item" title="Xóa khỏi danh sách yêu thích" data-id="${item.id}">
-                                            <i class="fas fa-heart text-red-600"></i>
-                                        </button>
+                                        <a href="/chi-tiet/${item.course.course_name_slug}" class="w-8 h-8 bg-brand border border-black text-black flex items-center justify-center pixel-shadow-sm hover:brightness-110">
+                                            <i class="fas fa-play text-[10px]"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </article>
@@ -99,27 +98,28 @@ $(document).ready(function () {
 
                     // Pagination
                     if (response.wishlist.links && response.wishlist.links.length > 3) {
-                        paginationBox.addClass('flex gap-2 justify-center mt-8');
+                        paginationBox.addClass('flex gap-2 justify-center mt-10 border-t-2 border-black/20 pt-8');
                         response.wishlist.links.forEach(link => {
                             if (!link.url) return;
-                            const activeClass = link.active ? 'bg-brand text-black pixel-shadow-sm' : 'bg-cyber-surface text-text-primary hover:bg-brand hover:text-black hover:pixel-shadow-sm';
+                            const activeClass = link.active ? 'bg-brand text-black border-black' : 'bg-cyber-surface text-text-secondary border-black/30 hover:border-brand hover:text-brand';
                             let label = link.label;
-                            if (label.includes('Previous')) label = '&laquo;';
-                            if (label.includes('Next')) label = '&raquo;';
+                            if (label.includes('Previous')) label = '<i class="fas fa-chevron-left text-[10px]"></i>';
+                            if (label.includes('Next')) label = '<i class="fas fa-chevron-right text-[10px]"></i>';
                             const urlParams = new URL(link.url);
                             const pageNumber = urlParams.searchParams.get('page');
 
                             paginationBox.append(`
-                        <a class="page-link px-3 py-1.5 border-2 border-black font-bold transition-all ${activeClass}" href="#" data-page="${pageNumber}">
-                            ${label}
-                        </a>
-                        `);
+                                <a class="page-link w-8 h-8 flex items-center justify-center border-2 font-bold transition-all pixel-shadow-sm ${activeClass}" href="#" data-page="${pageNumber}">
+                                    ${label}
+                                </a>
+                            `);
                         });
                     }
 
                     // Results Info
                     resultsInfo.html(
-                        `Showing ${response.wishlist.from} - ${response.wishlist.to} of ${response.wishlist.total} results`
+                        `<span class="text-[10px] text-text-secondary pixel-text uppercase">Showing ${response.wishlist.from}-${response.wishlist.to} of ${response.wishlist.total} modules</span>`
+                    );ishlist.total} results`
                     );
                 }
             },

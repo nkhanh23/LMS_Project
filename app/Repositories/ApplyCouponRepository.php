@@ -13,16 +13,18 @@ class ApplyCouponRepository
     {
         try {
 
-            // Initialize response data
+            // Khởi tạo mảng chứa dữ liệu giảm giá
             $discounts = [];
 
             foreach ($courseIds as $key => $courseId) {
                 $instructorId = $instructorIds[$key];
 
-                // Check coupon validity for each course and instructor
+                // Kiểm tra coupon hợp lệ cho từng khóa học và giảng viên
                 $coupon = Coupon::where('coupon_code', $couponName)
+                    //Mã giảm giá chỉ có hiệu lực nếu nó được tạo bởi chính giảng viên dạy khóa học đó
                     ->where('instructor_id', $instructorId)
-                    ->where('status', 1) // Active coupon
+                    // Coupon còn hoạt động
+                    ->where('status', 1)
                     ->first();
 
                 if ($coupon) {

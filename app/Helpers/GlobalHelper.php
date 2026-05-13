@@ -25,7 +25,9 @@ if (!function_exists('isApprovedUser')) {
 if (!function_exists('getCategories')) {
     function getCategories()
     {
-        return Category::with('subCategory')->orderBy('name', 'asc')->get();
+        return Category::select('id', 'name', 'slug', 'image')->with(['subCategory' => function ($query) {
+            $query->select('id', 'category_id', 'name', 'slug');
+        }])->orderBy('name', 'asc')->get();
     }
 }
 
@@ -48,7 +50,10 @@ if (!function_exists('setSidebar')) {
 if (!function_exists('getCourseCategory')) {
     function getCourseCategory()
     {
-        return Category::with('course, course.user, course.course_goals')->orderBy('name', 'asc')->get();
+        return Category::select('id', 'name', 'slug')
+            ->with(['course' => function ($query) {
+                $query->select('id', 'category_id', 'course_name', 'course_name_slug', 'course_image', 'selling_price', 'discount_price', 'label', 'bestseller', 'featured', 'highestrated');
+            }])->orderBy('name', 'asc')->get();
     }
 }
 

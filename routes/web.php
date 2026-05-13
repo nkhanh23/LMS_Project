@@ -430,6 +430,8 @@ Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.'
 Route::get('/', [FrontEndDashBoardController::class, 'home'])->name('frontend.home');
 Route::get('/khoa-hoc', [FrontEndDashBoardController::class, 'courses'])->name('frontend.courses.index');
 Route::get('/chi-tiet/{slug}', [FrontEndDashBoardController::class, 'view'])->name('chi-tiet');
+Route::get('/giang-vien/{id}', [FrontEndDashBoardController::class, 'instructorProfile'])->name('frontend.instructor.details');
+
 
 /*  WISHLIST ROUTES  */
 Route::get('/wishlist/all', [WishlistController::class, 'allWishlist'])->name('wishlist');
@@ -514,6 +516,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
         Route::get('/chatbot/history', [ChatbotController::class, 'history'])->name('chatbot.history');
     });
+
+    /*  PRIVATE CHAT ROUTES  */
+    Route::get('/chat', [\App\Http\Controllers\backend\ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/conversation/{instructorId}', [\App\Http\Controllers\backend\ChatController::class, 'getConversation'])->name('chat.getConversation');
+    Route::post('/chat/send/{conversationId}', [\App\Http\Controllers\backend\ChatController::class, 'sendMessage'])->name('chat.sendMessage');
 });
 
 /*  LEARNING ROUTES  */

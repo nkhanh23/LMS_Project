@@ -202,6 +202,11 @@
                     }
                 }
             });
+
+            // Force recalculate responsive widths
+            setTimeout(function() {
+                window.dispatchEvent(new Event('resize'));
+            }, 500);
         });
     </script>
 

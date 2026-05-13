@@ -6,6 +6,12 @@
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <!-- 4) Main content area – cột trái -->
             <div class="lg:col-span-8 flex flex-col gap-8 flex-1 course-details-content-wrap">
+                
+                <!-- Mobile Only: Course Preview / Pricing -->
+                <div class="block lg:hidden">
+                    @include('frontend.pages.course-details.rightside-course-preview')
+                </div>
+
                 <!-- Hero Title -->
                 <div id="heroTitleWrapper">
                     @include('frontend.pages.course-details.hero-title')
@@ -109,6 +115,9 @@
 
     <!-- Preview Modal -->
     @include('frontend.pages.course-details.preview-modal')
+
+    <!-- Mobile Sticky Bar -->
+    @include('frontend.pages.course-details.mobile-sticky-bar')
 
     <!-- Report Abuse Modal -->
     <div class="modal fade hidden" id="reportModal" tabindex="-1" role="dialog" aria-hidden="true">

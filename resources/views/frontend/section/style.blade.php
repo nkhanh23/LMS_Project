@@ -3,6 +3,38 @@
             background-color: #1E1E2E;
             background-image: linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Force all elements to stay within bounds but allow internal scrolling */
+        body > *, main > section {
+            max-width: 100%;
+        }
+
+        /* Exception for scrollable categories and carousels */
+        .no-scrollbar, .owl-carousel, .owl-stage-outer, .owl-stage {
+            max-width: none !important;
+        }
+
+        @media (max-width: 639px) {
+            .header-top { display: none !important; }
+        }
+
+        /* Prevent long words from breaking layout */
+        h1, h2, h3, h4, h5, h6, p, span, a {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         .pixel-border {

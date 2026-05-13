@@ -33,7 +33,8 @@ $(document).on('click', '.wishlist-icon', function () {
                 position: 'top-end',
                 showConfirmButton: false,
                 timer: 3000,
-                timerProgressBar: true
+                timerProgressBar: true,
+                backdrop: false
             });
 
             // Cập nhật số lượng wishlist nếu status là success
@@ -63,7 +64,8 @@ $(document).on('click', '.wishlist-icon', function () {
                 position: 'top-end',
                 showConfirmButton: false,
                 timer: 3000,
-                timerProgressBar: true
+                timerProgressBar: true,
+                backdrop: false
             });
         }
     });

@@ -12,10 +12,10 @@
 </section>
 
 <section class="p-6 bg-cyber-surface pixel-border border-2 border-black">
-    <div class="flex items-center justify-between mb-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
         <h3 class="text-xl font-bold uppercase tracking-tighter text-brand">Nội dung bài học</h3>
         <span class="text-xs text-slate-400">
-            {{ $total_lecture }} phần • 15 bài học • 2h 30m total length
+            {{ $total_lecture }} phần • {{ $course->lectures->count() }} bài học • {{ $hours }}h {{ $minutes }}m total length
         </span>
     </div>
 
