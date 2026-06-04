@@ -17,65 +17,7 @@
     <div class="flex items-center gap-5 ml-8">
 
         <!-- ===== NOTIFICATIONS ===== -->
-        <div class="relative group/notif">
-            <button
-                class="relative w-12 h-12 bg-cyber-surface border-2 border-black pixel-shadow-sm pixel-button-hover flex items-center justify-center">
-                <i class="fas fa-bell"></i>
-                <div class="absolute top-1 right-1 w-3 h-3 bg-red-600 border border-black"></div>
-            </button>
-            <!-- Notifications Dropdown -->
-            <div class="absolute top-full right-0 pt-2 w-80 hidden group-hover/notif:block z-50">
-                <div class="bg-cyber-surface border-2 border-black pixel-shadow">
-                    <div class="px-4 py-3 border-b-2 border-black flex items-center justify-between">
-                        <h4 class="font-bold text-sm pixel-text text-brand">Notifications</h4>
-                        <span class="text-[10px] bg-red-600 text-white px-2 py-0.5 border border-black font-bold">3
-                            NEW</span>
-                    </div>
-                    <div class="max-h-72 overflow-y-auto">
-                        <a href="#"
-                            class="flex items-start gap-3 px-4 py-3 border-b border-black/30 hover:bg-white/5 transition-colors">
-                            <div
-                                class="w-8 h-8 bg-brand/20 border border-brand flex items-center justify-center shrink-0 mt-0.5">
-                                <i class="fas fa-trophy text-brand text-xs"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold">Achievement Unlocked!</p>
-                                <p class="text-xs text-text-secondary">You completed "Laravel Basics" quest</p>
-                                <span class="text-[10px] text-text-secondary mt-1 block">2 hours ago</span>
-                            </div>
-                        </a>
-                        <a href="#"
-                            class="flex items-start gap-3 px-4 py-3 border-b border-black/30 hover:bg-white/5 transition-colors">
-                            <div
-                                class="w-8 h-8 bg-cyber-cyan/20 border border-cyber-cyan flex items-center justify-center shrink-0 mt-0.5">
-                                <i class="fas fa-comment text-cyber-cyan text-xs"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold">New reply on your question</p>
-                                <p class="text-xs text-text-secondary">Instructor responded to your thread</p>
-                                <span class="text-[10px] text-text-secondary mt-1 block">5 hours ago</span>
-                            </div>
-                        </a>
-                        <a href="#"
-                            class="flex items-start gap-3 px-4 py-3 border-b border-black/30 hover:bg-white/5 transition-colors">
-                            <div
-                                class="w-8 h-8 bg-pink-500/20 border border-pink-500 flex items-center justify-center shrink-0 mt-0.5">
-                                <i class="fas fa-tag text-pink-400 text-xs"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold">Flash Sale: 50% Off!</p>
-                                <p class="text-xs text-text-secondary">Limited time offer on all courses</p>
-                                <span class="text-[10px] text-text-secondary mt-1 block">1 day ago</span>
-                            </div>
-                        </a>
-                    </div>
-                    <a href="#"
-                        class="block px-4 py-3 text-center text-xs font-bold text-brand pixel-text hover:bg-white/5 transition-colors border-t-2 border-black">
-                        VIEW ALL NOTIFICATIONS
-                    </a>
-                </div>
-            </div>
-        </div>
+        @include('components.notifications._notification-dropdown', ['variant' => 'cyber'])
 
         <!-- ===== CART ===== -->
         <div id="cart">

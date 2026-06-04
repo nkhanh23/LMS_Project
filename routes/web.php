@@ -55,6 +55,7 @@ use App\Http\Controllers\frontend\QuizAttempController;
 use App\Http\Controllers\frontend\UserOrderController;
 use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/dashboard', function () {
@@ -459,6 +460,11 @@ Route::post('/remove-coupon', [CouponController::class, 'removeCoupon'])->name('
 
 /*  AUTH PROTECTED ROUTES  */
 Route::middleware('auth')->group(function () {
+    /*  NOTIFICATION ROUTES  */
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
+    Route::post('/notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.readAll');
+
     Route::post('/order', [OrderController::class, 'order'])->name('order');
     Route::post('/vnpay-payment', [OrderController::class, 'vnpayPayment'])->name('vnpay.payment');
     Route::get('/vnpay-return', [OrderController::class, 'vnpayReturn'])->name('vnpay.return');

@@ -21,13 +21,17 @@ class GoogleServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Lấy cấu hình Google từ database
-        $googleConfig = Google::first();
+        try {
+            // Lấy cấu hình Google từ database
+            $googleConfig = Google::first();
 
-        if ($googleConfig) {
-            Config::set('services.google.client_id', $googleConfig->client_id);
-            Config::set('services.google.client_secret', $googleConfig->secret_key);
-            Config::set('services.google.redirect', $googleConfig->redirect_uri ?? config('services.google.redirect'));
+            if ($googleConfig) {
+                Config::set('services.google.client_id', $googleConfig->client_id);
+                Config::set('services.google.client_secret', $googleConfig->secret_key);
+                Config::set('services.google.redirect', $googleConfig->redirect_uri ?? config('services.google.redirect'));
+            }
+        } catch (\Exception $e) {
+            // Table may not exist yet
         }
     }
 }

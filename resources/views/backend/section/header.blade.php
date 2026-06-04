@@ -33,36 +33,7 @@
                         </div>
                     </li>
 
-                    <li class="nav-item dropdown dropdown-large">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
-                            data-bs-toggle="dropdown"><span class="alert-count">7</span>
-                            <i class='bx bx-bell'></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a href="javascript:;">
-                                <div class="msg-header">
-                                    <p class="msg-header-title">Notifications</p>
-                                    <p class="msg-header-badge">8 New</p>
-                                </div>
-                            </a>
-                            <div class="header-notifications-list">
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-online">
-                                            <img src="{{ asset('backend/assets/images/avatars/avatar-1.png') }}"
-                                                class="msg-avatar" alt="user avatar">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Daisy Anderson<span class="msg-time float-end">5 sec
-                                                    ago</span></h6>
-                                            <p class="msg-info">The standard chunk of lorem</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                    </li>
+                    @include('components.notifications._notification-dropdown', ['variant' => 'bootstrap'])
                     <li class="nav-item dropdown dropdown-large">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">

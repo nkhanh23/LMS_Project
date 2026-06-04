@@ -120,6 +120,9 @@ $categories = getCategories();
 
         <!-- Right Actions -->
         <div class="flex items-center gap-3 lg:gap-5 ml-4">
+            @auth
+                @include('components.notifications._notification-dropdown', ['variant' => 'cyber'])
+            @endauth
             <!-- Wishlist -->
             <?php
             if (auth()->check()) {

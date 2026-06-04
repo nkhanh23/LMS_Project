@@ -30,6 +30,20 @@ class AuthenticationTest extends TestCase
         $response->assertRedirect(route('dashboard', absolute: false));
     }
 
+    public function test_unverified_users_cannot_authenticate(): void
+    {
+        $user = User::factory()->unverified()->create();
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $this->assertGuest();
+        $response->assertRedirect(route('login'));
+        $response->assertSessionHas('error', 'Tài khoản chưa được xác minh. Vui lòng kiểm tra email của bạn.');
+    }
+
     public function test_users_can_not_authenticate_with_invalid_password(): void
     {
         $user = User::factory()->create();

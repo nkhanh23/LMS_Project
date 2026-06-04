@@ -1,0 +1,908 @@
+﻿// StackLearn LMS database schema for dbdiagram.io
+// Generated from Laravel migrations and cross-checked with database_analysis.md
+
+Table users {
+  id bigint [pk, not null, increment]
+  first_name varchar(255) [null]
+  last_name varchar(255) [null]
+  name varchar(255) [not null]
+  email varchar(255) [unique, not null]
+  email_verified_at timestamp [null]
+  password varchar(255) [not null]
+  photo varchar(255) [null]
+  phone varchar(255) [null]
+  address varchar(255) [null]
+  role varchar(255) [not null, default: 'user']
+  status varchar(255) [not null, default: '1']
+  instructor_approval_status varchar(255) [not null, default: 'pending']
+  instructor_review_note text [null]
+  instructor_reviewed_by bigint [null]
+  instructor_reviewed_at timestamp [null]
+  bio text [null]
+  day int [null]
+  month int [null]
+  year int [null]
+  city varchar(255) [null]
+  country varchar(255) [null]
+  experience text [null]
+  gender varchar(255) [not null, default: 'male']
+  remember_token varchar(100) [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table password_reset_tokens {
+  email varchar(255) [pk, not null]
+  token varchar(255) [not null]
+  created_at timestamp [null]
+}
+
+Table sessions {
+  id varchar(255) [pk, not null]
+  user_id bigint [null]
+  ip_address varchar(45) [null]
+  user_agent text [null]
+  payload text [not null]
+  last_activity int [not null]
+}
+
+Table cache {
+  key varchar(255) [pk, not null]
+  value text [not null]
+  expiration int [not null]
+}
+
+Table cache_locks {
+  key varchar(255) [pk, not null]
+  owner varchar(255) [not null]
+  expiration int [not null]
+}
+
+Table jobs {
+  id bigint [pk, not null, increment]
+  queue varchar(255) [not null]
+  payload text [not null]
+  attempts tinyint [not null]
+  reserved_at int [null]
+  available_at int [not null]
+  created_at int [not null]
+}
+
+Table job_batches {
+  id varchar(255) [pk, not null]
+  name varchar(255) [not null]
+  total_jobs int [not null]
+  pending_jobs int [not null]
+  failed_jobs int [not null]
+  failed_job_ids text [not null]
+  options text [null]
+  cancelled_at int [null]
+  created_at int [not null]
+  finished_at int [null]
+}
+
+Table failed_jobs {
+  id bigint [pk, not null, increment]
+  uuid varchar(255) [unique, not null]
+  connection text [not null]
+  queue text [not null]
+  payload text [not null]
+  exception text [not null]
+  failed_at timestamp [not null]
+}
+
+Table categories {
+  id bigint [pk, not null, increment]
+  name varchar(255) [not null]
+  slug varchar(255) [not null]
+  image varchar(255) [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table sub_categories {
+  id bigint [pk, not null, increment]
+  category_id bigint [not null]
+  name varchar(255) [not null]
+  slug varchar(255) [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table sliders {
+  id bigint [pk, not null, increment]
+  title varchar(255) [not null]
+  short_description text [not null]
+  video_url varchar(255) [not null]
+  image varchar(255) [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table info_boxes {
+  id bigint [pk, not null, increment]
+  icon varchar(255) [not null]
+  title varchar(255) [not null]
+  description text [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table courses {
+  id bigint [pk, not null, increment]
+  category_id bigint [not null]
+  subcategory_id bigint [not null]
+  instructor_id bigint [not null]
+  course_image varchar(255) [null]
+  course_title text [null]
+  course_name text [null]
+  course_name_slug varchar(255) [null]
+  description text [null]
+  video_url varchar(255) [null]
+  label varchar(255) [null]
+  duration varchar(255) [null]
+  resources varchar(255) [null]
+  certificate varchar(255) [null]
+  selling_price int [null]
+  discount_price int [null]
+  prerequisites text [null]
+  bestseller varchar(255) [null]
+  featured varchar(255) [null]
+  highestrated varchar(255) [null]
+  course_goals json [null]
+  status tinyint [not null, default: 0]
+  approval_status varchar(255) [not null, default: 'draft']
+  content_unlock_mode varchar(255) [not null, default: 'free']
+  approval_note text [null]
+  reviewed_by bigint [null]
+  reviewed_at timestamp [null]
+  submitted_for_review_at timestamp [null]
+  approved_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table course_goals {
+  id bigint [pk, not null, increment]
+  course_id bigint [not null]
+  goal_name text [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table course_sections {
+  id bigint [pk, not null, increment]
+  course_id bigint [not null]
+  section_title varchar(255) [not null]
+  sort_order int [not null, default: 1]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table course_lectures {
+  id bigint [pk, not null, increment]
+  course_id bigint [null]
+  section_id bigint [null]
+  lecture_title varchar(255) [null]
+  sort_order int [not null, default: 1]
+  is_preview boolean [not null, default: false]
+  type varchar(20) [not null, default: 'video']
+  url varchar(255) [null]
+  file_name varchar(255) [null]
+  mime_type varchar(255) [null]
+  file_size bigint [null]
+  storage_disk varchar(255) [null]
+  content text [null]
+  video_duration decimal(8,2) [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table wishlists {
+  id bigint [pk, not null, increment]
+  user_id bigint [not null]
+  course_id bigint [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table carts {
+  id bigint [pk, not null, increment]
+  user_id bigint [null]
+  guest_token uuid [null]
+  course_id bigint [not null]
+  quantity int [not null, default: 1]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table coupons {
+  id bigint [pk, not null, increment]
+  instructor_id int [not null]
+  coupon_code varchar(255) [not null]
+  coupon_discount varchar(255) [not null]
+  discount_validity varchar(255) [not null]
+  status int [not null, default: 1]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table striipes {
+  id bigint [pk, not null, increment]
+  publish_key varchar(255) [null]
+  secret_key varchar(255) [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table orders {
+  id bigint [pk, not null, increment]
+  payment_id int [not null]
+  user_id int [null]
+  course_id int [null]
+  instructor_id int [null]
+  course_title varchar(255) [null]
+  price int [null]
+  status varchar(255) [not null, default: 'completed']
+  refund_status varchar(255) [not null, default: 'none']
+  refund_amount decimal(12,2) [not null, default: 0]
+  refund_reason text [null]
+  cancel_reason text [null]
+  refund_requested_at timestamp [null]
+  refunded_at timestamp [null]
+  refunded_by bigint [null]
+  cancelled_at timestamp [null]
+  cancelled_by bigint [null]
+  access_revoked_at timestamp [null]
+  paid_at timestamp [null]
+  gross_amount decimal(12,2) [null]
+  net_amount decimal(12,2) [null]
+  platform_amount decimal(12,2) [not null, default: 0]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table payments {
+  id bigint [pk, not null, increment]
+  transaction_id varchar(255) [not null]
+  name varchar(255) [null]
+  email varchar(255) [null]
+  phone varchar(255) [null]
+  address varchar(255) [null]
+  cash_delivery varchar(255) [null]
+  total_amount varchar(255) [null]
+  refunded_amount decimal(12,2) [not null, default: 0]
+  refunded_at timestamp [null]
+  refund_reference varchar(255) [null]
+  provider_payload json [null]
+  provider_status varchar(255) [null]
+  payment_type varchar(255) [null]
+  invoice_no varchar(255) [null]
+  order_date varchar(255) [null]
+  order_month varchar(255) [null]
+  order_year varchar(255) [null]
+  status varchar(255) [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table googles {
+  id bigint [pk, not null, increment]
+  client_id varchar(255) [not null]
+  secret_key varchar(255) [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table smtps {
+  id bigint [pk, not null, increment]
+  mailer varchar(255) [null]
+  host varchar(255) [null]
+  port varchar(255) [null]
+  username varchar(255) [null]
+  password varchar(255) [null]
+  encryption varchar(255) [null]
+  from_address varchar(255) [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table partners {
+  id bigint [pk, not null, increment]
+  name text [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table site_infos {
+  id bigint [pk, not null, increment]
+  meta_title varchar(255) [null]
+  copyright varchar(255) [null]
+  meta_description varchar(255) [null]
+  logo varchar(255) [null]
+  favicon varchar(255) [null]
+  address varchar(255) [null]
+  phone varchar(255) [null]
+  mail varchar(255) [null]
+  facebook varchar(255) [null]
+  twitter varchar(255) [null]
+  instagram varchar(255) [null]
+  linkedin varchar(255) [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table lecture_discussions {
+  id bigint [pk, not null, increment]
+  course_id bigint [not null]
+  lecture_id bigint [not null]
+  user_id bigint [not null]
+  parent_id bigint [null]
+  content text [not null]
+  is_approved boolean [not null, default: true]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table lecture_notes {
+  id bigint [pk, not null, increment]
+  user_id bigint [not null]
+  course_id bigint [not null]
+  lecture_id bigint [not null]
+  note text [not null]
+  video_second int [not null]
+  formatted_time varchar(20) [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table quizzes {
+  id bigint [pk, not null, increment]
+  course_id bigint [not null]
+  section_id bigint [null]
+  lecture_id bigint [unique, not null]
+  title varchar(255) [null]
+  description text [null]
+  source_type varchar(20) [not null, default: 'manual']
+  time_limit int [null]
+  passing_score int [not null, default: 0]
+  max_attempts int [null]
+  shuffle_questions boolean [not null, default: false]
+  show_result_immediately boolean [not null, default: true]
+  is_active boolean [not null, default: true]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table quiz_questions {
+  id bigint [pk, not null, increment]
+  quiz_id bigint [not null]
+  question_text text [not null]
+  question_type varchar(30) [not null, default: 'single_choice']
+  explanation text [null]
+  points int [not null, default: 1]
+  sort_order int [not null, default: 1]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table quiz_options {
+  id bigint [pk, not null, increment]
+  question_id bigint [not null]
+  option_text text [not null]
+  is_correct boolean [not null, default: false]
+  sort_order int [not null, default: 1]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table quiz_attempts {
+  id bigint [pk, not null, increment]
+  quiz_id bigint [not null]
+  lecture_id bigint [not null]
+  course_id bigint [not null]
+  user_id bigint [not null]
+  score int [not null, default: 0]
+  total_questions int [not null, default: 0]
+  correct_answers int [not null, default: 0]
+  status varchar(20) [not null, default: 'submitted']
+  started_at timestamp [null]
+  submitted_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table quiz_attempt_answers {
+  id bigint [pk, not null, increment]
+  attempt_id bigint [not null]
+  question_id bigint [not null]
+  selected_option_id bigint [null]
+  is_correct boolean [not null, default: false]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table instructor_requests {
+  id bigint [pk, not null, increment]
+  user_id bigint [not null]
+  headline varchar(255) [null]
+  bio text [null]
+  experience text [null]
+  phone varchar(255) [null]
+  status varchar(255) [not null, default: 'pending']
+  admin_note text [null]
+  reviewed_by bigint [null]
+  reviewed_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table refund_requests {
+  id bigint [pk, not null, increment]
+  order_id bigint [not null]
+  payment_id bigint [null]
+  user_id bigint [not null]
+  instructor_id bigint [null]
+  request_source varchar(255) [not null, default: 'user']
+  type varchar(255) [not null, default: 'refund']
+  status varchar(255) [not null, default: 'pending']
+  requested_amount decimal(12,2) [null]
+  approved_amount decimal(12,2) [null]
+  reason text [null]
+  admin_note text [null]
+  provider_ref varchar(255) [null]
+  requested_at timestamp [null]
+  reviewed_by bigint [null]
+  reviewed_at timestamp [null]
+  processed_by bigint [null]
+  processed_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table order_status_histories {
+  id bigint [pk, not null, increment]
+  order_id bigint [not null]
+  payment_id bigint [null]
+  from_status varchar(255) [null]
+  to_status varchar(255) [null]
+  from_refund_status varchar(255) [null]
+  to_refund_status varchar(255) [null]
+  action varchar(255) [not null]
+  actor_id bigint [null]
+  actor_role varchar(255) [null]
+  note text [null]
+  meta_json json [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table course_reviews {
+}
+
+Table admin_audit_logs {
+  id bigint [pk, not null, increment]
+  admin_id bigint [not null]
+  action varchar(255) [not null]
+  target_type varchar(255) [not null]
+  target_id bigint [null]
+  note text [null]
+  old_values_json json [null]
+  new_values_json json [null]
+  context_json json [null]
+  ip_address varchar(45) [null]
+  user_agent text [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table content_reports {
+  id bigint [pk, not null, increment]
+  reporter_id bigint [not null]
+  reported_user_id bigint [not null]
+  reportable_type varchar(255) [not null]
+  reportable_id bigint [not null]
+  course_id bigint [not null]
+  lecture_id bigint [not null]
+  reason_code varchar(255) [not null]
+  description text [null]
+  status varchar(255) [not null, default: 'pending']
+  resolution_action varchar(255) [null]
+  resolution_note text [null]
+  content_snapshot json [null]
+  reviewed_by bigint [not null]
+  reviewed_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  policy_id bigint [null]
+  action_template_id bigint [null]
+}
+
+Table enrollments {
+  id bigint [pk, not null, increment]
+  user_id bigint [not null]
+  course_id bigint [not null]
+  order_id bigint [null]
+  source varchar(255) [not null, default: 'order']
+  status varchar(255) [not null, default: 'active']
+  access_granted_at timestamp [null]
+  access_expires_at timestamp [null]
+  last_lecture_id bigint [null]
+  last_accessed_at timestamp [null]
+  completed_at timestamp [null]
+  revoked_at timestamp [null]
+  revoked_reason text [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table lesson_progress {
+  id bigint [pk, not null, increment]
+  enrollment_id bigint [not null]
+  user_id bigint [not null]
+  course_id bigint [not null]
+  section_id bigint [null]
+  lecture_id bigint [not null]
+  status varchar(255) [not null, default: 'not_started']
+  progress_percent int [not null, default: 0]
+  watch_seconds int [not null, default: 0]
+  started_at timestamp [null]
+  last_watched_at timestamp [null]
+  completed_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table course_progress {
+  id bigint [pk, not null, increment]
+  enrollment_id bigint [not null]
+  user_id bigint [not null]
+  course_id bigint [not null]
+  total_lectures int [not null, default: 0]
+  completed_lectures int [not null, default: 0]
+  completion_percent int [not null, default: 0]
+  last_lecture_id bigint [null]
+  last_activity_at timestamp [null]
+  completed_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table course_quality_checks {
+  id bigint [pk, not null, increment]
+  course_id bigint [not null]
+  check_key varchar(255) [not null]
+  status varchar(255) [not null, default: 'fail']
+  message text [null]
+  reviewed_by bigint [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table moderation_policies {
+  id bigint [pk, not null, increment]
+  code varchar(255) [unique, not null]
+  name varchar(255) [not null]
+  target_type varchar(255) [null]
+  description text [null]
+  is_active boolean [not null, default: true]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table moderation_action_templates {
+  id bigint [pk, not null, increment]
+  code varchar(255) [unique, not null]
+  name varchar(255) [not null]
+  target_type varchar(255) [null]
+  default_note text [null]
+  requires_reason boolean [not null, default: true]
+  is_active boolean [not null, default: true]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table instructor_risk_scores {
+  id bigint [pk, not null, increment]
+  instructor_id bigint [unique, not null]
+  risk_score int [not null, default: 0]
+  confirmed_reports_count int [not null, default: 0]
+  refund_requests_count int [not null, default: 0]
+  rejected_courses_count int [not null, default: 0]
+  warnings_count int [not null, default: 0]
+  calculated_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table ai_chat_sessions {
+  id bigint [pk, not null, increment]
+  user_id bigint [not null]
+  course_id bigint [not null]
+  lecture_id bigint [not null]
+  title varchar(255) [null]
+  status varchar(255) [not null, default: 'active']
+  last_activity_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table ai_chat_messages {
+  id bigint [pk, not null, increment]
+  session_id bigint [not null]
+  user_id bigint [null]
+  role varchar(20) [not null]
+  content text [not null]
+  provider varchar(255) [null]
+  model varchar(255) [null]
+  prompt_tokens int [null]
+  completion_tokens int [null]
+  latency_ms int [null]
+  meta_json json [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table ai_documents {
+  id bigint [pk, not null, increment]
+  course_id bigint [not null]
+  lecture_id bigint [null]
+  uploaded_by bigint [not null]
+  title varchar(255) [not null]
+  source_type varchar(50) [not null, default: 'manual_upload']
+  file_name varchar(255) [null]
+  mime_type varchar(255) [null]
+  storage_disk varchar(255) [null]
+  storage_path varchar(255) [null]
+  extracted_text text [null]
+  language varchar(10) [not null, default: 'vi']
+  index_status varchar(20) [not null, default: 'pending']
+  index_error text [null]
+  indexed_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table ai_document_chunks {
+  id bigint [pk, not null, increment]
+  document_id bigint [not null]
+  course_id bigint [not null]
+  lecture_id bigint [null]
+  chunk_index int [not null]
+  content text [not null]
+  content_length int [not null, default: 0]
+  meta_json json [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  embedding vector(768) [null]
+  embedding_provider varchar(100) [null]
+  embedding_model varchar(150) [null]
+  embedding_status varchar(30) [not null, default: 'pending']
+  embedding_error text [null]
+  external_vector_id varchar(255) [null]
+}
+
+Table ai_message_citations {
+  id bigint [pk, not null, increment]
+  message_id bigint [not null]
+  document_id bigint [not null]
+  chunk_id bigint [not null]
+  rank int [not null, default: 1]
+  score decimal(8,4) [null]
+  snippet text [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table gemini_settings {
+  id bigint [pk, not null, increment]
+  api_key text [null]
+  model_name varchar(255) [not null, default: 'gemini-1.5-flash']
+  timeout_seconds int [not null, default: 30]
+  temperature decimal(3,2) [not null, default: 0.20]
+  max_output_tokens int [not null, default: 1024]
+  is_enabled boolean [not null, default: true]
+  updated_by bigint [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  base_url varchar(255) [null]
+}
+
+Table concepts {
+  id bigint [pk, not null, increment]
+  name varchar(255) [unique, not null]
+  description text [null]
+  synonyms_json json [null]
+  is_active boolean [not null, default: true]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table lesson_concepts {
+  id bigint [pk, not null, increment]
+  lecture_id bigint [not null]
+  concept_id bigint [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table document_concepts {
+  id bigint [pk, not null, increment]
+  document_id bigint [not null]
+  concept_id bigint [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table transcript_jobs {
+  id bigint [pk, not null, increment]
+  lecture_id bigint [not null]
+  course_id bigint [not null]
+  requested_by bigint [not null]
+  document_id bigint [null]
+  status varchar(30) [not null, default: 'queued']
+  progress tinyint [not null, default: 0]
+  error_message text [null]
+  request_payload json [null]
+  response_payload json [null]
+  started_at timestamp [null]
+  finished_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table payout_requests {
+  id bigint [pk, not null, increment]
+  instructor_id bigint [not null]
+  amount decimal(12,2) [not null]
+  bank_name varchar(255) [not null]
+  account_number varchar(255) [not null]
+  account_name varchar(255) [not null]
+  status varchar(255) [not null, default: 'pending']
+  transaction_reference varchar(255) [null]
+  admin_note text [null]
+  processed_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table conversations {
+  id bigint [pk, not null, increment]
+  student_id bigint [not null]
+  instructor_id bigint [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table messages {
+  id bigint [pk, not null, increment]
+  conversation_id bigint [not null]
+  sender_id bigint [not null]
+  message text [not null]
+  is_read boolean [not null, default: false]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table notifications {
+  id uuid [pk, not null]
+  type varchar(255) [not null]
+  notifiable_id bigint [not null]
+  notifiable_type varchar(255) [not null]
+  data text [not null]
+  read_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table migrations {
+  id int [pk, not null, increment]
+  migration varchar(255) [not null]
+  batch int [not null]
+}
+
+Ref: sub_categories.category_id > categories.id
+Ref: course_goals.course_id > courses.id
+Ref: course_sections.course_id > courses.id
+Ref: course_lectures.course_id > courses.id
+Ref: course_lectures.section_id > course_sections.id
+Ref: wishlists.user_id > users.id
+Ref: wishlists.course_id > courses.id
+Ref: carts.user_id > users.id
+Ref: carts.course_id > courses.id
+Ref: lecture_discussions.course_id > courses.id
+Ref: lecture_discussions.lecture_id > course_lectures.id
+Ref: lecture_discussions.user_id > users.id
+Ref: lecture_discussions.parent_id > lecture_discussions.id
+Ref: lecture_notes.user_id > users.id
+Ref: lecture_notes.course_id > courses.id
+Ref: lecture_notes.lecture_id > course_lectures.id
+Ref: quizzes.course_id > courses.id
+Ref: quizzes.section_id > course_sections.id
+Ref: quizzes.lecture_id > course_lectures.id
+Ref: quiz_questions.quiz_id > quizzes.id
+Ref: quiz_options.question_id > quiz_questions.id
+Ref: quiz_attempts.quiz_id > quizzes.id
+Ref: quiz_attempts.lecture_id > course_lectures.id
+Ref: quiz_attempts.course_id > courses.id
+Ref: quiz_attempts.user_id > users.id
+Ref: quiz_attempt_answers.attempt_id > quiz_attempts.id
+Ref: quiz_attempt_answers.question_id > quiz_questions.id
+Ref: quiz_attempt_answers.selected_option_id > quiz_options.id
+Ref: instructor_requests.user_id > users.id
+Ref: instructor_requests.reviewed_by > users.id
+Ref: refund_requests.order_id > orders.id
+Ref: refund_requests.payment_id > payments.id
+Ref: refund_requests.user_id > users.id
+Ref: refund_requests.instructor_id > users.id
+Ref: refund_requests.reviewed_by > users.id
+Ref: refund_requests.processed_by > users.id
+Ref: order_status_histories.order_id > orders.id
+Ref: order_status_histories.payment_id > payments.id
+Ref: order_status_histories.actor_id > users.id
+Ref: course_reviews.course_id > courses.id
+Ref: course_reviews.user_id > users.id
+Ref: course_reviews.instructor_id > users.id
+Ref: admin_audit_logs.admin_id > users.id
+Ref: content_reports.reporter_id > users.id
+Ref: content_reports.reported_user_id > users.id
+Ref: content_reports.course_id > courses.id
+Ref: content_reports.lecture_id > course_lectures.id
+Ref: content_reports.reviewed_by > users.id
+Ref: enrollments.user_id > users.id
+Ref: enrollments.course_id > courses.id
+Ref: enrollments.order_id > orders.id
+Ref: enrollments.last_lecture_id > course_lectures.id
+Ref: lesson_progress.enrollment_id > enrollments.id
+Ref: lesson_progress.user_id > users.id
+Ref: lesson_progress.course_id > courses.id
+Ref: lesson_progress.section_id > course_sections.id
+Ref: lesson_progress.lecture_id > course_lectures.id
+Ref: course_progress.enrollment_id > enrollments.id
+Ref: course_progress.user_id > users.id
+Ref: course_progress.course_id > courses.id
+Ref: course_progress.last_lecture_id > course_lectures.id
+Ref: content_reports.policy_id > moderation_policies.id
+Ref: content_reports.action_template_id > moderation_action_templates.id
+Ref: ai_chat_sessions.user_id > users.id
+Ref: ai_chat_sessions.course_id > courses.id
+Ref: ai_chat_sessions.lecture_id > course_lectures.id
+Ref: ai_chat_messages.session_id > ai_chat_sessions.id
+Ref: ai_chat_messages.user_id > users.id
+Ref: ai_documents.course_id > courses.id
+Ref: ai_documents.lecture_id > course_lectures.id
+Ref: ai_documents.uploaded_by > users.id
+Ref: ai_document_chunks.document_id > ai_documents.id
+Ref: ai_document_chunks.course_id > courses.id
+Ref: ai_document_chunks.lecture_id > course_lectures.id
+Ref: ai_message_citations.message_id > ai_chat_messages.id
+Ref: ai_message_citations.document_id > ai_documents.id
+Ref: ai_message_citations.chunk_id > ai_document_chunks.id
+Ref: lesson_concepts.lecture_id > course_lectures.id
+Ref: lesson_concepts.concept_id > concepts.id
+Ref: document_concepts.document_id > ai_documents.id
+Ref: document_concepts.concept_id > concepts.id
+Ref: transcript_jobs.lecture_id > course_lectures.id
+Ref: transcript_jobs.course_id > courses.id
+Ref: transcript_jobs.requested_by > users.id
+Ref: transcript_jobs.document_id > ai_documents.id
+Ref: payout_requests.instructor_id > users.id
+Ref: conversations.student_id > users.id
+Ref: conversations.instructor_id > users.id
+Ref: messages.conversation_id > conversations.id
+Ref: messages.sender_id > users.id
+Ref: users.instructor_reviewed_by > users.id
+Ref: sessions.user_id > users.id
+Ref: courses.category_id > categories.id
+Ref: courses.subcategory_id > sub_categories.id
+Ref: courses.instructor_id > users.id
+Ref: courses.reviewed_by > users.id
+Ref: coupons.instructor_id > users.id
+Ref: orders.payment_id > payments.id
+Ref: orders.user_id > users.id
+Ref: orders.course_id > courses.id
+Ref: orders.instructor_id > users.id
+Ref: course_quality_checks.course_id > courses.id
+Ref: course_quality_checks.reviewed_by > users.id
+Ref: instructor_risk_scores.instructor_id > users.id
+Ref: gemini_settings.updated_by > users.id

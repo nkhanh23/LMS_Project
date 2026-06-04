@@ -29,6 +29,9 @@
 
     <!-- Bootstrap JS -->
     @include('backend.section.script')
+    @auth
+        @include('components.notifications._notification-toast')
+    @endauth
 </body>
 
 </html>

@@ -1,0 +1,1441 @@
+{\rtf1\ansi\ansicpg1258\deff0{\fonttbl{\f0 Times New Roman;}}\fs24
+4.4.3. M? t? c?c b?ng d? li?u ch?nh\par
+\par
+D??i ??y l? m? t? c?c b?ng d? li?u ch?nh trong c? s? d? li?u c?a h? th?ng StackLearn. C?c b?ng ???c tr?nh b?y theo c?u tr?c g?m t?n c?t, ki?u d? li?u, kh? n?ng nh?n gi? tr? null, li?n k?t kh?a ngo?i v? ghi ch? ch?c n?ng c?a t?ng tr??ng.\par
+\par
+- B?ng users\par
+\par
+B?ng 4.1 D? li?u users\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| first_name | varchar(255) | c? |  |  |\par
+| last_name | varchar(255) | c? |  |  |\par
+| name | varchar(255) | kh?ng |  | T?n hi?n th? |\par
+| email | varchar(255) | kh?ng |  | unique |\par
+| email_verified_at | timestamp | c? |  |  |\par
+| password | varchar(255) | kh?ng |  | M?t kh?u ?? m? h?a |\par
+| photo | varchar(255) | c? |  |  |\par
+| phone | varchar(255) | c? |  |  |\par
+| address | varchar(255) | c? |  |  |\par
+| role | varchar(255) | kh?ng |  | default = 'user' |\par
+| status | varchar(255) | kh?ng |  | default = '1' |\par
+| instructor_approval_status | varchar(255) | kh?ng |  | default = 'pending' |\par
+| instructor_review_note | text | c? |  |  |\par
+| instructor_reviewed_by | bigint | c? | users(id) |  |\par
+| instructor_reviewed_at | timestamp | c? |  |  |\par
+| bio | text | c? |  |  |\par
+| day | int | c? |  |  |\par
+| month | int | c? |  |  |\par
+| year | int | c? |  |  |\par
+| city | varchar(255) | c? |  |  |\par
+| country | varchar(255) | c? |  |  |\par
+| experience | text | c? |  |  |\par
+| gender | varchar(255) | kh?ng |  | default = 'male' |\par
+| remember_token | varchar(100) | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o first_name: tr??ng d? li?u c?a b?ng users.\par
+o last_name: tr??ng d? li?u c?a b?ng users.\par
+o name: T?n hi?n th?.\par
+o email: unique.\par
+o email_verified_at: tr??ng d? li?u c?a b?ng users.\par
+o password: M?t kh?u ?? m? h?a.\par
+o photo: tr??ng d? li?u c?a b?ng users.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng categories\par
+\par
+B?ng 4.2 D? li?u categories\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| name | varchar(255) | kh?ng |  | T?n hi?n th? |\par
+| slug | varchar(255) | kh?ng |  | ???ng d?n th?n thi?n |\par
+| image | varchar(255) | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o name: T?n hi?n th?.\par
+o slug: ???ng d?n th?n thi?n.\par
+o image: tr??ng d? li?u c?a b?ng categories.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng sub_categories\par
+\par
+B?ng 4.3 D? li?u sub_categories\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| category_id | bigint | kh?ng | categories(id) |  |\par
+| name | varchar(255) | kh?ng |  | T?n hi?n th? |\par
+| slug | varchar(255) | kh?ng |  | ???ng d?n th?n thi?n |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o category_id: li?n k?t t?i categories(id).\par
+o name: T?n hi?n th?.\par
+o slug: ???ng d?n th?n thi?n.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng sliders\par
+\par
+B?ng 4.4 D? li?u sliders\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| title | varchar(255) | kh?ng |  | Ti?u ?? |\par
+| short_description | text | kh?ng |  |  |\par
+| video_url | varchar(255) | kh?ng |  |  |\par
+| image | varchar(255) | kh?ng |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o title: Ti?u ??.\par
+o short_description: tr??ng d? li?u c?a b?ng sliders.\par
+o video_url: tr??ng d? li?u c?a b?ng sliders.\par
+o image: tr??ng d? li?u c?a b?ng sliders.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng info_boxes\par
+\par
+B?ng 4.5 D? li?u info_boxes\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| icon | varchar(255) | kh?ng |  |  |\par
+| title | varchar(255) | kh?ng |  | Ti?u ?? |\par
+| description | text | kh?ng |  | M? t? |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o icon: tr??ng d? li?u c?a b?ng info_boxes.\par
+o title: Ti?u ??.\par
+o description: M? t?.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng courses\par
+\par
+B?ng 4.6 D? li?u courses\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| category_id | bigint | kh?ng | categories(id) |  |\par
+| subcategory_id | bigint | kh?ng | sub_categories(id) |  |\par
+| instructor_id | bigint | kh?ng | users(id) | M? gi?ng vi?n |\par
+| course_image | varchar(255) | c? |  |  |\par
+| course_title | text | c? |  |  |\par
+| course_name | text | c? |  |  |\par
+| course_name_slug | varchar(255) | c? |  |  |\par
+| description | text | c? |  | M? t? |\par
+| video_url | varchar(255) | c? |  |  |\par
+| label | varchar(255) | c? |  |  |\par
+| duration | varchar(255) | c? |  |  |\par
+| resources | varchar(255) | c? |  |  |\par
+| certificate | varchar(255) | c? |  |  |\par
+| selling_price | int | c? |  |  |\par
+| discount_price | int | c? |  |  |\par
+| prerequisites | text | c? |  |  |\par
+| bestseller | varchar(255) | c? |  |  |\par
+| featured | varchar(255) | c? |  |  |\par
+| highestrated | varchar(255) | c? |  |  |\par
+| course_goals | json | c? |  |  |\par
+| status | tinyint | kh?ng |  | default = 0 |\par
+| approval_status | varchar(255) | kh?ng |  | default = 'draft' |\par
+| content_unlock_mode | varchar(255) | kh?ng |  | default = 'free' |\par
+| approval_note | text | c? |  |  |\par
+| reviewed_by | bigint | c? | users(id) |  |\par
+| reviewed_at | timestamp | c? |  |  |\par
+| submitted_for_review_at | timestamp | c? |  |  |\par
+| approved_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o category_id: li?n k?t t?i categories(id).\par
+o subcategory_id: li?n k?t t?i sub_categories(id).\par
+o instructor_id: M? gi?ng vi?n.\par
+o course_image: tr??ng d? li?u c?a b?ng courses.\par
+o course_title: tr??ng d? li?u c?a b?ng courses.\par
+o course_name: tr??ng d? li?u c?a b?ng courses.\par
+o course_name_slug: tr??ng d? li?u c?a b?ng courses.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng course_goals\par
+\par
+B?ng 4.7 D? li?u course_goals\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| goal_name | text | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o course_id: M? kh?a h?c.\par
+o goal_name: tr??ng d? li?u c?a b?ng course_goals.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng course_sections\par
+\par
+B?ng 4.8 D? li?u course_sections\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| section_title | varchar(255) | kh?ng |  |  |\par
+| sort_order | int | kh?ng |  | default = 1 |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o course_id: M? kh?a h?c.\par
+o section_title: tr??ng d? li?u c?a b?ng course_sections.\par
+o sort_order: default = 1.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng course_lectures\par
+\par
+B?ng 4.9 D? li?u course_lectures\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| course_id | bigint | c? | courses(id) | M? kh?a h?c |\par
+| section_id | bigint | c? | course_sections(id) | M? ch??ng h?c |\par
+| lecture_title | varchar(255) | c? |  |  |\par
+| sort_order | int | kh?ng |  | default = 1 |\par
+| is_preview | boolean | kh?ng |  | default = false |\par
+| type | varchar(20) | kh?ng |  | default = 'video' |\par
+| url | varchar(255) | c? |  |  |\par
+| file_name | varchar(255) | c? |  |  |\par
+| mime_type | varchar(255) | c? |  |  |\par
+| file_size | bigint | c? |  |  |\par
+| storage_disk | varchar(255) | c? |  |  |\par
+| content | text | c? |  | N?i dung |\par
+| video_duration | decimal(8,2) | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o course_id: M? kh?a h?c.\par
+o section_id: M? ch??ng h?c.\par
+o lecture_title: tr??ng d? li?u c?a b?ng course_lectures.\par
+o sort_order: default = 1.\par
+o is_preview: default = false.\par
+o type: default = 'video'.\par
+o url: tr??ng d? li?u c?a b?ng course_lectures.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng wishlists\par
+\par
+B?ng 4.10 D? li?u wishlists\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o user_id: M? ng??i d?ng.\par
+o course_id: M? kh?a h?c.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng carts\par
+\par
+B?ng 4.11 D? li?u carts\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| user_id | bigint | c? | users(id) | M? ng??i d?ng |\par
+| guest_token | uuid | c? |  |  |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| quantity | int | kh?ng |  | default = 1 |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o user_id: M? ng??i d?ng.\par
+o guest_token: tr??ng d? li?u c?a b?ng carts.\par
+o course_id: M? kh?a h?c.\par
+o quantity: default = 1.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng coupons\par
+\par
+B?ng 4.12 D? li?u coupons\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| instructor_id | int | kh?ng | users(id) | M? gi?ng vi?n |\par
+| coupon_code | varchar(255) | kh?ng |  |  |\par
+| coupon_discount | varchar(255) | kh?ng |  |  |\par
+| discount_validity | varchar(255) | kh?ng |  |  |\par
+| status | int | kh?ng |  | default = 1 |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o instructor_id: M? gi?ng vi?n.\par
+o coupon_code: tr??ng d? li?u c?a b?ng coupons.\par
+o coupon_discount: tr??ng d? li?u c?a b?ng coupons.\par
+o discount_validity: tr??ng d? li?u c?a b?ng coupons.\par
+o status: default = 1.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng striipes\par
+\par
+B?ng 4.13 D? li?u striipes\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| publish_key | varchar(255) | c? |  |  |\par
+| secret_key | varchar(255) | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o publish_key: tr??ng d? li?u c?a b?ng striipes.\par
+o secret_key: tr??ng d? li?u c?a b?ng striipes.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng orders\par
+\par
+B?ng 4.14 D? li?u orders\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| payment_id | int | kh?ng | payments(id) | M? thanh to?n |\par
+| user_id | int | c? | users(id) | M? ng??i d?ng |\par
+| course_id | int | c? | courses(id) | M? kh?a h?c |\par
+| instructor_id | int | c? | users(id) | M? gi?ng vi?n |\par
+| course_title | varchar(255) | c? |  |  |\par
+| price | int | c? |  |  |\par
+| status | varchar(255) | kh?ng |  | default = 'completed' |\par
+| refund_status | varchar(255) | kh?ng |  | default = 'none' |\par
+| refund_amount | decimal(12,2) | kh?ng |  | default = 0 |\par
+| refund_reason | text | c? |  |  |\par
+| cancel_reason | text | c? |  |  |\par
+| refund_requested_at | timestamp | c? |  |  |\par
+| refunded_at | timestamp | c? |  |  |\par
+| refunded_by | bigint | c? |  |  |\par
+| cancelled_at | timestamp | c? |  |  |\par
+| cancelled_by | bigint | c? |  |  |\par
+| access_revoked_at | timestamp | c? |  |  |\par
+| paid_at | timestamp | c? |  |  |\par
+| gross_amount | decimal(12,2) | c? |  |  |\par
+| net_amount | decimal(12,2) | c? |  |  |\par
+| platform_amount | decimal(12,2) | kh?ng |  | default = 0 |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o payment_id: M? thanh to?n.\par
+o user_id: M? ng??i d?ng.\par
+o course_id: M? kh?a h?c.\par
+o instructor_id: M? gi?ng vi?n.\par
+o course_title: tr??ng d? li?u c?a b?ng orders.\par
+o price: tr??ng d? li?u c?a b?ng orders.\par
+o status: default = 'completed'.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng payments\par
+\par
+B?ng 4.15 D? li?u payments\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| transaction_id | varchar(255) | kh?ng |  |  |\par
+| name | varchar(255) | c? |  | T?n hi?n th? |\par
+| email | varchar(255) | c? |  | Email ??ng nh?p, th??ng l? duy nh?t |\par
+| phone | varchar(255) | c? |  |  |\par
+| address | varchar(255) | c? |  |  |\par
+| cash_delivery | varchar(255) | c? |  |  |\par
+| total_amount | varchar(255) | c? |  |  |\par
+| refunded_amount | decimal(12,2) | kh?ng |  | default = 0 |\par
+| refunded_at | timestamp | c? |  |  |\par
+| refund_reference | varchar(255) | c? |  |  |\par
+| provider_payload | json | c? |  |  |\par
+| provider_status | varchar(255) | c? |  |  |\par
+| payment_type | varchar(255) | c? |  |  |\par
+| invoice_no | varchar(255) | c? |  |  |\par
+| order_date | varchar(255) | c? |  |  |\par
+| order_month | varchar(255) | c? |  |  |\par
+| order_year | varchar(255) | c? |  |  |\par
+| status | varchar(255) | c? |  | Tr?ng th?i b?n ghi |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o transaction_id: tr??ng d? li?u c?a b?ng payments.\par
+o name: T?n hi?n th?.\par
+o email: Email ??ng nh?p, th??ng l? duy nh?t.\par
+o phone: tr??ng d? li?u c?a b?ng payments.\par
+o address: tr??ng d? li?u c?a b?ng payments.\par
+o cash_delivery: tr??ng d? li?u c?a b?ng payments.\par
+o total_amount: tr??ng d? li?u c?a b?ng payments.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng googles\par
+\par
+B?ng 4.16 D? li?u googles\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| client_id | varchar(255) | kh?ng |  |  |\par
+| secret_key | varchar(255) | kh?ng |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o client_id: tr??ng d? li?u c?a b?ng googles.\par
+o secret_key: tr??ng d? li?u c?a b?ng googles.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng smtps\par
+\par
+B?ng 4.17 D? li?u smtps\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| mailer | varchar(255) | c? |  |  |\par
+| host | varchar(255) | c? |  |  |\par
+| port | varchar(255) | c? |  |  |\par
+| username | varchar(255) | c? |  |  |\par
+| password | varchar(255) | c? |  | M?t kh?u ?? m? h?a |\par
+| encryption | varchar(255) | c? |  |  |\par
+| from_address | varchar(255) | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o mailer: tr??ng d? li?u c?a b?ng smtps.\par
+o host: tr??ng d? li?u c?a b?ng smtps.\par
+o port: tr??ng d? li?u c?a b?ng smtps.\par
+o username: tr??ng d? li?u c?a b?ng smtps.\par
+o password: M?t kh?u ?? m? h?a.\par
+o encryption: tr??ng d? li?u c?a b?ng smtps.\par
+o from_address: tr??ng d? li?u c?a b?ng smtps.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng partners\par
+\par
+B?ng 4.18 D? li?u partners\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| name | text | kh?ng |  | T?n hi?n th? |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o name: T?n hi?n th?.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng site_infos\par
+\par
+B?ng 4.19 D? li?u site_infos\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| meta_title | varchar(255) | c? |  |  |\par
+| copyright | varchar(255) | c? |  |  |\par
+| meta_description | varchar(255) | c? |  |  |\par
+| logo | varchar(255) | c? |  |  |\par
+| favicon | varchar(255) | c? |  |  |\par
+| address | varchar(255) | c? |  |  |\par
+| phone | varchar(255) | c? |  |  |\par
+| mail | varchar(255) | c? |  |  |\par
+| facebook | varchar(255) | c? |  |  |\par
+| twitter | varchar(255) | c? |  |  |\par
+| instagram | varchar(255) | c? |  |  |\par
+| linkedin | varchar(255) | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o meta_title: tr??ng d? li?u c?a b?ng site_infos.\par
+o copyright: tr??ng d? li?u c?a b?ng site_infos.\par
+o meta_description: tr??ng d? li?u c?a b?ng site_infos.\par
+o logo: tr??ng d? li?u c?a b?ng site_infos.\par
+o favicon: tr??ng d? li?u c?a b?ng site_infos.\par
+o address: tr??ng d? li?u c?a b?ng site_infos.\par
+o phone: tr??ng d? li?u c?a b?ng site_infos.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng lecture_discussions\par
+\par
+B?ng 4.20 D? li?u lecture_discussions\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| lecture_id | bigint | kh?ng | course_lectures(id) | M? b?i gi?ng |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| parent_id | bigint | c? | lecture_discussions(id) |  |\par
+| content | text | kh?ng |  | N?i dung |\par
+| is_approved | boolean | kh?ng |  | default = true |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o course_id: M? kh?a h?c.\par
+o lecture_id: M? b?i gi?ng.\par
+o user_id: M? ng??i d?ng.\par
+o parent_id: li?n k?t t?i lecture_discussions(id).\par
+o content: N?i dung.\par
+o is_approved: default = true.\par
+o created_at: Ng?y t?o.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng lecture_notes\par
+\par
+B?ng 4.21 D? li?u lecture_notes\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| lecture_id | bigint | kh?ng | course_lectures(id) | M? b?i gi?ng |\par
+| note | text | kh?ng |  |  |\par
+| video_second | int | kh?ng |  |  |\par
+| formatted_time | varchar(20) | kh?ng |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o user_id: M? ng??i d?ng.\par
+o course_id: M? kh?a h?c.\par
+o lecture_id: M? b?i gi?ng.\par
+o note: tr??ng d? li?u c?a b?ng lecture_notes.\par
+o video_second: tr??ng d? li?u c?a b?ng lecture_notes.\par
+o formatted_time: tr??ng d? li?u c?a b?ng lecture_notes.\par
+o created_at: Ng?y t?o.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng quizzes\par
+\par
+B?ng 4.22 D? li?u quizzes\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| section_id | bigint | c? | course_sections(id) | M? ch??ng h?c |\par
+| lecture_id | bigint | kh?ng | course_lectures(id) | unique |\par
+| title | varchar(255) | c? |  | Ti?u ?? |\par
+| description | text | c? |  | M? t? |\par
+| source_type | varchar(20) | kh?ng |  | default = 'manual' |\par
+| time_limit | int | c? |  |  |\par
+| passing_score | int | kh?ng |  | default = 0 |\par
+| max_attempts | int | c? |  |  |\par
+| shuffle_questions | boolean | kh?ng |  | default = false |\par
+| show_result_immediately | boolean | kh?ng |  | default = true |\par
+| is_active | boolean | kh?ng |  | default = true |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o course_id: M? kh?a h?c.\par
+o section_id: M? ch??ng h?c.\par
+o lecture_id: unique.\par
+o title: Ti?u ??.\par
+o description: M? t?.\par
+o source_type: default = 'manual'.\par
+o time_limit: tr??ng d? li?u c?a b?ng quizzes.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng quiz_questions\par
+\par
+B?ng 4.23 D? li?u quiz_questions\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| quiz_id | bigint | kh?ng | quizzes(id) | M? b?i ki?m tra |\par
+| question_text | text | kh?ng |  |  |\par
+| question_type | varchar(30) | kh?ng |  | default = 'single_choice' |\par
+| explanation | text | c? |  |  |\par
+| points | int | kh?ng |  | default = 1 |\par
+| sort_order | int | kh?ng |  | default = 1 |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o quiz_id: M? b?i ki?m tra.\par
+o question_text: tr??ng d? li?u c?a b?ng quiz_questions.\par
+o question_type: default = 'single_choice'.\par
+o explanation: tr??ng d? li?u c?a b?ng quiz_questions.\par
+o points: default = 1.\par
+o sort_order: default = 1.\par
+o created_at: Ng?y t?o.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng quiz_options\par
+\par
+B?ng 4.24 D? li?u quiz_options\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| question_id | bigint | kh?ng | quiz_questions(id) | M? c?u h?i |\par
+| option_text | text | kh?ng |  |  |\par
+| is_correct | boolean | kh?ng |  | default = false |\par
+| sort_order | int | kh?ng |  | default = 1 |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o question_id: M? c?u h?i.\par
+o option_text: tr??ng d? li?u c?a b?ng quiz_options.\par
+o is_correct: default = false.\par
+o sort_order: default = 1.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng quiz_attempts\par
+\par
+B?ng 4.25 D? li?u quiz_attempts\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| quiz_id | bigint | kh?ng | quizzes(id) | M? b?i ki?m tra |\par
+| lecture_id | bigint | kh?ng | course_lectures(id) | M? b?i gi?ng |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| score | int | kh?ng |  | default = 0 |\par
+| total_questions | int | kh?ng |  | default = 0 |\par
+| correct_answers | int | kh?ng |  | default = 0 |\par
+| status | varchar(20) | kh?ng |  | default = 'submitted' |\par
+| started_at | timestamp | c? |  |  |\par
+| submitted_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o quiz_id: M? b?i ki?m tra.\par
+o lecture_id: M? b?i gi?ng.\par
+o course_id: M? kh?a h?c.\par
+o user_id: M? ng??i d?ng.\par
+o score: default = 0.\par
+o total_questions: default = 0.\par
+o correct_answers: default = 0.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng quiz_attempt_answers\par
+\par
+B?ng 4.26 D? li?u quiz_attempt_answers\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| attempt_id | bigint | kh?ng | quiz_attempts(id) | M? l??t l?m b?i |\par
+| question_id | bigint | kh?ng | quiz_questions(id) | M? c?u h?i |\par
+| selected_option_id | bigint | c? | quiz_options(id) |  |\par
+| is_correct | boolean | kh?ng |  | default = false |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o attempt_id: M? l??t l?m b?i.\par
+o question_id: M? c?u h?i.\par
+o selected_option_id: li?n k?t t?i quiz_options(id).\par
+o is_correct: default = false.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng instructor_requests\par
+\par
+B?ng 4.27 D? li?u instructor_requests\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| headline | varchar(255) | c? |  |  |\par
+| bio | text | c? |  |  |\par
+| experience | text | c? |  |  |\par
+| phone | varchar(255) | c? |  |  |\par
+| status | varchar(255) | kh?ng |  | default = 'pending' |\par
+| admin_note | text | c? |  |  |\par
+| reviewed_by | bigint | c? | users(id) |  |\par
+| reviewed_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o user_id: M? ng??i d?ng.\par
+o headline: tr??ng d? li?u c?a b?ng instructor_requests.\par
+o bio: tr??ng d? li?u c?a b?ng instructor_requests.\par
+o experience: tr??ng d? li?u c?a b?ng instructor_requests.\par
+o phone: tr??ng d? li?u c?a b?ng instructor_requests.\par
+o status: default = 'pending'.\par
+o admin_note: tr??ng d? li?u c?a b?ng instructor_requests.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng refund_requests\par
+\par
+B?ng 4.28 D? li?u refund_requests\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| order_id | bigint | kh?ng | orders(id) | M? ??n h?ng |\par
+| payment_id | bigint | c? | payments(id) | M? thanh to?n |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| instructor_id | bigint | c? | users(id) | M? gi?ng vi?n |\par
+| request_source | varchar(255) | kh?ng |  | default = 'user' |\par
+| type | varchar(255) | kh?ng |  | default = 'refund' |\par
+| status | varchar(255) | kh?ng |  | default = 'pending' |\par
+| requested_amount | decimal(12,2) | c? |  |  |\par
+| approved_amount | decimal(12,2) | c? |  |  |\par
+| reason | text | c? |  |  |\par
+| admin_note | text | c? |  |  |\par
+| provider_ref | varchar(255) | c? |  |  |\par
+| requested_at | timestamp | c? |  |  |\par
+| reviewed_by | bigint | c? | users(id) |  |\par
+| reviewed_at | timestamp | c? |  |  |\par
+| processed_by | bigint | c? | users(id) |  |\par
+| processed_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o order_id: M? ??n h?ng.\par
+o payment_id: M? thanh to?n.\par
+o user_id: M? ng??i d?ng.\par
+o instructor_id: M? gi?ng vi?n.\par
+o request_source: default = 'user'.\par
+o type: default = 'refund'.\par
+o status: default = 'pending'.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng order_status_histories\par
+\par
+B?ng 4.29 D? li?u order_status_histories\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| order_id | bigint | kh?ng | orders(id) | M? ??n h?ng |\par
+| payment_id | bigint | c? | payments(id) | M? thanh to?n |\par
+| from_status | varchar(255) | c? |  |  |\par
+| to_status | varchar(255) | c? |  |  |\par
+| from_refund_status | varchar(255) | c? |  |  |\par
+| to_refund_status | varchar(255) | c? |  |  |\par
+| action | varchar(255) | kh?ng |  |  |\par
+| actor_id | bigint | c? | users(id) |  |\par
+| actor_role | varchar(255) | c? |  |  |\par
+| note | text | c? |  |  |\par
+| meta_json | json | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o order_id: M? ??n h?ng.\par
+o payment_id: M? thanh to?n.\par
+o from_status: tr??ng d? li?u c?a b?ng order_status_histories.\par
+o to_status: tr??ng d? li?u c?a b?ng order_status_histories.\par
+o from_refund_status: tr??ng d? li?u c?a b?ng order_status_histories.\par
+o to_refund_status: tr??ng d? li?u c?a b?ng order_status_histories.\par
+o action: tr??ng d? li?u c?a b?ng order_status_histories.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng course_reviews\par
+\par
+B?ng 4.30 D? li?u course_reviews\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+\par
+Trong ??:\par
+\par
+- B?ng admin_audit_logs\par
+\par
+B?ng 4.31 D? li?u admin_audit_logs\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| admin_id | bigint | kh?ng | users(id) |  |\par
+| action | varchar(255) | kh?ng |  |  |\par
+| target_type | varchar(255) | kh?ng |  |  |\par
+| target_id | bigint | c? |  |  |\par
+| note | text | c? |  |  |\par
+| old_values_json | json | c? |  |  |\par
+| new_values_json | json | c? |  |  |\par
+| context_json | json | c? |  |  |\par
+| ip_address | varchar(45) | c? |  |  |\par
+| user_agent | text | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o admin_id: li?n k?t t?i users(id).\par
+o action: tr??ng d? li?u c?a b?ng admin_audit_logs.\par
+o target_type: tr??ng d? li?u c?a b?ng admin_audit_logs.\par
+o target_id: tr??ng d? li?u c?a b?ng admin_audit_logs.\par
+o note: tr??ng d? li?u c?a b?ng admin_audit_logs.\par
+o old_values_json: tr??ng d? li?u c?a b?ng admin_audit_logs.\par
+o new_values_json: tr??ng d? li?u c?a b?ng admin_audit_logs.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng content_reports\par
+\par
+B?ng 4.32 D? li?u content_reports\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| reporter_id | bigint | kh?ng | users(id) |  |\par
+| reported_user_id | bigint | kh?ng | users(id) |  |\par
+| reportable_type | varchar(255) | kh?ng |  |  |\par
+| reportable_id | bigint | kh?ng |  |  |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| lecture_id | bigint | kh?ng | course_lectures(id) | M? b?i gi?ng |\par
+| reason_code | varchar(255) | kh?ng |  |  |\par
+| description | text | c? |  | M? t? |\par
+| status | varchar(255) | kh?ng |  | default = 'pending' |\par
+| resolution_action | varchar(255) | c? |  |  |\par
+| resolution_note | text | c? |  |  |\par
+| content_snapshot | json | c? |  |  |\par
+| reviewed_by | bigint | kh?ng | users(id) |  |\par
+| reviewed_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+| policy_id | bigint | c? | moderation_policies(id) |  |\par
+| action_template_id | bigint | c? | moderation_action_templates(id) |  |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o reporter_id: li?n k?t t?i users(id).\par
+o reported_user_id: li?n k?t t?i users(id).\par
+o reportable_type: tr??ng d? li?u c?a b?ng content_reports.\par
+o reportable_id: tr??ng d? li?u c?a b?ng content_reports.\par
+o course_id: M? kh?a h?c.\par
+o lecture_id: M? b?i gi?ng.\par
+o reason_code: tr??ng d? li?u c?a b?ng content_reports.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng enrollments\par
+\par
+B?ng 4.33 D? li?u enrollments\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| order_id | bigint | c? | orders(id) | M? ??n h?ng |\par
+| source | varchar(255) | kh?ng |  | default = 'order' |\par
+| status | varchar(255) | kh?ng |  | default = 'active' |\par
+| access_granted_at | timestamp | c? |  |  |\par
+| access_expires_at | timestamp | c? |  |  |\par
+| last_lecture_id | bigint | c? | course_lectures(id) |  |\par
+| last_accessed_at | timestamp | c? |  |  |\par
+| completed_at | timestamp | c? |  |  |\par
+| revoked_at | timestamp | c? |  |  |\par
+| revoked_reason | text | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o user_id: M? ng??i d?ng.\par
+o course_id: M? kh?a h?c.\par
+o order_id: M? ??n h?ng.\par
+o source: default = 'order'.\par
+o status: default = 'active'.\par
+o access_granted_at: tr??ng d? li?u c?a b?ng enrollments.\par
+o access_expires_at: tr??ng d? li?u c?a b?ng enrollments.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng lesson_progress\par
+\par
+B?ng 4.34 D? li?u lesson_progress\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| enrollment_id | bigint | kh?ng | enrollments(id) |  |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| section_id | bigint | c? | course_sections(id) | M? ch??ng h?c |\par
+| lecture_id | bigint | kh?ng | course_lectures(id) | M? b?i gi?ng |\par
+| status | varchar(255) | kh?ng |  | default = 'not_started' |\par
+| progress_percent | int | kh?ng |  | default = 0 |\par
+| watch_seconds | int | kh?ng |  | default = 0 |\par
+| started_at | timestamp | c? |  |  |\par
+| last_watched_at | timestamp | c? |  |  |\par
+| completed_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o enrollment_id: li?n k?t t?i enrollments(id).\par
+o user_id: M? ng??i d?ng.\par
+o course_id: M? kh?a h?c.\par
+o section_id: M? ch??ng h?c.\par
+o lecture_id: M? b?i gi?ng.\par
+o status: default = 'not_started'.\par
+o progress_percent: default = 0.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng course_progress\par
+\par
+B?ng 4.35 D? li?u course_progress\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| enrollment_id | bigint | kh?ng | enrollments(id) |  |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| total_lectures | int | kh?ng |  | default = 0 |\par
+| completed_lectures | int | kh?ng |  | default = 0 |\par
+| completion_percent | int | kh?ng |  | default = 0 |\par
+| last_lecture_id | bigint | c? | course_lectures(id) |  |\par
+| last_activity_at | timestamp | c? |  |  |\par
+| completed_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o enrollment_id: li?n k?t t?i enrollments(id).\par
+o user_id: M? ng??i d?ng.\par
+o course_id: M? kh?a h?c.\par
+o total_lectures: default = 0.\par
+o completed_lectures: default = 0.\par
+o completion_percent: default = 0.\par
+o last_lecture_id: li?n k?t t?i course_lectures(id).\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng course_quality_checks\par
+\par
+B?ng 4.36 D? li?u course_quality_checks\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| check_key | varchar(255) | kh?ng |  |  |\par
+| status | varchar(255) | kh?ng |  | default = 'fail' |\par
+| message | text | c? |  |  |\par
+| reviewed_by | bigint | c? | users(id) |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o course_id: M? kh?a h?c.\par
+o check_key: tr??ng d? li?u c?a b?ng course_quality_checks.\par
+o status: default = 'fail'.\par
+o message: tr??ng d? li?u c?a b?ng course_quality_checks.\par
+o reviewed_by: li?n k?t t?i users(id).\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng moderation_policies\par
+\par
+B?ng 4.37 D? li?u moderation_policies\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| code | varchar(255) | kh?ng |  | unique |\par
+| name | varchar(255) | kh?ng |  | T?n hi?n th? |\par
+| target_type | varchar(255) | c? |  |  |\par
+| description | text | c? |  | M? t? |\par
+| is_active | boolean | kh?ng |  | default = true |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o code: unique.\par
+o name: T?n hi?n th?.\par
+o target_type: tr??ng d? li?u c?a b?ng moderation_policies.\par
+o description: M? t?.\par
+o is_active: default = true.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng moderation_action_templates\par
+\par
+B?ng 4.38 D? li?u moderation_action_templates\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| code | varchar(255) | kh?ng |  | unique |\par
+| name | varchar(255) | kh?ng |  | T?n hi?n th? |\par
+| target_type | varchar(255) | c? |  |  |\par
+| default_note | text | c? |  |  |\par
+| requires_reason | boolean | kh?ng |  | default = true |\par
+| is_active | boolean | kh?ng |  | default = true |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o code: unique.\par
+o name: T?n hi?n th?.\par
+o target_type: tr??ng d? li?u c?a b?ng moderation_action_templates.\par
+o default_note: tr??ng d? li?u c?a b?ng moderation_action_templates.\par
+o requires_reason: default = true.\par
+o is_active: default = true.\par
+o created_at: Ng?y t?o.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng instructor_risk_scores\par
+\par
+B?ng 4.39 D? li?u instructor_risk_scores\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| instructor_id | bigint | kh?ng | users(id) | unique |\par
+| risk_score | int | kh?ng |  | default = 0 |\par
+| confirmed_reports_count | int | kh?ng |  | default = 0 |\par
+| refund_requests_count | int | kh?ng |  | default = 0 |\par
+| rejected_courses_count | int | kh?ng |  | default = 0 |\par
+| warnings_count | int | kh?ng |  | default = 0 |\par
+| calculated_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o instructor_id: unique.\par
+o risk_score: default = 0.\par
+o confirmed_reports_count: default = 0.\par
+o refund_requests_count: default = 0.\par
+o rejected_courses_count: default = 0.\par
+o warnings_count: default = 0.\par
+o calculated_at: tr??ng d? li?u c?a b?ng instructor_risk_scores.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng ai_chat_sessions\par
+\par
+B?ng 4.40 D? li?u ai_chat_sessions\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| user_id | bigint | kh?ng | users(id) | M? ng??i d?ng |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| lecture_id | bigint | kh?ng | course_lectures(id) | M? b?i gi?ng |\par
+| title | varchar(255) | c? |  | Ti?u ?? |\par
+| status | varchar(255) | kh?ng |  | default = 'active' |\par
+| last_activity_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o user_id: M? ng??i d?ng.\par
+o course_id: M? kh?a h?c.\par
+o lecture_id: M? b?i gi?ng.\par
+o title: Ti?u ??.\par
+o status: default = 'active'.\par
+o last_activity_at: tr??ng d? li?u c?a b?ng ai_chat_sessions.\par
+o created_at: Ng?y t?o.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng ai_chat_messages\par
+\par
+B?ng 4.41 D? li?u ai_chat_messages\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| session_id | bigint | kh?ng | ai_chat_sessions(id) | M? phi?n chat |\par
+| user_id | bigint | c? | users(id) | M? ng??i d?ng |\par
+| role | varchar(20) | kh?ng |  | Vai tr? ng??i d?ng |\par
+| content | text | kh?ng |  | N?i dung |\par
+| provider | varchar(255) | c? |  |  |\par
+| model | varchar(255) | c? |  |  |\par
+| prompt_tokens | int | c? |  |  |\par
+| completion_tokens | int | c? |  |  |\par
+| latency_ms | int | c? |  |  |\par
+| meta_json | json | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o session_id: M? phi?n chat.\par
+o user_id: M? ng??i d?ng.\par
+o role: Vai tr? ng??i d?ng.\par
+o content: N?i dung.\par
+o provider: tr??ng d? li?u c?a b?ng ai_chat_messages.\par
+o model: tr??ng d? li?u c?a b?ng ai_chat_messages.\par
+o prompt_tokens: tr??ng d? li?u c?a b?ng ai_chat_messages.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng ai_documents\par
+\par
+B?ng 4.42 D? li?u ai_documents\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| lecture_id | bigint | c? | course_lectures(id) | M? b?i gi?ng |\par
+| uploaded_by | bigint | kh?ng | users(id) |  |\par
+| title | varchar(255) | kh?ng |  | Ti?u ?? |\par
+| source_type | varchar(50) | kh?ng |  | default = 'manual_upload' |\par
+| file_name | varchar(255) | c? |  |  |\par
+| mime_type | varchar(255) | c? |  |  |\par
+| storage_disk | varchar(255) | c? |  |  |\par
+| storage_path | varchar(255) | c? |  |  |\par
+| extracted_text | text | c? |  |  |\par
+| language | varchar(10) | kh?ng |  | default = 'vi' |\par
+| index_status | varchar(20) | kh?ng |  | default = 'pending' |\par
+| index_error | text | c? |  |  |\par
+| indexed_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o course_id: M? kh?a h?c.\par
+o lecture_id: M? b?i gi?ng.\par
+o uploaded_by: li?n k?t t?i users(id).\par
+o title: Ti?u ??.\par
+o source_type: default = 'manual_upload'.\par
+o file_name: tr??ng d? li?u c?a b?ng ai_documents.\par
+o mime_type: tr??ng d? li?u c?a b?ng ai_documents.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng ai_document_chunks\par
+\par
+B?ng 4.43 D? li?u ai_document_chunks\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| document_id | bigint | kh?ng | ai_documents(id) | M? t?i li?u |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| lecture_id | bigint | c? | course_lectures(id) | M? b?i gi?ng |\par
+| chunk_index | int | kh?ng |  |  |\par
+| content | text | kh?ng |  | N?i dung |\par
+| content_length | int | kh?ng |  | default = 0 |\par
+| meta_json | json | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+| embedding | vector(768) | c? |  |  |\par
+| embedding_provider | varchar(100) | c? |  |  |\par
+| embedding_model | varchar(150) | c? |  |  |\par
+| embedding_status | varchar(30) | kh?ng |  | default = 'pending' |\par
+| embedding_error | text | c? |  |  |\par
+| external_vector_id | varchar(255) | c? |  |  |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o document_id: M? t?i li?u.\par
+o course_id: M? kh?a h?c.\par
+o lecture_id: M? b?i gi?ng.\par
+o chunk_index: tr??ng d? li?u c?a b?ng ai_document_chunks.\par
+o content: N?i dung.\par
+o content_length: default = 0.\par
+o meta_json: tr??ng d? li?u c?a b?ng ai_document_chunks.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng ai_message_citations\par
+\par
+B?ng 4.44 D? li?u ai_message_citations\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| message_id | bigint | kh?ng | ai_chat_messages(id) |  |\par
+| document_id | bigint | kh?ng | ai_documents(id) | M? t?i li?u |\par
+| chunk_id | bigint | kh?ng | ai_document_chunks(id) | M? ?o?n t?i li?u |\par
+| rank | int | kh?ng |  | default = 1 |\par
+| score | decimal(8,4) | c? |  |  |\par
+| snippet | text | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o message_id: li?n k?t t?i ai_chat_messages(id).\par
+o document_id: M? t?i li?u.\par
+o chunk_id: M? ?o?n t?i li?u.\par
+o rank: default = 1.\par
+o score: tr??ng d? li?u c?a b?ng ai_message_citations.\par
+o snippet: tr??ng d? li?u c?a b?ng ai_message_citations.\par
+o created_at: Ng?y t?o.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng gemini_settings\par
+\par
+B?ng 4.45 D? li?u gemini_settings\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| api_key | text | c? |  |  |\par
+| model_name | varchar(255) | kh?ng |  | default = 'gemini-1.5-flash' |\par
+| timeout_seconds | int | kh?ng |  | default = 30 |\par
+| temperature | decimal(3,2) | kh?ng |  | default = 0.20 |\par
+| max_output_tokens | int | kh?ng |  | default = 1024 |\par
+| is_enabled | boolean | kh?ng |  | default = true |\par
+| updated_by | bigint | c? | users(id) |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+| base_url | varchar(255) | c? |  |  |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o api_key: tr??ng d? li?u c?a b?ng gemini_settings.\par
+o model_name: default = 'gemini-1.5-flash'.\par
+o timeout_seconds: default = 30.\par
+o temperature: default = 0.20.\par
+o max_output_tokens: default = 1024.\par
+o is_enabled: default = true.\par
+o updated_by: li?n k?t t?i users(id).\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng concepts\par
+\par
+B?ng 4.46 D? li?u concepts\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| name | varchar(255) | kh?ng |  | unique |\par
+| description | text | c? |  | M? t? |\par
+| synonyms_json | json | c? |  |  |\par
+| is_active | boolean | kh?ng |  | default = true |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o name: unique.\par
+o description: M? t?.\par
+o synonyms_json: tr??ng d? li?u c?a b?ng concepts.\par
+o is_active: default = true.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng lesson_concepts\par
+\par
+B?ng 4.47 D? li?u lesson_concepts\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| lecture_id | bigint | kh?ng | course_lectures(id) | M? b?i gi?ng |\par
+| concept_id | bigint | kh?ng | concepts(id) | M? kh?i ni?m |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o lecture_id: M? b?i gi?ng.\par
+o concept_id: M? kh?i ni?m.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng document_concepts\par
+\par
+B?ng 4.48 D? li?u document_concepts\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| document_id | bigint | kh?ng | ai_documents(id) | M? t?i li?u |\par
+| concept_id | bigint | kh?ng | concepts(id) | M? kh?i ni?m |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o document_id: M? t?i li?u.\par
+o concept_id: M? kh?i ni?m.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng transcript_jobs\par
+\par
+B?ng 4.49 D? li?u transcript_jobs\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| lecture_id | bigint | kh?ng | course_lectures(id) | M? b?i gi?ng |\par
+| course_id | bigint | kh?ng | courses(id) | M? kh?a h?c |\par
+| requested_by | bigint | kh?ng | users(id) |  |\par
+| document_id | bigint | c? | ai_documents(id) | M? t?i li?u |\par
+| status | varchar(30) | kh?ng |  | default = 'queued' |\par
+| progress | tinyint | kh?ng |  | default = 0 |\par
+| error_message | text | c? |  |  |\par
+| request_payload | json | c? |  |  |\par
+| response_payload | json | c? |  |  |\par
+| started_at | timestamp | c? |  |  |\par
+| finished_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o lecture_id: M? b?i gi?ng.\par
+o course_id: M? kh?a h?c.\par
+o requested_by: li?n k?t t?i users(id).\par
+o document_id: M? t?i li?u.\par
+o status: default = 'queued'.\par
+o progress: default = 0.\par
+o error_message: tr??ng d? li?u c?a b?ng transcript_jobs.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng payout_requests\par
+\par
+B?ng 4.50 D? li?u payout_requests\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| instructor_id | bigint | kh?ng | users(id) | M? gi?ng vi?n |\par
+| amount | decimal(12,2) | kh?ng |  |  |\par
+| bank_name | varchar(255) | kh?ng |  |  |\par
+| account_number | varchar(255) | kh?ng |  |  |\par
+| account_name | varchar(255) | kh?ng |  |  |\par
+| status | varchar(255) | kh?ng |  | default = 'pending' |\par
+| transaction_reference | varchar(255) | c? |  |  |\par
+| admin_note | text | c? |  |  |\par
+| processed_at | timestamp | c? |  |  |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o instructor_id: M? gi?ng vi?n.\par
+o amount: tr??ng d? li?u c?a b?ng payout_requests.\par
+o bank_name: tr??ng d? li?u c?a b?ng payout_requests.\par
+o account_number: tr??ng d? li?u c?a b?ng payout_requests.\par
+o account_name: tr??ng d? li?u c?a b?ng payout_requests.\par
+o status: default = 'pending'.\par
+o transaction_reference: tr??ng d? li?u c?a b?ng payout_requests.\par
+o C?c tr??ng c?n l?i d?ng ?? l?u th?ng tin b? sung, tr?ng th?i x? l? ho?c th?i ?i?m t?o/c?p nh?t b?n ghi.\par
+\par
+- B?ng conversations\par
+\par
+B?ng 4.51 D? li?u conversations\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| student_id | bigint | kh?ng | users(id) |  |\par
+| instructor_id | bigint | kh?ng | users(id) | M? gi?ng vi?n |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o student_id: li?n k?t t?i users(id).\par
+o instructor_id: M? gi?ng vi?n.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+- B?ng messages\par
+\par
+B?ng 4.52 D? li?u messages\par
+\par
+| T?n c?t | Ki?u d? li?u | Null | Li?n k?t t?i | Ghi ch? |\par
+|---|---|---|---|---|\par
+| id | bigint | kh?ng |  | Kh?a ch?nh |\par
+| conversation_id | bigint | kh?ng | conversations(id) |  |\par
+| sender_id | bigint | kh?ng | users(id) |  |\par
+| message | text | kh?ng |  |  |\par
+| is_read | boolean | kh?ng |  | default = false |\par
+| created_at | timestamp | c? |  | Ng?y t?o |\par
+| updated_at | timestamp | c? |  | Ng?y c?p nh?t |\par
+\par
+Trong ??:\par
+o id: Kh?a ch?nh.\par
+o conversation_id: li?n k?t t?i conversations(id).\par
+o sender_id: li?n k?t t?i users(id).\par
+o message: tr??ng d? li?u c?a b?ng messages.\par
+o is_read: default = false.\par
+o created_at: Ng?y t?o.\par
+o updated_at: Ng?y c?p nh?t.\par
+\par
+
+}

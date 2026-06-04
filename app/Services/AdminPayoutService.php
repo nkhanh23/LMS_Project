@@ -49,6 +49,18 @@ class AdminPayoutService
             session()->flash('warning', 'Dữ liệu đã lưu nhưng không gửi được email thông báo: ' . $e->getMessage());
         }
 
+        // Gửi notification qua hệ thống Notification Hub (Database + Broadcast + Email)
+        if ($status === 'approved') {
+            try {
+                $payout->load('instructor');
+                $payout->instructor->notify(
+                    new \App\Notifications\PayoutApprovedNotification($payout)
+                );
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error('Lỗi gửi thông báo payout approved: ' . $e->getMessage());
+            }
+        }
+
         return $payout;
     }
 }

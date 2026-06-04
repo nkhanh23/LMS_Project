@@ -30,8 +30,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $site_info = SiteInfo::first();
-        View::share('site_info', $site_info);
+        try {
+            $site_info = SiteInfo::first();
+            View::share('site_info', $site_info);
+        } catch (\Exception $e) {
+            // Database table may not exist yet during testing or migrations
+        }
 
         Paginator::useBootstrapFive();
     }

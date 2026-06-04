@@ -121,6 +121,9 @@
             });
         </script>
     @endif
+    @auth
+        @include('components.notifications._notification-toast')
+    @endauth
 </body>
 
 </html>

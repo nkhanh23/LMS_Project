@@ -29,3 +29,9 @@ Broadcast::channel('conversation.{conversationId}', function ($user, $conversati
     // Chỉ cho phép kết nối nếu User hiện tại là Student hoặc Instructor của cuộc hội thoại này
     return $user->id === $conversation->student_id || $user->id === $conversation->instructor_id;
 });
+
+// Kênh xác thực cho Notifications (Private Channel)
+Broadcast::channel('App.Models.User.{id}', function (User $user, $id) {
+    return (int) $user->id === (int) $id;
+});
+

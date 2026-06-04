@@ -74,12 +74,45 @@ class LectureDiscussionService
 
         $discussion->load(['user', 'parent']);
 
+        // Gửi thông báo cho chủ câu hỏi gốc khi có phản hồi
+        if ($parentId) {
+            $this->notifyDiscussionOwner($discussion, $userId);
+        }
+
         return [
             'status' => 'success',
             'code' => 201,
             'message' => $parentId ? 'Đã gửi phản hồi' : 'Câu hỏi của bạn đã được gửi',
             'discussion' => $discussion,
         ];
+    }
+
+    /**
+     * Gửi thông báo cho chủ câu hỏi gốc khi có phản hồi.
+     */
+    protected function notifyDiscussionOwner(LectureDiscussion $reply, int $replierId): void
+    {
+        try {
+            $parent = $reply->parent;
+
+            if (!$parent || (int) $parent->user_id === $replierId) {
+                return; // Không tự thông báo cho chính mình
+            }
+
+            $parentOwner = $parent->user;
+            $replier = $reply->user;
+            $lecture = CourseLecture::find($reply->lecture_id);
+
+            if (!$parentOwner || !$replier || !$lecture) {
+                return;
+            }
+
+            $parentOwner->notify(
+                new \App\Notifications\DiscussionRepliedNotification($reply, $replier, $lecture)
+            );
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Lỗi gửi thông báo phản hồi thảo luận: ' . $e->getMessage());
+        }
     }
 
     public function getByLecture(int $lectureId): array

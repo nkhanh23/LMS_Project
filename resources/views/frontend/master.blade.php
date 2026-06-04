@@ -47,6 +47,9 @@
     <!-- ========== SCRIPTS ========== -->
     @include('frontend.section.script')
     @stack('script')
+    @auth
+        @include('components.notifications._notification-toast')
+    @endauth
 </body>
 
 </html>

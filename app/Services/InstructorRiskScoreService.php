@@ -28,7 +28,11 @@ class InstructorRiskScoreService
             + ($rejectedCourses * 20)
             + ($warningsCount * 15);
 
-        return InstructorRiskScore::updateOrCreate(
+        // Lấy điểm rủi ro trước đó để so sánh (tránh gửi thông báo trùng)
+        $previousScore = InstructorRiskScore::where('instructor_id', $instructorId)
+            ->value('risk_score') ?? 0;
+
+        $result = InstructorRiskScore::updateOrCreate(
             ['instructor_id' => $instructorId],
             [
                 'risk_score' => $riskScore,
@@ -39,5 +43,38 @@ class InstructorRiskScoreService
                 'calculated_at' => now(),
             ]
         );
+
+        // Gửi cảnh báo rủi ro cho tất cả Admin nếu score >= 60 VÀ tăng so với trước
+        if ($riskScore >= 60 && $riskScore > $previousScore) {
+            $this->notifyAdminsOfRisk($instructorId, $riskScore);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Gửi thông báo cảnh báo rủi ro tới tất cả Admin.
+     */
+    protected function notifyAdminsOfRisk(int $instructorId, int $riskScore): void
+    {
+        try {
+            $instructor = \App\Models\User::find($instructorId);
+            if (!$instructor) {
+                return;
+            }
+
+            $admins = \App\Models\User::where('role', 'admin')->get();
+
+            if ($admins->isEmpty()) {
+                return;
+            }
+
+            \Illuminate\Support\Facades\Notification::send(
+                $admins,
+                new \App\Notifications\FraudRiskAlertNotification($instructor, $riskScore)
+            );
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Lỗi gửi cảnh báo rủi ro: ' . $e->getMessage());
+        }
     }
 }

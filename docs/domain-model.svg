@@ -1,0 +1,618 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1550" viewBox="0 0 2400 1550">
+  <defs>
+    <style>
+      .bg { fill: #fff; }
+      .entity { fill: #fff; stroke: #2f3437; stroke-width: 1.6; }
+      .head-user { fill: #d9ead3; }
+      .head-course { fill: #fff2cc; }
+      .head-learning { fill: #f4cccc; }
+      .head-commerce { fill: #cfe2f3; }
+      .head-quiz { fill: #d9d2e9; }
+      .head-ai { fill: #d9ead3; }
+      .head-chat { fill: #eadcf8; }
+      .head-moderation { fill: #f9cb9c; }
+      .head-config { fill: #eeeeee; }
+      .name { font: 700 15px Arial, Helvetica, sans-serif; fill: #111; text-anchor: middle; }
+      .attr { font: 12px "Consolas", "Courier New", monospace; fill: #111; }
+      .rel { fill: none; stroke: #333; stroke-width: 1.5; }
+      .rel-dash { fill: none; stroke: #333; stroke-width: 1.3; stroke-dasharray: 6 5; }
+      .rel-strong { fill: none; stroke: #111; stroke-width: 2; }
+      .label { font: 13px Arial, Helvetica, sans-serif; fill: #111; }
+      .legend-text { font: 13px Arial, Helvetica, sans-serif; fill: #111; }
+      .legend-box { fill: #fff; stroke: #777; stroke-width: 1; stroke-dasharray: 5 4; }
+      .diamond { fill: #111; stroke: #111; stroke-width: 1; }
+      .hollow-triangle { fill: #fff; stroke: #333; stroke-width: 1.3; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+    <marker id="inherit" markerWidth="13" markerHeight="13" refX="12" refY="6.5" orient="auto">
+      <path class="hollow-triangle" d="M1,1 L12,6.5 L1,12 z"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="2400" height="1550"/>
+
+  <!-- Users -->
+  <g id="User" transform="translate(90 40)">
+    <rect class="entity" width="190" height="160"/>
+    <rect class="head-user" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">User</text>
+    <text class="attr" x="12" y="48">- id</text>
+    <text class="attr" x="12" y="66">- name</text>
+    <text class="attr" x="12" y="84">- email</text>
+    <text class="attr" x="12" y="102">- password</text>
+    <text class="attr" x="12" y="120">- role</text>
+    <text class="attr" x="12" y="138">- status</text>
+  </g>
+  <g id="Student" transform="translate(40 270)">
+    <rect class="entity" width="155" height="115"/>
+    <rect class="head-user" width="155" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="155" y2="26"/>
+    <text class="name" x="77.5" y="18">Student</text>
+    <text class="attr" x="12" y="50">- user_id</text>
+    <text class="attr" x="12" y="68">- phone</text>
+    <text class="attr" x="12" y="86">- address</text>
+  </g>
+  <g id="Instructor" transform="translate(230 270)">
+    <rect class="entity" width="165" height="130"/>
+    <rect class="head-user" width="165" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="165" y2="26"/>
+    <text class="name" x="82.5" y="18">Instructor</text>
+    <text class="attr" x="12" y="50">- user_id</text>
+    <text class="attr" x="12" y="68">- experience</text>
+    <text class="attr" x="12" y="86">- bio</text>
+    <text class="attr" x="12" y="104">- approval_status</text>
+  </g>
+  <g id="Admin" transform="translate(430 270)">
+    <rect class="entity" width="155" height="115"/>
+    <rect class="head-user" width="155" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="155" y2="26"/>
+    <text class="name" x="77.5" y="18">Admin</text>
+    <text class="attr" x="12" y="50">- user_id</text>
+    <text class="attr" x="12" y="68">- permissions</text>
+    <text class="attr" x="12" y="86">- last_login_at</text>
+  </g>
+
+  <!-- Course structure -->
+  <g id="Category" transform="translate(510 45)">
+    <rect class="entity" width="180" height="130"/>
+    <rect class="head-course" width="180" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="180" y2="26"/>
+    <text class="name" x="90" y="18">Category</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- name</text>
+    <text class="attr" x="12" y="86">- slug</text>
+    <text class="attr" x="12" y="104">- image</text>
+  </g>
+  <g id="SubCategory" transform="translate(760 45)">
+    <rect class="entity" width="190" height="130"/>
+    <rect class="head-course" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">SubCategory</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- category_id</text>
+    <text class="attr" x="12" y="86">- name</text>
+    <text class="attr" x="12" y="104">- slug</text>
+  </g>
+  <g id="Course" transform="translate(1040 35)">
+    <rect class="entity" width="205" height="190"/>
+    <rect class="head-course" width="205" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="205" y2="26"/>
+    <text class="name" x="102.5" y="18">Course</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- category_id</text>
+    <text class="attr" x="12" y="86">- instructor_id</text>
+    <text class="attr" x="12" y="104">- course_title</text>
+    <text class="attr" x="12" y="122">- description</text>
+    <text class="attr" x="12" y="140">- selling_price</text>
+    <text class="attr" x="12" y="158">- approval_status</text>
+    <text class="attr" x="12" y="176">- status</text>
+  </g>
+  <g id="CourseSection" transform="translate(1390 80)">
+    <rect class="entity" width="185" height="115"/>
+    <rect class="head-course" width="185" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="185" y2="26"/>
+    <text class="name" x="92.5" y="18">CourseSection</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- course_id</text>
+    <text class="attr" x="12" y="86">- section_title</text>
+  </g>
+  <g id="CourseLecture" transform="translate(1680 80)">
+    <rect class="entity" width="195" height="150"/>
+    <rect class="head-course" width="195" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="195" y2="26"/>
+    <text class="name" x="97.5" y="18">CourseLecture</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- section_id</text>
+    <text class="attr" x="12" y="86">- lecture_title</text>
+    <text class="attr" x="12" y="104">- type</text>
+    <text class="attr" x="12" y="122">- url</text>
+  </g>
+
+  <!-- Learning -->
+  <g id="Enrollment" transform="translate(620 290)">
+    <rect class="entity" width="190" height="145"/>
+    <rect class="head-learning" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">Enrollment</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- user_id</text>
+    <text class="attr" x="12" y="86">- course_id</text>
+    <text class="attr" x="12" y="104">- order_id</text>
+    <text class="attr" x="12" y="122">- status</text>
+  </g>
+  <g id="LessonProgress" transform="translate(620 520)">
+    <rect class="entity" width="195" height="150"/>
+    <rect class="head-learning" width="195" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="195" y2="26"/>
+    <text class="name" x="97.5" y="18">LessonProgress</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- enrollment_id</text>
+    <text class="attr" x="12" y="86">- lecture_id</text>
+    <text class="attr" x="12" y="104">- status</text>
+    <text class="attr" x="12" y="122">- progress_percent</text>
+  </g>
+  <g id="CourseProgress" transform="translate(875 520)">
+    <rect class="entity" width="200" height="150"/>
+    <rect class="head-learning" width="200" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="200" y2="26"/>
+    <text class="name" x="100" y="18">CourseProgress</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- enrollment_id</text>
+    <text class="attr" x="12" y="86">- total_lectures</text>
+    <text class="attr" x="12" y="104">- completed_lectures</text>
+    <text class="attr" x="12" y="122">- completion_percent</text>
+  </g>
+  <g id="LectureDiscussion" transform="translate(1130 330)">
+    <rect class="entity" width="200" height="145"/>
+    <rect class="head-learning" width="200" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="200" y2="26"/>
+    <text class="name" x="100" y="18">LectureDiscussion</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- lecture_id</text>
+    <text class="attr" x="12" y="86">- user_id</text>
+    <text class="attr" x="12" y="104">- parent_id</text>
+    <text class="attr" x="12" y="122">- content</text>
+  </g>
+  <g id="LectureNote" transform="translate(1390 330)">
+    <rect class="entity" width="185" height="130"/>
+    <rect class="head-learning" width="185" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="185" y2="26"/>
+    <text class="name" x="92.5" y="18">LectureNote</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- user_id</text>
+    <text class="attr" x="12" y="86">- lecture_id</text>
+    <text class="attr" x="12" y="104">- note</text>
+  </g>
+  <g id="CourseReview" transform="translate(1630 330)">
+    <rect class="entity" width="185" height="130"/>
+    <rect class="head-learning" width="185" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="185" y2="26"/>
+    <text class="name" x="92.5" y="18">CourseReview</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- course_id</text>
+    <text class="attr" x="12" y="86">- user_id</text>
+    <text class="attr" x="12" y="104">- rating</text>
+  </g>
+
+  <!-- Quiz -->
+  <g id="Quiz" transform="translate(1950 80)">
+    <rect class="entity" width="190" height="145"/>
+    <rect class="head-quiz" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">Quiz</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- lecture_id</text>
+    <text class="attr" x="12" y="86">- title</text>
+    <text class="attr" x="12" y="104">- time_limit</text>
+    <text class="attr" x="12" y="122">- passing_score</text>
+  </g>
+  <g id="QuizQuestion" transform="translate(1950 300)">
+    <rect class="entity" width="195" height="145"/>
+    <rect class="head-quiz" width="195" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="195" y2="26"/>
+    <text class="name" x="97.5" y="18">QuizQuestion</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- quiz_id</text>
+    <text class="attr" x="12" y="86">- question_text</text>
+    <text class="attr" x="12" y="104">- question_type</text>
+    <text class="attr" x="12" y="122">- points</text>
+  </g>
+  <g id="QuizOption" transform="translate(2200 300)">
+    <rect class="entity" width="165" height="125"/>
+    <rect class="head-quiz" width="165" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="165" y2="26"/>
+    <text class="name" x="82.5" y="18">QuizOption</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- question_id</text>
+    <text class="attr" x="12" y="86">- option_text</text>
+    <text class="attr" x="12" y="104">- is_correct</text>
+  </g>
+  <g id="QuizAttempt" transform="translate(1950 520)">
+    <rect class="entity" width="195" height="145"/>
+    <rect class="head-quiz" width="195" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="195" y2="26"/>
+    <text class="name" x="97.5" y="18">QuizAttempt</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- quiz_id</text>
+    <text class="attr" x="12" y="86">- user_id</text>
+    <text class="attr" x="12" y="104">- score</text>
+    <text class="attr" x="12" y="122">- submitted_at</text>
+  </g>
+  <g id="QuizAttemptAnswer" transform="translate(2200 520)">
+    <rect class="entity" width="170" height="130"/>
+    <rect class="head-quiz" width="170" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="170" y2="26"/>
+    <text class="name" x="85" y="18">AttemptAnswer</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- attempt_id</text>
+    <text class="attr" x="12" y="86">- question_id</text>
+    <text class="attr" x="12" y="104">- is_correct</text>
+  </g>
+
+  <!-- Commerce -->
+  <g id="Cart" transform="translate(45 720)">
+    <rect class="entity" width="170" height="125"/>
+    <rect class="head-commerce" width="170" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="170" y2="26"/>
+    <text class="name" x="85" y="18">Cart</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- user_id</text>
+    <text class="attr" x="12" y="86">- course_id</text>
+    <text class="attr" x="12" y="104">- quantity</text>
+  </g>
+  <g id="Wishlist" transform="translate(260 720)">
+    <rect class="entity" width="170" height="110"/>
+    <rect class="head-commerce" width="170" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="170" y2="26"/>
+    <text class="name" x="85" y="18">Wishlist</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- user_id</text>
+    <text class="attr" x="12" y="86">- course_id</text>
+  </g>
+  <g id="Coupon" transform="translate(45 930)">
+    <rect class="entity" width="180" height="145"/>
+    <rect class="head-commerce" width="180" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="180" y2="26"/>
+    <text class="name" x="90" y="18">Coupon</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- instructor_id</text>
+    <text class="attr" x="12" y="86">- coupon_code</text>
+    <text class="attr" x="12" y="104">- discount</text>
+    <text class="attr" x="12" y="122">- status</text>
+  </g>
+  <g id="Order" transform="translate(315 930)">
+    <rect class="entity" width="190" height="160"/>
+    <rect class="head-commerce" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">Order</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- payment_id</text>
+    <text class="attr" x="12" y="86">- user_id</text>
+    <text class="attr" x="12" y="104">- course_id</text>
+    <text class="attr" x="12" y="122">- price</text>
+    <text class="attr" x="12" y="140">- status</text>
+  </g>
+  <g id="Payment" transform="translate(590 930)">
+    <rect class="entity" width="195" height="160"/>
+    <rect class="head-commerce" width="195" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="195" y2="26"/>
+    <text class="name" x="97.5" y="18">Payment</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- transaction_id</text>
+    <text class="attr" x="12" y="86">- payment_type</text>
+    <text class="attr" x="12" y="104">- total_amount</text>
+    <text class="attr" x="12" y="122">- status</text>
+  </g>
+  <g id="RefundRequest" transform="translate(860 930)">
+    <rect class="entity" width="195" height="150"/>
+    <rect class="head-commerce" width="195" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="195" y2="26"/>
+    <text class="name" x="97.5" y="18">RefundRequest</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- order_id</text>
+    <text class="attr" x="12" y="86">- payment_id</text>
+    <text class="attr" x="12" y="104">- status</text>
+    <text class="attr" x="12" y="122">- reason</text>
+  </g>
+  <g id="PayoutRequest" transform="translate(1130 930)">
+    <rect class="entity" width="195" height="145"/>
+    <rect class="head-commerce" width="195" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="195" y2="26"/>
+    <text class="name" x="97.5" y="18">PayoutRequest</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- instructor_id</text>
+    <text class="attr" x="12" y="86">- amount</text>
+    <text class="attr" x="12" y="104">- status</text>
+  </g>
+
+  <!-- AI tutor -->
+  <g id="AiChatSession" transform="translate(45 1195)">
+    <rect class="entity" width="190" height="145"/>
+    <rect class="head-ai" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">AiChatSession</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- user_id</text>
+    <text class="attr" x="12" y="86">- course_id</text>
+    <text class="attr" x="12" y="104">- lecture_id</text>
+    <text class="attr" x="12" y="122">- status</text>
+  </g>
+  <g id="AiChatMessage" transform="translate(285 1195)">
+    <rect class="entity" width="195" height="145"/>
+    <rect class="head-ai" width="195" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="195" y2="26"/>
+    <text class="name" x="97.5" y="18">AiChatMessage</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- session_id</text>
+    <text class="attr" x="12" y="86">- role</text>
+    <text class="attr" x="12" y="104">- content</text>
+    <text class="attr" x="12" y="122">- model</text>
+  </g>
+  <g id="AiMessageCitation" transform="translate(530 1195)">
+    <rect class="entity" width="195" height="145"/>
+    <rect class="head-ai" width="195" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="195" y2="26"/>
+    <text class="name" x="97.5" y="18">AiMessageCitation</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- message_id</text>
+    <text class="attr" x="12" y="86">- document_id</text>
+    <text class="attr" x="12" y="104">- chunk_id</text>
+    <text class="attr" x="12" y="122">- score</text>
+  </g>
+  <g id="AiDocument" transform="translate(780 1195)">
+    <rect class="entity" width="190" height="145"/>
+    <rect class="head-ai" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">AiDocument</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- course_id</text>
+    <text class="attr" x="12" y="86">- lecture_id</text>
+    <text class="attr" x="12" y="104">- title</text>
+    <text class="attr" x="12" y="122">- index_status</text>
+  </g>
+  <g id="AiDocumentChunk" transform="translate(1020 1195)">
+    <rect class="entity" width="200" height="145"/>
+    <rect class="head-ai" width="200" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="200" y2="26"/>
+    <text class="name" x="100" y="18">AiDocumentChunk</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- document_id</text>
+    <text class="attr" x="12" y="86">- content</text>
+    <text class="attr" x="12" y="104">- embedding</text>
+    <text class="attr" x="12" y="122">- embedding_status</text>
+  </g>
+  <g id="Concept" transform="translate(1270 1195)">
+    <rect class="entity" width="170" height="115"/>
+    <rect class="head-ai" width="170" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="170" y2="26"/>
+    <text class="name" x="85" y="18">Concept</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- name</text>
+    <text class="attr" x="12" y="86">- description</text>
+  </g>
+  <g id="TranscriptJob" transform="translate(1490 1195)">
+    <rect class="entity" width="190" height="145"/>
+    <rect class="head-ai" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">TranscriptJob</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- lecture_id</text>
+    <text class="attr" x="12" y="86">- document_id</text>
+    <text class="attr" x="12" y="104">- status</text>
+    <text class="attr" x="12" y="122">- progress</text>
+  </g>
+
+  <!-- Chat and moderation -->
+  <g id="Conversation" transform="translate(1915 735)">
+    <rect class="entity" width="190" height="130"/>
+    <rect class="head-chat" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">Conversation</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- student_id</text>
+    <text class="attr" x="12" y="86">- instructor_id</text>
+    <text class="attr" x="12" y="104">- created_at</text>
+  </g>
+  <g id="Message" transform="translate(2180 735)">
+    <rect class="entity" width="175" height="130"/>
+    <rect class="head-chat" width="175" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="175" y2="26"/>
+    <text class="name" x="87.5" y="18">Message</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- conversation_id</text>
+    <text class="attr" x="12" y="86">- sender_id</text>
+    <text class="attr" x="12" y="104">- message</text>
+  </g>
+  <g id="ContentReport" transform="translate(1390 720)">
+    <rect class="entity" width="190" height="145"/>
+    <rect class="head-moderation" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">ContentReport</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- reporter_id</text>
+    <text class="attr" x="12" y="86">- reportable_type</text>
+    <text class="attr" x="12" y="104">- status</text>
+    <text class="attr" x="12" y="122">- reason_code</text>
+  </g>
+  <g id="ModerationPolicy" transform="translate(1635 720)">
+    <rect class="entity" width="190" height="130"/>
+    <rect class="head-moderation" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">ModerationPolicy</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- code</text>
+    <text class="attr" x="12" y="86">- name</text>
+    <text class="attr" x="12" y="104">- is_active</text>
+  </g>
+  <g id="ModerationActionTemplate" transform="translate(1635 900)">
+    <rect class="entity" width="205" height="130"/>
+    <rect class="head-moderation" width="205" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="205" y2="26"/>
+    <text class="name" x="102.5" y="18">ActionTemplate</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- code</text>
+    <text class="attr" x="12" y="86">- default_note</text>
+    <text class="attr" x="12" y="104">- requires_reason</text>
+  </g>
+  <g id="InstructorRequest" transform="translate(1915 930)">
+    <rect class="entity" width="190" height="130"/>
+    <rect class="head-moderation" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">InstructorRequest</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- user_id</text>
+    <text class="attr" x="12" y="86">- status</text>
+    <text class="attr" x="12" y="104">- reviewed_by</text>
+  </g>
+  <g id="InstructorRiskScore" transform="translate(2165 930)">
+    <rect class="entity" width="190" height="130"/>
+    <rect class="head-moderation" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">InstructorRiskScore</text>
+    <text class="attr" x="12" y="50">- id</text>
+    <text class="attr" x="12" y="68">- instructor_id</text>
+    <text class="attr" x="12" y="86">- risk_score</text>
+    <text class="attr" x="12" y="104">- calculated_at</text>
+  </g>
+
+  <!-- Configuration and infra groups -->
+  <g id="Configuration" transform="translate(1720 1195)">
+    <rect class="entity" width="180" height="145"/>
+    <rect class="head-config" width="180" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="180" y2="26"/>
+    <text class="name" x="90" y="18">Configuration</text>
+    <text class="attr" x="12" y="50">- SiteInfo</text>
+    <text class="attr" x="12" y="68">- Smtp</text>
+    <text class="attr" x="12" y="86">- Google</text>
+    <text class="attr" x="12" y="104">- Striipe</text>
+    <text class="attr" x="12" y="122">- GeminiSetting</text>
+  </g>
+  <g id="Infrastructure" transform="translate(1945 1195)">
+    <rect class="entity" width="190" height="145"/>
+    <rect class="head-config" width="190" height="26"/>
+    <line class="rel" x1="0" y1="26" x2="190" y2="26"/>
+    <text class="name" x="95" y="18">Infrastructure</text>
+    <text class="attr" x="12" y="50">- sessions</text>
+    <text class="attr" x="12" y="68">- cache</text>
+    <text class="attr" x="12" y="86">- jobs</text>
+    <text class="attr" x="12" y="104">- notifications</text>
+    <text class="attr" x="12" y="122">- migrations</text>
+  </g>
+
+  <!-- Relationships -->
+  <path class="rel-dash" d="M185 200 L118 270" marker-end="url(#inherit)"/>
+  <path class="rel-dash" d="M185 200 L313 270" marker-end="url(#inherit)"/>
+  <path class="rel-dash" d="M185 200 L508 270" marker-end="url(#inherit)"/>
+
+  <line class="rel" x1="690" y1="110" x2="760" y2="110"/>
+  <text class="label" x="700" y="96">1</text><text class="label" x="730" y="132">1..*</text>
+  <line class="rel" x1="950" y1="110" x2="1040" y2="110"/>
+  <text class="label" x="960" y="96">1</text><text class="label" x="1010" y="132">1..*</text>
+  <line class="rel" x1="1245" y1="137" x2="1390" y2="137"/>
+  <text class="label" x="1260" y="123">1</text><text class="label" x="1358" y="159">1..*</text>
+  <line class="rel" x1="1575" y1="137" x2="1680" y2="137"/>
+  <text class="label" x="1588" y="123">1</text><text class="label" x="1648" y="159">1..*</text>
+  <path class="rel" d="M395 335 H1040"/>
+  <text class="label" x="410" y="320">1</text><text class="label" x="1010" y="357">1..*</text>
+
+  <line class="rel" x1="280" y1="120" x2="620" y2="362"/>
+  <text class="label" x="300" y="138">1</text><text class="label" x="592" y="352">0..*</text>
+  <line class="rel" x1="1040" y1="175" x2="810" y2="362"/>
+  <text class="label" x="1012" y="193">1</text><text class="label" x="820" y="346">0..*</text>
+  <line class="rel" x1="715" y1="435" x2="715" y2="520"/>
+  <text class="label" x="725" y="468">1</text><text class="label" x="725" y="510">0..*</text>
+  <path class="rel" d="M810 405 H975 V520"/>
+  <text class="label" x="825" y="390">1</text><text class="label" x="987" y="512">0..1</text>
+
+  <path class="rel" d="M1778 230 V265 H2045 V80"/>
+  <text class="label" x="1790" y="250">1</text><text class="label" x="2010" y="250">0..1</text>
+  <line class="rel" x1="2045" y1="225" x2="2047" y2="300"/>
+  <text class="label" x="2058" y="252">1</text><text class="label" x="2058" y="292">1..*</text>
+  <line class="rel" x1="2145" y1="362" x2="2200" y2="362"/>
+  <text class="label" x="2154" y="348">1</text><text class="label" x="2174" y="384">1..*</text>
+  <line class="rel" x1="2047" y1="445" x2="2047" y2="520"/>
+  <text class="label" x="2058" y="476">1</text><text class="label" x="2058" y="511">0..*</text>
+  <line class="rel" x1="2145" y1="585" x2="2200" y2="585"/>
+  <text class="label" x="2154" y="571">1</text><text class="label" x="2174" y="607">1..*</text>
+
+  <path class="rel" d="M1245 190 V388 H1130"/>
+  <text class="label" x="1256" y="220">1</text><text class="label" x="1095" y="378">0..*</text>
+  <path class="rel" d="M1778 230 V388 H1330"/>
+  <text class="label" x="1790" y="250">1</text><text class="label" x="1338" y="410">0..*</text>
+  <path class="rel" d="M1778 230 V395 H1482 V330"/>
+  <path class="rel" d="M1245 205 V395 H1722 V330"/>
+
+  <path class="rel" d="M118 385 V720"/>
+  <text class="label" x="130" y="420">1</text><text class="label" x="130" y="710">0..*</text>
+  <path class="rel" d="M180 720 V650 H1040"/>
+  <text class="label" x="1005" y="642">course</text>
+  <path class="rel" d="M335 720 V650 H1040"/>
+  <path class="rel" d="M118 385 V930 H315"/>
+  <text class="label" x="130" y="455">1</text><text class="label" x="285" y="920">0..*</text>
+  <line class="rel" x1="505" y1="1010" x2="590" y2="1010"/>
+  <text class="label" x="515" y="996">1..*</text><text class="label" x="558" y="1030">1</text>
+  <line class="rel" x1="785" y1="1010" x2="860" y2="1010"/>
+  <text class="label" x="795" y="996">1</text><text class="label" x="830" y="1030">0..*</text>
+  <path class="rel" d="M313 400 V850 H1228 V930"/>
+  <text class="label" x="1228" y="918">0..*</text>
+
+  <line class="rel" x1="235" y1="1268" x2="285" y2="1268"/>
+  <text class="label" x="242" y="1253">1</text><text class="label" x="258" y="1290">1..*</text>
+  <line class="rel" x1="480" y1="1268" x2="530" y2="1268"/>
+  <text class="label" x="488" y="1253">1</text><text class="label" x="505" y="1290">0..*</text>
+  <line class="rel" x1="725" y1="1268" x2="780" y2="1268"/>
+  <text class="label" x="735" y="1253">0..*</text><text class="label" x="760" y="1290">1</text>
+  <line class="rel" x1="970" y1="1268" x2="1020" y2="1268"/>
+  <text class="label" x="978" y="1253">1</text><text class="label" x="995" y="1290">1..*</text>
+  <path class="rel" d="M1778 230 V1180 H875 V1195"/>
+  <path class="rel" d="M1142 225 V1165 H140 V1195"/>
+  <line class="rel-dash" x1="1220" y1="1268" x2="1270" y2="1268"/>
+  <text class="label" x="1226" y="1253">0..*</text><text class="label" x="1248" y="1290">0..*</text>
+  <path class="rel" d="M1778 230 V1180 H1585 V1195"/>
+
+  <line class="rel" x1="2105" y1="800" x2="2180" y2="800"/>
+  <text class="label" x="2115" y="786">1</text><text class="label" x="2148" y="822">1..*</text>
+  <path class="rel" d="M195 330 H1915 V735"/>
+  <path class="rel" d="M313 400 V700 H2010 V735"/>
+  <line class="rel" x1="1580" y1="792" x2="1635" y2="792"/>
+  <text class="label" x="1588" y="778">0..*</text><text class="label" x="1612" y="814">1</text>
+  <path class="rel" d="M1580 825 H1608 V965 H1635"/>
+  <line class="rel" x1="2105" y1="995" x2="2165" y2="995"/>
+  <text class="label" x="2115" y="981">1</text><text class="label" x="2138" y="1017">0..1</text>
+
+  <!-- Legend -->
+  <g id="Legend" transform="translate(1950 1375)">
+    <rect class="legend-box" width="380" height="140" rx="6"/>
+    <text class="name" x="190" y="24">Chú thích</text>
+    <rect x="20" y="38" width="18" height="12" class="head-user" stroke="#777"/>
+    <text class="legend-text" x="48" y="49">Người dùng và phân quyền</text>
+    <rect x="20" y="58" width="18" height="12" class="head-course" stroke="#777"/>
+    <text class="legend-text" x="48" y="69">Khóa học và nội dung</text>
+    <rect x="20" y="78" width="18" height="12" class="head-learning" stroke="#777"/>
+    <text class="legend-text" x="48" y="89">Ghi danh, học tập, đánh giá</text>
+    <rect x="20" y="98" width="18" height="12" class="head-commerce" stroke="#777"/>
+    <text class="legend-text" x="48" y="109">Thương mại và thanh toán</text>
+    <rect x="205" y="38" width="18" height="12" class="head-quiz" stroke="#777"/>
+    <text class="legend-text" x="233" y="49">Quiz</text>
+    <rect x="205" y="58" width="18" height="12" class="head-ai" stroke="#777"/>
+    <text class="legend-text" x="233" y="69">AI Tutor</text>
+    <rect x="205" y="78" width="18" height="12" class="head-chat" stroke="#777"/>
+    <text class="legend-text" x="233" y="89">Trò chuyện</text>
+    <rect x="205" y="98" width="18" height="12" class="head-moderation" stroke="#777"/>
+    <text class="legend-text" x="233" y="109">Kiểm duyệt</text>
+  </g>
+
+  <g id="Notation" transform="translate(1480 1375)">
+    <rect class="legend-box" width="395" height="140" rx="6"/>
+    <text class="name" x="197.5" y="24">Ký hiệu quan hệ</text>
+    <line class="rel" x1="30" y1="50" x2="105" y2="50"/>
+    <text class="legend-text" x="125" y="55">Liên kết</text>
+    <line class="rel-dash" x1="30" y1="78" x2="105" y2="78"/>
+    <text class="legend-text" x="125" y="83">Phụ thuộc / khái quát</text>
+    <path class="hollow-triangle" d="M30,100 L48,110 L30,120 z"/>
+    <text class="legend-text" x="125" y="115">Kế thừa / vai trò chuyên biệt</text>
+  </g>
+</svg>

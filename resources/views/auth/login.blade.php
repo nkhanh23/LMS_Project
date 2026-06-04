@@ -95,6 +95,16 @@
                 </div>
                 <!-- Form Section -->
                 <div class="p-8 flex flex-col gap-6">
+                    @if (session('status'))
+                        <div class="bg-black border-2 border-primary text-primary p-4 font-bold text-sm tracking-wider uppercase">
+                            // STATUS: {{ session('status') }} //
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="bg-black border-2 border-red-500 text-red-500 p-4 font-bold text-sm tracking-wider uppercase">
+                            // ERROR: {{ session('error') }} //
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <!-- Operator ID Input -->

@@ -25,7 +25,46 @@ class LectureService
         // Gọi hàm xử lý Business Logic để chuẩn bị dữ liệu
         $preparedData = $this->prepareLectureData($data);
 
-        return $this->lectureRepository->createLecture($preparedData);
+        $lecture = $this->lectureRepository->createLecture($preparedData);
+
+        // Gửi thông báo bài học mới cho học viên đã đăng ký khóa học (nếu khóa học đã xuất bản)
+        $this->notifyEnrolledStudents($lecture);
+
+        return $lecture;
+    }
+
+    /**
+     * Gửi thông báo bài học mới cho tất cả học viên đã đăng ký khóa học.
+     */
+    protected function notifyEnrolledStudents($lecture): void
+    {
+        try {
+            $course = \App\Models\Course::find($lecture->course_id);
+
+            if (!$course || !$course->isPublished()) {
+                return;
+            }
+
+            $students = $course->enrollments()
+                ->where('status', 'active')
+                ->with('user')
+                ->get()
+                ->pluck('user')
+                ->filter(function ($user) {
+                    return $user && $user->role === 'user';
+                });
+
+            if ($students->isEmpty()) {
+                return;
+            }
+
+            \Illuminate\Support\Facades\Notification::send(
+                $students,
+                new \App\Notifications\NewLecturePublishedNotification($lecture, $course)
+            );
+        } catch (\Exception $e) {
+            Log::error('Lỗi gửi thông báo bài học mới: ' . $e->getMessage());
+        }
     }
 
     /**

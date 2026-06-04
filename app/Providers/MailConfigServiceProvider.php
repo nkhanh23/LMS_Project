@@ -21,16 +21,20 @@ class MailConfigServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $mailSettings = Smtp::first();
-        if ($mailSettings) {
-            Config::set('mail.driver', $mailSettings->mailer);
-            Config::set('mail.host', $mailSettings->host);
-            Config::set('mail.port', $mailSettings->port);
-            Config::set('mail.username', $mailSettings->username);
-            Config::set('mail.password', $mailSettings->password);
-            Config::set('mail.encryption', $mailSettings->encryption);
-            Config::set('mail.from.address', $mailSettings->from_address);
-            Config::set('mail.from.name', $mailSettings->from_name);
+        try {
+            $mailSettings = Smtp::first();
+            if ($mailSettings) {
+                Config::set('mail.driver', $mailSettings->mailer);
+                Config::set('mail.host', $mailSettings->host);
+                Config::set('mail.port', $mailSettings->port);
+                Config::set('mail.username', $mailSettings->username);
+                Config::set('mail.password', $mailSettings->password);
+                Config::set('mail.encryption', $mailSettings->encryption);
+                Config::set('mail.from.address', $mailSettings->from_address);
+                Config::set('mail.from.name', $mailSettings->from_name);
+            }
+        } catch (\Exception $e) {
+            // Table may not exist yet
         }
     }
 }

@@ -68,7 +68,7 @@ class InstructorLectureDiscussionService
         // Nếu đang mở root thì reply vào chính nó
         $targetParent = $discussion->parent_id ? $discussion->parent : $discussion;
 
-        return DB::transaction(function () use ($targetParent, $data) {
+        $reply = DB::transaction(function () use ($targetParent, $data) {
             return $this->lectureDiscussionRepository->createReply([
                 'course_id'   => $targetParent->course_id,
                 'lecture_id'  => $targetParent->lecture_id,
@@ -78,6 +78,28 @@ class InstructorLectureDiscussionService
                 'is_approved' => 1,
             ]);
         });
+
+        // Gửi thông báo cho chủ câu hỏi gốc (nếu khác instructor)
+        try {
+            $questionOwner = $targetParent->user;
+            if ($questionOwner && (int) $questionOwner->id !== $instructorId) {
+                $replier = \App\Models\User::find($instructorId);
+                $lecture = \App\Models\CourseLecture::find($targetParent->lecture_id);
+
+                if ($replier && $lecture) {
+                    $replyModel = \App\Models\LectureDiscussion::with('user')->find($reply->id ?? $reply);
+                    if ($replyModel) {
+                        $questionOwner->notify(
+                            new \App\Notifications\DiscussionRepliedNotification($replyModel, $replier, $lecture)
+                        );
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Lỗi gửi thông báo phản hồi instructor: ' . $e->getMessage());
+        }
+
+        return $reply;
     }
 
     //Lấy dữ liệu lọc
