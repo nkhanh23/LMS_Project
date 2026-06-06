@@ -254,3 +254,84 @@
     </script>
 
     @stack('scripts')
+
+    <script>
+    (function () {
+        // ---- Shared autocomplete logic ----
+        var SUGGEST_URL = '{{ route('search.suggestions') }}';
+        var COURSES_URL = '{{ route('frontend.courses.index') }}';
+
+        function buildItem(course) {
+            return '<a href="' + course.url + '" class="flex items-center gap-3 px-4 py-3 hover:bg-brand hover:text-black group border-b border-black/20 last:border-0 transition-colors">' +
+                '<img src="' + course.image + '" alt="" class="w-14 h-10 object-cover border border-black/40 flex-shrink-0">' +
+                '<div class="min-w-0 flex-1">' +
+                    '<p class="text-sm font-bold leading-tight line-clamp-1 group-hover:text-black">' + course.name + '</p>' +
+                    '<p class="text-[11px] text-text-secondary group-hover:text-black/70 mt-0.5">' + course.instructor + ' &middot; ' + course.category + '</p>' +
+                '</div>' +
+                '<span class="text-brand font-bold text-sm shrink-0 group-hover:text-black">' + course.price + '</span>' +
+            '</a>';
+        }
+
+        function buildViewAll(keyword) {
+            return '<a href="' + COURSES_URL + '?q=' + encodeURIComponent(keyword) + '" ' +
+                'class="block text-center px-4 py-3 bg-black/30 text-brand font-bold text-sm hover:bg-brand hover:text-black transition-colors uppercase tracking-widest">' +
+                '<i class="fas fa-search mr-2"></i>Xem tất cả kết quả cho &ldquo;' + keyword + '&rdquo;' +
+                '</a>';
+        }
+
+        function initSearch(inputId, dropdownId) {
+            var input = document.getElementById(inputId);
+            var dropdown = document.getElementById(dropdownId);
+            if (!input || !dropdown) return;
+
+            var timer = null;
+            var lastQuery = '';
+
+            function hide() { dropdown.classList.add('hidden'); dropdown.innerHTML = ''; }
+            function show() { dropdown.classList.remove('hidden'); }
+
+            input.addEventListener('input', function () {
+                var q = this.value.trim();
+                clearTimeout(timer);
+                if (q.length < 2) { hide(); lastQuery = ''; return; }
+                if (q === lastQuery) return;
+                lastQuery = q;
+                timer = setTimeout(function () {
+                    fetch(SUGGEST_URL + '?q=' + encodeURIComponent(q), { headers: { 'Accept': 'application/json' } })
+                        .then(function (r) { return r.json(); })
+                        .then(function (data) {
+                            if (!data.length) { hide(); return; }
+                            var html = data.map(buildItem).join('');
+                            html += buildViewAll(q);
+                            dropdown.innerHTML = html;
+                            show();
+                        })
+                        .catch(function () { hide(); });
+                }, 280);
+            });
+
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') hide();
+            });
+
+            // Enter → full search
+            input.closest('form')?.addEventListener('submit', function () { hide(); });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            initSearch('header-search-input', 'header-search-dropdown');
+            initSearch('mobile-search-input', 'mobile-search-dropdown');
+
+            // Close on outside click
+            document.addEventListener('click', function (e) {
+                ['header-search-wrapper', 'mobile-search-wrapper'].forEach(function (id) {
+                    var wrapper = document.getElementById(id);
+                    if (wrapper && !wrapper.contains(e.target)) {
+                        var dd = wrapper.querySelector('[id$="-search-dropdown"]');
+                        if (dd) { dd.classList.add('hidden'); dd.innerHTML = ''; }
+                    }
+                });
+            });
+        });
+    })();
+    </script>

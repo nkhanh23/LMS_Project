@@ -66,42 +66,11 @@
     }
 
     function renderStatusMeta(message) {
-        if (message.role !== 'assistant') return '';
-
-        const parts = [];
-        if (message.answer_status) parts.push(`Trạng thái: ${message.answer_status}`);
-        if (message.evidence_strength) parts.push(`Evidence: ${message.evidence_strength}`);
-        if (message.source_scope) parts.push(`Phạm vi: ${message.source_scope}`);
-
-        if (!parts.length) return '';
-
-        return `
-            <div class="mt-3 pt-3 border-t border-slate-700/50 text-[10px] uppercase tracking-wider text-slate-400 font-bold flex flex-wrap gap-2">
-                ${parts.map(p => `<span>${p}</span>`).join('<span class="text-slate-600">|</span>')}
-            </div>
-        `;
+        return '';
     }
 
     function citationHtml(citations) {
-        if (!Array.isArray(citations) || !citations.length) return '';
-
-        const items = citations.map((citation) => {
-            const title = escapeHtml(citation.document_title || 'Tài liệu');
-            const snippet = escapeHtml(citation.snippet || '');
-            const chunkId = citation.chunk_id ? `#${citation.chunk_id}` : '-';
-
-            return `
-                <div class="mt-2 rounded border border-slate-700 bg-black/30 p-3">
-                    <div class="text-[11px] uppercase tracking-widest text-brand font-bold mb-1">
-                        Nguồn • chunk ${chunkId}
-                    </div>
-                    <div class="text-xs text-white font-semibold mb-1">${title}</div>
-                    <div class="text-xs text-slate-300 leading-relaxed">${snippet}</div>
-                </div>
-            `;
-        }).join('');
-
-        return `<div class="mt-2">${items}</div>`;
+        return '';
     }
 
     function messageHtml(message) {

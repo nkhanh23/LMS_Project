@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\AiChatMessage;
 use App\Models\AiChatSession;
+use App\Models\CourseLecture;
 use Carbon\Carbon;
 
 class ChatSessionService
@@ -22,11 +23,14 @@ class ChatSessionService
             return $session;
         }
 
+        $lecture = CourseLecture::find($lectureId);
+        $title = $lecture ? 'Chat bài học: ' . ($lecture->lecture_title ?? $lecture->title) : 'Chat bài học #' . $lectureId;
+
         return AiChatSession::query()->create([
             'user_id' => $userId,
             'course_id' => $courseId,
             'lecture_id' => $lectureId,
-            'title' => 'Chat bài học #' . $lectureId,
+            'title' => $title,
             'status' => 'active',
             'last_activity_at' => now(),
         ]);

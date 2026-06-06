@@ -13,7 +13,7 @@
                     Chi tiết phiên AI Tutor <span class="text-cyber-cyan">_SESSION_{{ $session->id }}</span>
                 </h3>
                 <p class="text-xs text-text-secondary mt-1 font-pixel">
-                    {{ $session->title ?: 'Cuộc trò chuyện #' . $session->id }}
+                    {{ $session->lecture ? 'Chat bài học: ' . ($session->lecture->lecture_title ?? $session->lecture->title) : ($session->title ?: 'Cuộc trò chuyện #' . $session->id) }}
                 </p>
             </div>
 
@@ -95,18 +95,7 @@
                                     {!! nl2br(e($message->content)) !!}
                                 </div>
 
-                                {{-- Citations --}}
-                                @if ($message->citations && $message->citations->count())
-                                    <div class="mt-2 p-2 bg-black/40 border border-black/60 text-[10px] text-text-secondary">
-                                        <div class="font-bold text-cyber-cyan mb-1 uppercase pixel-text">Nguồn tham khảo:</div>
-                                        @foreach ($message->citations as $citation)
-                                            <div class="flex items-start gap-1 mt-1">
-                                                <i class="fas fa-file-alt text-cyber-cyan/60 mt-0.5"></i>
-                                                <span>{{ $citation->document->title ?? ($citation->chunk->content ?? 'Tài liệu') }}</span>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endif
+
                             </div>
                         </div>
                     @endif

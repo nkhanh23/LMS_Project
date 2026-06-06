@@ -65,6 +65,16 @@ return [
         'language' => env('OPENAI_TRANSCRIPTION_LANGUAGE', 'vi'),
     ],
 
+    'youtube_transcript' => [
+        'api_url' => env('YOUTUBE_TRANSCRIPT_API_URL', 'http://127.0.0.1:9000/transcript'),
+        'timeout' => (int) env('YOUTUBE_TRANSCRIPT_API_TIMEOUT', 45),
+        'fallback_enabled' => env('YOUTUBE_TRANSCRIPT_FALLBACK_ENABLED', true),
+        'queue_connection' => env('YOUTUBE_TRANSCRIPT_QUEUE_CONNECTION', 'database'),
+        'queue' => env('YOUTUBE_TRANSCRIPT_QUEUE', 'transcripts'),
+        'document_queue' => env('AI_DOCUMENT_QUEUE', 'ai-documents'),
+        'dispatch_delay_seconds' => (int) env('YOUTUBE_TRANSCRIPT_DISPATCH_DELAY_SECONDS', 30),
+    ],
+
     'ffmpeg' => [
         'bin' => env('FFMPEG_BIN', 'ffmpeg'),
         'ffprobe' => env('FFPROBE_BIN', 'ffprobe'),

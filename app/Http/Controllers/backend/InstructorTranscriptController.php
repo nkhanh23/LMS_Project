@@ -43,7 +43,9 @@ class InstructorTranscriptController extends Controller
             ],
         ]);
 
-        GenerateTranscriptJob::dispatch($job->id);
+        GenerateTranscriptJob::dispatch($job->id)
+            ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
+            ->onQueue(config('services.youtube_transcript.queue', 'transcripts'));
 
         return back()->with('success', 'Đã đưa yêu cầu tạo transcript vào hàng đợi.');
     }
@@ -140,7 +142,9 @@ class InstructorTranscriptController extends Controller
 
         // Re-index document sau khi sửa
         if (class_exists(\App\Jobs\ProcessAiDocumentJob::class)) {
-            \App\Jobs\ProcessAiDocumentJob::dispatch($document->id);
+            \App\Jobs\ProcessAiDocumentJob::dispatch($document->id)
+                ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
+                ->onQueue(config('services.youtube_transcript.document_queue', 'ai-documents'));
         }
 
         return response()->json([
@@ -216,7 +220,9 @@ class InstructorTranscriptController extends Controller
         ]);
 
         if (class_exists(\App\Jobs\ProcessAiDocumentJob::class)) {
-            \App\Jobs\ProcessAiDocumentJob::dispatch($document->id);
+            \App\Jobs\ProcessAiDocumentJob::dispatch($document->id)
+                ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
+                ->onQueue(config('services.youtube_transcript.document_queue', 'ai-documents'));
         }
 
         return back()->with('success', 'Đã thêm transcript thủ công. Hệ thống đang xử lý...');
@@ -279,7 +285,9 @@ class InstructorTranscriptController extends Controller
         ]);
 
         if (class_exists(\App\Jobs\ProcessAiDocumentJob::class)) {
-            \App\Jobs\ProcessAiDocumentJob::dispatch($document->id);
+            \App\Jobs\ProcessAiDocumentJob::dispatch($document->id)
+                ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
+                ->onQueue(config('services.youtube_transcript.document_queue', 'ai-documents'));
         }
 
         return response()->json(['success' => true, 'message' => 'Đã đưa tài liệu vào hàng đợi re-index.']);

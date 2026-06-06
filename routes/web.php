@@ -42,6 +42,7 @@ use App\Http\Controllers\backend\InstructorTranscriptController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserLearningController;
 use App\Http\Controllers\backend\UserProfileController;
+use App\Http\Controllers\backend\YoutubePlaylistImportController;
 use App\Http\Controllers\frontend\ChatbotController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\ContentReportController;
@@ -273,6 +274,10 @@ Route::middleware('auth', 'verified', 'role:instructor', 'instructor.approved')-
     /*  INSTRUCTOR COURSE  */
     //Danh sách khóa học
     Route::resource('course', CourseController::class);
+    Route::get('/youtube-playlist-import', [YoutubePlaylistImportController::class, 'create'])
+        ->name('youtube-playlist-import.create');
+    Route::post('/youtube-playlist-import', [YoutubePlaylistImportController::class, 'store'])
+        ->name('youtube-playlist-import.store');
     //Lấy danh sách subcategory
     Route::get('/get-subcategories/{categoryId}', [CategoryController::class, 'getSubcategories']);
     //Gửi khóa học để admin review
@@ -432,6 +437,9 @@ Route::get('/', [FrontEndDashBoardController::class, 'home'])->name('frontend.ho
 Route::get('/khoa-hoc', [FrontEndDashBoardController::class, 'courses'])->name('frontend.courses.index');
 Route::get('/chi-tiet/{slug}', [FrontEndDashBoardController::class, 'view'])->name('chi-tiet');
 Route::get('/giang-vien/{id}', [FrontEndDashBoardController::class, 'instructorProfile'])->name('frontend.instructor.details');
+
+/* SEARCH SUGGESTIONS API */
+Route::get('/search/suggestions', [FrontEndDashBoardController::class, 'searchSuggestions'])->name('search.suggestions');
 
 
 /*  WISHLIST ROUTES  */

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="dark" lang="vi">
 <head>
-    @include('backend.section.link')
+    @include('frontend.section.link')
     <title>StackLearn - Kích Hoạt Thành Công</title>
-    @include('backend.section.script')
-    @include('backend.section.css')
+    @include('frontend.section.script')
+    @include('frontend.section.style')
     <style>
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -13,70 +13,113 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* Retro Grid Animation */
+        .retro-grid {
+            background-image:
+                linear-gradient(to right, rgba(102, 217, 239, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(102, 217, 239, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            transform: perspective(500px) rotateX(60deg);
+            transform-origin: center top;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 1000px;
+            }
+        }
+
+        /* Floating Binary Effect */
+        .binary-rain {
+            background: linear-gradient(180deg,
+                    rgba(102, 217, 239, 0) 0%,
+                    rgba(102, 217, 239, 0.15) 50%,
+                    rgba(102, 217, 239, 0) 100%);
+            background-size: 100% 200%;
+            animation: rain 3s linear infinite;
+        }
+
+        @keyframes rain {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 0% 200%;
+            }
+        }
+
+        /* Scanline Overlay */
+        .scanlines {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
     </style>
 </head>
-<body class="font-display bg-background-light dark:bg-background-dark overflow-hidden selection:bg-primary selection:text-black">
+<body class="font-sans bg-cyber-dark text-text-primary selection:bg-brand selection:text-black overflow-x-hidden min-h-screen flex items-center justify-center py-10">
     <!-- Scanline Overlay -->
-    <div class="fixed inset-0 z-50 scanlines bg-scanlines pointer-events-none opacity-40"></div>
+    <div class="fixed inset-0 z-50 scanlines pointer-events-none opacity-40"></div>
     
     <!-- Background Wrapper -->
-    <div class="relative flex h-screen w-full flex-col overflow-hidden items-center justify-center">
-        <!-- Retro Grid Background -->
-        <div class="absolute inset-0 z-0 bg-[#1E1E2E] overflow-hidden">
-            <div class="absolute inset-x-0 bottom-[-50%] h-[150%] w-full retro-grid opacity-30"></div>
-            <!-- Binary Code Rain -->
-            <div class="absolute inset-0 flex justify-between px-10 opacity-20 pointer-events-none">
-                <div class="text-cyber-blue text-xs writing-vertical-rl binary-rain h-full w-4" style="animation-delay: 0s;">10101010</div>
-                <div class="text-cyber-blue text-xs writing-vertical-rl binary-rain h-full w-4" style="animation-delay: 1.5s;">00110011</div>
-                <div class="text-cyber-blue text-xs writing-vertical-rl binary-rain h-full w-4" style="animation-delay: 0.5s;">11100011</div>
-                <div class="text-cyber-blue text-xs writing-vertical-rl binary-rain h-full w-4" style="animation-delay: 2s;">01010101</div>
-            </div>
+    <div class="absolute inset-0 z-0 bg-[#1E1E2E] overflow-hidden">
+        <div class="absolute inset-x-0 bottom-[-50%] h-[150%] w-full retro-grid opacity-30"></div>
+        <!-- Binary Code Rain -->
+        <div class="absolute inset-0 flex justify-between px-10 opacity-20 pointer-events-none">
+            <div class="text-cyber-cyan text-xs writing-vertical-rl binary-rain h-full w-4" style="animation-delay: 0s;">10101010</div>
+            <div class="text-cyber-cyan text-xs writing-vertical-rl binary-rain h-full w-4" style="animation-delay: 1.5s;">00110011</div>
+            <div class="text-cyber-cyan text-xs writing-vertical-rl binary-rain h-full w-4" style="animation-delay: 0.5s;">11100011</div>
+            <div class="text-cyber-cyan text-xs writing-vertical-rl binary-rain h-full w-4" style="animation-delay: 2s;">01010101</div>
         </div>
+    </div>
 
-        <!-- Main Card -->
-        <div class="relative z-10 w-full max-w-[520px] p-2">
-            <div class="border-4 border-black bg-[#151711] shadow-block">
-                <!-- Header Section -->
-                <div class="border-b-4 border-black bg-[#23261c] p-6 text-center">
-                    <div class="mb-2 flex justify-center text-primary">
-                        <span class="material-symbols-outlined text-5xl">verified_user</span>
+    <!-- Main Card -->
+    <div class="relative z-10 w-full max-w-[520px] p-4">
+        <div class="border-4 border-black bg-cyber-dark/95 pixel-shadow">
+            <!-- Header Section -->
+            <div class="border-b-4 border-black bg-cyber-surface/80 p-6 text-center">
+                <!-- StackLearn Logo -->
+                <div class="flex items-center gap-2 justify-center mb-4">
+                    <div class="flex flex-col gap-0.5">
+                        <div class="w-3.5 h-3.5 bg-brand pixel-border"></div>
+                        <div class="w-3.5 h-3.5 bg-cyber-cyan pixel-border"></div>
+                        <div class="w-3.5 h-3.5 bg-pink-500 pixel-border"></div>
                     </div>
-                    <h1 class="text-primary text-2xl sm:text-3xl font-black leading-tight tracking-tight uppercase glitch-text">
-                        &gt; STACKLEARN &lt;<br />
-                        <span class="text-lg sm:text-xl">[ ACTIVATION SUCCESS ]</span>
-                    </h1>
-                    <p class="mt-2 text-sm text-[#afb79e] font-medium tracking-widest uppercase animate-pulse">
-                        // System Access Granted //
-                    </p>
+                    <span class="text-3xl font-black tracking-tighter uppercase italic text-text-primary">StackLearn</span>
+                </div>
+                <p class="mt-2 text-xs text-text-secondary font-mono uppercase tracking-widest animate-pulse">
+                    // Activation Success //
+                </p>
+            </div>
+
+            <!-- Body Section -->
+            <div class="p-6 sm:p-8 flex flex-col gap-4 text-center bg-cyber-surface/30">
+                <div class="text-text-primary text-base sm:text-lg font-bold tracking-wide leading-relaxed">
+                    <p class="text-brand">// KÍCH HOẠT TÀI KHOẢN THÀNH CÔNG //</p>
+                    <p class="mt-4 text-text-primary">Email của bạn đã được xác minh thành công.</p>
+                    <p class="mt-2 text-text-secondary">Hệ thống đã mở khóa đầy đủ các quyền truy cập dành cho tài khoản của bạn.</p>
                 </div>
 
-                <!-- Body Section -->
-                <div class="p-6 sm:p-8 flex flex-col gap-4 text-center">
-                    <div class="text-white text-base sm:text-lg font-bold tracking-wide leading-relaxed">
-                        <p class="text-primary">// KÍCH HOẠT TÀI KHOẢN THÀNH CÔNG //</p>
-                        <p class="mt-4 text-gray-300">Email của bạn đã được xác minh thành công.</p>
-                        <p class="mt-2 text-[#afb79e]">Hệ thống đã mở khóa đầy đủ các quyền truy cập dành cho tài khoản của bạn.</p>
-                    </div>
+                <!-- Go to Login Button -->
+                <a href="{{ route('login') }}"
+                    class="relative mt-6 w-full h-14 sm:h-16 bg-brand border-2 border-black pixel-shadow text-black font-black tracking-widest uppercase hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-y-0.5 active:translate-x-0.5 transition-all duration-75 block text-center flex items-center justify-center gap-3">
+                    <i class="fas fa-sign-in-alt font-bold text-lg"></i>
+                    [ ĐĂNG NHẬP NGAY ]
+                </a>
+            </div>
 
-                    <!-- Go to Login Button -->
-                    <a href="{{ route('login') }}"
-                        class="relative mt-6 w-full h-14 sm:h-16 bg-primary border-b-4 border-r-4 border-black active:border-0 active:translate-y-1 active:translate-x-1 transition-all duration-75 group overflow-hidden hover:brightness-110 flex items-center justify-center">
-                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                        <span class="relative flex items-center justify-center gap-3 text-[#151711] font-black tracking-widest uppercase text-base sm:text-lg">
-                            <span class="material-symbols-outlined font-bold">login</span>
-                            [ ĐĂNG NHẬP NGAY ]
-                        </span>
-                    </a>
-                </div>
-
-                <!-- Card Footer -->
-                <div class="bg-[#1a1d15] px-4 py-3 border-t-4 border-black flex justify-between items-center text-[10px] sm:text-xs text-[#5c634d] uppercase font-bold tracking-wider">
-                    <span class="flex items-center gap-1">
-                        <span class="h-2 w-2 rounded-full bg-green-500 animate-ping"></span>
-                        Status: ACTIVE_OPERATOR
-                    </span>
-                    <span>v1.0.8-bit</span>
-                </div>
+            <!-- Card Footer -->
+            <div class="bg-cyber-surface/50 px-4 py-3 border-t-4 border-black flex justify-between items-center text-[10px] sm:text-xs text-text-secondary/70 uppercase font-bold tracking-wider">
+                <span class="flex items-center gap-2">
+                    <span class="h-2 w-2 rounded-full bg-brand animate-ping"></span>
+                    Status: ACTIVE_OPERATOR
+                </span>
+                <span>v1.0.8-bit</span>
             </div>
         </div>
     </div>

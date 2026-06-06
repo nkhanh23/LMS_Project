@@ -5,7 +5,23 @@
         <section class="max-w-7xl mx-auto px-6 py-10">
             <!-- Header -->
             <div class="mb-10 fade-up">
-                <h1 class="font-pixel text-2xl lg:text-3xl text-brand mb-4">Tất cả các khóa học</h1>
+                @if (!empty($keyword))
+                    <div class="inline-flex items-center gap-2 bg-brand/10 border border-brand/40 px-4 py-2 mb-4">
+                        <i class="fas fa-search text-brand text-xs"></i>
+                        <span class="font-mono text-brand text-sm">Tìm kiếm: <strong>"{{ $keyword }}"</strong></span>
+                        <a href="{{ route('frontend.courses.index', array_filter(['sort' => request('sort'), 'category' => request('category'), 'rating' => request('rating')])) }}"
+                           class="ml-2 text-text-secondary hover:text-brand text-xs" title="Xóa tìm kiếm">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                @endif
+                <h1 class="font-pixel text-2xl lg:text-3xl text-brand mb-4">
+                    @if (!empty($keyword))
+                        Kết quả cho &ldquo;{{ $keyword }}&rdquo;
+                    @else
+                        Tất cả các khóa học
+                    @endif
+                </h1>
                 <p class="text-text-secondary font-mono">Khám phá tất cả các dịch vụ của StackLearn dành cho học tập và phát
                     triển kỹ năng</p>
             </div>
@@ -17,6 +33,7 @@
                 <aside class="w-full lg:w-1/4 flex-shrink-0 fade-up">
                     <form action="{{ route('frontend.courses.index') }}" method="GET" id="filterForm">
                         <input type="hidden" name="sort" id="sortInput" value="{{ request('sort', 'relevant') }}">
+                        <input type="hidden" name="q" value="{{ $keyword }}">
 
                         <div class="bg-cyber-surface border-2 border-black pixel-shadow p-4 mb-6 lg:hidden group active:translate-y-1 transition-transform">
                             <div
@@ -266,13 +283,15 @@
                         @empty
                             <div
                                 class="bg-cyber-surface border-2 border-black pixel-shadow p-10 text-center text-text-secondary">
-                                <i class="fas fa-box-open text-4xl mb-4 text-slate-600"></i>
-                                <p>Không tìm thấy khóa học nào phù hợp với bộ lọc của bạn.</p>
-                                @if (request('rating') || request('sort'))
-                                    <a href="{{ route('frontend.courses.index') }}"
-                                        class="inline-block mt-4 bg-brand text-black font-bold px-4 py-2 border-2 border-black pixel-button-hover text-sm">Xóa
-                                        bộ lọc</a>
+                                <i class="fas fa-search text-4xl mb-4 text-slate-600"></i>
+                                @if (!empty($keyword))
+                                    <p class="mb-2">Không tìm thấy khóa học nào cho <strong class="text-brand">"{{ $keyword }}"</strong>.</p>
+                                    <p class="text-xs text-slate-500 mb-4">Thử từ khóa khác hoặc xem toàn bộ khóa học.</p>
+                                @else
+                                    <p class="mb-4">Không tìm thấy khóa học nào phù hợp với bộ lọc của bạn.</p>
                                 @endif
+                                <a href="{{ route('frontend.courses.index') }}"
+                                    class="inline-block mt-2 bg-brand text-black font-bold px-4 py-2 border-2 border-black pixel-button-hover text-sm">Xem tất cả khóa học</a>
                             </div>
                         @endforelse
                     </div>

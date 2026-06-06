@@ -20,6 +20,20 @@ return Application::configure(basePath: dirname(__DIR__))
             'instructor.approved' => EnsureInstructorApproved::class,
             'course.enrollment' => EnsureCourseEnrollment::class,
         ]);
+
+        $middleware->redirectUsersTo(function ($request) {
+            $user = $request->user();
+            if ($user) {
+                if ($user->isAdmin()) {
+                    return route('admin.dashboard');
+                } elseif ($user->isApprovedInstructor()) {
+                    return route('instructor.dashboard');
+                } else {
+                    return route('user.dashboard');
+                }
+            }
+            return route('login');
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

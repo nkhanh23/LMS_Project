@@ -28,13 +28,13 @@ class EnsureInstructorApproved
 
         if ($user->instructor_approval_status !== 'approved') {
             return redirect()
-                ->route('instructor.dashboard')
+                ->route('frontend.home')
                 ->with('error', 'Tài khoản instructor của bạn chưa được phê duyệt hoặc đã bị tạm ngưng.');
         }
 
         if ($user->status !== '1') {
             return redirect()
-                ->route('instructor.dashboard')
+                ->route('frontend.home')
                 ->with('error', 'Tài khoản của bạn đang bị khóa.');
         }
 

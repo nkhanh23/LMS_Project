@@ -218,23 +218,23 @@
                         <div id="couponSection" class="flex flex-col gap-4 mt-4 w-full">
                             <h3 class="text-[#4bf425] text-xl font-bold uppercase tracking-wider">Nhập mã giảm giá</h3>
                             <div class="flex h-14 w-full">
-                                <div id="couponForm" class="flex w-full">
+                                <div id="couponForm" class="flex w-full min-w-0">
                                     @csrf
 
                                     <div
-                                        class="flex flex-1 retro-border bg-[#1E1E2E] border-r-0 focus-within:ring-2 focus-within:ring-[#4bf425] focus-within:ring-inset">
+                                        class="flex flex-1 min-w-0 retro-border bg-[#1E1E2E] border-r-0 focus-within:ring-2 focus-within:ring-[#4bf425] focus-within:ring-inset">
                                         <div class="text-[#00E5FF] flex items-center justify-center pl-4 pr-2">
                                             <i class="fas fa-code text-xl"></i>
                                         </div>
                                         <input
-                                            class="retro-input form-input flex-1 bg-transparent border-none text-[#00E5FF] font-bold uppercase tracking-widest focus:ring-0 placeholder:text-[#00E5FF]/40 disabled:opacity-50"
+                                            class="retro-input form-input flex-1 min-w-0 bg-transparent border-none text-[#00E5FF] font-bold uppercase tracking-widest focus:ring-0 placeholder:text-[#00E5FF]/40 disabled:opacity-50"
                                             placeholder="Mã giảm giá" type="text" name="coupon" id="couponInput"
                                             @if (session()->has('coupon')) disabled @endif
                                             onkeydown="if(event.key === 'Enter'){ event.preventDefault(); $('#applyCouponBtn').click(); }" />
                                     </div>
                                     <button type="button" id="applyCouponBtn"
                                         @if (session()->has('coupon')) disabled @endif
-                                        class="h-full px-8 bg-[#4bf425] text-black font-black uppercase tracking-widest retro-border border-l-4 hover:bg-[#4bf425]/90 active:bg-[#4bf425]/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                        class="h-full px-6 flex-shrink-0 bg-[#4bf425] text-black font-black uppercase tracking-widest retro-border border-l-4 hover:bg-[#4bf425]/90 active:bg-[#4bf425]/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                                         {{ session()->has('coupon') ? 'Applied' : 'Execute' }}
                                     </button>
                                 </div>

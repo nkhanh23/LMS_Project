@@ -36,10 +36,10 @@ class SocialController extends Controller
             }
             // Đăng nhập người dùng
             Auth::login($user);
-            // Chuyển hướng người dùng đến trang dashboard
-            return redirect()->route('user.dashboard');
+            // Chuyển hướng người dùng đến trang dashboard theo role
+            return $this->redirectUserByRole($user);
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Lỗi khi đăng nhập bằng Google');
+            return redirect()->route('login')->with('error', 'Lỗi khi đăng nhập bằng Google');
         }
     }
 

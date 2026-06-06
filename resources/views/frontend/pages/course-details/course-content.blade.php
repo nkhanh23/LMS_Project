@@ -56,27 +56,18 @@
                                             </span>
                                         </div>
                                     @else
-                                        <a href="{{ route('course.lecture.watch', [$course->course_name_slug, $lecture->id]) }}"
-                                            class="hover:text-cyber-cyan group-hover:underline text-slate-200 truncate block">
+                                        <span class="text-slate-200 truncate block">
                                             {{ $lecture->lecture_title }}
-                                        </a>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="shrink-0 text-right">
-                                @if ($lecture->type === 'document' && $lecture->url)
-                                    @if (!empty($hasPurchased) || auth()->check())
-                                        <a href="{{ route('lecture.downloadDocument', $lecture->id) }}"
-                                            class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase border border-brand text-brand hover:bg-brand hover:text-black transition">
-                                            <i class="fas fa-download"></i>
-                                            Tải xuống
-                                        </a>
-                                    @else
-                                        <span class="text-xs text-slate-500">
-                                            Mua khóa học để tải
-                                        </span>
-                                    @endif
+                                @if ($lecture->type === 'document')
+                                    <span class="text-xs text-slate-500">
+                                        Document
+                                    </span>
                                 @elseif ($lecture->type === 'text')
                                     <span class="text-xs text-slate-500">
                                         Text

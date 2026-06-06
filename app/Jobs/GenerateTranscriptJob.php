@@ -47,8 +47,8 @@ class GenerateTranscriptJob implements ShouldQueue
         if ($isYoutube) {
             // Lấy trực tiếp từ YouTube
             $result = $youtubeTranscriptService->fetchTranscript($lecture);
-            $provider = 'youtube_captions';
-            $metaChunksCount = 1;
+            $provider = $result['meta']['provider'] ?? 'youtube_captions';
+            $metaChunksCount = $result['meta']['segments_count'] ?? 1;
         } else {
             // Chạy pipeline OpenAI hiện tại
             $result = $openAiTranscriptionService->transcribeLecture($lecture); //
@@ -80,7 +80,9 @@ class GenerateTranscriptJob implements ShouldQueue
 
         // Gọi Job xử lý Chunk & Embedding
         if (class_exists(\App\Jobs\ProcessAiDocumentJob::class)) {
-            \App\Jobs\ProcessAiDocumentJob::dispatch($document->id);
+            \App\Jobs\ProcessAiDocumentJob::dispatch($document->id)
+                ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
+                ->onQueue(config('services.youtube_transcript.document_queue', 'ai-documents'));
         } else {
             app(\App\Services\AiDocumentIndexService::class)->safeProcess($document);
         }
@@ -89,7 +91,9 @@ class GenerateTranscriptJob implements ShouldQueue
             documentId: $document->id,
             responsePayload: [
                 'provider' => $provider,
-                'model' => $isYoutube ? 'youtube_auto_caption' : config('services.openai_transcription.model', 'gpt-4o-mini-transcribe'),
+                'model' => $isYoutube
+                    ? ($result['meta']['model'] ?? 'youtube_auto_caption')
+                    : config('services.openai_transcription.model', 'gpt-4o-mini-transcribe'),
                 'segments_count' => $metaChunksCount,
                 'language' => $result['language'] ?? 'vi',
                 'meta' => $result['meta'] ?? [],

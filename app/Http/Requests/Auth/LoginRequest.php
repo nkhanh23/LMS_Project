@@ -41,6 +41,23 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
+        $user = \App\Models\User::where('email', $this->email)->first();
+        if ($user) {
+            $isAdminLogin = $this->input('login_type') === 'admin';
+
+            if ($user->isAdmin() && !$isAdminLogin) {
+                throw ValidationException::withMessages([
+                    'email' => 'Tài khoản quản trị không được phép đăng nhập tại giao diện này.',
+                ]);
+            }
+
+            if (!$user->isAdmin() && $isAdminLogin) {
+                throw ValidationException::withMessages([
+                    'email' => 'Tài khoản này không có quyền truy cập quản trị.',
+                ]);
+            }
+        }
+
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 

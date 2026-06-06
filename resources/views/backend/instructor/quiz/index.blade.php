@@ -79,13 +79,13 @@
                                 @foreach ($quizzes as $index => $lecture)
                                     <tr>
                                         <td>{{ $quizzes->firstItem() + $index }}</td>
-                                        <td>{{ $lecture->quiz->title ?? $lecture->lecture_title }}</td>
+                                        <td>{{ $lecture->quiz?->title ?? $lecture->lecture_title }}</td>
                                         <td>{{ $lecture->course->course_name }}</td>
                                         <td>{{ $lecture->section->section_title ?? '-' }}</td>
                                         <td>{{ $lecture->lecture_title }}</td>
-                                        <td>{{ $lecture->quiz->questions->count() ?? 0 }}</td>
+                                        <td>{{ $lecture->quiz?->questions?->count() ?? 0 }}</td>
                                         <td>
-                                            @if ($lecture->quiz->is_active ?? false)
+                                            @if ($lecture->quiz?->is_active ?? false)
                                                 <span class="badge bg-success">Hoạt động</span>
                                             @else
                                                 <span class="badge bg-secondary">Bản nháp</span>

@@ -1,5 +1,5 @@
 <div
-    class="course-tooltip hidden lg:group-hover:block fixed lg:absolute inset-0 lg:inset-auto lg:left-full lg:top-0 lg:pl-3 w-full lg:w-80 h-full lg:h-auto bg-black/80 lg:bg-transparent z-[9999] lg:z-20 flex items-start justify-center lg:block p-4 pt-20 lg:p-0"
+    class="course-tooltip hidden lg:group-hover:block fixed lg:absolute inset-0 lg:inset-auto lg:left-full lg:top-0 lg:pl-3 w-full lg:w-80 h-full lg:h-auto bg-black/80 lg:bg-transparent z-[9999] lg:z-20 flex items-start justify-center p-4 pt-20 lg:p-0"
     onclick="window.closeTooltipOverlay(this, event)">
     
     <!-- Close button for mobile - Moved outside inner content for maximum reliability -->

@@ -41,7 +41,7 @@
                                 <div class="mb-3">
                                     <label class="form-label">Tiêu đề Quiz</label>
                                     <input type="text" name="title" class="form-control"
-                                        value="{{ old('title', $lecture->quiz->title ?? $lecture->lecture_title) }}"
+                                        value="{{ old('title', $lecture->quiz?->title ?? $lecture->lecture_title) }}"
                                         placeholder="Nhập tiêu đề quiz">
                                     @error('title')
                                         <small class="text-danger">{{ $message }}</small>
@@ -50,7 +50,7 @@
 
                                 <div class="mb-3">
                                     <label class="form-label">Mô tả</label>
-                                    <textarea name="description" class="form-control" rows="3" placeholder="Nhập mô tả cho quiz">{{ old('description', $lecture->quiz->description ?? '') }}</textarea>
+                                    <textarea name="description" class="form-control" rows="3" placeholder="Nhập mô tả cho quiz">{{ old('description', $lecture->quiz?->description ?? '') }}</textarea>
                                     @error('description')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -60,7 +60,7 @@
                                     <div class="col-md-3">
                                         <label class="form-label">Thời gian làm bài (phút)</label>
                                         <input type="number" name="time_limit" class="form-control" min="1"
-                                            value="{{ old('time_limit', $lecture->quiz->time_limit ?? 15) }}">
+                                            value="{{ old('time_limit', $lecture->quiz?->time_limit ?? 15) }}">
                                         @error('time_limit')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -68,7 +68,7 @@
                                     <div class="col-md-3">
                                         <label class="form-label">Số câu đúng để đạt</label>
                                         <input type="number" name="passing_score" class="form-control" min="0"
-                                            value="{{ old('passing_score', $lecture->quiz->passing_score ?? 0) }}">
+                                            value="{{ old('passing_score', $lecture->quiz?->passing_score ?? 0) }}">
                                         @error('passing_score')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -76,7 +76,7 @@
                                     <div class="col-md-3">
                                         <label class="form-label">Số lần thử tối đa</label>
                                         <input type="number" name="max_attempts" class="form-control" min="1"
-                                            value="{{ old('max_attempts', $lecture->quiz->max_attempts ?? '') }}"
+                                            value="{{ old('max_attempts', $lecture->quiz?->max_attempts ?? '') }}"
                                             placeholder="Không giới hạn">
                                         @error('max_attempts')
                                             <small class="text-danger">{{ $message }}</small>
@@ -86,13 +86,13 @@
                                         <div class="form-check form-switch w-100">
                                             <input class="form-check-input" type="checkbox" name="shuffle_questions"
                                                 id="shuffle_questions" value="1"
-                                                {{ old('shuffle_questions', $lecture->quiz->shuffle_questions ?? false) ? 'checked' : '' }}>
+                                                {{ old('shuffle_questions', $lecture->quiz?->shuffle_questions ?? false) ? 'checked' : '' }}>
                                             <label class="form-check-label" for="shuffle_questions">Trộn câu hỏi</label>
                                         </div>
                                         <div class="form-check form-switch w-100">
                                             <input class="form-check-input" type="checkbox" name="show_result_immediately"
                                                 id="show_result_immediately" value="1"
-                                                {{ old('show_result_immediately', $lecture->quiz->show_result_immediately ?? true) ? 'checked' : '' }}>
+                                                {{ old('show_result_immediately', $lecture->quiz?->show_result_immediately ?? true) ? 'checked' : '' }}>
                                             <label class="form-check-label" for="show_result_immediately">Hiện kết quả</label>
                                         </div>
                                     </div>

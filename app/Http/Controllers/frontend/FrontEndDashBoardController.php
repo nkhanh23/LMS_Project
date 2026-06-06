@@ -155,6 +155,7 @@ class FrontEndDashBoardController extends Controller
     {
         $rating = $request->get('rating');
         $sort = $request->get('sort', 'relevant');
+        $keyword = trim($request->get('q', ''));
 
         // Nhận thêm tham số lọc từ URL
         $categoryId = $request->get('category');
@@ -168,8 +169,8 @@ class FrontEndDashBoardController extends Controller
             ->where('status', 1)
             ->select('id', 'instructor_id', 'category_id', 'course_name', 'course_name_slug', 'course_image', 'selling_price', 'discount_price', 'bestseller', 'description', 'created_at')
             ->with([
-                'category:id,name', 
-                'user:id,name', 
+                'category:id,name',
+                'user:id,name',
                 'sections:id,course_id',
                 'sections.lecture:id,section_id,video_duration'
             ])
@@ -179,6 +180,14 @@ class FrontEndDashBoardController extends Controller
             ->withCount(['reviews' => function ($q) {
                 $q->where('is_approved', true);
             }]);
+
+        // Lọc theo từ khóa tìm kiếm
+        if ($keyword !== '') {
+            $query->where(function ($q) use ($keyword) {
+                $q->where('course_name', 'like', '%' . $keyword . '%')
+                  ->orWhere('description', 'like', '%' . $keyword . '%');
+            });
+        }
 
         // Thêm logic lọc theo danh mục
         $query->when($categoryId, function ($q, $categoryId) {
@@ -204,8 +213,39 @@ class FrontEndDashBoardController extends Controller
 
         $courses = $query->paginate(10)->withQueryString();
 
-        // Truyền thêm biến $categories sang View
-        return view('frontend.pages.courses.index', compact('courses', 'categories'));
+        // Truyền thêm biến $categories và $keyword sang View
+        return view('frontend.pages.courses.index', compact('courses', 'categories', 'keyword'));
+    }
+
+    /**
+     * API endpoint: gợi ý tìm kiếm nhanh (autocomplete)
+     */
+    public function searchSuggestions(Request $request)
+    {
+        $keyword = trim($request->get('q', ''));
+        if (strlen($keyword) < 2) {
+            return response()->json([]);
+        }
+
+        $courses = Course::where('approval_status', 'published')
+            ->where('status', 1)
+            ->where('course_name', 'like', '%' . $keyword . '%')
+            ->select('id', 'course_name', 'course_name_slug', 'course_image', 'discount_price', 'instructor_id')
+            ->with(['user:id,name', 'category:id,name'])
+            ->limit(6)
+            ->get()
+            ->map(fn ($c) => [
+                'id'    => $c->id,
+                'name'  => $c->course_name,
+                'slug'  => $c->course_name_slug,
+                'image' => asset($c->course_image),
+                'price' => number_format($c->discount_price, 0, ',', '.') . ' ₫',
+                'instructor' => $c->user->name ?? '',
+                'category'   => $c->category->name ?? '',
+                'url'   => route('chi-tiet', $c->course_name_slug),
+            ]);
+
+        return response()->json($courses);
     }
 
     public function instructorProfile($id)

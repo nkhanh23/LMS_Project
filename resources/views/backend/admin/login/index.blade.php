@@ -53,6 +53,7 @@
                 <div class="p-8 flex flex-col gap-6">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+                        <input type="hidden" name="login_type" value="admin">
                         <!-- Operator ID Input -->
                         <div class="group">
                             <label

@@ -19,7 +19,7 @@
             </a>
         </li>
         @if (isApprovedUser())
-            <li class="{{ setSidebar(['instructor.course*', 'instructor.course-section*']) }}">
+            <li class="{{ setSidebar(['instructor.course*', 'instructor.course-section*', 'instructor.youtube-playlist-import*']) }}">
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="bx bx-category"></i>
                     </div>
@@ -29,6 +29,9 @@
                     <li class="{{ setSidebar(['instructor.course*', 'instructor.course-section']) }}">
                         <a href="{{ route('instructor.course.index') }}"><i class='bx bx-radio-circle'></i>Tất cả khóa
                             học</a>
+                    </li>
+                    <li class="{{ setSidebar(['instructor.youtube-playlist-import*']) }}">
+                        <a href="{{ route('instructor.youtube-playlist-import.create') }}"><i class='bx bx-radio-circle'></i>Import YouTube Playlist</a>
                     </li>
 
                 </ul>
@@ -124,3 +127,4 @@
     </ul>
     <!--end navigation-->
 </div>
+

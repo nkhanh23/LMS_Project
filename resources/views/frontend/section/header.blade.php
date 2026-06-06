@@ -101,12 +101,27 @@ $categories = getCategories();
                 </div>
             </div>
             <!-- Terminal Search -->
-            <div class="flex-1 bg-black/50 border-2 border-slate-700 p-2 flex items-center gap-2">
-                <span class="text-brand font-mono">&gt;</span>
-                <input
-                    class="bg-transparent border-none outline-none focus:ring-0 text-sm w-full placeholder:text-slate-500 text-text-primary"
-                    placeholder="Search for quests..." type="text" />
-                <div class="w-[2px] h-5 bg-brand cursor-blink border-r-2"></div>
+            <div class="flex-1 relative" id="header-search-wrapper">
+                <form action="{{ route('frontend.courses.index') }}" method="GET" id="header-search-form" autocomplete="off">
+                    <div class="bg-black/50 border-2 border-slate-700 focus-within:border-brand p-2 flex items-center gap-2 transition-colors">
+                        <span class="text-brand font-mono">&gt;</span>
+                        <input
+                            id="header-search-input"
+                            name="q"
+                            value="{{ request('q') }}"
+                            class="bg-transparent border-none outline-none focus:ring-0 text-sm w-full placeholder:text-slate-500 text-text-primary"
+                            placeholder="Tìm kiếm khóa học..." type="text"
+                            autocomplete="off"
+                        />
+                        <button type="submit" class="text-brand hover:text-white transition-colors px-1">
+                            <i class="fas fa-search text-sm"></i>
+                        </button>
+                    </div>
+                </form>
+                <!-- Autocomplete Dropdown -->
+                <div id="header-search-dropdown"
+                    class="hidden absolute top-full left-0 right-0 mt-1 bg-cyber-surface border-2 border-brand z-[999] pixel-shadow max-h-96 overflow-y-auto">
+                </div>
             </div>
         </div>
 

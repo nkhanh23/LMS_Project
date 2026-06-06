@@ -200,5 +200,33 @@
                 });
             });
         });
+
+        // Adjust tooltip position on hover for desktop (lg screens)
+        document.querySelectorAll('.course-card-wrap').forEach(function(card) {
+            var tooltip = card.querySelector('.course-tooltip');
+            if (!tooltip) return;
+
+            card.addEventListener('mouseenter', function() {
+                if (window.innerWidth >= 1024) {
+                    var cardRect = card.getBoundingClientRect();
+                    var tooltipWidth = 320; // Matches lg:w-80 (320px)
+                    var padding = 12;      // Matches lg:pl-3 (12px)
+
+                    if (cardRect.right + tooltipWidth + padding > window.innerWidth) {
+                        // Flip to left side
+                        tooltip.style.left = 'auto';
+                        tooltip.style.right = '100%';
+                        tooltip.style.paddingLeft = '0px';
+                        tooltip.style.paddingRight = '12px';
+                    } else {
+                        // Align to right side (default)
+                        tooltip.style.left = '100%';
+                        tooltip.style.right = 'auto';
+                        tooltip.style.paddingLeft = '12px';
+                        tooltip.style.paddingRight = '0px';
+                    }
+                }
+            });
+        });
     });
 </script>

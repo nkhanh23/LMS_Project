@@ -30,8 +30,11 @@ $(document).ready(function () {
                     $('#subcategory').empty(); // Clear previous options
                     $('#subcategory').append('<option value="" disabled selected>Chọn danh mục con</option>');
 
+                    var selectedSubcategory = $('#subcategory').data('selected');
+
                     $.each(data, function (key, value) {
-                        $('#subcategory').append('<option value="' + parseInt(value.id) + '">' + value.name + '</option>');
+                        var selected = String(selectedSubcategory) === String(value.id) ? ' selected' : '';
+                        $('#subcategory').append('<option value="' + parseInt(value.id) + '"' + selected + '>' + value.name + '</option>');
                     });
                 },
                 error: function () {
@@ -43,6 +46,10 @@ $(document).ready(function () {
             $('#subcategory').append('<option value="" disabled selected>Chọn danh mục con</option>');
         }
     });
+
+    if ($('#category').val()) {
+        $('#category').trigger('change');
+    }
 });
 
 /* Course goal */

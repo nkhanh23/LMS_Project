@@ -22,7 +22,7 @@
                                         <i class="fas fa-robot text-cyber-cyan text-xs"></i>
                                     </div>
                                     <h4 class="font-bold text-sm text-white truncate">
-                                        {{ $session->title ?: 'Cuộc trò chuyện #' . $session->id }}
+                                        {{ $session->lecture ? 'Chat bài học: ' . ($session->lecture->lecture_title ?? $session->lecture->title) : ($session->title ?: 'Cuộc trò chuyện #' . $session->id) }}
                                     </h4>
                                 </div>
 
