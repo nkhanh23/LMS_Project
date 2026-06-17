@@ -19,10 +19,12 @@ class AiRetrieverService
         ?int $lectureId,
         int $limit = 5
     ): array {
+        // lấy concept_id từ lecture hiện tại
         $lessonConceptIds = $lectureId
             ? $this->ontologyService->getLessonConceptIds($lectureId)
             : [];
 
+        // tìm kiếm vector trong bài giảng
         $lessonVectorChunks = $this->applyConceptBoost(
             chunks: $this->searchByVector(
                 question: $question,
@@ -33,6 +35,7 @@ class AiRetrieverService
             lessonConceptIds: $lessonConceptIds
         )->take($limit)->values();
 
+        // nếu có đủ 3 kết quả thì trả về
         if ($lessonVectorChunks->count() >= 3) {
             return $this->buildResult(
                 chunks: $lessonVectorChunks,
@@ -41,6 +44,7 @@ class AiRetrieverService
             );
         }
 
+        // tìm kiếm từ khóa trong bài giảng
         $lessonKeywordChunks = $this->applyConceptBoost(
             chunks: $this->searchByKeyword(
                 question: $question,
@@ -51,6 +55,7 @@ class AiRetrieverService
             lessonConceptIds: $lessonConceptIds
         );
 
+        // tìm kiếm vector trong khóa học
         $courseVectorChunks = $this->applyConceptBoost(
             chunks: $this->searchByVector(
                 question: $question,
@@ -61,6 +66,7 @@ class AiRetrieverService
             lessonConceptIds: $lessonConceptIds
         );
 
+        // gộp các kết quả tìm kiếm và sắp xếp theo điểm tương đồng
         $merged = $lessonVectorChunks
             ->concat($lessonKeywordChunks)
             ->concat($courseVectorChunks)
@@ -69,6 +75,7 @@ class AiRetrieverService
             ->take($limit)
             ->values();
 
+        // xác định scope
         $sourceScope = match (true) {
             $lectureId !== null && $merged->where('lecture_id', $lectureId)->isNotEmpty() && $merged->where('lecture_id', null)->isEmpty() => 'lesson',
             $lectureId !== null && $merged->where('lecture_id', $lectureId)->isNotEmpty() => 'lesson+course',
@@ -76,6 +83,7 @@ class AiRetrieverService
             default => 'none',
         };
 
+        // trả về kết quả
         return $this->buildResult(
             chunks: $merged,
             sourceScope: $sourceScope,
@@ -90,23 +98,32 @@ class AiRetrieverService
         int $limit
     ): Collection {
         try {
+            // nhúng câu hỏi thành vector
             $embedding = $this->embeddingService->embedQuery($question);
+            // chuyển sang dạng literal để so sánh với vector trong database
             $vectorLiteral = $this->vectorLiteral($embedding['values']);
 
+            // tìm kiếm các chunk có vector gần nhất với vector của câu hỏi
             $query = AiDocumentChunk::query()
+                // chọn các cột từ bảng ai_document_chunks
                 ->select('ai_document_chunks.*')
+                // tính điểm tương đồng cosine từ 0..1
                 ->selectRaw("1 - (embedding <=> ?::vector) AS relevance_score", [$vectorLiteral])
                 ->with(['document', 'document.concepts'])
                 ->where('course_id', $courseId)
                 ->whereNotNull('embedding');
 
+            // lọc theo lecture_id nếu có
             if ($lectureId !== null) {
                 $query->where('lecture_id', $lectureId);
             }
 
             return $query
+                // sắp xếp theo điểm tương đồng giảm dần
                 ->orderByDesc('relevance_score')
+                // giới hạn số lượng kết quả
                 ->limit($limit)
+                // lấy kết quả
                 ->get();
         } catch (\Throwable $e) {
             report($e);
@@ -129,12 +146,16 @@ class AiRetrieverService
 
         $like = '%' . str_replace(' ', '%', $safeQuestion) . '%';
 
+        // tìm kiếm theo từ khóa
         $query = AiDocumentChunk::query()
             ->select('ai_document_chunks.*')
+            // tính điểm tương đồng từ khóa từ 0..1
             ->selectRaw(
                 "(CASE WHEN ai_document_chunks.content ILIKE ? THEN 2 ELSE 0 END +
                 ts_rank(
+                    // chuyển nội dung sang dạng vector để tìm kiếm
                     to_tsvector('simple', coalesce(ai_document_chunks.content, '')),
+                    // tìm kiếm từ khóa trong nội dung văn bản
                     plainto_tsquery('simple', ?)
                 )) as relevance_score",
                 [$like, $safeQuestion]

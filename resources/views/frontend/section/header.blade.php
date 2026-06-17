@@ -20,18 +20,12 @@ $categories = getCategories();
             </div>
         @else
             <div class="flex items-center gap-4 ml-auto sm:ml-0">
-                @if (auth()->user()->role == 'user')
-                    <a href="{{ route('user.dashboard') }}"
-                        class="text-text-secondary hover:text-brand transition-colors"><i
-                            class="fas fa-sign-in-alt mr-1"></i>Trang chủ</a>
-                @endif
-                @if (auth()->user()->role == 'instructor')
-                    <a href="{{ route('instructor.dashboard') }}"
-                        class="text-text-secondary hover:text-brand transition-colors"><i
-                            class="fas fa-sign-in-alt mr-1"></i>Trang chủ</a>
-                @endif
                 @if (auth()->user()->role == 'admin')
                     <a href="{{ route('admin.dashboard') }}"
+                        class="text-text-secondary hover:text-brand transition-colors"><i
+                            class="fas fa-sign-in-alt mr-1"></i>Trang chủ</a>
+                @else
+                    <a href="{{ route(auth()->user()->preferredDashboardRoute()) }}"
                         class="text-text-secondary hover:text-brand transition-colors"><i
                             class="fas fa-sign-in-alt mr-1"></i>Trang chủ</a>
                 @endif
@@ -176,7 +170,7 @@ $categories = getCategories();
                 <div class="relative">
                     <i class="fas fa-shopping-cart text-lg hover:text-brand transition-colors"></i>
                     <span id="cart-count"
-                        class="absolute -top-2 -right-3 bg-brand text-black text-[9px] font-bold px-1.5 py-0.5 pixel-border">{{ getCartItems()->count() }}</span>
+                        class="absolute -top-2 -right-3 bg-brand text-black text-[9px] font-bold px-1.5 py-0.5 pixel-border">{{ getCartCount() }}</span>
                 </div>
                 <!-- Cart Dropdown -->
                 <div class="cart-dropdown absolute top-[100%] right-0 w-72 z-50">

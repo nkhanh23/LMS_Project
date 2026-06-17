@@ -8,7 +8,6 @@ class StripeRepository
 {
     public function handlePayment(array $data)
     {
-        // Khởi tạo Stripe với Secret Key
         $stripe = new StripeClient(config('stripe.stripe_sk'));
 
         // Chuẩn bị danh sách mặt hàng cho Stripe Checkout
@@ -45,15 +44,19 @@ class StripeRepository
             ];
         }
 
-        // Tạo một phiên Stripe Checkout
-        $session = $stripe->checkout->sessions->create([
-            'line_items' => $lineItems,
-            'mode' => 'payment',
-            'success_url' => route('success') . '?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => route('cancel'),
-            'customer_email' => $data['email'],
-        ]);
+        // Tạo một trang thanh toán Stripe Checkout
+        try {
+            $session = $stripe->checkout->sessions->create([
+                'line_items' => $lineItems,
+                'mode' => 'payment',
+                'success_url' => route('success') . '?session_id={CHECKOUT_SESSION_ID}',
+                'cancel_url' => route('cancel'),
+                'customer_email' => $data['email'],
+            ]);
 
-        return redirect($session->url);
+            return redirect($session->url);
+        } catch (\Exception $e) {
+            throw new \Exception('Lỗi Stripe: ' . $e->getMessage());
+        }
     }
 }

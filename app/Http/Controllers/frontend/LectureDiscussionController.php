@@ -32,6 +32,7 @@ class LectureDiscussionController extends Controller
 
     public function store(LectureDiscussionRequest $request)
     {
+        //lưu bình luận vào database và trả về dữ liệu
         $result = $this->discussionService->store(
             $request->validated(),
             Auth::id()

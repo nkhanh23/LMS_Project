@@ -19,6 +19,7 @@ use App\Http\Controllers\backend\AiDocumentController;
 use App\Http\Controllers\backend\BackendOrderController;
 use App\Http\Controllers\backend\CartController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\ChatController;
 use App\Http\Controllers\backend\CouponController;
 use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\CourseSectionController;
@@ -115,6 +116,12 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
 
     /* Control User */
     //Danh sách user
+    Route::get('/user-account-deletion-requests', [AdminUserController::class, 'accountDeletionRequests'])
+        ->name('user.account-deletion.index');
+    Route::post('/user-account-deletion-requests/{userSetting}/approve', [AdminUserController::class, 'approveAccountDeletion'])
+        ->name('user.account-deletion.approve');
+    Route::post('/user-account-deletion-requests/{userSetting}/reject', [AdminUserController::class, 'rejectAccountDeletion'])
+        ->name('user.account-deletion.reject');
     Route::resource('user', AdminUserController::class);
     //Cập nhật trạng thái
     Route::post('/user-status', [AdminUserController::class, 'updateStatus'])->name('user.status');
@@ -257,6 +264,7 @@ Route::get('/instructor/login', [InstructorController::class, 'login'])->name('i
 Route::middleware('auth', 'verified', 'role:instructor', 'instructor.approved')->prefix('instructor')->name('instructor.')->group(function () {
     //Dashboard
     Route::get('/dashboard', [InstructorController::class, 'dashboard'])->name('dashboard');
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     //Logout
     Route::post('/logout', [InstructorController::class, 'destroy'])->name('logout');
 
@@ -383,17 +391,23 @@ Route::middleware('auth')->group(function () {
 
 
 /*  USER ROUTE LIST  */
-Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.')->group(function () {
+Route::middleware('auth', 'verified', 'role:user,instructor')->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/courses', [UserController::class, 'myCourses'])->name('courses');
     Route::post('/logout', [UserController::class, 'destroy'])->name('logout');
 
     /*   USER PROFILE   */
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
     Route::get('/profile/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/setting', [UserProfileController::class, 'setting'])->name('setting');
     Route::post('/profile/store', [UserProfileController::class, 'store'])->name('profile.store');
     Route::post('/password/setting', [UserProfileController::class, 'passwordSetting'])->name('passwordSetting');
     Route::post('/email/setting', [UserProfileController::class, 'emailSetting'])->name('emailSetting');
+    Route::post('/setting/notifications', [UserProfileController::class, 'updateNotificationSettings'])
+        ->name('setting.notifications.update');
+    Route::post('/setting/account-deletion', [UserProfileController::class, 'requestAccountDeletion'])
+        ->name('setting.account-deletion.request');
 
     /*  USER WISHLIST  */
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
@@ -402,9 +416,11 @@ Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.'
 
     /*  USER BECOME INSTRUCTOR  */
     Route::get('/become-instructor', [InstructorRequestController::class, 'create'])
+        ->middleware('role:user')
         ->name('become-instructor.create');
 
     Route::post('/become-instructor', [InstructorRequestController::class, 'store'])
+        ->middleware('role:user')
         ->name('become-instructor.store');
 
     /*  USER LEARNING  */
@@ -419,6 +435,9 @@ Route::middleware('auth', 'verified', 'role:user')->prefix('user')->name('user.'
 
     Route::get('/quiz-history/{attempt}', [UserLearningController::class, 'quizAttemptDetail'])
         ->name('quiz-history.show');
+
+    Route::get('/certificates', [UserLearningController::class, 'certificates'])
+        ->name('certificates');
 
     Route::get('/ai-tutor/history', [UserLearningController::class, 'aiTutorHistory'])
         ->name('ai-tutor.history');
@@ -532,9 +551,9 @@ Route::middleware('auth')->group(function () {
     });
 
     /*  PRIVATE CHAT ROUTES  */
-    Route::get('/chat', [\App\Http\Controllers\backend\ChatController::class, 'index'])->name('chat.index');
-    Route::get('/chat/conversation/{instructorId}', [\App\Http\Controllers\backend\ChatController::class, 'getConversation'])->name('chat.getConversation');
-    Route::post('/chat/send/{conversationId}', [\App\Http\Controllers\backend\ChatController::class, 'sendMessage'])->name('chat.sendMessage');
+    Route::get('/chat', [ChatController::class, 'redirectToRoleChat'])->name('chat.index');
+    Route::get('/chat/conversation/{instructorId}', [ChatController::class, 'getConversation'])->name('chat.getConversation');
+    Route::post('/chat/send/{conversationId}', [ChatController::class, 'sendMessage'])->name('chat.sendMessage');
 });
 
 /*  LEARNING ROUTES  */

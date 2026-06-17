@@ -4,10 +4,12 @@ namespace App\Services;
 
 use App\Models\CourseGoal;
 use App\Models\User;
+use App\Notifications\NewLecturePublishedNotification;
 use App\Repositories\LectureRepository;
 use App\Traits\FileUploadTrait;
 use Aws\S3\S3Client;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -58,9 +60,9 @@ class LectureService
                 return;
             }
 
-            \Illuminate\Support\Facades\Notification::send(
+            Notification::send(
                 $students,
-                new \App\Notifications\NewLecturePublishedNotification($lecture, $course)
+                new NewLecturePublishedNotification($lecture, $course)
             );
         } catch (\Exception $e) {
             Log::error('Lỗi gửi thông báo bài học mới: ' . $e->getMessage());
@@ -72,10 +74,10 @@ class LectureService
      */
     public function generatePresignedUrl(string $extension): array
     {
-        //Tạo tên file ngẫu nhiên (UUID) để tránh trùng lặp trên R2
+        //tạo tên file ngẫu nhiên (UUID) để tránh trùng lặp trên R2
         $filename = 'course_videos/' . Str::uuid() . '.' . $extension;
 
-        // Tạo S3 Client trực tiếp từ cấu hình r2
+        //tạo S3 Client trực tiếp từ cấu hình r2
         $client = new S3Client([
             'region'  => config('filesystems.disks.r2.region', 'auto'),
             'version' => 'latest',
@@ -87,18 +89,18 @@ class LectureService
             ],
         ]);
 
-        // Tạo một "Mệnh lệnh" (Command) dặn R2 rằng: Sắp có người tải một vật thể (PutObject) lên.
-        // Vật thể đó sẽ nằm ở cái 'Bucket' này, mang tên là 'Key' này, và có định dạng video.
+        //tạo command dặn r2 rằng: sắp có người tải một vật thể lên.
+        //vật thể đó sẽ nằm ở cái bucket này, mang tên là key này, và có định dạng video.
         $command = $client->getCommand('PutObject', [
             'Bucket' => config('filesystems.disks.r2.bucket'),
             'Key'    => $filename,
             'ContentType' => 'video/' . $extension,
         ]);
 
-        // Tạo URL sống trong 30 phút
+        //tạo url sống trong 30 phút
         $presignedRequest = $client->createPresignedRequest($command, '+30 minutes');
 
-        // Trả về mảng dữ liệu cho Controller
+        //trả về mảng dữ liệu cho controller
         return [
             'upload_url' => (string) $presignedRequest->getUri(),
             'file_key'   => $filename

@@ -80,79 +80,7 @@
             </div>
         </div>
 
-        <!-- 2. API Quotas -->
-        <h6 class="mb-3 mt-4 text-uppercase">2. Mức sử dụng API AI (Quota Tháng)</h6>
-        <div class="row row-cols-1 row-cols-lg-3">
-            <!-- Gemini Quota -->
-            <div class="col">
-                <div class="card radius-10">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <p class="mb-1 font-weight-bold">Google Gemini API</p>
-                                <h4 class="mb-0">{{ number_format($healthData['api_usage']['gemini']['used']) }} <small
-                                        class="font-13 text-secondary">/
-                                        {{ number_format($healthData['api_usage']['gemini']['limit']) }} tokens</small></h4>
-                            </div>
-                            <div class="font-35 text-primary"><i class='bx bx-brain'></i></div>
-                        </div>
-                        <div class="progress mt-3" style="height: 6px;">
-                            <div class="progress-bar bg-primary" role="progressbar"
-                                style="width: {{ $healthData['api_usage']['gemini']['percent'] }}%"></div>
-                        </div>
-                        <p class="mb-0 mt-2 font-13 text-secondary">Đã sử dụng:
-                            {{ $healthData['api_usage']['gemini']['percent'] }}%</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- OpenAI Quota -->
-            <div class="col">
-                <div class="card radius-10">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <p class="mb-1 font-weight-bold">OpenAI API</p>
-                                <h4 class="mb-0">{{ number_format($healthData['api_usage']['openai']['used']) }} <small
-                                        class="font-13 text-secondary">/
-                                        {{ number_format($healthData['api_usage']['openai']['limit']) }} tokens</small>
-                                </h4>
-                            </div>
-                            <div class="font-35 text-success"><i class='bx bx-bot'></i></div>
-                        </div>
-                        <div class="progress mt-3" style="height: 6px;">
-                            <div class="progress-bar bg-success" role="progressbar"
-                                style="width: {{ $healthData['api_usage']['openai']['percent'] }}%"></div>
-                        </div>
-                        <p class="mb-0 mt-2 font-13 text-secondary">Đã sử dụng:
-                            {{ $healthData['api_usage']['openai']['percent'] }}%</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Whisper/Whisk Quota -->
-            <div class="col">
-                <div class="card radius-10">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <p class="mb-1 font-weight-bold">Whisper/Whisk Audio</p>
-                                <h4 class="mb-0">{{ number_format($healthData['api_usage']['whisper']['used']) }} <small
-                                        class="font-13 text-secondary">/
-                                        {{ number_format($healthData['api_usage']['whisper']['limit']) }} phút</small></h4>
-                            </div>
-                            <div class="font-35 text-danger"><i class='bx bx-headphone'></i></div>
-                        </div>
-                        <div class="progress mt-3" style="height: 6px;">
-                            <div class="progress-bar bg-danger" role="progressbar"
-                                style="width: {{ $healthData['api_usage']['whisper']['percent'] }}%"></div>
-                        </div>
-                        <p class="mb-0 mt-2 font-13 text-secondary">Đã sử dụng:
-                            {{ $healthData['api_usage']['whisper']['percent'] }}%</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- 3. Failed Jobs Log -->
         @if (count($healthData['queue']['recent_failed']) > 0)

@@ -353,9 +353,17 @@
                     <h3 class="font-pixel text-sm text-brand mb-3">INSTRUCTOR</h3>
                     <p class="text-text-secondary text-sm mb-6">Share your expertise. Create stacks, mentor devs, and
                         earn as you teach.</p>
-                    <a href="{{ route('user.become-instructor.create') }}"
-                        class="inline-block bg-brand text-black px-6 py-2 text-xs font-bold uppercase border border-black">Start
-                        Teaching</a>
+                    @auth
+                        @if (auth()->user()->role === 'user')
+                            <a href="{{ route('user.become-instructor.create') }}"
+                                class="inline-block bg-brand text-black px-6 py-2 text-xs font-bold uppercase border border-black">Start
+                                Teaching</a>
+                        @endif
+                    @else
+                        <a href="{{ route('user.become-instructor.create') }}"
+                            class="inline-block bg-brand text-black px-6 py-2 text-xs font-bold uppercase border border-black">Start
+                            Teaching</a>
+                    @endauth
                 </div>
                 <div
                     class="bg-cyber-surface border-2 border-black pixel-shadow p-8 text-center pixel-button-hover fade-up">

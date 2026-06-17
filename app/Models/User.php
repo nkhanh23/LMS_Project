@@ -16,15 +16,8 @@ use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    //Tất cả các cột đều được bảo vệ
     protected $guarded = [];
 
     //Check role
@@ -43,6 +36,33 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->role === 'user';
     }
 
+    public function hasLearnerAccess(): bool
+    {
+        if ($this->isAdmin()) {
+            return false;
+        }
+
+        if ($this->isUser()) {
+            return true;
+        }
+
+        return $this->enrollments()->where('status', 'active')->exists()
+            || $this->orders()->where('status', 'completed')->exists();
+    }
+
+    public function preferredDashboardRoute(): string
+    {
+        if ($this->isAdmin()) {
+            return 'admin.dashboard';
+        }
+
+        if ($this->isInstructor() && ! $this->hasLearnerAccess()) {
+            return 'instructor.dashboard';
+        }
+
+        return 'user.dashboard';
+    }
+
     //Review
 
     public function courseReviews()
@@ -55,12 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
 
-    /**
-     * Check if user has access to a course (admin, instructor, or purchased)
-     *
-     * @param Course $course
-     * @return bool
-     */
+    // kiểm tra user có quyền truy cập vào khóa học hay không
     public function hasAccessToCourse(Course $course)
     {
         if ($this->isAdmin()) {
@@ -89,18 +104,14 @@ class User extends Authenticatable implements MustVerifyEmail
             ->exists();
     }
 
-    /**
-     * Check if user has access to a quiz
-     *
-     * @param Quiz $quiz
-     * @return bool
-     */
+    // kiểm tra user có quyền truy cập vào quiz hay không
     public function hasAccessToQuiz(Quiz $quiz)
     {
         // Quizzes are always linked to a course
         return $this->hasAccessToCourse($quiz->course);
     }
 
+    // kiểm tra user có phải là giảng viên đã được phê duyệt hay không
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -111,11 +122,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-    /**
-     * Check if user is approved instructor
-     *
-     * @return bool
-     */
+    // Kiểm tra user có phải là giảng viên đã được phê duyệt hay không
     public function isApprovedInstructor(): bool
     {
         return $this->role === 'instructor'
@@ -176,15 +183,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(CourseProgress::class)->where('status', 'active');
     }
 
+    public function setting()
+    {
+        return $this->hasOne(UserSetting::class);
+    }
+
     // Instructor Risk Score
     public function riskScore()
     {
         return $this->hasOne(InstructorRiskScore::class, 'instructor_id');
     }
 
-    /**
-     * Get Risk Level Badge Information
-     */
+    // Lấy thông tin Risk Level Badge
     public function getRiskLevelAttribute()
     {
         $score = $this->riskScore->risk_score ?? 0;

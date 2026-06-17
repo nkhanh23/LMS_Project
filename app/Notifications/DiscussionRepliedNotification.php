@@ -72,7 +72,7 @@ class DiscussionRepliedNotification extends Notification implements ShouldQueue
             ->subject("💬 Có phản hồi mới trong thảo luận của bạn")
             ->greeting("Xin chào {$notifiable->name}!")
             ->line("**{$this->replier->name}** đã phản hồi thảo luận của bạn trong bài học:")
-            ->line("📖 **{$this->lecture->lecture_title}**")
+            ->line("**{$this->lecture->lecture_title}**")
             ->line("Nội dung: \"{$this->truncate($this->reply->content, 100)}\"")
             ->action('Xem phản hồi', $url)
             ->line('Hãy tiếp tục trao đổi để hiểu sâu hơn!');

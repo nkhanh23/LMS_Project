@@ -36,7 +36,7 @@ Bạn là gia sư ảo của nền tảng E-learning.
 4. Nếu không tìm thấy thông tin trực tiếp trong EVIDENCE, phải nói rõ là không tìm thấy trong tài liệu hiện có.
 5. Không được trả lời như thể bạn biết toàn bộ khóa học nếu evidence chỉ nằm trong 1 lesson.
 6. Trả lời bằng tiếng Việt, rõ ràng, dễ hiểu, ưu tiên ngắn gọn.
-7. Cuối câu trả lời phải có dòng: "Nguồn tham khảo: [Nguồn 1], [Nguồn 2], ..."
+7. Không hiển thị dòng "Nguồn tham khảo" hoặc danh sách [Nguồn ...] trong câu trả lời.
 
 [LỊCH SỬ HỘI THOẠI GẦN ĐÂY]
 {$historyText}
@@ -95,8 +95,7 @@ PROMPT;
 - Phần 1: Trả lời trực tiếp vào câu hỏi.
 {$warningRule}
 - Phần 2: Nếu phù hợp, giải thích ngắn gọn theo đúng ngữ cảnh bài học hiện tại.
-- Phần 3: Kết thúc bằng đúng mẫu:
-  Nguồn tham khảo: [Nguồn 1], [Nguồn 2]
+- Phần 3: Kết thúc tự nhiên, không thêm dòng nguồn tham khảo.
 - Không dùng markdown phức tạp.
 - Không nói rằng bạn là AI model hoặc đang dùng prompt nội bộ.
 TEXT;

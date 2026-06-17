@@ -265,10 +265,10 @@
 
                                     <div class="flex items-center gap-2 text-[10px] sm:text-[11px] text-text-secondary flex-wrap border-t border-black/10 pt-2">
                                         @php
-                                            $total_minutes = $course->sections->flatMap->lecture->sum('video_duration');
+                                            $total_minutes = (float) ($course->lectures_duration_sum ?? 0);
                                             $hours = floor($total_minutes / 60);
                                             $minutes = floor($total_minutes % 60);
-                                            $lecture_count = $course->sections->flatMap->lecture->count();
+                                            $lecture_count = (int) ($course->lectures_count ?? 0);
                                         @endphp
                                         <span>
                                             {{ $hours > 0 ? $hours . ' giờ' : '' }} {{ $minutes }} phút

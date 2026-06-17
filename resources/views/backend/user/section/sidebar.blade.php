@@ -56,7 +56,7 @@
             <span>AI Tutor</span>
         </a>
         <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
-            href="#">
+            href="{{ route('user.certificates') }}">
             <i class="fas fa-certificate text-brand"></i>
             <span>Chứng chỉ</span>
         </a>
@@ -66,12 +66,19 @@
             <span>Lịch sử thanh toán</span>
         </a>
         <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
-            href="{{ route('chat.index') }}">
+            href="{{ route('user.chat.index') }}">
             <i class="fas fa-comment-dots text-cyber-cyan"></i>
             <span>Tin nhắn</span>
         </a>
+        @if (auth()->check() && auth()->user()->isApprovedInstructor())
+            <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
+                href="{{ route('instructor.dashboard') }}">
+                <i class="fas fa-chalkboard-teacher text-brand"></i>
+                <span>Khu giảng viên</span>
+            </a>
+        @endif
         <a class="flex items-center gap-3 px-4 py-3 border-2 border-transparent hover:border-black hover:bg-white/10 transition-colors font-bold pixel-text text-sm"
-            href="#">
+            href="{{ route('user.setting') }}">
             <i class="fas fa-cog text-text-secondary"></i>
             <span>Cài đặt</span>
         </a>

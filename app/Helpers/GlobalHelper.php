@@ -25,9 +25,11 @@ if (!function_exists('isApprovedUser')) {
 if (!function_exists('getCategories')) {
     function getCategories()
     {
-        return Category::select('id', 'name', 'slug', 'image')->with(['subCategory' => function ($query) {
-            $query->select('id', 'category_id', 'name', 'slug');
-        }])->orderBy('name', 'asc')->get();
+        return \Illuminate\Support\Facades\Cache::remember('global_categories', now()->addHours(24), function () {
+            return Category::select('id', 'name', 'slug', 'image')->with(['subCategory' => function ($query) {
+                $query->select('id', 'category_id', 'name', 'slug');
+            }])->orderBy('name', 'asc')->get();
+        });
     }
 }
 
@@ -81,6 +83,18 @@ if (!function_exists('getCartItems')) {
     }
 }
 
+//get cart count
+if (!function_exists('getCartCount')) {
+    function getCartCount()
+    {
+        $guestToken = request()->cookie('guest_token');
+        if ($guestToken) {
+            return \App\Models\Cart::where('guest_token', $guestToken)->count();
+        }
+        return 0;
+    }
+}
+
 //global auth check
 function auth_check_json()
 {
@@ -96,7 +110,8 @@ function auth_check_json()
 function getVideoUrl($type, $url)
 {
     if ($type === 'r2_video') {
-        return Storage::disk('r2')->url($url);
+        // Sinh link bảo mật có chữ ký (Presigned URL) hết hạn sau 15 phút
+        return Storage::disk('r2')->temporaryUrl($url, now()->addMinutes(15));
     }
 
     if (filter_var($url, FILTER_VALIDATE_URL)) {

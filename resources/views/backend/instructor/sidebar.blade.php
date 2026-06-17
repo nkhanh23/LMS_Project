@@ -19,7 +19,7 @@
             </a>
         </li>
         @if (isApprovedUser())
-            <li class="{{ setSidebar(['instructor.course*', 'instructor.course-section*', 'instructor.youtube-playlist-import*']) }}">
+            <li class="{{ setSidebar(['instructor.course*', 'instructor.course-section*']) }}">
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="bx bx-category"></i>
                     </div>
@@ -30,10 +30,6 @@
                         <a href="{{ route('instructor.course.index') }}"><i class='bx bx-radio-circle'></i>Tất cả khóa
                             học</a>
                     </li>
-                    <li class="{{ setSidebar(['instructor.youtube-playlist-import*']) }}">
-                        <a href="{{ route('instructor.youtube-playlist-import.create') }}"><i class='bx bx-radio-circle'></i>Import YouTube Playlist</a>
-                    </li>
-
                 </ul>
             </li>
 
@@ -114,8 +110,8 @@
                 </ul>
             </li>
 
-            <li class="{{ setSidebar(['chat.index']) }}">
-                <a href="{{ route('chat.index') }}">
+            <li class="{{ setSidebar(['instructor.chat.index']) }}">
+                <a href="{{ route('instructor.chat.index') }}">
                     <div class="parent-icon"><i class='bx bx-message-square-detail'></i>
                     </div>
                     <div class="menu-title">Tin nhắn</div>

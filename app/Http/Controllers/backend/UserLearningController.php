@@ -63,6 +63,26 @@ class UserLearningController extends Controller
         return view('backend.user.quiz-history.index', compact('attempts'));
     }
 
+    public function certificates()
+    {
+        $enrollments = Enrollment::with([
+            'course.instructor',
+            'courseProgress',
+        ])
+            ->where('user_id', Auth::id())
+            ->where('status', 'active')
+            ->whereHas('courseProgress', function ($query) {
+                $query->where('completion_percent', '>=', 100);
+            })
+            ->whereHas('course', function ($query) {
+                $query->whereIn('certificate', ['yes', 'Có', 'co']);
+            })
+            ->latest('completed_at')
+            ->paginate(9);
+
+        return view('backend.user.certificates.index', compact('enrollments'));
+    }
+
     public function quizAttemptDetail(QuizAttempt $attempt)
     {
         abort_unless($attempt->user_id === Auth::id(), 403);

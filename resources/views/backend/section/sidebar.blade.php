@@ -70,6 +70,9 @@
                     <a href="{{ route('admin.user.active') }}"><i class='bx bx-radio-circle'></i>Đang hoạt
                         động</a>
                 </li>
+                <li class="{{ setSidebar(['admin.user.account-deletion*']) }}">
+                    <a href="{{ route('admin.user.account-deletion.index') }}"><i class='bx bx-radio-circle'></i>Yêu cầu xóa tài khoản</a>
+                </li>
             </ul>
         </li>
 

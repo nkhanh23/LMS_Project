@@ -101,7 +101,7 @@ class AiChatOrchestratorService
                 'max_output_tokens' => 900,
             ]);
 
-            $answerText = trim((string) ($answerPayload['answer'] ?? ''));
+            $answerText = $this->stripCitationSummaryLine(trim((string) ($answerPayload['answer'] ?? '')));
 
             if ($evidenceStrength === 'weak') {
                 $answerText = $this->prependWeakEvidenceNotice($answerText);
@@ -188,6 +188,16 @@ class AiChatOrchestratorService
         }
 
         return $notice . "\n\n" . $answer;
+    }
+
+    private function stripCitationSummaryLine(string $answer): string
+    {
+        $patterns = [
+            '/^\s*[*_]*\s*Ngu.n tham kh.o\s*[*_]*\s*:\s*(?:\[Ngu.n\s+\d+\]\s*,?\s*)+[.,;:]*\s*$/imu',
+            '/^\s*[*_]*\s*(?:Sources?|References?)\s*[*_]*\s*:\s*(?:\[[^\]\r\n]*\d+[^\]\r\n]*\]\s*,?\s*)+[.,;:]*\s*$/imu',
+        ];
+
+        return trim(preg_replace($patterns, '', $answer) ?? $answer);
     }
 
     protected function storeCitations(int $messageId, Collection $chunks): void

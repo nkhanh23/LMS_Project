@@ -34,7 +34,7 @@ class FraudRiskAlertNotification extends Notification implements ShouldQueue
             'type' => 'fraud_risk_alert',
             'icon' => 'fas fa-exclamation-triangle',
             'icon_color' => 'red-500',
-            'title' => '⚠️ Cảnh báo rủi ro!',
+            'title' => 'Cảnh báo rủi ro!',
             'body' => "CẢNH BÁO: Giảng viên {$this->instructor->name} có chỉ số rủi ro tăng vọt lên {$this->riskScore} do phát hiện hành vi nghi vấn.",
             'url' => route('admin.instructor-requests.index'),
             'instructor_id' => $this->instructor->id,
@@ -45,11 +45,11 @@ class FraudRiskAlertNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject("🚨 [CẢNH BÁO] Giảng viên {$this->instructor->name} - Rủi ro cao ({$this->riskScore} điểm)")
+            ->subject("[CẢNH BÁO] Giảng viên {$this->instructor->name} - Rủi ro cao ({$this->riskScore} điểm)")
             ->greeting("Cảnh báo Admin!")
             ->line("Hệ thống phát hiện giảng viên có chỉ số rủi ro bất thường:")
-            ->line("👤 **Giảng viên:** {$this->instructor->name} ({$this->instructor->email})")
-            ->line("📊 **Chỉ số rủi ro:** {$this->riskScore} điểm")
+            ->line("**Giảng viên:** {$this->instructor->name} ({$this->instructor->email})")
+            ->line("**Chỉ số rủi ro:** {$this->riskScore} điểm")
             ->line("Vui lòng kiểm tra ngay để đảm bảo an toàn nền tảng.")
             ->action('Xem chi tiết giảng viên', route('admin.instructor-requests.index'))
             ->line('Thông báo này được gửi tự động từ hệ thống StackLearn.');

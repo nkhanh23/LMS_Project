@@ -7,7 +7,6 @@ use App\Http\Requests\ApplyCoupontRequest;
 use App\Models\Cart;
 use App\Services\CartService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
@@ -34,16 +33,13 @@ class CartController extends Controller
 
     public function cartAll(Request $request)
     {
-        $cart = $this->cartService->viewCart($request);
-        $guest_token = $request->cookie('guest_token') ?? Str::uuid();
-        $cartItems = Cart::with('course')->where('guest_token', $guest_token)->get();
-        // tính tổng tiền
-        $subTotal = $cartItems->sum(function ($cartItems) {
-            $price = $cartItems->course->discount_price ?? $cartItems->course->selling_price;
-            return $cartItems->quantity * ($price ?? 0);
-        });
+        $cartItems = $this->cartService->viewCart($request);
+        $subTotal = $this->calculateSubtotal($cartItems);
 
-        $html = view('frontend.pages.home.partials.cart', compact('cart', 'subTotal'))->render();
+        $html = view('frontend.pages.home.partials.cart', [
+            'cart' => $cartItems,
+            'subTotal' => $subTotal,
+        ])->render();
         return response()->json([
             'status' => 'success',
             'html' => $html,
@@ -53,23 +49,25 @@ class CartController extends Controller
 
     public function fetchCart(Request $request)
     {
-        // sử dụng ajax để lấy cart
-        $cart = $this->cartService->viewCart($request);
-        // lấy guest token
-        $guest_token = $request->cookie('guest_token') ?? Str::uuid();
-        $cartItems = Cart::with('course')->where('guest_token', $guest_token)->get();
+        $cartItems = $this->cartService->viewCart($request);
+        $subTotal = $this->calculateSubtotal($cartItems);
 
-        // tính tổng tiền
-        $subTotal = $cartItems->sum(function ($cartItems) {
-            $price = $cartItems->course->discount_price ?? $cartItems->course->selling_price;
-            return $cartItems->quantity * ($price ?? 0);
-        });
-
-        $html = view('frontend.pages.cart.partial.main', compact('cart', 'subTotal'))->render();
+        $html = view('frontend.pages.cart.partial.main', [
+            'cart' => $cartItems,
+            'subTotal' => $subTotal,
+        ])->render();
         return response()->json([
             'status' => 'success',
             'html' => $html,
         ]);
+    }
+
+    private function calculateSubtotal($cartItems): int|float
+    {
+        return $cartItems->sum(function ($item) {
+            $price = $item->course->discount_price ?? $item->course->selling_price;
+            return $item->quantity * ($price ?? 0);
+        });
     }
 
     public function removeCart(Request $request)

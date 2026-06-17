@@ -12,7 +12,17 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['"Space Grotesk"', 'sans-serif', 'Figtree', ...defaultTheme.fontFamily.sans],
+                pixel: ['"Press Start 2P"', 'cursive'],
+                mono: ['"VT323"', 'monospace'],
+            },
+            colors: {
+                brand: '#A6E22E',
+                'cyber-dark': '#1E1E2E',
+                'cyber-surface': '#2A2A3C',
+                'cyber-cyan': '#66D9EF',
+                'text-primary': '#F8F8F2',
+                'text-secondary': '#A0A0B0',
             },
         },
     },

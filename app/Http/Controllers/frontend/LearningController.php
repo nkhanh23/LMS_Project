@@ -67,6 +67,10 @@ class LearningController extends Controller
             return redirect()->route('course.play', $slug);
         }
 
+        if ($currentLecture->quiz && $currentLecture->quiz->shuffle_questions) {
+            $currentLecture->quiz->setRelation('questions', $currentLecture->quiz->questions->shuffle());
+        }
+
         if (!$this->learningProgressService->isLectureUnlocked($course, $enrollment, $currentLecture)) {
             return redirect()->route('course.play', $slug)
                 ->with('error', 'Bạn cần hoàn thành bài trước đó để mở bài này.');
@@ -130,7 +134,11 @@ class LearningController extends Controller
 
     public function getLectureData(CourseLecture $lecture)
     {
-        $lecture->load(['course', 'quiz']);
+        $lecture->load(['course', 'quiz.questions.options']);
+
+        if ($lecture->quiz && $lecture->quiz->shuffle_questions) {
+            $lecture->quiz->setRelation('questions', $lecture->quiz->questions->shuffle());
+        }
 
         $discussions = LectureDiscussion::with(['user', 'replies.user', 'replies'])
             ->where('lecture_id', $lecture->id)

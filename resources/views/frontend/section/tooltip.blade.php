@@ -79,14 +79,7 @@
             </button>
 
             @php
-                if (auth()->check()) {
-                    $user_id = auth()->user()->id;
-                    $isWishlisted = \App\Models\Wishlist::where('user_id', $user_id)
-                        ->where('course_id', $course->id)
-                        ->first();
-                } else {
-                    $isWishlisted = null;
-                }
+                $isWishlisted = isset($wishlistCourseIds) && $wishlistCourseIds->has($course->id);
             @endphp
 
             <div class="wishlist-icon w-10 h-10 flex items-center justify-center border border-black bg-cyber-surface cursor-pointer text-red-500"

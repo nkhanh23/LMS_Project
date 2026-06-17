@@ -59,30 +59,30 @@
                     </div>
                     <!-- Menu Items -->
                     <div class="py-1">
-                        <a href="#"
+                        <a href="{{ route('user.my-courses') }}"
                             class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors text-sm">
                             <i class="fas fa-play-circle text-cyber-cyan w-4 text-center"></i>
                             <span>Khóa học của tôi</span>
                         </a>
-                        <a href="#"
+                        <a href="{{ route('cart') }}"
                             class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors text-sm">
                             <i class="fas fa-shopping-basket text-yellow-400 w-4 text-center"></i>
                             <span>Giỏ hàng</span>
                         </a>
-                        <a href="#"
+                        <a href="{{ route('user.wishlist.index') }}"
                             class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors text-sm">
                             <i class="fas fa-heart text-pink-400 w-4 text-center"></i>
                             <span>Danh sách yêu thích</span>
                         </a>
                         <div class="border-t border-black/30 my-1"></div>
-                        <a href="#"
+                        <a href="{{ route('user.setting') }}"
                             class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors text-sm">
                             <i class="fas fa-bell text-brand w-4 text-center"></i>
                             <span>Thông báo</span>
                             <span
                                 class="ml-auto bg-cyber-cyan/20 text-cyber-cyan text-[10px] px-1.5 py-0.5 font-bold border border-cyber-cyan/30">9+</span>
                         </a>
-                        <a href="#"
+                        <a href="{{ route('user.chat.index') }}"
                             class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors text-sm">
                             <i class="fas fa-envelope text-cyber-cyan w-4 text-center"></i>
                             <span>Tin nhắn</span>

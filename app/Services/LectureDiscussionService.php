@@ -6,7 +6,9 @@ use App\Models\Course;
 use App\Models\CourseLecture;
 use App\Models\LectureDiscussion;
 use App\Models\Order;
+use App\Notifications\DiscussionRepliedNotification;
 use App\Repositories\LectureDiscussionRepository;
+use Illuminate\Support\Facades\Log;
 
 class LectureDiscussionService
 {
@@ -19,6 +21,7 @@ class LectureDiscussionService
 
     public function store(array $data, int $userId): array
     {
+        //kiểm tra bài giảng có thuộc khóa học không
         $lecture = CourseLecture::findOrFail($data['lecture_id']);
 
         if ((int) $lecture->course_id !== (int) $data['course_id']) {
@@ -29,6 +32,7 @@ class LectureDiscussionService
             ];
         }
 
+        // kiểm tra người dùng đã mua khóa học chưa
         $hasPurchased = Order::where('user_id', $userId)
             ->where('course_id', $data['course_id'])
             ->exists();
@@ -108,13 +112,14 @@ class LectureDiscussionService
             }
 
             $parentOwner->notify(
-                new \App\Notifications\DiscussionRepliedNotification($reply, $replier, $lecture)
+                new DiscussionRepliedNotification($reply, $replier, $lecture)
             );
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Lỗi gửi thông báo phản hồi thảo luận: ' . $e->getMessage());
+            Log::error('Lỗi gửi thông báo phản hồi thảo luận: ' . $e->getMessage());
         }
     }
 
+    // Lấy danh sách các bình luận trong một bài giảng
     public function getByLecture(int $lectureId): array
     {
         $items = $this->discussionRepository->getByLecture($lectureId, 10);

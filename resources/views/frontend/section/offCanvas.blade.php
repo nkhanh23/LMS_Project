@@ -27,7 +27,7 @@
                 class="block w-full bg-cyber-surface text-text-primary text-center py-3 font-bold uppercase pixel-border text-sm">Register</a>
         @else
             @php
-                $dashboardRoute = auth()->user()->role . '.dashboard';
+                $dashboardRoute = auth()->user()->preferredDashboardRoute();
             @endphp
             <a href="{{ route($dashboardRoute) }}"
                 class="block w-full bg-brand text-black text-center py-3 font-bold uppercase pixel-border text-sm mb-2">Dashboard</a>

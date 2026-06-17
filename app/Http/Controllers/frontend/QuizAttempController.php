@@ -17,7 +17,7 @@ class QuizAttempController extends Controller
     {
         $quiz->load('lecture', 'questions.options');
 
-        /** @var User $user */
+
         $user = Auth::user();
 
         if (!$user) {
@@ -59,15 +59,19 @@ class QuizAttempController extends Controller
             ]);
 
             foreach ($quiz->questions as $question) {
+                // lấy đáp án của user
                 $selectedOptionId = $answers[$question->id] ?? null;
+                // lấy đáp án đúng
                 $correctOption = $question->options->firstWhere('is_correct', true);
-
+                // so sánh đáp án
                 $isCorrect = $correctOption && $selectedOptionId == $correctOption->id;
 
+                // đếm số câu trả lời đúng
                 if ($isCorrect) {
                     $correctAnswers++;
                 }
 
+                // save vào database
                 QuizAttemptAnswer::create([
                     'attempt_id' => $attempt->id,
                     'question_id' => $question->id,

@@ -12,7 +12,50 @@ class UserController extends Controller
 {
     public function dashboard()
     {
-        return view('backend.user.index');
+        $user = Auth::user();
+
+        $enrollments = Enrollment::query()
+            ->with(['course.user', 'courseProgress'])
+            ->where('user_id', $user->id)
+            ->where('status', 'active')
+            ->latest('access_granted_at')
+            ->get();
+
+        $totalCourses = $enrollments->count();
+        $completedCoursesCount = 0;
+        $inProgressCoursesCount = 0;
+        $totalSpent = \App\Models\Order::where('user_id', $user->id)->where('status', 'completed')->sum('price');
+
+        $courses = $enrollments->map(function ($enrollment) use (&$completedCoursesCount, &$inProgressCoursesCount) {
+            $course = $enrollment->course;
+            $progress = $enrollment->courseProgress;
+
+            $completionPercent = (int) ($progress->completion_percent ?? 0);
+
+            if ($completionPercent >= 100) {
+                $completedCoursesCount++;
+            } else {
+                $inProgressCoursesCount++;
+            }
+
+            return [
+                'course' => $course,
+                'progress' => $completionPercent,
+                'slug' => $course?->course_name_slug,
+                'instructor_name' => $course?->user?->name ?? 'StackLearn',
+                'title' => $course?->course_name ?? 'Khóa học',
+            ];
+        });
+
+        $recentCourses = $courses->filter(fn($c) => $c['progress'] < 100)->take(3);
+
+        return view('backend.user.index', compact(
+            'totalCourses',
+            'completedCoursesCount',
+            'inProgressCoursesCount',
+            'totalSpent',
+            'recentCourses'
+        ));
     }
 
     public function myCourses(Request $request)

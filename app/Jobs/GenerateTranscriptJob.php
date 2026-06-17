@@ -5,9 +5,9 @@ namespace App\Jobs;
 use App\Models\AiDocument;
 use App\Models\CourseLecture;
 use App\Models\TranscriptJob;
+use App\Services\AiDocumentIndexService;
+use App\Services\LocalWhisperTranscriptionService;
 use App\Services\OpenAiTranscriptionService;
-use App\Services\YoutubeTranscriptService;
-use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -20,7 +20,7 @@ class GenerateTranscriptJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public int $tries = 3;
-    public int $timeout = 600;
+    public int $timeout = 3600;
     /**
      * Create a new job instance.
      */
@@ -33,28 +33,24 @@ class GenerateTranscriptJob implements ShouldQueue
      * Execute the job.
      */
     public function handle(
-        OpenAiTranscriptionService $openAiTranscriptionService,
-        YoutubeTranscriptService $youtubeTranscriptService
+        LocalWhisperTranscriptionService $localWhisperTranscriptionService,
+        OpenAiTranscriptionService $openAiTranscriptionService
     ): void {
-        $job = TranscriptJob::query()->findOrFail($this->transcriptJobId); //
-        $lecture = CourseLecture::query()->with('course')->findOrFail($job->lecture_id); //
+        $job = TranscriptJob::query()->findOrFail($this->transcriptJobId);
+        $lecture = CourseLecture::query()->with('course')->findOrFail($job->lecture_id);
 
-        $job->markProcessing(15); //
+        $job->markProcessing(15);
 
-        // Kiểm tra xem URL có phải là của YouTube không
-        $isYoutube = Str::contains($lecture->url, ['youtube.com', 'youtu.be']);
+        $transcriptionProvider = config('services.transcription_provider', 'openai');
 
-        if ($isYoutube) {
-            // Lấy trực tiếp từ YouTube
-            $result = $youtubeTranscriptService->fetchTranscript($lecture);
-            $provider = $result['meta']['provider'] ?? 'youtube_captions';
-            $metaChunksCount = $result['meta']['segments_count'] ?? 1;
+        if ($transcriptionProvider === 'local_whisper') {
+            $result = $localWhisperTranscriptionService->transcribeLecture($lecture);
+            $provider = 'local_whisper';
         } else {
-            // Chạy pipeline OpenAI hiện tại
-            $result = $openAiTranscriptionService->transcribeLecture($lecture); //
+            $result = $openAiTranscriptionService->transcribeLecture($lecture);
             $provider = 'openai';
-            $metaChunksCount = count($result['segments'] ?? []);
         }
+        $metaChunksCount = count($result['segments'] ?? []);
 
         $job->markProcessing(70);
 
@@ -79,21 +75,19 @@ class GenerateTranscriptJob implements ShouldQueue
         $job->markProcessing(85);
 
         // Gọi Job xử lý Chunk & Embedding
-        if (class_exists(\App\Jobs\ProcessAiDocumentJob::class)) {
-            \App\Jobs\ProcessAiDocumentJob::dispatch($document->id)
-                ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
-                ->onQueue(config('services.youtube_transcript.document_queue', 'ai-documents'));
+        if (class_exists(ProcessAiDocumentJob::class)) {
+            ProcessAiDocumentJob::dispatch($document->id)
+                ->onConnection(config('services.transcript.queue_connection', 'database'))
+                ->onQueue(config('services.transcript.document_queue', 'ai-documents'));
         } else {
-            app(\App\Services\AiDocumentIndexService::class)->safeProcess($document);
+            app(AiDocumentIndexService::class)->safeProcess($document);
         }
 
         $job->markDone(
             documentId: $document->id,
             responsePayload: [
                 'provider' => $provider,
-                'model' => $isYoutube
-                    ? ($result['meta']['model'] ?? 'youtube_auto_caption')
-                    : config('services.openai_transcription.model', 'gpt-4o-mini-transcribe'),
+                'model' => $result['meta']['model'] ?? config('services.openai_transcription.model', 'gpt-4o-mini-transcribe'),
                 'segments_count' => $metaChunksCount,
                 'language' => $result['language'] ?? 'vi',
                 'meta' => $result['meta'] ?? [],
@@ -105,7 +99,6 @@ class GenerateTranscriptJob implements ShouldQueue
     {
         $job = TranscriptJob::query()->find($this->transcriptJobId);
         if ($job) {
-            // Exception từ YoutubeTranscriptService sẽ được catch ở đây và update vào db
             $job->markFailed($e->getMessage());
         }
     }

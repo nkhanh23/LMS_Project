@@ -15,6 +15,30 @@ use Illuminate\Support\Facades\Storage;
 
 class InstructorTranscriptController extends Controller
 {
+    private const TRANSCRIPT_SOURCE_TYPES = [
+        'transcript',
+        'manual_input',
+        'manual_upload',
+        'pdf',
+        'docx',
+        'txt',
+    ];
+
+    private function latestTranscriptDocument(CourseLecture $lecture, bool $requireText = false): ?AiDocument
+    {
+        $query = AiDocument::query()
+            ->where('lecture_id', $lecture->id)
+            ->whereIn('source_type', self::TRANSCRIPT_SOURCE_TYPES)
+            ->latest();
+
+        if ($requireText) {
+            $query->whereNotNull('extracted_text')
+                ->where('extracted_text', '!=', '');
+        }
+
+        return $query->first();
+    }
+
     public function generate(Request $request, CourseLecture $lecture): RedirectResponse
     {
         $user = Auth::user();
@@ -44,8 +68,8 @@ class InstructorTranscriptController extends Controller
         ]);
 
         GenerateTranscriptJob::dispatch($job->id)
-            ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
-            ->onQueue(config('services.youtube_transcript.queue', 'transcripts'));
+            ->onConnection(config('services.transcript.queue_connection', 'database'))
+            ->onQueue(config('services.transcript.queue', 'transcripts'));
 
         return back()->with('success', 'Đã đưa yêu cầu tạo transcript vào hàng đợi.');
     }
@@ -84,11 +108,7 @@ class InstructorTranscriptController extends Controller
             abort(403);
         }
 
-        $document = AiDocument::query()
-            ->where('lecture_id', $lecture->id)
-            ->where('source_type', 'transcript')
-            ->latest()
-            ->first();
+        $document = $this->latestTranscriptDocument($lecture, requireText: true);
 
         if (!$document) {
             return response()->json(['success' => false, 'message' => 'Chưa có transcript cho bài học này.'], 404);
@@ -102,7 +122,7 @@ class InstructorTranscriptController extends Controller
                 'extracted_text' => $document->extracted_text,
                 'language' => $document->language,
                 'index_status' => $document->index_status,
-                'char_count' => mb_strlen($document->extracted_text),
+                'char_count' => mb_strlen((string) $document->extracted_text),
                 'created_at' => $document->created_at->format('d/m/Y H:i'),
                 'updated_at' => $document->updated_at->format('d/m/Y H:i'),
             ],
@@ -123,11 +143,7 @@ class InstructorTranscriptController extends Controller
             'extracted_text' => 'required|string|min:1',
         ]);
 
-        $document = AiDocument::query()
-            ->where('lecture_id', $lecture->id)
-            ->where('source_type', 'transcript')
-            ->latest()
-            ->first();
+        $document = $this->latestTranscriptDocument($lecture, requireText: true);
 
         if (!$document) {
             return response()->json(['success' => false, 'message' => 'Không tìm thấy transcript.'], 404);
@@ -143,8 +159,8 @@ class InstructorTranscriptController extends Controller
         // Re-index document sau khi sửa
         if (class_exists(\App\Jobs\ProcessAiDocumentJob::class)) {
             \App\Jobs\ProcessAiDocumentJob::dispatch($document->id)
-                ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
-                ->onQueue(config('services.youtube_transcript.document_queue', 'ai-documents'));
+                ->onConnection(config('services.transcript.queue_connection', 'database'))
+                ->onQueue(config('services.transcript.document_queue', 'ai-documents'));
         }
 
         return response()->json([
@@ -221,8 +237,8 @@ class InstructorTranscriptController extends Controller
 
         if (class_exists(\App\Jobs\ProcessAiDocumentJob::class)) {
             \App\Jobs\ProcessAiDocumentJob::dispatch($document->id)
-                ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
-                ->onQueue(config('services.youtube_transcript.document_queue', 'ai-documents'));
+                ->onConnection(config('services.transcript.queue_connection', 'database'))
+                ->onQueue(config('services.transcript.document_queue', 'ai-documents'));
         }
 
         return back()->with('success', 'Đã thêm transcript thủ công. Hệ thống đang xử lý...');
@@ -238,11 +254,7 @@ class InstructorTranscriptController extends Controller
             abort(403);
         }
 
-        $document = AiDocument::query()
-            ->where('lecture_id', $lecture->id)
-            ->where('source_type', 'transcript')
-            ->latest()
-            ->first();
+        $document = $this->latestTranscriptDocument($lecture);
 
         if (!$document) {
             return response()->json(['success' => false, 'message' => 'Không tìm thấy transcript.'], 404);
@@ -268,11 +280,7 @@ class InstructorTranscriptController extends Controller
             abort(403);
         }
 
-        $document = AiDocument::query()
-            ->where('lecture_id', $lecture->id)
-            ->whereIn('source_type', ['transcript', 'pdf', 'docx', 'txt', 'manual_upload', 'manual_input'])
-            ->latest()
-            ->first();
+        $document = $this->latestTranscriptDocument($lecture);
 
         if (!$document) {
             return response()->json(['success' => false, 'message' => 'Không tìm thấy tài liệu để re-index.'], 404);
@@ -286,8 +294,8 @@ class InstructorTranscriptController extends Controller
 
         if (class_exists(\App\Jobs\ProcessAiDocumentJob::class)) {
             \App\Jobs\ProcessAiDocumentJob::dispatch($document->id)
-                ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
-                ->onQueue(config('services.youtube_transcript.document_queue', 'ai-documents'));
+                ->onConnection(config('services.transcript.queue_connection', 'database'))
+                ->onQueue(config('services.transcript.document_queue', 'ai-documents'));
         }
 
         return response()->json(['success' => true, 'message' => 'Đã đưa tài liệu vào hàng đợi re-index.']);

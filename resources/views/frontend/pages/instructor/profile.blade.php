@@ -59,7 +59,7 @@
                         @auth
                             @if(Auth::id() !== $instructor->id)
                                 <div class="mt-8">
-                                    <a href="{{ route('chat.index', ['instructor_id' => $instructor->id]) }}" 
+                                    <a href="{{ route(auth()->user()->role === 'instructor' ? 'instructor.chat.index' : 'user.chat.index', ['instructor_id' => $instructor->id]) }}" 
                                        class="block w-full bg-brand text-black font-black uppercase py-3 border-2 border-black hover:bg-white transition-all pixel-shadow-sm text-sm">
                                         <i class="far fa-comment-dots mr-2"></i> Chat với giảng viên
                                     </a>

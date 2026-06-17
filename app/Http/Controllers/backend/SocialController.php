@@ -32,6 +32,7 @@ class SocialController extends Controller
                     'photo' => $googleUser->avatar,
                     'password' => Hash::make($googleUser->id),
                     'role' => 'user',
+                    'email_verified_at' => now(), // Đánh dấu đã xác thực email
                 ]);
             }
             // Đăng nhập người dùng
@@ -57,7 +58,6 @@ class SocialController extends Controller
             $email = $facebookUser->getEmail();
 
             // 2. Nếu Facebook không trả về email, hãy tạo một email giả định dựa trên ID 
-            // để không bị lỗi NOT NULL của Database hiện tại.
             if (!$email) {
                 $email = $facebookUser->getId() . '@facebook.com';
             }
@@ -72,8 +72,9 @@ class SocialController extends Controller
                     'name'     => $facebookUser->getName() ?? 'User_' . $facebookUser->getId(),
                     'email'    => $email,
                     'password' => Hash::make(\Illuminate\Support\Str::random(16)), // Mật khẩu ngẫu nhiên
-                    'role'     => 'user', // Gán role mặc định để qua được Middleware
+                    'role'     => 'user',
                     'status'   => '1',
+                    'email_verified_at' => now(), // Bỏ qua bước xác thực mail ảo
                 ]);
                 Auth::login($user);
             }
@@ -89,8 +90,6 @@ class SocialController extends Controller
 
     private function redirectUserByRole($user)
     {
-        if ($user->role === 'admin') return redirect()->route('admin.dashboard');
-        if ($user->role === 'instructor') return redirect()->route('instructor.dashboard');
-        return redirect()->route('user.dashboard');
+        return redirect()->route($user->preferredDashboardRoute());
     }
 }

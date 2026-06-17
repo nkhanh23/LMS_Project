@@ -1,0 +1,1418 @@
+[0002]  BỘ GIÁO DỤC VÀ ĐÀO TẠO
+[0003]  TRƯỜNG ĐẠI HỌC NHA TRANG
+[0004]  KHOA CÔNG NGHỆ THÔNG TIN
+[0006] <IMAGE refs=rId8 near=''>
+[0015]  BÁO CÁO ĐỒ ÁN TỐT NGHIỆP
+[0016]  HỆ THỐNG HỌC TRỰC TUYẾN TÍCH HỢP AI TUTOR HỖ TRỢ HỌC TẬP
+[0019]  Giảng viên hướng dẫn: GV. Nguyễn Thị Hương Lý
+[0020]  Sinh viên thực hiện:Nguyễn ngọc Khánh
+[0021]  Mã số sinh viên:64130985
+[0028]  KHÁNH HOÀ, THÁNG 6 NĂM 2025
+[0033]  BỘ GIÁO DỤC VÀ ĐÀO TẠO
+[0034]  TRƯỜNG ĐẠI HỌC NHA TRANG
+[0035]  KHOA CÔNG NGHỆ THÔNG TIN
+[0037] <IMAGE refs=rId8 near=''>
+[0046]  BÁO CÁO ĐỒ ÁN TỐT NGHIỆP
+[0047]  HỆ THỐNG HỌC TRỰC TUYẾN TÍCH HỢP AI TUTOR HỖ TRỢ HỌC TẬP
+[0052]  Giảng viên hướng dẫn: GV. Nguyễn Thị Hương Lý
+[0053]  Sinh viên thực hiện:Nguyễn ngọc Khánh
+[0054]  Mã số sinh viên:64130985
+[0060]  KHÁNH HOÀ, THÁNG 6 NĂM 2025
+[0061] <IMAGE refs=rId9 near=''>
+[0063]  TRƯỜNG ĐẠI HỌC NHA TRANG
+[0064]  KHOA CÔNG NGHỆ THÔNG TIN
+[0065]  PHIẾU THEO DÕI TIẾN ĐỘ VÀ ĐÁNH GIÁ ĐỒ ÁN TỐT NGHIỆP
+[0066]  (Dùng cho CBHD và nộp cùng báo cáo Đồ án của sinh viên)
+[0067]  Tên đề tài: HỆ THỐNG HỌC TRỰC TUYẾN TÍCH HỢP AI TUTOR HỖ TRỢ HỌC TẬP
+[0068]  Giảng viên hướng dẫn: GV. Nguyễn Thị Hương Lý
+[0069]  Sinh viên được hướng dẫn: Nguyễn Ngọc KhánhMSSV: 64130985
+[0070]  Khóa: 64130985Ngành: Công nghệ thông tin
+[0071] <TABLE rows=12 cols=4>
+    row 1: Lần KT | Ngày | Nội dung | Nhận xét của GVHD
+    row 2: Kiểm tra giữa tiến độ của Trưởng BM
+    row 3: Ngày kiểm tra:………………….. | Đánh giá công việc hoàn thành: …% | Ký tên…………….......
+    row 4:  | Được tiếp tục: ☐ | Không tiếp tục: ☐ | 
+    row 5: 8 |  |  | 
+    row 6: 9 |  |  | 
+    row 7: 10 |  |  | 
+    row 8: 11 |  |  | 
+    row 9: 12 |  |  | 
+    row 10: 13 |  |  | 
+    row 11: 14 |  |  | 
+    row 12: 15 |  |  | 
+[0074]  Nhận xét chung (sau khi sinh viên hoàn thành ĐA/KLTN):
+[0078] <TABLE rows=1 cols=3>
+    row 1: Điểm hình thức: ……/10 | Điểm nội dung: ……/10 | Điểm tổng kết: ……. /10
+[0080] <TABLE rows=3 cols=3>
+    row 1: Đồng ý cho sinh viên: | Được bảo vệ: ☐ | Không được bảo vệ: ☐
+    row 2:  | Khánh Hòa, ngày……tháng……năm….
+    row 3:  | Giáo viên hướng dẫn(Ký và ghi rõ họ tên)
+[0082]  TRƯỜNG ĐẠI HỌC NHA TRANG
+[0083]  KHOA CÔNG NGHỆ THÔNG TIN
+[0084]  PHIẾU CHẤM ĐIỂM ĐỒ ÁN TỐT NGHIỆP
+[0085]  (Dùng cho CBHD và nộp cùng báo cáo ĐA/KLTN của sinh viên)
+[0086]  Tên đề tài: HỆ THỐNG HỌC TRỰC TUYẾN TÍCH HỢP AI TUTOR HỖ TRỢ HỌC TẬP.
+[0087]  Chuyên ngành: Công nghệ thông tin
+[0088]  Họ và tên sinh viên: Nguyễn Ngọc KhánhMSSV: 64130985
+[0089]  Giảng viên hướng dẫn: GV. Nguyễn Thị Hương Lý
+[0090]  Cơ quan công tác: Trường Đại học Nha Trang
+[0091]  Phần đánh giá và cho điểm của người hướng dẫn (tính theo thang điểm 10)
+[0092] <TABLE rows=9 cols=7>
+    row 1: Tiêu chí đánh giá | Trọng số (%) | Mô tả chất lượng | Điểm
+    row 2:  |  | Giỏi | Khá | Đạt yêu cầu | Không đạt | 
+    row 3:  |  | 9 - 10 | 7 - 8 | 5 - 6 | < 5 | 
+    row 4: Xây dựng đề cương nghiên cứu | 10 |  |  |  |  | 
+    row 5: Tinh thần và thái độ làm việc | 10 |  |  |  |  | 
+    row 6: Kiến thức và kỹ năng làm việc | 10 |  |  |  |  | 
+    row 7: Nội dung và kết quả đạt được | 40 |  |  |  |  | 
+    row 8: Kỹ năng viết và trình bày báo cáo | 30 |  |  |  |  | 
+    row 9: ĐIỂM TỔNG | 
+[0093]  Ghi chú: Điểm tổng làm tròn đến 1 số lẻ.
+[0094]  Nhận xét chung (sau khi sinh viên hoàn thành ĐA/KLTN):
+[0098] <TABLE rows=3 cols=3>
+    row 1: Đồng ý cho sinh viên: | Được bảo vệ: ☐ | Không được bảo vệ: ☐
+    row 2:  | Khánh Hòa, ngày……tháng……năm….
+    row 3:  | Cán bộ hướng dẫn(Ký và ghi rõ họ tên)
+[0099]  TRƯỜNG ĐẠI HỌC NHA TRANG
+[0100]  KHOA CÔNG NGHỆ THÔNG TIN
+[0101]  PHIẾU CHẤM ĐIỂM ĐỒ ÁN TỐT NGHIỆP
+[0102]  (Dùng cho thành viên Hội đồng bảo vệ ĐA/KLTN)
+[0103]  Tên đề tài: HỆ THỐNG HỌC TRỰC TUYẾN TÍCH HỢP AI TUTOR HỖ TRỢ HỌC TẬP.
+[0104]  Chuyên ngành: Công nghệ thông tin
+[0105]  Họ và tên sinh viên: Nguyễn Ngọc KhánhMSSV: 64130985
+[0106]  Họ tên thành viên HĐ:
+[0108]  Cơ quan công tác:
+[0111]  Phần đánh giá và cho điểm của người hướng dẫn (tính theo thang điểm 10)
+[0112] <TABLE rows=9 cols=7>
+    row 1: Tiêu chí đánh giá | Trọng số (%) | Mô tả chất lượng | Điểm
+    row 2:  |  | Giỏi | Khá | Đạt yêu cầu | Không đạt | 
+    row 3:  |  | 9 - 10 | 7 - 8 | 5 - 6 | < 5 | 
+    row 4: Xây dựng đề cương nghiên cứu | 10 |  |  |  |  | 
+    row 5: Tinh thần và thái độ làm việc | 10 |  |  |  |  | 
+    row 6: Kiến thức và kỹ năng làm việc | 10 |  |  |  |  | 
+    row 7: Nội dung và kết quả đạt được | 40 |  |  |  |  | 
+    row 8: Kỹ năng viết và trình bày báo cáo | 30 |  |  |  |  | 
+    row 9: ĐIỂM TỔNG | 
+[0116]  Ghi chú: Điểm tổng làm tròn đến 1 số lẻ.
+[0117]  Nhận xét chung (sau khi sinh viên hoàn thành ĐA/KLTN):
+[0121] <TABLE rows=3 cols=3>
+    row 1: Đồng ý cho sinh viên: | Được bảo vệ: ☐ | Không được bảo vệ: ☐
+    row 2:  | Khánh Hòa, ngày 05 tháng 06 năm 2025
+    row 3:  | Cán bộ chấm điểm(Ký và ghi rõ họ tên)
+[0122]  TRƯỜNG ĐẠI HỌC NHA TRANG
+[0123]  KHOA CÔNG NGHỆ THÔNG TIN
+[0124]  PHIẾU CHẤM ĐIỂM ĐỒ ÁN TỐT NGHIỆP
+[0125]  (Dùng cho CBPB và nộp cùng báo cáo ĐA/KLTN của sinh viên)
+[0126]  Tên đề tài: HỆ THỐNG HỌC TRỰC TUYẾN TÍCH HỢP AI TUTOR HỖ TRỢ HỌC TẬP.
+[0127]  Chuyên ngành: Công nghệ thông tin
+[0128]  Họ và tên sinh viên: Nguyễn Ngọc KhánhMSSV: 64130985
+[0129]  Người phản biện (học hàm, học vị, họ và tên):
+[0130]  Cơ quan công tác:
+[0131]  Phần đánh giá và cho điểm của người hướng dẫn (tính theo thang điểm 10)
+[0132] <TABLE rows=9 cols=7>
+    row 1: Tiêu chí đánh giá | Trọng số (%) | Mô tả chất lượng | Điểm
+    row 2:  |  | Giỏi | Khá | Đạt yêu cầu | Không đạt | 
+    row 3:  |  | 9 - 10 | 7 - 8 | 5 - 6 | < 5 | 
+    row 4: Xây dựng đề cương nghiên cứu | 10 |  |  |  |  | 
+    row 5: Tinh thần và thái độ làm việc | 10 |  |  |  |  | 
+    row 6: Kiến thức và kỹ năng làm việc | 10 |  |  |  |  | 
+    row 7: Nội dung và kết quả đạt được | 40 |  |  |  |  | 
+    row 8: Kỹ năng viết và trình bày báo cáo | 30 |  |  |  |  | 
+    row 9: ĐIỂM TỔNG | 
+[0133]  Ghi chú: Điểm tổng làm tròn đến 1 số lẻ.
+[0134]  Nhận xét chung:
+[0138] <TABLE rows=3 cols=3>
+    row 1: Đồng ý cho sinh viên: | Được bảo vệ: ☐ | Không được bảo vệ: ☐
+    row 2:  | Khánh Hòa, ngày 05 tháng 06 năm 2025
+    row 3:  | Cán bộ phản biện(Ký và ghi rõ họ tên)
+[0140]  II. Phần nhận xét cụ thể (dựa theo phiếu chấm điểm và khung tiêu chí đánh giá theo Rubric)
+[0141]  II.1. Hình thức thuyết minh (tỉ trọng 30%)
+[0142]  * Trình bày (Rõ ràng, mạch lạc? Biểu bảng, hình vẽ trình bày rõ ràng, đúng quy cách?)
+[0145]  * Bố cục và lập luận (Bố cục hợp lý? Tỉ trọng giữa các phần? Cơ sở lập luận?)
+[0148]  * Văn phong (Gọn gàng, súc tích hay rườm rà, khó hiểu? Lỗi văn phạm và chính tả?)
+[0151]  II.2. Nội dung thuyết minh (tỉ trọng 30%)
+[0152]  * Mục tiêu nghiên cứu (Trình bày rõ ràng? Ý nghĩa khoa học và thực tiễn?
+[0153]  Tính khả thi?)
+[0156]  * Tổng quan tài liệu (Phân tích và đánh giá? Độ tin cậy và chất lượng nguồn tài liệu?)
+[0159]  * Phương pháp nghiên cứu (Hiện đại? Phù hợp với mục tiêu và nội dung nghiên cứu? Mô tả? Đánh giá và so sánh với các phương pháp khác?)
+[0162]  II.3. Kết quả nghiên cứu (tỉ trọng 20%)
+[0163]  * Kết quả đạt được (Độ tin cậy? Tính sáng tạo? Giá trị khoa học và thực tiễn?)
+[0166]  * Kết luận (Đáp ứng mục tiêu nghiên cứu? Quan điểm của cá nhân?)
+[0169]  II.4. MỨC ĐỘ TRÍCH DẪN VÀ SAO CHÉP (tỉ trọng 20%)
+[0170]  * Mức độ trích dẫn (Đúng quy định? Trung thực, đầy đủ, rõ ràng? Sắp xếp tài liệu tham khảo?)
+[0173]  * Mức độ sao chép (Tỉ lệ sao chép? Hình thức sao chép?)
+[0179] cap1 MỤC LỤC
+[0181] Heading1 DANH MỤC BẢNG
+[0182] TableofFigures Bảng 1. 1. So sánh một số hệ thống học trực tuyến .12
+[0183] TableofFigures Bảng 3. 1. Các công nghệ sử dụng trong hệ thống StackLearn.29
+[0184] TableofFigures Bảng 3. 2. Các tác nhân của hệ thống.36
+[0185] TableofFigures Bảng 3. 3. Đặc tả Use Case đăng ký tài khoản.40
+[0186] TableofFigures Bảng 3. 4. Đặc tả Use Case đăng nhập hệ thống.41
+[0187] TableofFigures Bảng 3. 5. Đặc tả Use Case ghi danh khóa học.42
+[0188] TableofFigures Bảng 3. 6. Đặc tả Use Case thanh toán khóa học.43
+[0189] TableofFigures Bảng 3. 7. Đặc tả Use Case tham gia học tập.44
+[0190] TableofFigures Bảng 3. 8. Đặc tả Use Case tương tác với AI Tutor.44
+[0191] TableofFigures Bảng 3. 9. Đặc tả Use Case tạo khóa học.45
+[0192] TableofFigures Bảng 3. 10. Đặc tả Use Case duyệt khóa học.46
+[0193] TableofFigures Bảng 3. 11. Bảng đặc tả use case xử lý yêu cầu hoàn tiền.47
+[0194] TableofFigures Bảng 3. 12. Bảng đặc tả use case duyệt yêu cầu rút tiền.48
+[0195] TableofFigures Bảng 3. 13. Bảng đặc tả use case theo dõi nhật ký hệ thống.49
+[0196] TableofFigures Bảng 4. 1. Bảng nhóm người dùng và phân quyền.73
+[0197] TableofFigures Bảng 4. 2. Bảng nhóm khóa học và nội dung bài giảng.74
+[0198] TableofFigures Bảng 4. 3. Bảng nhóm ghi danh và tiến độ học tập.75
+[0199] TableofFigures Bảng 4. 4. Bảng nhóm giỏ hàng, đơn hàng và thanh toán.77
+[0200] TableofFigures Bảng 4. 5. Bảng nhóm quiz và kết quả làm bài.78
+[0201] TableofFigures Bảng 4. 6. Bảng nhóm  AI Tutor, transcript và tài liệu học tập.79
+[0202] TableofFigures Bảng 4. 7. Bảng nhóm  thảo luận, chat realtime và ghi chú .81
+[0203] TableofFigures Bảng 4. 8. Bảng nhóm  quản trị, cấu hình và thống kê.82
+[0204] TableofFigures Bảng 5. 1. Môi trường phần cứng cài đặt hệ thống.83
+[0205] TableofFigures Bảng 5. 2. Công nghệ sử dụng trong hệ thống StackLearn.84
+[0206] TableofFigures Bảng 5. 3. Nguồn dữ liệu sử dụng cho AI Tutor.93
+[0207] TableofFigures Bảng 5. 4. Cấu trúc Prompt đầu vào của AI Tutor.96
+[0208] TableofFigures Bảng 6. 1. Bảng kết quả kiểm thử các chức năng chính của hệ thống StackLearn.102
+[0209] TableofFigures Bảng 6. 2. Bộ test case kiểm thử chức năng Chatbot AI.110
+[0210] TableofFigures Bảng 6. 3. Bộ tiêu chí đánh giá chất lượng phản hồi của Chatbot AI.112
+[0211] TableofFigures Bảng 6. 4. Kết quả đánh giá chất lượng phản hồi Chatbot AI.113
+[0212] TableofFigures Bảng 6. 5. Kết quả đo thời gian phản hồi của Chatbot AI.114
+[0213] TableofFigures Bảng 6. 6. Đánh giá hiệu năng các chức năng chính của hệ thống StackLearn.116
+[0214] TableofFigures Bảng 6. 7. Đánh giá trải nghiệm người dùng của hệ thống StackLearn.117
+[0217] Heading1 DANH MỤC HÌNH ẢNH
+[0218] TableofFigures Hình 2. 1. Các thành phần chính của hệ thống LMS.14
+[0219] TableofFigures Hình 2. 2. Mô hình kiến trúc MVC.15
+[0220] TableofFigures Hình 2. 3. Framework Laravel.16
+[0221] TableofFigures Hình 2. 4. Hệ quản trị cơ sở dữ liệu PostgreSQL.17
+[0222] TableofFigures Hình 2. 5. Luồng xử lý tích hợp Gemini API.19
+[0223] TableofFigures Hình 3. 1. Kiến trúc tổng thể hệ thống StackLearn.25
+[0224] TableofFigures Hình 3. 2. Sơ đồ Use Case tổng quát của hệ thống StackLearn.36
+[0225] TableofFigures Hình 3. 3. Sơ đồ Use Case của học viên..37
+[0226] TableofFigures Hình 3. 4. Sơ đồ Use Case của giảng viên.38
+[0227] TableofFigures Hình 3. 5. Sơ đồ Use Case của quản trị viên.38
+[0228] TableofFigures Hình 3. 6. Sơ đồ Use Case AI Tutor.39
+[0229] TableofFigures Hình 3. 7. Activity Diagram đăng ký/đăng nhập hệ thống.49
+[0230] TableofFigures Hình 3. 8. Activity Diagram ghi danh khóa học.50
+[0231] TableofFigures Hình 3. 9. Activity Diagram tham gia học tập.51
+[0232] TableofFigures Hình 3. 10. Activity Diagram làm bài kiểm tra..52
+[0233] TableofFigures Hình 3. 11. Activity Diagram tương tác với AI Tutor.53
+[0234] TableofFigures Hình 3. 12. Activity Diagram quản lý khóa học.54
+[0235] TableofFigures Hình 3. 13. Activity Diagram duyệt khóa học.55
+[0236] TableofFigures Hình 3. 14. Domain Model và Design Class Diagram tổng quát của hệ thống StackLearn.56
+[0237] TableofFigures Hình 4. 1. Trình bày kiến trúc tổng thể của hệ thống StackLearn.59
+[0238] TableofFigures Hình 4. 2. Trình bày kiến trúc hoạt động của mô-đun AI Tutor..60
+[0239] TableofFigures Hình 4. 3. Sequence Diagram đăng nhập hệ thống.61
+[0240] TableofFigures Hình 4. 4. Sequence Diagram ghi danh khóa học.62
+[0241] TableofFigures Hình 4. 5. Sequence Diagram thanh toán khóa học.63
+[0242] TableofFigures Hình 4. 6. Sequence Diagram hoàn tiền khóa học.64
+[0243] TableofFigures Hình 4. 7. Sequence Diagram yêu cầu rút tiền.65
+[0244] TableofFigures Hình 4. 8. Sequence Diagram tạo transcript bài giảng.66
+[0245] TableofFigures Hình 4. 9. Sequence Diagram chat realtime.67
+[0246] TableofFigures Hình 4. 10. Sequence Diagram tương tác với AI Tutor.68
+[0247] TableofFigures Hình 4. 11. Sơ đồ ERD tổng thể.71
+[0248] TableofFigures Hình 5. 1. Giao diện trang chủ85
+[0249] TableofFigures Hình 5. 2. Giao diện đăng ký tài khoản.85
+[0250] TableofFigures Hình 5. 3. Giao diện đăng nhập.86
+[0251] TableofFigures Hình 5. 4. Giao diện danh sách khóa học.86
+[0252] TableofFigures Hình 5. 5. Giao diện tạo khóa học.87
+[0253] TableofFigures Hình 5. 6. Giao diện xem bài giảng.87
+[0254] TableofFigures Hình 5. 7. Giao diện theo dõi tiến độ học tập.88
+[0255] TableofFigures Hình 5. 8. Giao diện làm bài kiểm tra.88
+[0256] TableofFigures Hình 5. 9. Giao diện kết quả bài kiểm tra.89
+[0257] TableofFigures Hình 5. 10. Giao diện giỏ hàng.89
+[0258] TableofFigures Hình 5. 11. Giao diện thanh toán khóa học.90
+[0259] TableofFigures Hình 5. 12. Giao diện AI Tutor.90
+[0260] TableofFigures Hình 5. 13. Kết quả phản hồi của AI Tutor.91
+[0261] TableofFigures Hình 5. 14. Quy trình tổng quan của mô hình AI Tutor trong hệ thống StackLearn.92
+[0262] TableofFigures Hình 5. 15. Quy trình truy xuất ngữ cảnh cho AI Tutor.94
+[0263] TableofFigures Hình 5. 16. Quy trình tích hợp Gemini API trong AI Tutor.97
+[0264] TableofFigures Hình 5. 17. Quy trình hoạt động của AI Tutor trên hệ thống.99
+[0265] TableofFigures Hình 6. 1. Kết quả kiểm thử chức năng tìm kiếm khóa học.108
+[0266] TableofFigures Hình 6. 2. Kết quả kiểm thử chức năng thanh toán khóa học.108
+[0267] TableofFigures Hình 6. 3. Kết quả kiểm thử chức năng học tập trên hệ thống.109
+[0268] TableofFigures Hình 6. 4. Lịch sử hội thoại của học viên với Chatbot AI..115
+[0269] TableofFigures Hình 6. 5. Giao diện quản trị hệ thống StackLearn118
+[0272] Heading1 DANH MỤC TỪ VIẾT TẮT
+[0273] <TABLE rows=22 cols=3>
+    row 1: Từ viết tắt | Tiếng Anh | Tiếng Việt
+    row 2: AI | Artificial Intelligence | Trí tuệ nhân tạo
+    row 3: API | Application Programming Interface | Giao diện lập trình ứng dụng
+    row 4: LMS | Learning Management System | Hệ thống quản lý học tập
+    row 5: MVC | Model View Controller | Mô hình Kiến trúc Model View Controller
+    row 6: LLM | Large Language Model | Mô hình ngôn ngữ lớn
+    row 7: RAG | Retrieval-Augmented Generation | Sinh câu trả lời tăng cường bằng truy xuất
+    row 8: GPT | Generative Pre-trained Transformer | Mô hình Transformer sinh văn bản được huấn luyện trước
+    row 9: REST | Representational State Transfer | Kiến trúc truyền trạng thái biểu diễn
+    row 10: URL | Uniform Resource Locator | Địa chỉ định vị tài nguyên
+    row 11: HTML | HyperText Markup Language | Ngôn ngữ đánh dấu siêu văn bản
+    row 12: CSS | Cascading Style Sheets | Bảng định kiểu phân tầng
+    row 13: PHP | PHP: Hypertext Preprocessor | Ngôn ngữ lập trình PHP
+    row 14: ORM | Object Relational Mapping | Ánh xạ đối tượng - quan hệ
+    row 15: ERD | Entity Relationship Diagram | Sơ đồ thực thể - quan hệ
+    row 16: UML | Unified Modeling Language | Ngôn ngữ mô hình hóa thống nhất
+    row 17: OOAD | Object-Oriented Analysis and Design | Phân tích và thiết kế hướng đối tượng
+    row 18: PDF | Portable Document Format | Định dạng tài liệu di động
+    row 19: S3 | Simple Storage Service | Dịch vụ lưu trữ đối tượng S3
+    row 20: R2 | Cloudflare R2 | Dịch vụ lưu trữ đối tượng Cloudflare R2
+    row 21: CPU | Central Processing Unit | Bộ xử lý trung tâm
+    row 22: RAM | Random Access Memory | Bộ nhớ truy cập ngẫu nhiên
+[0276] cap1 LỜI MỞ ĐẦU
+[0277]  1. Lý do chọn đề tài
+[0278] par Trong bối cảnh chuyển đổi số đang diễn ra mạnh mẽ trên nhiều lĩnh vực, giáo dục trực tuyến (E-learning) ngày càng khẳng định vai trò quan trọng trong việc mở rộng cơ hội tiếp cận tri thức và nâng cao hiệu quả đào tạo. Các hệ thống quản lý học tập (Learning Management System – LMS) cho phép người học tham gia học tập mọi lúc, mọi nơi thông qua các nền tảng trực tuyến, góp phần tạo nên môi trường học tập linh hoạt và thuận tiện.
+[0279] par Tuy nhiên, bên cạnh những ưu điểm đó, quá trình học tập trực tuyến vẫn còn tồn tại một số hạn chế. Người học thường gặp khó khăn khi cần được giải đáp thắc mắc ngay trong quá trình học nhưng không có sự hỗ trợ trực tiếp từ giảng viên. Việc tìm kiếm nội dung liên quan trong bài giảng hoặc tài liệu học tập đôi khi mất nhiều thời gian, làm gián đoạn quá trình tiếp thu kiến thức. Đồng thời, các hệ thống LMS truyền thống chủ yếu tập trung vào quản lý khóa học mà chưa khai thác hiệu quả các công nghệ trí tuệ nhân tạo nhằm nâng cao trải nghiệm học tập.
+[0280] par Sự phát triển mạnh mẽ của các mô hình ngôn ngữ lớn (Large Language Models – LLM) như Gemini hay ChatGPT đã mở ra nhiều cơ hội ứng dụng trí tuệ nhân tạo trong lĩnh vực giáo dục. Các mô hình này có khả năng hỗ trợ giải đáp câu hỏi, giải thích kiến thức và tương tác với người học theo ngôn ngữ tự nhiên, góp phần nâng cao hiệu quả tự học và cá nhân hóa quá trình học tập.
+[0281] par Xuất phát từ những yêu cầu thực tiễn đó, đề tài “Xây dựng Website học trực tuyến (E-learning) tích hợp Chatbot Gia sư ảo hỗ trợ học tập” được thực hiện nhằm xây dựng một hệ thống LMS hoàn chỉnh kết hợp chức năng AI Tutor hỗ trợ học viên trong quá trình học tập trực tuyến. Đề tài không chỉ giúp vận dụng các kiến thức đã học về phân tích, thiết kế và phát triển phần mềm mà còn tiếp cận và ứng dụng các công nghệ trí tuệ nhân tạo hiện đại vào thực tiễn.
+[0282]  2. Mục tiêu nghiên cứu
+[0283] par Đề tài hướng đến các mục tiêu chính sau:
+[0284] bullet1 Xây dựng hệ thống học trực tuyến StackLearn hoạt động trên nền tảng web.
+[0285] bullet1 Hỗ trợ quản lý người dùng với các vai trò học viên, giảng viên và quản trị viên.
+[0286] bullet1 Hỗ trợ quản lý khóa học, bài giảng, tài liệu học tập và bài kiểm tra trực tuyến.
+[0287] bullet1 Xây dựng chức năng ghi danh khóa học, thanh toán và theo dõi tiến độ học tập.
+[0288] bullet1 Tích hợp AI Tutor sử dụng Gemini API nhằm hỗ trợ học viên đặt câu hỏi và nhận phản hồi tự động theo ngữ cảnh bài học.
+[0289] bullet1 Áp dụng phương pháp phân tích và thiết kế hướng đối tượng trong quá trình phát triển hệ thống.
+[0290] bullet1 Đánh giá khả năng ứng dụng trí tuệ nhân tạo trong việc hỗ trợ học tập trên nền tảng E-learning.
+[0291]  3. Đối tượng và phạm vi nghiên cứu
+[0292] par a) Đối tượng nghiên cứu
+[0293] par Đối tượng nghiên cứu của đề tài bao gồm:
+[0294] bullet1 Hệ thống quản lý học tập trực tuyến (Learning Management System – LMS).
+[0295] bullet1 Các phương pháp phân tích và thiết kế hướng đối tượng (OOAD).
+[0296] bullet1 Kiến trúc ứng dụng web sử dụng Laravel Framework.
+[0297] bullet1 Công nghệ cơ sở dữ liệu PostgreSQL.
+[0298] bullet1 Các mô hình ngôn ngữ lớn và dịch vụ AI thông qua Gemini API.
+[0299] par b) Phạm vi nghiên cứu
+[0300] par Đề tài tập trung xây dựng hệ thống StackLearn với các chức năng chính:
+[0301] bullet1 Quản lý tài khoản và phân quyền người dùng.
+[0302] bullet1 Quản lý danh mục và khóa học.
+[0303] bullet1 Quản lý bài giảng, tài liệu học tập và bài kiểm tra.
+[0304] bullet1 Ghi danh khóa học và thanh toán trực tuyến.
+[0305] bullet1 Theo dõi tiến độ học tập.
+[0306] bullet1 Tích hợp AI Tutor hỗ trợ hỏi đáp trong quá trình học tập.
+[0307] bullet1 Quản trị và giám sát hoạt động của hệ thống.
+[0308] par Đề tài không tập trung nghiên cứu chuyên sâu về huấn luyện mô hình trí tuệ nhân tạo mà chỉ khai thác và tích hợp dịch vụ AI thông qua API có sẵn để hỗ trợ người học.
+[0309]  4. Phương pháp thực hiện
+[0310] par Để thực hiện đề tài, nhóm tác giả sử dụng các phương pháp nghiên cứu và phát triển sau:
+[0311] bullet1 Khảo sát và phân tích các hệ thống học trực tuyến phổ biến hiện nay như Udemy, Coursera và Moodle.
+[0312] bullet1 Thu thập, phân tích và đặc tả yêu cầu của hệ thống.
+[0313] bullet1 Áp dụng phương pháp phân tích và thiết kế hướng đối tượng (OOAD) kết hợp các mô hình UML như Use Case Diagram, Activity Diagram, Sequence Diagram và Class Diagram.
+[0314] bullet1 Thiết kế cơ sở dữ liệu và kiến trúc hệ thống phù hợp với yêu cầu nghiệp vụ.
+[0315] bullet1 Xây dựng hệ thống bằng Laravel Framework, PostgreSQL, HTML, CSS, JavaScript và Bootstrap.
+[0316] bullet1 Tích hợp Gemini API để xây dựng chức năng AI Tutor hỗ trợ học tập.
+[0317] bullet1 Kiểm thử, đánh giá kết quả triển khai và đề xuất hướng phát triển trong tương lai.
+[0320] Heading1 CHƯƠNG 1. TỔNG QUAN ĐỀ TÀI
+[0321] Heading2 1.1. BÀI TOÁN XÂY DỰNG HỆ THỐNG HỌC TRỰC TUYẾN
+[0322] par Trong những năm gần đây, cùng với sự phát triển mạnh mẽ của công nghệ thông tin và quá trình chuyển đổi số, học tập trực tuyến (E-learning) đã trở thành một xu hướng tất yếu trong lĩnh vực giáo dục và đào tạo. Các nền tảng học trực tuyến cho phép người học tiếp cận kiến thức mọi lúc, mọi nơi, góp phần nâng cao hiệu quả học tập và giảm các rào cản về không gian, thời gian.
+[0323] par Hiện nay, nhiều hệ thống quản lý học tập (Learning Management System - LMS) đã được triển khai và sử dụng rộng rãi như Moodle, Coursera, Udemy hay edX. Các hệ thống này cung cấp nhiều chức năng hỗ trợ quản lý khóa học, phân phối nội dung đào tạo, tổ chức kiểm tra đánh giá và theo dõi tiến độ học tập của người học.
+[0324] par Tuy nhiên, trong quá trình tự học trực tuyến, người học vẫn gặp không ít khó khăn khi phát sinh các thắc mắc liên quan đến nội dung bài học nhưng không nhận được sự hỗ trợ kịp thời. Việc thiếu tương tác trực tiếp với giảng viên có thể làm ảnh hưởng đến khả năng tiếp thu kiến thức và làm giảm hiệu quả học tập.
+[0325] par Sự phát triển của trí tuệ nhân tạo, đặc biệt là các mô hình ngôn ngữ lớn (Large Language Models - LLM), đã mở ra nhiều cơ hội ứng dụng trong giáo dục. Việc tích hợp chatbot AI vào hệ thống LMS có thể hỗ trợ giải đáp câu hỏi, hướng dẫn học tập và tăng khả năng tương tác giữa người học với hệ thống.
+[0326] par Xuất phát từ thực tế đó, đề tài “Xây dựng Website học trực tuyến (E-learning) tích hợp Chatbot Gia sư ảo hỗ trợ học tập” được lựa chọn nhằm xây dựng một nền tảng LMS hoàn chỉnh kết hợp chức năng AI Tutor hỗ trợ người học trong quá trình học tập trực tuyến.
+[0327] Heading2 1.2. KHẢO SÁT CÁC HỆ THỐNG LIÊN QUAN
+[0328] par Hiện nay có nhiều nền tảng học trực tuyến nổi tiếng được sử dụng rộng rãi trên thế giới như Coursera, Udemy và edX. Các hệ thống này đều cung cấp các chức năng cơ bản của một LMS như quản lý khóa học, quản lý học viên, tổ chức bài kiểm tra và theo dõi kết quả học tập.
+[0329] bullet1 Coursera nổi bật với các chương trình đào tạo liên kết cùng các trường đại học và tổ chức giáo dục uy tín.
+[0330] bullet1 Udemy hoạt động theo mô hình marketplace khóa học với số lượng khóa học đa dạng và phong phú.
+[0331] bullet1 edX tập trung vào các chương trình đào tạo có tính học thuật cao từ các trường đại học hàng đầu thế giới.
+[0332] par Việc khảo sát các hệ thống trên giúp xác định các chức năng cốt lõi cần xây dựng cho StackLearn, đồng thời định hướng việc tích hợp các công nghệ mới nhằm nâng cao trải nghiệm học tập của người dùng.
+[0333] Caption Bảng 1. 1. So sánh một số hệ thống học trực tuyến .
+[0334] <TABLE rows=7 cols=5>
+    row 1: Tiêu chí | Coursera | Udemy | edX | StackLearn
+    row 2: Quản lý khóa học | Có | Có | Có | Có
+    row 3: Bài kiểm tra trực tuyến | Có | Có | Có | Có
+    row 4: Theo dõi tiến độ học tập | Có | Có | Có | Có
+    row 5: Thanh toán trực tuyến | Có | Có | Có | Có
+    row 6: Chatbot AI hỗ trợ học tập | Hạn chế | Hạn chế | Hạn chế | Có
+    row 7: Tùy biến và mở rộng | Hạn chế | Hạn chế | Hạn chế | Cao
+[0336] Heading2 1.3. ĐỊNH HƯỚNG XÂY DỰNG HỆ THỐNG STACKLEARN
+[0337] par Trên cơ sở khảo sát các nền tảng học trực tuyến hiện có, đề tài định hướng xây dựng hệ thống StackLearn theo mô hình LMS trên nền tảng web với đầy đủ các chức năng quản lý học tập cơ bản.
+[0338] par Hệ thống hỗ trợ ba nhóm người dùng chính gồm học viên, giảng viên và quản trị viên. Các chức năng chính bao gồm quản lý khóa học, quản lý bài giảng, ghi danh khóa học, thanh toán trực tuyến, theo dõi tiến độ học tập và tổ chức các bài kiểm tra đánh giá.
+[0339] par Bên cạnh các chức năng LMS truyền thống, StackLearn tích hợp thêm mô-đun AI Tutor nhằm hỗ trợ học viên đặt câu hỏi và nhận phản hồi tự động trong quá trình học tập. Đây là điểm khác biệt chính của hệ thống so với các LMS thông thường trong phạm vi đồ án.
+[0340] cap2 1.4. MỤC TIÊU NGHIÊN CỨU
+[0341] par Đề tài hướng đến các mục tiêu chính sau:
+[0342] bullet1 Xây dựng hệ thống học trực tuyến hoạt động trên nền tảng web.
+[0343] bullet1 Hỗ trợ quản lý người dùng với các vai trò học viên, giảng viên và quản trị viên.
+[0344] bullet1 Xây dựng các chức năng quản lý khóa học, bài giảng và bài kiểm tra trực tuyến.
+[0345] bullet1 Hỗ trợ ghi danh khóa học, thanh toán và theo dõi tiến độ học tập.
+[0346] bullet1 Tích hợp AI Tutor nhằm hỗ trợ người học trong quá trình học tập.
+[0347] bullet1 Áp dụng phương pháp phân tích và thiết kế hướng đối tượng trong quá trình xây dựng hệ thống.
+[0348] bullet1 Đánh giá khả năng ứng dụng trí tuệ nhân tạo trong môi trường học tập trực tuyến.
+[0349] cap2 1.5. PHẠM VI THỰC HIỆN
+[0350] par Trong phạm vi đồ án tốt nghiệp, hệ thống StackLearn tập trung triển khai các chức năng cốt lõi của một nền tảng LMS bao gồm:
+[0351] bullet1 Quản lý tài khoản và phân quyền người dùng.
+[0352] bullet1 Quản lý danh mục và khóa học.
+[0353] bullet1 Quản lý bài giảng và tài liệu học tập.
+[0354] bullet1 Ghi danh khóa học và thanh toán trực tuyến.
+[0355] bullet1 Tổ chức bài kiểm tra và đánh giá kết quả học tập.
+[0356] bullet1 Theo dõi tiến độ học tập của học viên.
+[0357] bullet1 Tích hợp AI Tutor hỗ trợ hỏi đáp trong quá trình học tập.
+[0358] par Đề tài không tập trung nghiên cứu hoặc huấn luyện mô hình trí tuệ nhân tạo mà chỉ khai thác các dịch vụ AI có sẵn thông qua Gemini API để hỗ trợ chức năng chatbot học tập.
+[0359] cap2 1.6. PHƯƠNG PHÁP NGHIÊN CỨU
+[0360] par Để thực hiện đề tài, nhóm sử dụng các phương pháp nghiên cứu và triển khai sau:
+[0361] bullet1 Khảo sát và phân tích các hệ thống học trực tuyến hiện có.
+[0362] bullet1 Thu thập và đặc tả yêu cầu hệ thống.
+[0363] bullet1 Áp dụng phương pháp phân tích và thiết kế hướng đối tượng (OOAD).
+[0364] bullet1 Sử dụng các mô hình UML để mô tả và thiết kế hệ thống.
+[0365] bullet1 Thiết kế cơ sở dữ liệu theo mô hình quan hệ.
+[0366] bullet1 Xây dựng hệ thống bằng Laravel Framework và PostgreSQL.
+[0367] bullet1 Tích hợp Gemini API để xây dựng mô-đun AI Tutor.
+[0368] bullet1 Kiểm thử và đánh giá kết quả triển khai hệ thống.
+[0369] cap2 1.7. Ý NGHĨA CỦA ĐỀ TÀI
+[0370] par Về mặt thực tiễn, đề tài xây dựng một nền tảng học trực tuyến có khả năng hỗ trợ quản lý và tổ chức hoạt động đào tạo trên môi trường số, đồng thời nâng cao trải nghiệm học tập thông qua việc tích hợp chatbot AI hỗ trợ người học.
+[0371] par Về mặt học thuật, đề tài giúp vận dụng các kiến thức về phân tích thiết kế hướng đối tượng, phát triển ứng dụng web, thiết kế cơ sở dữ liệu và tích hợp dịch vụ trí tuệ nhân tạo trong quá trình xây dựng một hệ thống phần mềm hoàn chỉnh.
+[0372] cap2 1.8. CẤU TRÚC BÁO CÁO
+[0373] par Báo cáo được tổ chức thành năm chương như sau:
+[0374] bullet1 Chương 1. Tổng quan đề tài: Trình bày bối cảnh nghiên cứu, khảo sát hệ thống liên quan, mục tiêu, phạm vi và phương pháp thực hiện đề tài.
+[0375] bullet1 Chương 2. Cơ sở lý thuyết và công nghệ sử dụng: Trình bày các kiến thức nền tảng, công nghệ và công cụ được sử dụng trong quá trình xây dựng hệ thống.
+[0376] bullet1 Chương 3. Phân tích hệ thống StackLearn: Phân tích yêu cầu, Use Case, Activity Diagram và Domain Model của hệ thống.
+[0377] bullet1 Chương 4. Thiết kế hệ thống StackLearn: Trình bày kiến trúc hệ thống, Sequence Diagram, Design Class Diagram, thiết kế cơ sở dữ liệu, giao diện và mô-đun AI Tutor.
+[0378] bullet1 Chương 5. Cài đặt và đánh giá hệ thống: Trình bày quá trình triển khai, kết quả đạt được, đánh giá hệ thống và hướng phát triển trong tương lai.
+[0379] bullet1 Chương 6. Kiểm thử và đánh giá
+[0380] cap1 CHƯƠNG 2. CƠ SỞ LÝ THUYẾT VÀ CÔNG NGHỆ SỬ DỤNG
+[0381] Heading2 2.1. TỔNG QUAN VỀ HỆ THỐNG HỌC TRỰC TUYẾN (LMS)
+[0382] cap3 2.1.1. Khái niệm hệ thống LMS
+[0383] cap3 Learning Management System (LMS) là hệ thống phần mềm được sử dụng để tổ chức, quản lý và hỗ trợ quá trình dạy học trên môi trường số. LMS cho phép quản lý người học, giảng viên, khóa học, tài liệu học tập, bài kiểm tra, kết quả đánh giá và các hoạt động đào tạo khác.
+[0384] par Thông qua LMS, người học có thể tiếp cận nội dung học tập mọi lúc, mọi nơi; giảng viên có thể xây dựng và quản lý khóa học; trong khi nhà quản trị có thể giám sát toàn bộ hoạt động của hệ thống.
+[0385] cap3 2.1.2. Các thành phần chính của LMS
+[0386] par Một hệ thống LMS hiện đại thường bao gồm các thành phần:
+[0387] bullet1 Quản lý người dùng và phân quyền.
+[0388] bullet1 Quản lý khóa học.
+[0389] bullet1 Quản lý bài giảng và tài liệu học tập.
+[0390] bullet1 Ghi danh và thanh toán khóa học.
+[0391] bullet1 Kiểm tra, đánh giá kết quả học tập.
+[0392] bullet1 Theo dõi tiến độ học tập.
+[0393] bullet1 Hỗ trợ tương tác giữa người học và giảng viên.
+[0394] <IMAGE refs=rId11 near=''>
+[0395] hinh Hình 2. 1. Các thành phần chính của hệ thống LMS.
+[0396] cap3 2.1.3. Vai trò của LMS trong giáo dục số
+[0397] par Trong bối cảnh chuyển đổi số, LMS đóng vai trò là nền tảng trung tâm giúp số hóa hoạt động đào tạo, giảm chi phí tổ chức lớp học truyền thống, mở rộng khả năng tiếp cận tri thức và nâng cao hiệu quả quản lý đào tạo.
+[0398] cap3 2.1.4. Ứng dụng LMS trong đề tài StackLearn
+[0399] par StackLearn được xây dựng theo mô hình LMS hỗ trợ ba nhóm người dùng gồm học viên, giảng viên và quản trị viên. Hệ thống cung cấp các chức năng quản lý khóa học, học tập trực tuyến, kiểm tra đánh giá, thanh toán và hỗ trợ học tập bằng AI Tutor.
+[0400] cap2 2.2. KIẾN TRÚC MVC TRONG PHÁT TRIỂN ỨNG DỤNG WEB
+[0401] par MVC (Model – View – Controller) là mô hình kiến trúc được sử dụng phổ biến trong phát triển ứng dụng web nhằm phân tách hệ thống thành các thành phần độc lập gồm dữ liệu, giao diện và xử lý điều khiển. Trong đó, Model đảm nhiệm việc quản lý dữ liệu và nghiệp vụ của hệ thống, View chịu trách nhiệm hiển thị thông tin đến người dùng, còn Controller đóng vai trò tiếp nhận yêu cầu, điều phối xử lý và kết nối giữa Model với View. Việc phân chia chức năng theo mô hình MVC giúp tổ chức mã nguồn rõ ràng, hạn chế sự phụ thuộc giữa các thành phần và nâng cao khả năng quản lý hệ thống.
+[0402] <IMAGE refs=rId11 near=''>
+[0403] hinh Hình 2. 2. Mô hình kiến trúc MVC.
+[0404] par Trong quá trình hoạt động, các yêu cầu từ người dùng được gửi đến Controller để xử lý, sau đó Controller tương tác với Model để truy xuất hoặc cập nhật dữ liệu và trả kết quả về View để hiển thị. Nhờ cơ chế này, việc thay đổi giao diện không ảnh hưởng đến nghiệp vụ xử lý dữ liệu và ngược lại. Bên cạnh đó, mô hình MVC còn hỗ trợ tốt cho việc bảo trì, mở rộng và tái sử dụng mã nguồn, do đó được áp dụng rộng rãi trong nhiều framework hiện đại. Trong đề tài StackLearn, kiến trúc MVC được triển khai thông qua Laravel Framework nhằm xây dựng hệ thống học trực tuyến có cấu trúc rõ ràng, dễ phát triển và thuận lợi cho việc tích hợp các chức năng như quản lý khóa học, thanh toán và AI Tutor.
+[0405] cap2 2.3. FRAMEWORK LARAVEL TRONG PHÁT TRIỂN HỆ THỐNG
+[0406] on Laravel là framework mã nguồn mở dựa trên PHP, được sử dụng phổ biến trong phát triển ứng dụng web hiện đại nhờ kiến trúc MVC rõ ràng và hệ sinh thái hỗ trợ phong phú. Framework này cung cấp nhiều thành phần quan trọng như Routing, Authentication, Validation, Eloquent ORM và Blade Template, giúp quá trình xây dựng ứng dụng trở nên nhanh chóng, có tổ chức và dễ bảo trì.
+[0407] on Trong đề tài StackLearn, Laravel được sử dụng làm nền tảng backend chính để xử lý các nghiệp vụ như quản lý người dùng, khóa học, ghi danh, thanh toán, kiểm tra đánh giá và AI Tutor. Ngoài ra, Laravel còn hỗ trợ tích hợp các dịch vụ bên ngoài như Gemini API, cổng thanh toán trực tuyến, xác thực qua mạng xã hội, xử lý tác vụ nền bằng queue/job, realtime communication và quản lý tệp tin thông qua storage disk. Nhờ đó, Laravel phù hợp với yêu cầu xây dựng một hệ thống LMS có khả năng mở rộng, dễ bảo trì và đáp ứng tốt các nhu cầu triển khai thực tế.
+[0408] <IMAGE refs=rId11 near=''>
+[0409] hinh Hình 2. 3. Framework Laravel.
+[0410] par Trong hệ thống StackLearn, Laravel không chỉ đóng vai trò là framework backend chính mà còn cung cấp nhiều thành phần hỗ trợ quan trọng. Laravel Breeze được sử dụng cho chức năng xác thực người dùng, trong khi Laravel Socialite hỗ trợ đăng nhập thông qua Google và Facebook. Cơ chế queue/job của Laravel giúp xử lý các tác vụ nền như tạo transcript, xử lý tài liệu và các tác vụ AI mà không làm gián đoạn trải nghiệm người dùng.
+[0411] par Bên cạnh đó, Laravel Reverb và Echo hỗ trợ các chức năng realtime như thảo luận bài học và nhắn tin. Hệ thống cũng sử dụng filesystem/storage disk của Laravel để quản lý hình ảnh, video, tài liệu bài giảng và có thể tích hợp với các dịch vụ lưu trữ tương thích S3 như Cloudflare R2. Các thành phần này giúp StackLearn dễ mở rộng, dễ bảo trì và phù hợp hơn với môi trường triển khai thực tế.
+[0412] cap2 2.4. HỆ QUẢN TRỊ CƠ SỞ DỮ LIỆU POSTGRESQL
+[0413] par PostgreSQL là hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở được sử dụng rộng rãi trong nhiều hệ thống thông tin và ứng dụng web hiện nay. Hệ quản trị này cho phép lưu trữ và quản lý dữ liệu theo mô hình quan hệ, hỗ trợ các cơ chế đảm bảo tính toàn vẹn dữ liệu thông qua khóa chính, khóa ngoại và các ràng buộc dữ liệu. Bên cạnh đó, PostgreSQL còn được đánh giá cao nhờ khả năng xử lý giao dịch hiệu quả, tính ổn định, bảo mật và khả năng mở rộng đáp ứng nhu cầu phát triển của các hệ thống có quy mô từ nhỏ đến lớn.
+[0414] <IMAGE refs=rId11 near=''>
+[0415] hinh Hình 2. 4. Hệ quản trị cơ sở dữ liệu PostgreSQL.
+[0416] par Trong đề tài StackLearn, PostgreSQL được sử dụng làm hệ quản trị cơ sở dữ liệu trung tâm để lưu trữ và quản lý toàn bộ dữ liệu của hệ thống, bao gồm thông tin người dùng, khóa học, bài giảng, ghi danh, kết quả học tập, giao dịch thanh toán và lịch sử hội thoại của AI Tutor. Việc lựa chọn PostgreSQL không chỉ đáp ứng tốt yêu cầu lưu trữ dữ liệu có cấu trúc mà còn hỗ trợ hệ thống hoạt động ổn định, đảm bảo tính nhất quán dữ liệu và thuận lợi cho việc mở rộng trong tương lai.
+[0417] cap2 2.5. TRÍ TUỆ NHÂN TẠO VÀ CHATBOT HỖ TRỢ HỌC TẬP
+[0418] cap3 2.5.1. Tổng quan về trí tuệ nhân tạo trong giáo dục
+[0419] par Trí tuệ nhân tạo (Artificial Intelligence - AI) là lĩnh vực nghiên cứu và phát triển các hệ thống có khả năng mô phỏng một số hoạt động tư duy của con người như học tập, suy luận, nhận biết ngôn ngữ và đưa ra quyết định. Trong những năm gần đây, AI đã trở thành một trong những công nghệ trọng tâm của cuộc Cách mạng công nghiệp lần thứ tư và được ứng dụng rộng rãi trong nhiều lĩnh vực, trong đó có giáo dục.
+[0420] par Trong môi trường giáo dục số, AI góp phần nâng cao hiệu quả dạy và học thông qua các chức năng như phân tích dữ liệu học tập, cá nhân hóa nội dung đào tạo, đánh giá kết quả học tập và hỗ trợ người học theo thời gian thực. Việc ứng dụng AI giúp người học tiếp cận kiến thức linh hoạt hơn, đồng thời hỗ trợ giảng viên trong quá trình quản lý và theo dõi hoạt động học tập. Một trong những xu hướng nổi bật hiện nay là xây dựng các trợ lý học tập thông minh (AI Tutor) có khả năng tương tác trực tiếp với người học, hỗ trợ giải đáp thắc mắc và hướng dẫn học tập trong môi trường trực tuyến.
+[0421] cap3 2.5.2. AI Chatbot và AI Tutor
+[0422] par AI Chatbot là hệ thống phần mềm sử dụng công nghệ xử lý ngôn ngữ tự nhiên để giao tiếp với người dùng thông qua hội thoại. Khác với các chatbot truyền thống hoạt động theo tập luật cố định, AI Chatbot có khả năng hiểu ý nghĩa câu hỏi, phân tích ngữ cảnh và tạo phản hồi linh hoạt hơn.
+[0423] par Trong lĩnh vực giáo dục, AI Chatbot được phát triển theo hướng chuyên biệt thành AI Tutor (Gia sư ảo thông minh). AI Tutor không chỉ trả lời các câu hỏi đơn thuần mà còn hỗ trợ người học trong quá trình tiếp thu kiến thức. Hệ thống có thể giải thích các khái niệm khó, hướng dẫn giải bài tập, gợi ý tài liệu tham khảo, hỗ trợ ôn tập và đưa ra các khuyến nghị học tập phù hợp với từng người dùng.
+[0424] par So với hình thức hỗ trợ truyền thống, AI Tutor có ưu điểm là hoạt động liên tục 24/7, có khả năng phục vụ đồng thời nhiều người học và cung cấp phản hồi gần như tức thời. Đây là giải pháp phù hợp để nâng cao trải nghiệm học tập trên các nền tảng LMS hiện đại.
+[0425] cap3 2.5.3. Mô hình ngôn ngữ lớn
+[0426] par Mô hình ngôn ngữ lớn (Large Language Model - LLM) là các mô hình trí tuệ nhân tạo được huấn luyện trên khối lượng dữ liệu văn bản rất lớn nhằm học cách hiểu và sinh ngôn ngữ tự nhiên. Các mô hình này sử dụng kiến trúc mạng nơ-ron sâu, đặc biệt là kiến trúc Transformer, để phân tích mối quan hệ giữa các từ và tạo ra các phản hồi mang tính ngữ nghĩa cao.
+[0427] par Nhờ được huấn luyện trên nguồn dữ liệu đa dạng, LLM có khả năng thực hiện nhiều nhiệm vụ khác nhau như trả lời câu hỏi, tóm tắt văn bản, dịch ngôn ngữ, hỗ trợ lập trình, giải thích kiến thức và duy trì hội thoại đa lượt. Đây là nền tảng công nghệ quan trọng giúp các chatbot hiện đại có khả năng tương tác tự nhiên với người dùng.
+[0428] par Hiện nay có nhiều mô hình LLM nổi bật như GPT của OpenAI, Claude của Anthropic, Llama của Meta và Gemini của Google. Trong phạm vi đề tài này, hệ thống StackLearn lựa chọn Gemini làm nền tảng xử lý ngôn ngữ cho AI Tutor.
+[0429] cap3 2.5.4. Gemini API
+[0430] par Gemini là mô hình trí tuệ nhân tạo đa phương thức được phát triển bởi Google, có khả năng xử lý và sinh nội dung dựa trên ngôn ngữ tự nhiên. Để hỗ trợ tích hợp vào các ứng dụng phần mềm, Google cung cấp Gemini API cho phép các hệ thống gửi yêu cầu đến mô hình và nhận phản hồi thông qua giao thức web.
+[0431] par Thông qua Gemini API, các ứng dụng có thể xây dựng các chức năng như chatbot, trợ lý ảo, hỏi đáp kiến thức hoặc sinh nội dung tự động mà không cần tự huấn luyện mô hình AI từ đầu. Khi người dùng gửi câu hỏi, hệ thống sẽ đóng gói dữ liệu thành một yêu cầu (request), gửi tới Gemini API để xử lý và nhận lại kết quả dưới dạng phản hồi (response).
+[0432] par Trong StackLearn, Gemini API đóng vai trò là bộ máy xử lý ngôn ngữ trung tâm cho AI Tutor, giúp hệ thống có khả năng tương tác và hỗ trợ học viên theo thời gian thực.
+[0433] <IMAGE refs=rId11 near=''>
+[0434] hinh Hình 2. 5. Luồng xử lý tích hợp Gemini API.
+[0435] cap3 2.5.5. Prompt Engineering
+[0436] par Prompt Engineering là kỹ thuật thiết kế và tối ưu hóa câu lệnh đầu vào (Prompt) nhằm hướng dẫn mô hình AI tạo ra kết quả phù hợp với mục tiêu sử dụng. Chất lượng của Prompt có ảnh hưởng trực tiếp đến độ chính xác và tính hữu ích của phản hồi do mô hình AI sinh ra.
+[0437] par Trong các hệ thống AI hiện đại, Prompt không chỉ bao gồm câu hỏi của người dùng mà còn có thể chứa hướng dẫn, vai trò, quy tắc xử lý và dữ liệu ngữ cảnh liên quan. Việc xây dựng Prompt hợp lý giúp mô hình hiểu rõ nhiệm vụ cần thực hiện, từ đó giảm thiểu các phản hồi không chính xác hoặc không liên quan.
+[0438] par Đối với hệ thống StackLearn, Prompt Engineering được áp dụng để kết hợp câu hỏi của học viên với nội dung bài học hiện tại, thông tin khóa học và các yêu cầu về phạm vi trả lời. Nhờ đó, AI Tutor có thể tập trung hỗ trợ kiến thức liên quan đến bài học thay vì tạo ra các phản hồi ngoài ngữ cảnh.
+[0439] cap3 2.5.6. Context-Aware AI Tutor
+[0440] par Một trong những hạn chế của chatbot thông thường là chỉ dựa vào câu hỏi hiện tại của người dùng mà không xem xét đến bối cảnh học tập đang diễn ra. Điều này có thể dẫn đến các phản hồi thiếu liên quan hoặc không phù hợp với nhu cầu thực tế của người học.
+[0441] par Để khắc phục hạn chế này, StackLearn áp dụng mô hình Context-Aware AI Tutor, trong đó AI Tutor được cung cấp thêm các thông tin ngữ cảnh trước khi gửi yêu cầu đến Gemini API. Các thông tin ngữ cảnh bao gồm khóa học đang học, bài giảng hiện tại, nội dung bài học và lịch sử hội thoại trước đó.
+[0442] par Việc bổ sung ngữ cảnh giúp AI hiểu rõ hơn môi trường học tập của người dùng, từ đó tạo ra các phản hồi sát với nội dung đang học và mang tính hỗ trợ học tập cao hơn. Đây cũng là điểm khác biệt quan trọng giữa AI Tutor trong StackLearn và các chatbot hỏi đáp thông thường.
+[0443] cap3 2.5.7. Ứng dụng AI Tutor trong hệ thống StackLearn
+[0444] par Trong hệ thống StackLearn, transcript bài giảng được sử dụng như một nguồn dữ liệu quan trọng để xây dựng ngữ cảnh cho AI Tutor. Khi bài giảng có transcript, hệ thống có thể trích xuất nội dung liên quan đến câu hỏi của học viên và đưa vào prompt gửi đến mô hình AI. Nhờ đó, câu trả lời của AI Tutor không chỉ dựa trên kiến thức tổng quát của mô hình mà còn bám sát nội dung bài học đang được học viên theo dõi.
+[0445] par Đối với các bài giảng dạng video hoặc nguồn YouTube, transcript có thể được tạo tự động thông qua tác vụ xử lý nền. Việc xử lý transcript bằng queue/job giúp tránh làm chậm thao tác chính của người dùng, đồng thời cho phép hệ thống theo dõi trạng thái xử lý như đang chờ, đang xử lý, hoàn thành hoặc lỗi. Trong trường hợp bài học chưa có transcript, AI Tutor vẫn có thể hoạt động dựa trên thông tin khóa học, tiêu đề bài học hoặc nội dung tài liệu sẵn có, nhưng mức độ chính xác và chi tiết của phản hồi có thể bị hạn chế hơn.
+[0446] cap3 2.5.8. Transcription và Retrieval trong AI Tutor
+[0447] par Transcription là quá trình chuyển đổi âm thanh trong video bài giảng thành văn bản, có thể thực hiện bằng các công nghệ nhận dạng giọng nói như OpenAI Whisper. Trong hệ thống StackLearn, transcript giúp nội dung bài giảng không chỉ tồn tại ở dạng video mà còn có thể được lưu trữ, tìm kiếm và xử lý dưới dạng văn bản. Đây là nguồn dữ liệu quan trọng để AI Tutor hiểu rõ hơn nội dung bài học mà học viên đang theo dõi.
+[0448] par Retrieval là quá trình truy xuất các đoạn nội dung liên quan từ bài giảng, tài liệu học tập hoặc transcript dựa trên câu hỏi của học viên. Khi người học đặt câu hỏi, hệ thống có thể tìm các nội dung phù hợp trong dữ liệu khóa học, sau đó kết hợp chúng với câu hỏi để tạo ngữ cảnh gửi đến mô hình AI. Cách tiếp cận này giúp AI Tutor trả lời sát với nội dung bài học hơn, hạn chế phản hồi chung chung và nâng cao hiệu quả hỗ trợ học tập trong hệ thống StackLearn.
+[0456] cap1 CHƯƠNG 3. PHÂN TÍCH HỆ THỐNG STACKLEARN
+[0457] cap2 3.1. TỔNG QUAN KIẾN TRÚC HỆ THỐNG
+[0458] cap3 3.1.1. Bài toán LMS tích hợp AI Tutor
+[0459] par Trong bối cảnh chuyển đổi số và sự phát triển mạnh mẽ của hình thức học tập trực tuyến, nhu cầu xây dựng các nền tảng E-learning ngày càng trở nên phổ biến. Các hệ thống LMS hiện nay không chỉ hỗ trợ quản lý khóa học, học viên và nội dung đào tạo mà còn hướng tới việc nâng cao trải nghiệm học tập thông qua các công nghệ mới, đặc biệt là trí tuệ nhân tạo.
+[0460] par Tuy nhiên, phần lớn các nền tảng học trực tuyến hiện nay vẫn tồn tại một số hạn chế như khả năng tương tác giữa người học và hệ thống còn thấp, học viên khó được giải đáp kịp thời các thắc mắc phát sinh trong quá trình học tập, trong khi giảng viên không thể hỗ trợ liên tục cho số lượng lớn người học cùng lúc. Điều này ảnh hưởng đáng kể đến hiệu quả tiếp thu kiến thức và trải nghiệm học tập của người dùng.
+[0461] par Xuất phát từ thực tế đó, đề tài xây dựng hệ thống StackLearn - nền tảng học trực tuyến tích hợp AI Tutor nhằm hỗ trợ người học trong suốt quá trình tham gia khóa học. Bên cạnh các chức năng của một LMS truyền thống như quản lý khóa học, quản lý người dùng, ghi danh, thanh toán trực tuyến, học tập và kiểm tra đánh giá, hệ thống còn tích hợp mô-đun AI Tutor đóng vai trò như một gia sư ảo hỗ trợ học viên đặt câu hỏi và nhận phản hồi ngay trong quá trình học tập.
+[0462] par AI Tutor được thiết kế để khai thác thông tin về khóa học, bài học hiện tại và ngữ cảnh học tập của người dùng nhằm tạo ra các phản hồi phù hợp, góp phần nâng cao khả năng tương tác và hỗ trợ học tập cá nhân hóa trên nền tảng.
+[0463] cap3 3.1.2. Các tác nhân tham gia hệ thống
+[0464] par Hệ thống StackLearn bao gồm ba nhóm tác nhân chính cùng một tác nhân dịch vụ bên ngoài tham gia vào quá trình vận hành.
+[0465] par Học viên (Student) là đối tượng sử dụng chính của hệ thống. Học viên có thể đăng ký tài khoản, tìm kiếm và đăng ký khóa học, thực hiện thanh toán, tham gia học tập, làm bài kiểm tra đánh giá và tương tác với AI Tutor để được hỗ trợ trong quá trình học.
+[0466] par Giảng viên (Instructor) là người tạo và quản lý nội dung đào tạo trên hệ thống. Giảng viên có thể xây dựng khóa học, quản lý bài giảng, tài liệu học tập, câu hỏi kiểm tra và theo dõi tình hình học tập của học viên.
+[0467] par Quản trị viên (Administrator) chịu trách nhiệm quản lý toàn bộ hệ thống, bao gồm quản lý người dùng, quản lý danh mục khóa học, kiểm duyệt nội dung, , xử lý hoàn tiền,quản lý thanh toán, theo dõi hoạt động hệ thống và thống kê dữ liệu vận hành.
+[0468] par Gemini API là dịch vụ trí tuệ nhân tạo được tích hợp bên ngoài hệ thống. Dịch vụ này tiếp nhận yêu cầu từ mô-đun AI Tutor xử lý nội dung câu hỏi và sinh phản hồi để hỗ trợ học viên trong quá trình học tập.
+[0469] cap3 3.1.3. Kiến trúc tổng quan hệ thống
+[0470] bullet1 StackLearn được xây dựng theo mô hình kiến trúc nhiều lớp. Ba nhóm người dùng chính gồm học viên, giảng viên và quản trị viên tương tác với hệ thống thông qua giao diện web. Các yêu cầu từ giao diện được gửi đến ứng dụng Laravel, nơi xử lý nghiệp vụ, kiểm tra quyền truy cập, truy xuất dữ liệu và điều phối các chức năng như học tập, thanh toán, quản lý khóa học và AI Tutor.
+[0471] bullet1 Lớp giao diện người dùng: Cung cấp giao diện tương tác cho học viên, giảng viên và quản trị viên thông qua trình duyệt web. Người dùng thực hiện các thao tác như đăng ký tài khoản, học tập, quản lý khóa học và trao đổi với AI Tutor thông qua lớp này.
+[0472] bullet1 Lớp xử lý nghiệp vụ: Được xây dựng trên nền tảng Laravel Framework, chịu trách nhiệm xử lý các nghiệp vụ của hệ thống như xác thực người dùng, quản lý khóa học, thanh toán, theo dõi tiến độ học tập, quản lý bài kiểm tra và điều phối hoạt động của AI Tutor.
+[0473] bullet1 Lớp dữ liệu: Sử dụng hệ quản trị cơ sở dữ liệu PostgreSQL để lưu trữ và quản lý toàn bộ dữ liệu của hệ thống bao gồm người dùng, khóa học, bài giảng, kết quả học tập, giao dịch thanh toán và lịch sử hội thoại với AI Tutor.
+[0474] bullet1 Lớp dịch vụ trí tuệ nhân tạo: Thông qua Gemini API, hệ thống có khả năng tiếp nhận câu hỏi của học viên, kết hợp với ngữ cảnh học tập hiện tại để tạo phản hồi phù hợp. Mô-đun AI Tutor đóng vai trò trung gian giữa hệ thống LMS và dịch vụ AI nhằm bảo đảm việc khai thác và sử dụng dữ liệu học tập được thực hiện hiệu quả.
+[0475] <IMAGE refs=rId11 near=''>
+[0476] hinh Hình 3. 1. Kiến trúc tổng thể hệ thống StackLearn.
+[0477] on Như thể hiện trong Hình 3.1, học viên, giảng viên và quản trị viên tương tác với StackLearn thông qua giao diện web. Ứng dụng Laravel đóng vai trò trung tâm xử lý nghiệp vụ, kết nối với PostgreSQL để lưu trữ dữ liệu và điều phối mô-đun AI Tutor. Khi học viên đặt câu hỏi, AI Tutor khai thác ngữ cảnh học tập và gửi yêu cầu đến Gemini API để sinh phản hồi hỗ trợ học tập.
+[0478] cap2 3.2. PHÂN TÍCH BÀI TOÁN HỆ THỐNG HỌC TRỰC TUYẾN STACKLEARN
+[0479] cap3 3.2.1. Bối cảnh bài toán
+[0480] par Trong những năm gần đây, mô hình học tập trực tuyến (E-learning) ngày càng phát triển mạnh mẽ nhờ sự phổ biến của Internet và các nền tảng số. Các hệ thống LMS cho phép người học tiếp cận kiến thức linh hoạt thông qua video bài giảng, tài liệu học tập và bài kiểm tra trực tuyến. Điều này góp phần mở rộng khả năng tiếp cận giáo dục và hỗ trợ học tập mọi lúc, mọi nơi.
+[0481] par Tuy nhiên, trong quá trình tự học trực tuyến, học viên thường gặp nhiều khó khăn như:
+[0482] bullet1 Không được hỗ trợ giải đáp ngay khi phát sinh câu hỏi.
+[0483] bullet1 Khó duy trì tính liên tục trong quá trình học tập.
+[0484] bullet1 Thiếu khả năng tương tác trực tiếp với giảng viên.
+[0485] bullet1 Khó tìm kiếm nhanh nội dung liên quan đến bài học đang học.
+[0486] bullet1 Khó theo dõi tiến độ học tập và kết quả học tập cá nhân.
+[0487] par Bên cạnh đó, đối với giảng viên và quản trị viên, việc quản lý khóa học, kiểm duyệt nội dung, theo dõi học viên và vận hành hệ thống cũng là bài toán phức tạp khi số lượng người dùng tăng lên.
+[0488] par Ngoài các chức năng LMS truyền thống, xu hướng tích hợp trí tuệ nhân tạo vào giáo dục hiện nay đang được quan tâm nhằm nâng cao khả năng hỗ trợ học tập. Các mô hình AI hiện đại có thể hỗ trợ trả lời câu hỏi, giải thích kiến thức và hỗ trợ học viên theo ngữ cảnh học tập cụ thể.
+[0489] par Xuất phát từ thực tế đó, đề tài xây dựng hệ thống StackLearn nhằm phát triển một nền tảng học trực tuyến tích hợp AI Tutor hỗ trợ học tập. Hệ thống không chỉ cung cấp các chức năng quản lý khóa học và học trực tuyến mà còn tích hợp chatbot AI sử dụng Gemini API nhằm hỗ trợ giải đáp câu hỏi và tăng khả năng tương tác trong môi trường E-learning.
+[0490] cap3 3.2.2. Mục tiêu của hệ thống
+[0491] par Hệ thống StackLearn được xây dựng nhằm đáp ứng các mục tiêu chính sau:
+[0492] bullet1 Xây dựng nền tảng học trực tuyến hỗ trợ nhiều vai trò người dùng gồm học viên, giảng viên và quản trị viên.
+[0493] bullet1 Hỗ trợ giảng viên tạo, quản lý và tổ chức nội dung khóa học trực tuyến.
+[0494] bullet1 Cho phép học viên tìm kiếm, đăng ký và tham gia học tập trên hệ thống.
+[0495] bullet1 Hỗ trợ quản lý thanh toán, ghi danh khóa học và theo dõi tiến độ học tập.
+[0496] bullet1 Tích hợp AI Tutor nhằm hỗ trợ học viên giải đáp câu hỏi theo nội dung bài học.
+[0497] bullet1 Xây dựng môi trường học tập trực tuyến có khả năng tương tác cao.
+[0498] bullet1 Đảm bảo hệ thống có khả năng mở rộng và tích hợp thêm các công nghệ AI trong tương lai.
+[0499] cap3 3.2.3. Phạm vi hệ thống
+[0500] cap4 3.2.3.1. Phạm vi chức năng
+[0501] par Hệ thống StackLearn được xây dựng dưới dạng một nền tảng học trực tuyến (E-learning) tích hợp AI Tutor hỗ trợ học tập. Trong phạm vi của đề tài, hệ thống tập trung triển khai các nhóm chức năng chính phục vụ cho ba đối tượng người dùng gồm học viên, giảng viên và quản trị viên.
+[0502] bullet1 Đối với học viên, hệ thống hỗ trợ tìm kiếm và đăng ký khóa học, đăng nhập bằng tài khoản hệ thống hoặc tài khoản Google/Facebook, thanh toán khóa học thông qua các cổng thanh toán trực tuyến như Stripe và VNPay, tham gia học tập thông qua video bài giảng, làm bài kiểm tra, theo dõi tiến độ học tập, thảo luận trong bài học, nhắn tin realtime và tương tác với AI Tutor để được hỗ trợ trong quá trình học.
+[0503] bullet1 Đối với giảng viên, hệ thống hỗ trợ xây dựng và quản lý khóa học, tổ chức section và bài giảng, quản lý tài liệu học tập, tạo bài kiểm tra, theo dõi kết quả học tập của học viên, quản lý thảo luận bài học, tạo hoặc cập nhật transcript cho bài giảng, theo dõi doanh thu khóa học và gửi yêu cầu rút tiền từ doanh thu bán khóa học.
+[0504] bullet1 Đối với quản trị viên, hệ thống cung cấp các chức năng quản lý người dùng, quản lý giảng viên, quản lý danh mục và khóa học, duyệt khóa học trước khi công khai, quản lý đơn hàng và thanh toán, xử lý yêu cầu hoàn tiền, quản lý yêu cầu rút tiền của giảng viên, theo dõi nhật ký hoạt động, giám sát tình trạng hệ thống và xem các báo cáo phân tích học tập.
+[0505] bullet1 Ngoài các chức năng của một hệ thống LMS truyền thống, StackLearn còn tích hợp mô-đun AI Tutor nhằm hỗ trợ học viên đặt câu hỏi và nhận phản hồi theo ngữ cảnh bài học. Hệ thống có thể khai thác transcript, tài liệu học tập và dữ liệu liên quan đến khóa học để cung cấp thêm ngữ cảnh cho AI Tutor, giúp phản hồi sát với nội dung học tập hơn. Bên cạnh đó, các chức năng realtime, quản lý thanh toán, hoàn tiền, rút tiền, phân tích học tập và giám sát hệ thống giúp StackLearn phù hợp hơn với nhu cầu triển khai thực tế của một nền tảng học trực tuyến.
+[0507] cap4 3.2.3.2. Phạm vi công nghệ
+[0508] par Để đáp ứng các yêu cầu về khả năng mở rộng, hiệu năng và tích hợp trí tuệ nhân tạo, hệ thống StackLearn được xây dựng trên nền tảng công nghệ web hiện đại kết hợp với dịch vụ AI bên ngoài. Các công nghệ chính được sử dụng trong đề tài được trình bày trong Bảng 3.1.
+[0509] Caption Bảng 3. 1. Các công nghệ sử dụng trong hệ thống StackLearn.
+[0510] <TABLE rows=8 cols=2>
+    row 1: Công nghệ | Vai trò
+    row 2: Laravel | Xây dựng hệ thống backend, xử lý nghiệp vụ và quản lý dữ liệu
+    row 3: PostgreSQL | Lưu trữ và quản lý dữ liệu hệ thống
+    row 4: HTML, CSS, JavaScript | Xây dựng giao diện và xử lý tương tác người dùng
+    row 5: Bootstrap | Thiết kế giao diện responsive trên nhiều thiết bị
+    row 6: Gemini API | Cung cấp khả năng xử lý ngôn ngữ tự nhiên cho AI Tutor
+    row 7: REST API | Kết nối giữa các thành phần của hệ thống và dịch vụ bên ngoài
+    row 8: MVC Architecture | Tổ chức cấu trúc ứng dụng theo mô hình phân lớp, hỗ trợ bảo trì và mở rộng hệ thống
+[0512] par Việc lựa chọn các công nghệ trên giúp hệ thống bảo đảm khả năng phát triển, dễ dàng bảo trì và thuận lợi trong việc mở rộng các chức năng AI hỗ trợ học tập trong tương lai.
+[0513] cap3 3.2.4. Các vấn đề cần giải quyết
+[0514] par Trong quá trình xây dựng hệ thống StackLearn, đề tài tập trung giải quyết các vấn đề chính sau:
+[0515] bullet1 Xây dựng nền tảng học trực tuyến hỗ trợ nhiều vai trò người dùng.
+[0516] bullet1 Tổ chức nội dung khóa học theo cấu trúc phù hợp với E-learning.
+[0517] bullet1 Đảm bảo khả năng quản lý tiến độ học tập và dữ liệu người dùng.
+[0518] bullet1 Tích hợp AI Tutor hỗ trợ học viên theo ngữ cảnh bài học.
+[0519] bullet1 Xây dựng cơ chế lưu trữ lịch sử hội thoại AI.
+[0520] bullet1 Đảm bảo khả năng mở rộng và bảo trì hệ thống.
+[0521] bullet1 Đảm bảo tính bảo mật trong xác thực và phân quyền người dùng.
+[0522] cap3 3.2.5. Định hướng giải pháp của hệ thống
+[0523] par Để giải quyết các vấn đề đặt ra, hệ thống StackLearn được xây dựng theo hướng kiến trúc web nhiều lớp kết hợp dịch vụ AI bên ngoài. Trong mô hình này:
+[0524] bullet1 Frontend chịu trách nhiệm hiển thị giao diện và tương tác người dùng.
+[0525] bullet1 Backend xử lý nghiệp vụ, xác thực và quản lý dữ liệu.
+[0526] bullet1 PostgreSQL đảm nhiệm lưu trữ dữ liệu hệ thống.
+[0527] bullet1 Gemini API hỗ trợ xử lý ngôn ngữ tự nhiên cho AI Tutor.
+[0528] par Đối với mô-đun AI Chatbot, hệ thống áp dụng Prompt Engineering nhằm xây dựng ngữ cảnh học tập trước khi gửi yêu cầu đến Gemini API. Dữ liệu ngữ cảnh bao gồm nội dung bài học, transcript và lịch sử hội thoại gần nhất nhằm giúp AI phản hồi chính xác hơn.
+[0529] par Ngoài các chức năng hiện tại, hệ thống StackLearn cũng được thiết kế theo hướng module hóa nhằm hỗ trợ khả năng mở rộng và nâng cấp trong tương lai. Kiến trúc hệ thống cho phép tích hợp thêm các mô-đun như phân tích dữ liệu học tập, gợi ý khóa học, nâng cao khả năng hỗ trợ học tập bằng AI và mở rộng các dịch vụ thông minh phục vụ môi trường E-learning.
+[0530] cap2 3.3. PHÂN TÍCH YÊU CẦU HỆ THỐNG
+[0531] par Sau khi xác định phạm vi và mục tiêu của hệ thống, bước tiếp theo là phân tích các yêu cầu mà hệ thống StackLearn cần đáp ứng. Các yêu cầu này bao gồm yêu cầu chức năng và yêu cầu phi chức năng nhằm bảo đảm hệ thống vận hành hiệu quả, ổn định và đáp ứng nhu cầu của người dùng trong môi trường học tập trực tuyến.
+[0532] cap3 3.3.1. Yêu cầu chức năng
+[0533] par Yêu cầu chức năng mô tả các chức năng mà hệ thống StackLearn cần cung cấp cho người dùng trong quá trình vận hành. Các chức năng được xây dựng dựa trên nhu cầu thực tế của học viên, giảng viên và quản trị viên trong môi trường học trực tuyến.
+[0534] par Yêu cầu chức năng mô tả các dịch vụ và nghiệp vụ mà hệ thống cần cung cấp cho các nhóm người dùng trong quá trình vận hành.
+[0535] a a) Chức năng học viên
+[0536] par Học viên là đối tượng sử dụng chính của hệ thống. Hệ thống cần hỗ trợ học viên trong toàn bộ quá trình từ tìm kiếm khóa học, đăng ký tham gia cho đến học tập và đánh giá kết quả học tập. Các chức năng chính bao gồm:
+[0537] bullet1 Đăng ký, đăng nhập và quản lý thông tin cá nhân.
+[0538] bullet1 Tìm kiếm, tra cứu và xem thông tin khóa học.
+[0539] bullet1 Quản lý danh sách khóa học yêu thích và giỏ hàng.
+[0540] bullet1 Đăng ký và thanh toán khóa học trực tuyến.
+[0541] bullet1 Tham gia học tập thông qua video bài giảng và tài liệu học tập.
+[0542] bullet1 Tham gia thảo luận và ghi chú của từng bài giảng.
+[0543] bullet1 Nhận xét và đánh giá khóa học.
+[0544] bullet1 Thực hiện các bài kiểm tra đánh giá.
+[0545] bullet1 Theo dõi tiến độ và kết quả học tập.
+[0546] bullet1 Tương tác với AI Tutor trong quá trình học tập.
+[0547] bullet1 Quản lý lịch sử hội thoại với AI Tutor.
+[0548] bullet1 Đăng nhập bằng tài khoản Google hoặc Facebook.
+[0549] bullet1 Xem lịch sử đơn hàng và trạng thái thanh toán.
+[0550] bullet1 Gửi yêu cầu hoàn tiền đối với khóa học đã mua khi đáp ứng điều kiện.
+[0551] bullet1 Nhắn tin realtime với giảng viên hoặc người dùng liên quan trong hệ thống.
+[0552] a b) Chức năng giảng viên
+[0553] par Giảng viên là đối tượng chịu trách nhiệm xây dựng và quản lý nội dung đào tạo trên hệ thống. Các chức năng chính bao gồm:
+[0554] bullet1 Quản lý hồ sơ cá nhân.
+[0555] bullet1 Tạo mới, cập nhật và quản lý khóa học.
+[0556] bullet1 Gửi khóa học cho quản trị viên xét duyệt trước khi công khai.
+[0557] bullet1 Quản lý mã giảm giá cho khóa học.
+[0558] bullet1 Quản lý chương học, bài giảng và nội dung đào tạo.
+[0559] bullet1 Quản lý video bài giảng và tài liệu học tập.
+[0560] bullet1 Tạo, cập nhật hoặc xóa transcript cho bài giảng.
+[0561] bullet1 Quản lý và kiểm duyệt thảo luận trong bài học.
+[0562] bullet1 Nhắn tin realtime với học viên hoặc người dùng liên quan.
+[0563] bullet1 Xây dựng và quản lý các bài kiểm tra đánh giá.
+[0564] bullet1 Theo dõi danh sách học viên tham gia khóa học.
+[0565] bullet1 Theo dõi tiến độ và kết quả học tập của học viên.
+[0566] bullet1 Theo dõi đơn hàng và doanh thu từ các khóa học.
+[0567] bullet1 Xuất dữ liệu đơn hàng hoặc doanh thu khi cần.
+[0568] bullet1 Gửi yêu cầu rút tiền từ doanh thu bán khóa học.
+[0569] bullet1 Quản lý tình trạng khai thác khóa học.
+[0570] a c) Chức năng quản trị viên
+[0571] par Quản trị viên là đối tượng chịu trách nhiệm quản lý và giám sát toàn bộ hoạt động của hệ thống. Các chức năng chính bao gồm:
+[0572] bullet1 Quản lý tài khoản người dùng, giảng viên và phân quyền hệ thống.
+[0573] bullet1 Kiểm duyệt yêu cầu trở thành giảng viên.
+[0574] bullet1 Quản lý danh mục và danh mục con của khóa học.
+[0575] bullet1 Kiểm duyệt, phê duyệt, từ chối hoặc ẩn nội dung khóa học.
+[0576] bullet1 Quản lý đơn hàng và các giao dịch thanh toán.
+[0577] bullet1 Quản lý yêu cầu hoàn tiền và xử lý hoàn tiền khi cần thiết.
+[0578] bullet1 Quản lý yêu cầu rút tiền của giảng viên.
+[0579] bullet1 Quản lý nội dung hiển thị trên hệ thống như slider, đối tác, thông tin website và các thành phần giao diện.
+[0580] bullet1 Quản lý báo cáo nội dung, kiểm duyệt thảo luận, đánh giá hoặc nội dung vi phạm.
+[0581] bullet1 Theo dõi nhật ký hoạt động của hệ thống.
+[0582] bullet1 Theo dõi thống kê, doanh thu và phân tích học tập.
+[0583] bullet1 Giám sát tình trạng hệ thống thông qua chức năng system health.
+[0584] bullet1 Quản lý cấu hình hệ thống và các dịch vụ tích hợp như email, Stripe, Google, Gemini hoặc các dịch vụ liên quan.
+[0585] bullet1 Giám sát hoạt động của AI Tutor và các dữ liệu hỗ trợ học tập liên quan.
+[0586] a d) Chức năng AI Tutor
+[0587] par AI Tutor là mô-đun hỗ trợ học tập thông minh được tích hợp vào hệ thống nhằm nâng cao khả năng tương tác và hỗ trợ người học. Các chức năng chính bao gồm:
+[0588] bullet1 Tiếp nhận câu hỏi từ học viên.
+[0589] bullet1 Xác định ngữ cảnh khóa học, bài học và nội dung học tập hiện tại.
+[0590] bullet1 Truy xuất các nội dung liên quan từ bài giảng, tài liệu học tập hoặc transcript nếu có.
+[0591] bullet1 Xây dựng prompt phù hợp với câu hỏi và ngữ cảnh học tập.
+[0592] bullet1 Gửi yêu cầu xử lý đến mô hình ngôn ngữ Gemini.
+[0593] bullet1 Tiếp nhận và xử lý phản hồi từ hệ thống AI.
+[0594] bullet1 Trả lời câu hỏi của học viên theo nội dung bài học.
+[0595] bullet1 Hạn chế phản hồi ngoài phạm vi nội dung khóa học.
+[0596] bullet1 Lưu trữ và quản lý lịch sử hội thoại.
+[0597] bullet1 Hỗ trợ học viên tra cứu nhanh các nội dung liên quan đến bài học.
+[0599] cap3 3.3.2. Yêu cầu phi chức năng
+[0600] par Bên cạnh các yêu cầu chức năng, hệ thống cần đáp ứng các yêu cầu phi chức năng nhằm bảo đảm chất lượng vận hành và trải nghiệm người dùng.
+[0601] Bng Bảng 3. 1. Các yêu cầu phi chức năng của hệ thống.
+[0602] <TABLE rows=8 cols=3>
+    row 1: Yêu Cầu | Tiêu Chí | Nội Dung Chi Tiết
+    row 2: Bảo mật | Xác thực và phân quyền | Người dùng phải đăng nhập trước khi sử dụng các chức năng theo quyền hạn.
+    row 3: Hiệu năng | Tốc độ xử lý | Hệ thống cần phản hồi nhanh đối với các chức năng học tập và AI Chatbot.
+    row 4: Tính ổn định | Độ tin cậy | Hệ thống cần hoạt động ổn định trong quá trình học tập và thanh toán.
+    row 5: Khả năng mở rộng | Linh hoạt kiến trúc | Hỗ trợ tích hợp thêm AI và các module mới trong tương lai.
+    row 6: Tính dễ sử dụng | Trải nghiệm người dùng | Giao diện trực quan và dễ thao tác.
+    row 7: Toàn vẹn dữ liệu | Đồng bộ dữ liệu | Dữ liệu học tập và thanh toán phải được lưu trữ chính xác.
+    row 8: Khả năng bảo trì | Quản lý mã nguồn | Hệ thống cần dễ nâng cấp và bảo trì.
+[0603] cap3 3.3.3. Yêu cầu bảo mật hệ thống
+[0604] par Do hệ thống StackLearn quản lý thông tin người dùng, dữ liệu học tập và các giao dịch trực tuyến, các yêu cầu bảo mật cần được xem xét trong quá trình thiết kế và triển khai hệ thống. Các yêu cầu bảo mật chính bao gồm:
+[0605] bullet1 Người dùng phải được xác thực trước khi truy cập các chức năng của hệ thống.
+[0606] bullet1 Thực hiện phân quyền truy cập theo từng vai trò người dùng.
+[0607] bullet1 Mật khẩu được mã hóa trước khi lưu trữ trong cơ sở dữ liệu.
+[0608] bullet1 Dữ liệu trao đổi giữa người dùng và hệ thống được bảo vệ thông qua các giao thức bảo mật phù hợp.
+[0609] bullet1 Bảo vệ thông tin cấu hình và khóa truy cập của các dịch vụ bên ngoài như Gemini API.
+[0610] bullet1 Kiểm tra và xác thực dữ liệu đầu vào nhằm hạn chế các nguy cơ tấn công phổ biến đối với ứng dụng web.
+[0611] cap3 3.3.4. Yêu cầu hiệu năng và khả năng mở rộng
+[0612] par Hệ thống cần bảo đảm hiệu năng xử lý phù hợp với môi trường học tập trực tuyến và đáp ứng khả năng phát triển trong tương lai.
+[0613] cap2 Về hiệu năng:
+[0614] bullet1 Hệ thống phải hỗ trợ nhiều người dùng truy cập đồng thời.
+[0615] bullet1 Thời gian phản hồi đối với các chức năng học tập như xem khóa học, mở bài giảng, làm bài kiểm tra và theo dõi tiến độ cần được duy trì ở mức phù hợp.
+[0616] bullet1 Các tác vụ xử lý lâu như tạo transcript bài giảng, xử lý tài liệu học tập hoặc tác vụ liên quan đến AI cần được đưa vào queue/job để xử lý nền, tránh làm gián đoạn trải nghiệm của người dùng.
+[0617] bullet1 AI Tutor cần phản hồi trong thời gian hợp lý. Trường hợp dịch vụ AI phản hồi chậm hoặc lỗi, hệ thống cần có thông báo phù hợp và cơ chế xử lý thay thế.
+[0618] bullet1 Các chức năng realtime như thảo luận bài học hoặc nhắn tin cần truyền tải dữ liệu nhanh, ổn định và hạn chế độ trễ trong quá trình tương tác.
+[0619] cap2 Về khả năng mở rộng:
+[0620] bullet1 Kiến trúc hệ thống cho phép bổ sung các chức năng mới mà không ảnh hưởng đáng kể đến các thành phần hiện có.
+[0621] bullet1 Có khả năng tích hợp thêm các mô hình AI, dịch vụ transcription hoặc dịch vụ thông minh khác trong tương lai.
+[0622] bullet1 Hỗ trợ mở rộng dữ liệu, số lượng người dùng, số lượng khóa học và nội dung bài giảng khi quy mô hệ thống tăng lên.
+[0623] bullet1 Hỗ trợ tích hợp các dịch vụ bên ngoài như Gemini API, OpenAI, Stripe, VNPay hoặc các dịch vụ tương tự, đồng thời có cơ chế xử lý khi các dịch vụ này tạm thời không khả dụng.
+[0624] bullet1 Hỗ trợ lưu trữ tệp tin trên object storage tương thích S3 như Cloudflare R2 để mở rộng dung lượng lưu trữ hình ảnh, video bài giảng và tài liệu học tập.
+[0625] cap2 3.4. PHÂN TÍCH USE CASE CỦA HỆ THỐNG
+[0626] par Sau khi xác định các yêu cầu chức năng của hệ thống, bước tiếp theo là xây dựng mô hình Use Case nhằm mô tả sự tương tác giữa các tác nhân với hệ thống StackLearn. Use Case giúp xác định phạm vi chức năng, làm rõ các nghiệp vụ cần triển khai và là cơ sở cho quá trình thiết kế hệ thống ở các bước tiếp theo.
+[0627] par Đối với hệ thống StackLearn, các tác nhân chính tham gia tương tác với hệ thống được trình bày trong Bảng 3.2.
+[0629] Caption Bảng 3. 2. Các tác nhân của hệ thống.
+[0630] <TABLE rows=4 cols=3>
+    row 1: Tác nhân | Vai trò | Chức năng
+    row 2: Student | Học tập trực tuyến | Đăng ký khóa học, thanh toán, học bài, làm bài kiểm tra, tương tác với AI Tutor.
+    row 3: Instructor | Quản lý nội dung đào tạo | Tạo và quản lý khóa học, bài giảng, tài liệu học tập, bài kiểm tra.
+    row 4: Admin | Quản trị và giám sát hệ thống | Quản lý người dùng, kiểm duyệt khóa học, quản lý thanh toán và theo dõi hoạt động hệ thống.
+[0632] par Các tác nhân trên tương tác với hệ thống thông qua các chức năng tương ứng với vai trò được phân quyền.
+[0634] cap3 3.4.1. Sơ đồ Use Case tổng quát
+[0635] <IMAGE refs=rId12 near=''>
+[0636] Caption Hình 3. 2. Sơ đồ Use Case tổng quát của hệ thống StackLearn.
+[0637]  Hệ thống StackLearn có ba tác nhân chính gồm Học viên (Student), Giảng viên (Instructor) và Quản trị viên (Administrator). Mỗi tác nhân tương tác với hệ thống thông qua các nhóm chức năng tương ứng với vai trò được phân quyền.
+[0638] par Sơ đồ Use Case tổng quát thể hiện mối quan hệ giữa các tác nhân và các nhóm chức năng chính của hệ thống như quản lý người dùng, quản lý khóa học, học tập trực tuyến, thanh toán, kiểm tra đánh giá và hỗ trợ học tập thông qua AI Tutor.
+[0640] cap3 3.4.2. Use Case của học viên
+[0641] par Học viên là tác nhân trung tâm của hệ thống, trực tiếp tham gia vào các hoạt động học tập trực tuyến.
+[0642] <IMAGE refs=rId13 near=''>
+[0643] Caption Hình 3. 3. Sơ đồ Use Case của học viên..
+[0645] cap3 3.4.3. Use Case của giảng viên
+[0646] par Giảng viên chịu trách nhiệm xây dựng và quản lý nội dung đào tạo trên hệ thống.
+[0647] <IMAGE refs=rId14 near=''>
+[0648] Caption Hình 3. 4. Sơ đồ Use Case của giảng viên.
+[0649] cap3 3.4.4. Use Case của quản trị viên
+[0650] par Quản trị viên là tác nhân có quyền cao nhất trong hệ thống, chịu trách nhiệm quản lý và giám sát toàn bộ hoạt động vận hành.
+[0651] <IMAGE refs=rId15 near=''>
+[0652] Caption Hình 3. 5. Sơ đồ Use Case của quản trị viên.
+[0653] cap3 3.4.5. Use Case hỗ trợ học tập bằng AI Tutor
+[0654] par AI Tutor là chức năng đặc trưng của hệ thống StackLearn nhằm hỗ trợ học viên trong quá trình học tập. Khi học viên gửi câu hỏi, hệ thống sẽ tiếp nhận yêu cầu, xây dựng ngữ cảnh học tập, gửi truy vấn tới Gemini API và trả về kết quả phù hợp với nội dung bài học hiện tại.
+[0655] <IMAGE refs=rId16 near=''>
+[0656] Caption Hình 3. 6. Sơ đồ Use Case AI Tutor.
+[0657] cap3 3.4.6. Đặc tả một số Use Case tiêu biểu
+[0658] par Làm rõ các nghiệp vụ trọng tâm của hệ thống StackLearn, báo cáo tiến hành đặc tả một số Use Case tiêu biểu đại diện cho các nhóm chức năng của học viên, giảng viên và quản trị viên. Các đặc tả Use Case bao gồm mục tiêu, tác nhân tham gia, điều kiện thực hiện, luồng xử lý chính và các trường hợp ngoại lệ.
+[0659] a a) Đặc tả Use Case đăng ký tài khoản
+[0660] Caption Bảng 3. 3. Đặc tả Use Case đăng ký tài khoản.
+[0661] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Đăng ký tài khoản
+    row 3: Mô tả | Chức năng cho phép người dùng tạo tài khoản mới để sử dụng hệ thống StackLearn.
+    row 4: Tác nhân | Học viên, Giảng viên
+    row 5: Điều kiện trước | Người dùng chưa có tài khoản trên hệ thống và truy cập được vào giao diện đăng ký.
+    row 6: Điều kiện sau | Tài khoản mới được tạo thành công và lưu vào cơ sở dữ liệu hệ thống.
+    row 7: Luồng chính | 1. Người dùng truy cập trang đăng ký tài khoản.2. Nhập các thông tin cần thiết như họ tên, email và mật khẩu.3. Hệ thống kiểm tra tính hợp lệ của dữ liệu nhập vào.4. Hệ thống kiểm tra email đã tồn tại hay chưa.5. Nếu thông tin hợp lệ, hệ thống tiến hành tạo tài khoản mới.6. Hệ thống thông báo đăng ký thành công và chuyển người dùng đến giao diện đăng nhập hoặc trang chủ.
+    row 8: Luồng thay thế | 1. Email đã tồn tại trong hệ thống.2. Mật khẩu không đáp ứng yêu cầu bảo mật.3. Người dùng nhập thiếu thông tin bắt buộc.4. Hệ thống từ chối đăng ký và yêu cầu người dùng nhập lại thông tin hợp lệ.
+[0662] a b) Đặc tả Use Case đăng nhập hệ thống
+[0663] Caption Bảng 3. 4. Đặc tả Use Case đăng nhập hệ thống.
+[0664] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Đăng nhập
+    row 3: Mô tả | Chức năng cho phép người dùng xác thực tài khoản để truy cập hệ thống theo quyền được cấp.
+    row 4: Tác nhân | Học viên, Giảng viên, Quản trị viên
+    row 5: Điều kiện trước | Người dùng đã có tài khoản hợp lệ trong hệ thống.
+    row 6: Điều kiện sau | Người dùng đăng nhập thành công và được chuyển đến giao diện phù hợp với vai trò.
+    row 7: Luồng chính | 1. Người dùng truy cập chức năng đăng nhập.2. Nhập email và mật khẩu.3. Hệ thống kiểm tra thông tin xác thực.4. Hệ thống tạo phiên đăng nhập.5. Hiển thị giao diện tương ứng với quyền người dùng.
+    row 8: Luồng thay thế | 1. Email hoặc mật khẩu không chính xác.2. Tài khoản bị khóa hoặc không tồn tại.3. Hệ thống hiển thị thông báo lỗi và yêu cầu đăng nhập lại.
+[0666] a c) Đặc tả Use Case ghi danh khóa học
+[0667] Caption Bảng 3. 5. Đặc tả Use Case ghi danh khóa học.
+[0668] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Ghi danh khóa học
+    row 3: Mô tả | Chức năng cho phép học viên được cấp quyền tham gia khóa học sau khi đáp ứng các điều kiện đăng ký.
+    row 4: Tác nhân | Học viên
+    row 5: Điều kiện trước | Học viên đã đăng nhập hệ thống và lựa chọn khóa học muốn tham gia.
+    row 6: Điều kiện sau | Học viên được ghi danh vào khóa học và có quyền truy cập nội dung học tập.
+    row 7: Luồng chính | 1. Học viên chọn khóa học muốn tham gia.2. Hệ thống kiểm tra trạng thái ghi danh hiện tại.3. Hệ thống kiểm tra điều kiện tham gia khóa học.4. Hệ thống kiểm tra trạng thái thanh toán (đối với khóa học có phí).5. Hệ thống thực hiện ghi danh khóa học.6. Hệ thống cấp quyền truy cập nội dung học tập.7. Thông báo ghi danh thành công.
+    row 8: Luồng thay thế | 1. Học viên đã ghi danh khóa học trước đó.2. Thanh toán chưa hoàn tất.3. Khóa học đã bị khóa hoặc ngừng cung cấp.4. Hệ thống từ chối ghi danh và hiển thị thông báo phù hợp.
+[0669] a d) Đặc tả Use Case thanh toán khóa học
+[0670] Caption Bảng 3. 6. Đặc tả Use Case thanh toán khóa học.
+[0671] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Thanh toán khóa học
+    row 3: Mô tả | Chức năng cho phép học viên thanh toán học phí khi đăng ký khóa học trên hệ thống.
+    row 4: Tác nhân | Học viên
+    row 5: Điều kiện trước | Học viên đã đăng nhập hệ thống và có khóa học trong giỏ hàng.
+    row 6: Điều kiện sau | Giao dịch thanh toán được ghi nhận thành công trong hệ thống.
+    row 7: Luồng chính | 1. Học viên truy cập giỏ hàng.2. Chọn khóa học cần thanh toán.3. Nhập mã giảm giá (nếu có).4. Hệ thống tính toán tổng giá trị đơn hàng.5. Học viên lựa chọn phương thức thanh toán.6. Hệ thống gửi yêu cầu tới cổng thanh toán.7. Cổng thanh toán xử lý giao dịch.8. Hệ thống nhận kết quả thanh toán thành công.9. Hệ thống cập nhật trạng thái đơn hàng và lưu thông tin giao dịch.10. Thông báo thanh toán thành công.
+    row 8: Luồng thay thế | 1. Mã giảm giá không hợp lệ.2. Người dùng hủy giao dịch.3. Giao dịch thanh toán thất bại.4. Cổng thanh toán không phản hồi hoặc xảy ra lỗi kết nối.5. Hệ thống thông báo lỗi và yêu cầu thực hiện lại giao dịch.
+[0673] a e) Đặc tả Use Case tham gia học tập
+[0674] Caption Bảng 3. 7. Đặc tả Use Case tham gia học tập.
+[0675] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Tham gia học tập
+    row 3: Mô tả | Chức năng cho phép học viên truy cập nội dung khóa học và thực hiện các hoạt động học tập trực tuyến.
+    row 4: Tác nhân | Học viên
+    row 5: Điều kiện trước | Học viên đã đăng nhập và được ghi danh vào khóa học.
+    row 6: Điều kiện sau | Tiến độ học tập và kết quả học tập được cập nhật trong hệ thống.
+    row 7: Luồng chính | 1. Học viên truy cập khóa học đã đăng ký.2. Hệ thống hiển thị danh sách chương học và bài giảng.3. Học viên lựa chọn bài học cần học.4. Hệ thống phát video bài giảng hoặc hiển thị tài liệu học tập.5. Học viên thực hiện bài kiểm tra (nếu có).6. Hệ thống ghi nhận kết quả học tập.7. Hệ thống cập nhật tiến độ học tập của học viên.
+    row 8: Luồng thay thế | 1. Học viên chưa được ghi danh khóa học.2. Nội dung bài học không khả dụng.3. Kết nối mạng bị gián đoạn trong quá trình học.4. Hệ thống hiển thị thông báo lỗi tương ứng.
+[0677] a f) Đặc tả Use Case tương tác với AI Tutor
+[0678] Caption Bảng 3. 8. Đặc tả Use Case tương tác với AI Tutor.
+[0679] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Tương tác với AI Tutor
+    row 3: Mô tả | Chức năng cho phép học viên đặt câu hỏi và nhận hỗ trợ học tập tự động dựa trên ngữ cảnh bài học hiện tại.
+    row 4: Tác nhân | Học viên (tác nhân chính), Gemini API (tác nhân phụ)
+    row 5: Điều kiện trước | Học viên đã đăng nhập, đang tham gia khóa học và chức năng AI Tutor đang hoạt động.
+    row 6: Điều kiện sau | Câu hỏi và phản hồi được lưu vào lịch sử hội thoại của hệ thống.
+    row 7: Luồng chính | 1. Học viên mở giao diện AI Tutor.2. Nhập câu hỏi liên quan đến nội dung bài học.3. Hệ thống tiếp nhận câu hỏi.4. Hệ thống xác định ngữ cảnh bài học hiện tại.5. Hệ thống xây dựng Prompt và gửi yêu cầu đến Gemini API.6. Gemini API xử lý và trả về phản hồi.7. Hệ thống hiển thị câu trả lời cho học viên.8. Hệ thống lưu lịch sử hội thoại.
+    row 8: Luồng thay thế | 1. Câu hỏi không hợp lệ hoặc để trống.2. Gemini API không phản hồi hoặc xảy ra lỗi kết nối.3. Hệ thống không xác định được ngữ cảnh bài học.4. Hệ thống hiển thị thông báo lỗi và yêu cầu người dùng thực hiện lại.
+[0681] a g) Đặc tả Use Case tạo khóa học
+[0682] Caption Bảng 3. 9. Đặc tả Use Case tạo khóa học.
+[0683] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Tạo khóa học
+    row 3: Mô tả | Chức năng cho phép giảng viên tạo mới khóa học trên hệ thống.
+    row 4: Tác nhân | Giảng viên
+    row 5: Điều kiện trước | Giảng viên đã đăng nhập và được cấp quyền tạo khóa học.
+    row 6: Điều kiện sau | Khóa học được lưu vào hệ thống ở trạng thái chờ duyệt.
+    row 7: Luồng chính | 1. Giảng viên truy cập chức năng tạo khóa học.2. Nhập thông tin cơ bản của khóa học.3. Thiết lập danh mục, học phí và mô tả khóa học.4. Thêm bài giảng, video và tài liệu học tập.5. Gửi khóa học để xét duyệt.6. Hệ thống lưu khóa học ở trạng thái chờ duyệt.
+    row 8: Luồng thay thế | 1. Thiếu thông tin bắt buộc.2. Nội dung khóa học không hợp lệ.3. Hệ thống từ chối lưu dữ liệu và yêu cầu cập nhật lại thông tin.
+[0684] a h) Đặc tả Use Case duyệt khóa học
+[0685] Caption Bảng 3. 10. Đặc tả Use Case duyệt khóa học.
+[0686] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Duyệt khóa học
+    row 3: Mô tả | Chức năng cho phép quản trị viên kiểm tra và phê duyệt khóa học trước khi công khai trên hệ thống.
+    row 4: Tác nhân | Quản trị viên
+    row 5: Điều kiện trước | Quản trị viên đã đăng nhập và khóa học đang ở trạng thái chờ duyệt.
+    row 6: Điều kiện sau | Khóa học được cập nhật sang trạng thái Đã duyệt hoặc Từ chối và hệ thống ghi nhận kết quả kiểm duyệt.
+    row 7: Luồng chính | 1. Quản trị viên truy cập danh sách khóa học chờ duyệt.2. Kiểm tra nội dung và thông tin khóa học.3. Đánh giá tính phù hợp của khóa học.4. Lựa chọn phê duyệt hoặc từ chối.5. Hệ thống cập nhật trạng thái khóa học.6. Hệ thống lưu kết quả kiểm duyệt.
+    row 8: Luồng thay thế | 1. Khóa học thiếu thông tin hoặc không đáp ứng yêu cầu.2. Khóa học đã được xử lý trước đó.3. Hệ thống yêu cầu kiểm tra lại dữ liệu trước khi thực hiện phê duyệt.
+[0689] cap4 i) Đặc tả Use Case xử lý yêu cầu hoàn tiền.
+[0690] Caption Bảng 3. 11. Bảng đặc tả use case xử lý yêu cầu hoàn tiền.
+[0691] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Xử lý yêu cầu hoàn tiền
+    row 3: Mô tả | Chức năng cho phép quản trị viên xem xét và xử lý yêu cầu hoàn tiền của học viên đối với đơn hàng đã thanh toán.
+    row 4: Tác nhân | Quản trị viên
+    row 5: Điều kiện trước | Quản trị viên đã đăng nhập. Hệ thống có yêu cầu hoàn tiền đang chờ xử lý.
+    row 6: Điều kiện sau | Yêu cầu hoàn tiền được cập nhật sang trạng thái Đã duyệt hoặc Từ chối. Trạng thái đơn hàng và thanh toán được cập nhật tương ứng.
+    row 7: Luồng chính | 1. Quản trị viên truy cập danh sách yêu cầu hoàn tiền.2. Hệ thống hiển thị thông tin yêu cầu, đơn hàng, học viên, khóa học và lý do hoàn tiền.3. Quản trị viên kiểm tra tính hợp lệ của yêu cầu.4. Quản trị viên lựa chọn phê duyệt hoặc từ chối yêu cầu hoàn tiền.5. Hệ thống cập nhật trạng thái yêu cầu hoàn tiền.6. Hệ thống cập nhật trạng thái đơn hàng và thanh toán liên quan.7. Hệ thống ghi nhận kết quả xử lý.
+    row 8: Luồng thay thế | 1. Yêu cầu hoàn tiền không hợp lệ hoặc đã được xử lý trước đó.2. Đơn hàng không đủ điều kiện hoàn tiền.3. Số tiền hoàn không hợp lệ hoặc vượt quá giá trị đơn hàng.4. Hệ thống yêu cầu quản trị viên kiểm tra lại dữ liệu trước khi xử lý.
+[0693] cap4 j) Đặc tả Use Case duyệt yêu cầu rút tiền
+[0694] Caption Bảng 3. 12. Bảng đặc tả use case duyệt yêu cầu rút tiền.
+[0695] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Duyệt yêu cầu rút tiền
+    row 3: Mô tả | Chức năng cho phép quản trị viên xem xét và xử lý yêu cầu rút doanh thu của giảng viên.
+    row 4: Tác nhân | Quản trị viên
+    row 5: Điều kiện trước | Quản trị viên đã đăng nhập. Giảng viên đã gửi yêu cầu rút tiền và yêu cầu đang ở trạng thái chờ duyệt.
+    row 6: Điều kiện sau | Yêu cầu rút tiền được cập nhật sang trạng thái Đã duyệt hoặc Từ chối. Hệ thống ghi nhận kết quả xử lý payout.
+    row 7: Luồng chính | 1. Quản trị viên truy cập danh sách yêu cầu rút tiền.2. Hệ thống hiển thị thông tin giảng viên, số tiền yêu cầu và trạng thái yêu cầu.3. Quản trị viên kiểm tra doanh thu và tính hợp lệ của yêu cầu.4. Quản trị viên lựa chọn phê duyệt hoặc từ chối yêu cầu rút tiền.5. Hệ thống cập nhật trạng thái yêu cầu payout.6. Hệ thống ghi nhận kết quả xử lý.7. Quản trị viên có thể theo dõi lịch sử các yêu cầu payout đã xử lý.
+    row 8: Luồng thay thế | 1. Yêu cầu rút tiền đã được xử lý trước đó.2. Số tiền yêu cầu không hợp lệ hoặc vượt quá doanh thu khả dụng.3. Thông tin thanh toán của giảng viên chưa đầy đủ.4. Hệ thống yêu cầu kiểm tra lại dữ liệu trước khi phê duyệt.
+[0696] cap4 k) Đặc tả Use Case theo dõi nhật ký hệ thống
+[0697] Caption Bảng 3. 13. Bảng đặc tả use case theo dõi nhật ký hệ thống.
+[0698] <TABLE rows=8 cols=2>
+    row 1: Thuộc tính | Nội dung
+    row 2: Tên Use Case | Theo dõi nhật ký hệ thống
+    row 3: Mô tả | Chức năng cho phép quản trị viên xem lại các thao tác quan trọng đã phát sinh trong hệ thống nhằm hỗ trợ kiểm tra, giám sát và truy vết hoạt động quản trị.
+    row 4: Tác nhân | Quản trị viên
+    row 5: Điều kiện trước | Quản trị viên đã đăng nhập và có quyền truy cập khu vực quản trị.
+    row 6: Điều kiện sau | Quản trị viên xem được danh sách nhật ký hệ thống và thông tin chi tiết của từng hành động.
+    row 7: Luồng chính | 1. Quản trị viên truy cập chức năng Audit Logs.2. Hệ thống truy vấn danh sách nhật ký đã được ghi nhận.3. Hệ thống hiển thị thông tin người thực hiện, hành động, thời gian và dữ liệu liên quan.4. Quản trị viên sử dụng bộ lọc hoặc tìm kiếm để xem nhật ký theo nhu cầu.5. Quản trị viên xem chi tiết một bản ghi nhật ký.6. Hệ thống hiển thị nội dung chi tiết của thao tác được ghi nhận.
+    row 8: Luồng thay thế | 1. Không có dữ liệu nhật ký phù hợp với điều kiện lọc.2. Nhật ký cần xem không còn tồn tại hoặc không đủ quyền truy cập.3. Hệ thống hiển thị thông báo khi không tìm thấy dữ liệu.
+[0700] cap2 3.5. PHÂN TÍCH LUỒNG NGHIỆP VỤ
+[0701] par Sau khi xác định các tác nhân và các Use Case của hệ thống, bước tiếp theo là mô hình hóa luồng xử lý nghiệp vụ thông qua các sơ đồ hoạt động. Các sơ đồ này giúp mô tả trình tự thực hiện các chức năng chính của hệ thống, từ đó làm rõ cách thức tương tác giữa người dùng và hệ thống trong từng nghiệp vụ cụ thể.
+[0702] cap3 3.5.1. Activity Diagram đăng ký/đăng nhập hệ thống
+[0703] par Sơ đồ hoạt động đăng ký và đăng nhập mô tả quá trình người dùng tạo tài khoản mới, xác thực thông tin đăng nhập và truy cập vào hệ thống theo quyền được cấp.
+[0704] <IMAGE refs=rId17 near=''>
+[0705] Caption Hình 3. 7. Activity Diagram đăng ký/đăng nhập hệ thống.
+[0706] par Thông qua quy trình này, hệ thống thực hiện kiểm tra tính hợp lệ của thông tin người dùng, xác thực tài khoản và thiết lập phiên làm việc tương ứng với vai trò của người sử dụng.
+[0707] cap3 3.5.2. Activity Diagram ghi danh khóa học
+[0708] par Sơ đồ hoạt động ghi danh khóa học mô tả quy trình học viên đăng ký tham gia một khóa học trên hệ thống sau khi đáp ứng các điều kiện cần thiết.
+[0709] <IMAGE refs=rId18 near=''>
+[0710] Caption Hình 3. 8. Activity Diagram ghi danh khóa học.
+[0711] par Quá trình ghi danh bao gồm việc lựa chọn khóa học, kiểm tra trạng thái thanh toán và cấp quyền truy cập nội dung học tập cho học viên sau khi ghi danh thành công.
+[0713] cap3 3.5.3. Activity Diagram tham gia học tập
+[0714] par Sơ đồ hoạt động tham gia học tập mô tả quá trình học viên truy cập khóa học, lựa chọn bài học và thực hiện các hoạt động học tập trên hệ thống.
+[0715] <IMAGE refs=rId18 near=''>
+[0716] Caption Hình 3. 9. Activity Diagram tham gia học tập.
+[0717] par Trong quá trình học tập, hệ thống ghi nhận tiến độ học tập và cập nhật trạng thái hoàn thành của từng bài học nhằm hỗ trợ việc theo dõi kết quả học tập của học viên.
+[0719] cap3 3.5.4. Activity Diagram làm bài kiểm tra
+[0720] par Sơ đồ hoạt động làm bài kiểm tra mô tả quy trình học viên thực hiện bài đánh giá trong khóa học.
+[0721] <IMAGE refs=rId18 near=''>
+[0722] Caption Hình 3. 10. Activity Diagram làm bài kiểm tra.
+[0723] par Sau khi hoàn thành bài kiểm tra, hệ thống tự động chấm điểm, lưu kết quả và cập nhật dữ liệu học tập của học viên.
+[0725] cap3 3.5.5. Activity Diagram tương tác với AI Tutor
+[0726] par Sơ đồ hoạt động tương tác với AI Tutor mô tả quá trình tiếp nhận câu hỏi của học viên, xử lý ngữ cảnh học tập và sinh phản hồi thông qua mô hình ngôn ngữ Gemini.
+[0727] <IMAGE refs=rId18 near=''>
+[0728] Caption Hình 3. 11. Activity Diagram tương tác với AI Tutor.
+[0729] par Khi học viên gửi câu hỏi, hệ thống sẽ xác định ngữ cảnh bài học hiện tại, xây dựng Prompt phù hợp, gửi yêu cầu đến Gemini API và trả kết quả cho người dùng. Toàn bộ lịch sử trao đổi được lưu lại phục vụ quá trình học tập.
+[0731] cap3 3.5.6. Activity Diagram quản lý khóa học
+[0732] par Sơ đồ hoạt động quản lý khóa học mô tả quy trình giảng viên tạo mới, cập nhật và quản lý nội dung đào tạo trên hệ thống.
+[0733] <IMAGE refs=rId18 near=''>
+[0734] Caption Hình 3. 12. Activity Diagram quản lý khóa học.
+[0735] par Thông qua quy trình này, giảng viên có thể xây dựng cấu trúc khóa học, bổ sung bài giảng, tài liệu học tập và gửi khóa học để xét duyệt trước khi công bố.
+[0736] cap3 3.5.7. Activity Diagram duyệt khóa học
+[0737] par Sơ đồ hoạt động duyệt khóa học mô tả quy trình kiểm tra và phê duyệt nội dung khóa học của quản trị viên trước khi khóa học được công khai trên hệ thống.
+[0738] <IMAGE refs=rId18 near=''>
+[0739] Caption Hình 3. 13. Activity Diagram duyệt khóa học.
+[0740] par Quản trị viên tiến hành đánh giá nội dung khóa học, kiểm tra tính phù hợp và quyết định phê duyệt hoặc từ chối. Kết quả kiểm duyệt được cập nhật vào hệ thống và thông báo tới giảng viên.
+[0742] cap2 3.6. SƠ ĐỒ LỚP PHÂN TÍCH
+[0743] <IMAGE refs=rId19 near=''>
+[0744] Caption Hình 3. 14. Domain Model và Design Class Diagram tổng quát của hệ thống StackLearn.
+[0745] par Sơ đồ trên được sử dụng chung để mô tả Domain Model và Design Class Diagram tổng quát của hệ thống StackLearn. Ở mức phân tích, sơ đồ thể hiện các thực thể nghiệp vụ chính như người dùng, khóa học, ghi danh, tiến độ học tập, quiz, đơn hàng, thanh toán và AI Tutor cùng các mối quan hệ giữa chúng. Ở mức thiết kế, sơ đồ bổ sung định hướng về thuộc tính, phương thức và nhóm lớp cốt lõi để làm cơ sở triển khai các thành phần model, service, repository và controller trong hệ thống.
+[0748] cap1 CHƯƠNG 4. THIẾT KẾ HỆ THỐNG STACKLEARN
+[0749] cap2 4.1. THIẾT KẾ KIẾN TRÚC HỆ THỐNG
+[0750] cap3 4.1.1. Kiến trúc tổng thể
+[0751] bullet1 Hệ thống StackLearn được thiết kế theo mô hình kiến trúc nhiều lớp nhằm đảm bảo sự phân tách giữa giao diện người dùng, xử lý nghiệp vụ và lưu trữ dữ liệu. Cách tiếp cận này giúp hệ thống dễ bảo trì, mở rộng và nâng cấp trong quá trình phát triển. Kiến trúc hệ thống gồm ba lớp chính:
+[0752] bullet1 Lớp xử lý nghiệp vụ: Được xây dựng trên nền tảng Laravel Framework, chịu trách nhiệm xử lý các quy tắc nghiệp vụ của hệ thống như quản lý người dùng, quản lý khóa học, ghi danh, thanh toán, hoàn tiền, payout, theo dõi tiến độ học tập, kiểm tra đánh giá, thảo luận, realtime chat và hỗ trợ AI Tutor. Đây là lớp trung tâm điều phối hoạt động của hệ thống, đồng thời kết nối với các dịch vụ bên ngoài khi cần thiết.
+[0753] bullet1 Lớp dữ liệu và lưu trữ: Sử dụng PostgreSQL để lưu trữ dữ liệu nghiệp vụ như người dùng, khóa học, bài giảng, đơn hàng, thanh toán, ghi danh, transcript, lịch sử hội thoại AI, audit log và dữ liệu thống kê học tập. Bên cạnh cơ sở dữ liệu, hệ thống sử dụng cơ chế storage disk để lưu trữ file, video và tài liệu học tập trên local storage hoặc object storage tương thích S3 như Cloudflare R2.
+[0754] bullet1 Ngoài ba lớp chính, hệ thống còn tích hợp các dịch vụ và cơ chế hỗ trợ bên ngoài nhằm mở rộng chức năng và nâng cao trải nghiệm người dùng:
+[0755] bullet1 Gemini API: Cung cấp khả năng xử lý ngôn ngữ tự nhiên cho chức năng AI Tutor.
+[0756] bullet1 OpenAI Whisper/API: Hỗ trợ tạo transcript từ video bài giảng, làm dữ liệu ngữ cảnh cho AI Tutor.
+[0757] bullet1 Stripe và VNPay: Hỗ trợ xử lý giao dịch thanh toán khóa học trực tuyến.
+[0758] bullet1 Google/Facebook OAuth: Hỗ trợ đăng nhập bằng tài khoản mạng xã hội thông qua Laravel Socialite.
+[0759] bullet1 Cloudflare R2/S3: Lưu trữ tài nguyên học tập như video, tài liệu và hình ảnh khóa học.
+[0760] bullet1 Laravel Reverb/Echo: Hỗ trợ các chức năng realtime như thảo luận bài giảng và nhắn tin.
+[0761] bullet1 Queue/Job: Xử lý các tác vụ nền như tạo transcript, xử lý tài liệu AI hoặc các tác vụ cần thời gian dài.
+[0762] bullet1 Luồng xử lý request tổng quát trong hệ thống được thực hiện như sau: người dùng thao tác trên giao diện web, yêu cầu được gửi đến route tương ứng trong Laravel. Route chuyển request đến controller để tiếp nhận dữ liệu đầu vào và gọi service hoặc repository xử lý nghiệp vụ. Service thực hiện các quy tắc nghiệp vụ cần thiết, sau đó thông qua model Eloquent để truy xuất hoặc cập nhật dữ liệu trong PostgreSQL. Kết quả xử lý được trả về controller và hiển thị lại cho người dùng thông qua view hoặc response phù hợp.
+[0763] bullet1 Việc áp dụng kiến trúc nhiều lớp kết hợp với các dịch vụ bên ngoài giúp hệ thống StackLearn đáp ứng tốt hơn các yêu cầu về khả năng mở rộng, bảo mật, hiệu năng và trải nghiệm học tập trực tuyến.
+[0764] <IMAGE refs=rId20 near=''>
+[0765] Caption Hình 4. 1. Trình bày kiến trúc tổng thể của hệ thống StackLearn.
+[0766] on Như thể hiện trong Hình 4.1, người dùng tương tác với StackLearn thông qua lớp giao diện. Các yêu cầu được chuyển đến lớp xử lý nghiệp vụ Laravel để kiểm tra, xử lý và điều phối. Khi cần lưu trữ hoặc truy xuất dữ liệu, hệ thống làm việc với PostgreSQL và storage. Đối với các chức năng đặc thù như AI Tutor, transcript, thanh toán, đăng nhập mạng xã hội và lưu trữ file, Laravel đóng vai trò kết nối với các dịch vụ bên ngoài tương ứng.
+[0767] cap3 4.1.2. Kiến trúc AI Tutor
+[0768] par AI Tutor là mô-đun hỗ trợ học tập thông minh được tích hợp trong hệ thống StackLearn nhằm hỗ trợ học viên giải đáp các câu hỏi liên quan đến nội dung bài học trong quá trình học tập. Mô-đun này được xây dựng theo hướng kết hợp giữa dữ liệu học tập của hệ thống và dịch vụ trí tuệ nhân tạo Gemini API để tạo phản hồi theo ngữ cảnh.
+[0769] par Khi học viên gửi câu hỏi từ giao diện học tập, hệ thống sẽ tiếp nhận nội dung câu hỏi và chuyển đến bộ xử lý AI Tutor. Trước khi gửi yêu cầu đến Gemini API, hệ thống tiến hành xây dựng ngữ cảnh học tập dựa trên các thông tin như khóa học hiện tại, bài giảng đang học, tài liệu liên quan, transcript nếu có và lịch sử hội thoại gần nhất. Trong trường hợp cần thiết, hệ thống có thể truy xuất các nội dung phù hợp từ dữ liệu bài học để bổ sung vào prompt, giúp AI hiểu rõ hơn bối cảnh học tập và đưa ra phản hồi sát với nhu cầu của người học.
+[0770] par Quy trình xử lý của AI Tutor được thực hiện theo các bước sau:
+[0771] par - Bước 1. Học viên nhập câu hỏi trên giao diện AI Tutor.
+[0772] par - Bước 2. Hệ thống tiếp nhận câu hỏi và chuyển đến bộ xử lý AI Tutor.
+[0773] par - Bước 3. Hệ thống thu thập thông tin bài học hiện tại, tài liệu liên quan và lịch sử hội thoại.
+[0774] par - Bước 4. Thành phần xây dựng ngữ cảnh tạo prompt phù hợp và gửi yêu cầu đến Gemini API.
+[0775] par - Bước 5. Gemini API xử lý yêu cầu và sinh nội dung phản hồi.
+[0776] par - Bước 6. Hệ thống nhận kết quả, lưu lịch sử hội thoại và hiển thị câu trả lời cho học viên.
+[0777] par Kiến trúc này giúp AI Tutor không chỉ trả lời các câu hỏi chung mà còn có khả năng hỗ trợ theo ngữ cảnh bài học cụ thể, góp phần nâng cao hiệu quả học tập và tăng cường tính tương tác trong môi trường E-learning.
+[0778] <IMAGE refs=rId21 near=''>
+[0779] Caption Hình 4. 2. Trình bày kiến trúc hoạt động của mô-đun AI Tutor.
+[0780] cap2 4.2. THIẾT KẾ TRÌNH TỰ XỬ LÝ NGHIỆP VỤ
+[0781] cap3 4.2.1. Sequence Diagram đăng nhập hệ thống
+[0782] par Chức năng đăng nhập cho phép người dùng xác thực thông tin tài khoản trước khi sử dụng các chức năng của hệ thống. Các đối tượng tham gia: User, Login Interface, AuthController, User Model, Database.
+[0783] par Khi người dùng nhập email và mật khẩu, hệ thống sẽ gửi yêu cầu xác thực đến AuthController. Controller tiến hành kiểm tra thông tin tài khoản trong cơ sở dữ liệu. Nếu thông tin hợp lệ, hệ thống tạo phiên đăng nhập và chuyển người dùng đến giao diện tương ứng với vai trò được cấp.
+[0784] <IMAGE refs=rId22 near=''>
+[0785] Caption Hình 4. 3. Sequence Diagram đăng nhập hệ thống.
+[0786]  Dữ liệu được sử dụng trong luồng này chủ yếu là bảng users để kiểm tra thông tin tài khoản, mật khẩu, vai trò và trạng thái hoạt động của người dùng. Sau khi đăng nhập thành công, hệ thống tạo phiên đăng nhập để điều hướng người dùng đến khu vực phù hợp với vai trò học viên, giảng viên hoặc quản trị viên.
+[0787] cap3 4.2.2. Sequence Diagram ghi danh khóa học
+[0788] par Chức năng ghi danh khóa học cho phép học viên tham gia một khóa học sau khi đáp ứng các điều kiện đăng ký. Các đối tượng tham gia: Student, Course Interface, EnrollmentController, Course Model, Enrollment Model, Database
+[0789] par Khi học viên lựa chọn khóa học, hệ thống kiểm tra trạng thái ghi danh và quyền truy cập của người dùng. Nếu đủ điều kiện, hệ thống tạo bản ghi ghi danh và cấp quyền truy cập nội dung khóa học cho học viên.
+[0790] <IMAGE refs=rId22 near=''>
+[0791] Caption Hình 4. 4. Sequence Diagram ghi danh khóa học.
+[0792] hinh Dữ liệu được tạo/cập nhật trong luồng này gồm bảng enrollments để lưu thông tin học viên tham gia khóa học, bảng course_progress để khởi tạo tiến độ học tập tổng thể và bảng lesson_progress để theo dõi trạng thái học từng bài giảng.
+[0793] cap3 4.2.3. Sequence Diagram thanh toán khóa học
+[0794]  Chức năng thanh toán hỗ trợ học viên đăng ký các khóa học có phí thông qua các cổng thanh toán trực tuyến như Stripe hoặc VNPay. Các đối tượng tham gia vào luồng xử lý gồm Student, Checkout Interface, OrderController/CheckoutController, PaymentService, Payment Gateway, Order Model, Payment Model, Enrollment Model và Database.
+[0795] par Sau khi học viên xác nhận thanh toán, hệ thống kiểm tra giỏ hàng, mã giảm giá nếu có và tạo đơn hàng ở trạng thái chờ thanh toán. Tiếp theo, học viên lựa chọn phương thức thanh toán, hệ thống gửi yêu cầu đến cổng thanh toán tương ứng hoặc tạo URL chuyển hướng thanh toán. Khi cổng thanh toán trả kết quả về hệ thống thông qua callback hoặc return URL, hệ thống kiểm tra trạng thái giao dịch. Nếu thanh toán thành công, hệ thống cập nhật trạng thái đơn hàng, ghi nhận thông tin thanh toán và tạo bản ghi ghi danh khóa học cho học viên. Nếu thanh toán thất bại hoặc bị hủy, hệ thống cập nhật trạng thái phù hợp và không cấp quyền học tập.
+[0796] <IMAGE refs=rId23 near=''>
+[0797] Caption Hình 4. 5. Sequence Diagram thanh toán khóa học.
+[0798]  Dữ liệu được tạo/cập nhật trong luồng này gồm bảng carts để lấy danh sách khóa học trong giỏ hàng, bảng coupons nếu học viên áp dụng mã giảm giá, bảng orders để lưu đơn hàng, bảng payments để lưu thông tin giao dịch thanh toán và bảng enrollments để cấp quyền học sau khi thanh toán thành công.
+[0799] Heading3 4.2.4. Sequence Diagram hoàn tiền khóa học
+[0800]  Chức năng hoàn tiền hỗ trợ học viên gửi yêu cầu hoàn tiền đối với các khóa học đã thanh toán. Các đối tượng tham gia gồm: Student, Giao diện hoàn tiền, RefundController, Admin, Refund Model và Database.
+[0801]  Sau khi học viên gửi yêu cầu, hệ thống tiếp nhận, lưu thông tin hoàn tiền và cập nhật trạng thái chờ xử lý. Quản trị viên sẽ xem xét yêu cầu và thực hiện phê duyệt hoặc từ chối. Kết quả xử lý sau đó được lưu vào cơ sở dữ liệu và thông báo lại cho học viên trên giao diện hệ thống.
+[0801] <IMAGE refs=rId24 near='Sau khi học viên gửi yêu cầu, hệ thống tiếp nhận, lưu thông tin hoàn tiền và cập'>
+[0802] Caption Hình 4. 6. Sequence Diagram hoàn tiền khóa học.
+[0803]  Dữ liệu được tạo/cập nhật trong luồng này gồm bảng refund_requests để lưu yêu cầu hoàn tiền, bảng orders để cập nhật trạng thái đơn hàng, bảng payments để cập nhật trạng thái hoặc số tiền hoàn và bảng order_status_histories để ghi lại lịch sử xử lý đơn hàng.
+[0804] Heading3 4.2.5. Sequence Diagram yêu cầu rút tiền
+[0805]  Chức năng rút tiền hỗ trợ giảng viên gửi yêu cầu rút tiền từ doanh thu khóa học trên hệ thống. Các đối tượng tham gia gồm: Instructor, Giao diện doanh thu, PayoutController, Admin, Payout Model và Database.
+[0806]  Sau khi giảng viên gửi yêu cầu, hệ thống tiếp nhận, lưu thông tin rút tiền và cập nhật trạng thái chờ xử lý. Quản trị viên sẽ xem xét yêu cầu và thực hiện phê duyệt hoặc từ chối. Kết quả xử lý sau đó được lưu vào cơ sở dữ liệu và thông báo lại cho giảng viên trên giao diện hệ thống.
+[0807] <IMAGE refs=rId25 near=''>
+[0808] Caption Hình 4. 7. Sequence Diagram yêu cầu rút tiền.
+[0809] par Dữ liệu được tạo/cập nhật trong luồng này gồm bảng payout_requests để lưu yêu cầu rút tiền của giảng viên. Hệ thống cũng sử dụng dữ liệu từ orders và payments để tính toán doanh thu hợp lệ trước khi tạo yêu cầu payout.
+[0810] Heading3 4.2.6. Sequence Diagram tạo transcript bài giảng
+[0811] par Chức năng tạo transcript hỗ trợ giảng viên chuyển nội dung bài giảng dạng âm thanh hoặc video thành văn bản để phục vụ học tập và hỗ trợ AI Tutor. Các đối tượng tham gia gồm: Instructor, Giao diện transcript, TranscriptController, GenerateTranscriptJob, Transcription Service, Transcript Model và Database.
+[0812] par Sau khi giảng viên gửi yêu cầu tạo transcript, hệ thống tiếp nhận yêu cầu và tạo job xử lý ở chế độ nền. Dữ liệu bài giảng được gửi đến dịch vụ transcription để chuyển giọng nói thành văn bản. Khi xử lý thành công, hệ thống lưu transcript vào cơ sở dữ liệu và thông báo kết quả cho giảng viên. Trong trường hợp xử lý thất bại, hệ thống gửi thông báo lỗi tương ứng trên giao diện.
+[0813] <IMAGE refs=rId26 near=''>
+[0814] Caption Hình 4. 8. Sequence Diagram tạo transcript bài giảng.
+[0815] par Dữ liệu được tạo/cập nhật trong luồng này gồm bảng transcript_jobs để lưu trạng thái xử lý transcript, bảng course_lectures để cập nhật nội dung transcript cho bài giảng và các bảng ai_documents, ai_document_chunks nếu transcript được đưa vào dữ liệu ngữ cảnh phục vụ AI Tutor.
+[0816] Heading3 4.2.7. Sequence Diagram chat realtime
+[0817] par Chức năng nhắn tin realtime hỗ trợ trao đổi trực tiếp giữa học viên và giảng viên trong quá trình học tập. Các đối tượng tham gia gồm: Student, Giao diện chat, MessageController, Message Model, Database, Reverb/Broadcast và Instructor.
+[0818] par Sau khi học viên nhập và gửi tin nhắn, giao diện chuyển nội dung đến MessageController để tạo và lưu tin nhắn vào cơ sở dữ liệu. Hệ thống sau đó phát sự kiện thông qua Reverb/Broadcast để cập nhật nội dung theo thời gian thực. Khi gửi thành công, tin nhắn được hiển thị ngay trên giao diện của người gửi và đồng thời chuyển đến giảng viên. Trong trường hợp gửi thất bại, hệ thống sẽ thông báo lỗi tương ứng trên giao diện chat.
+[0819] <IMAGE refs=rId27 near=''>
+[0820] Caption Hình 4. 9. Sequence Diagram chat realtime.
+[0821] par Dữ liệu được tạo/cập nhật trong luồng này gồm bảng conversations để lưu phiên trao đổi giữa các người dùng và bảng messages để lưu nội dung tin nhắn. Sau khi tin nhắn được lưu, hệ thống phát sự kiện realtime thông qua Laravel Reverb/Echo để cập nhật giao diện cho người nhận.
+[0822] cap3 4.2.8. Sequence Diagram tương tác với AI Tutor
+[0823] par Đây là nghiệp vụ đặc trưng của hệ thống StackLearn, cho phép học viên nhận hỗ trợ học tập tự động từ trí tuệ nhân tạo. Các đối tượng tham gia: Student, Chat Interface, AIController, ContextBuilder, Gemini API, ChatSession Model, Database.
+[0824] par Khi học viên gửi câu hỏi, hệ thống tiếp nhận yêu cầu và xác định ngữ cảnh học tập hiện tại. ContextBuilder thu thập các thông tin liên quan như khóa học, bài học đang học và lịch sử hội thoại để xây dựng Prompt phù hợp. Prompt sau đó được gửi đến Gemini API để xử lý. Kết quả trả về được hiển thị cho học viên đồng thời lưu vào lịch sử hội thoại nhằm phục vụ các lần tương tác tiếp theo.
+[0825] <IMAGE refs=rId22 near=''>
+[0826] Caption Hình 4. 10. Sequence Diagram tương tác với AI Tutor.
+[0827] par Dữ liệu được tạo/cập nhật trong luồng này gồm bảng ai_chat_sessions để lưu phiên hội thoại, bảng ai_chat_messages để lưu câu hỏi và phản hồi, bảng ai_message_citations nếu phản hồi có trích dẫn nội dung học tập, đồng thời hệ thống có thể truy xuất transcript_jobs, ai_documents và ai_document_chunks để bổ sung ngữ cảnh cho câu hỏi.
+[0828] cap2 4.3. THIẾT KẾ LỚP ĐỐI TƯỢNG (DESIGN CLASS DIAGRAM)
+[0829] cap3 4.3.1. Nguyên tắc thiết kế
+[0830] par Hệ thống StackLearn được xây dựng theo mô hình kiến trúc MVC của Laravel Framework nhằm đảm bảo tính phân tách giữa giao diện người dùng, xử lý nghiệp vụ và lưu trữ dữ liệu. Kiến trúc này giúp hệ thống dễ bảo trì, mở rộng và tái sử dụng mã nguồn trong quá trình phát triển. Trong hệ thống, các lớp được tổ chức thành ba nhóm chính:
+[0831] bullet1 Entity Classes: Đây là các lớp biểu diễn dữ liệu và các thực thể nghiệp vụ của hệ thống. Các lớp này tương ứng với các bảng dữ liệu trong cơ sở dữ liệu và được quản lý thông qua Eloquent ORM của Laravel. Một số lớp thực thể tiêu biểu gồm: User, Course, Enrollment, Quiz, Payment, AiChatSession..
+[0832] bullet1 Controller Classes: Các lớp Controller có nhiệm vụ tiếp nhận yêu cầu từ người dùng, điều phối luồng xử lý và tương tác với các lớp nghiệp vụ tương ứng trước khi trả kết quả về giao diện. Một số Controller chính của hệ thống gồm: AuthenticatedSessionController, RegisteredUserController, CourseController, AdminCourseController, CheckoutController, OrderController, QuizController, LearningController, ChatbotController.
+[0833] bullet1 Service Classes: Các lớp Service đảm nhận việc xử lý các nghiệp vụ chuyên biệt và các chức năng có độ phức tạp cao. Việc tách riêng Service Layer giúp giảm tải cho Controller, tăng khả năng tái sử dụng mã nguồn và tuân thủ nguyên tắc trách nhiệm đơn nhất trong thiết kế hướng đối tượng. Một số Service tiêu biểu gồm: CourseService, PaymentService, OrderService, EnrollmentService, QuizService, LearningProgressService, AiChatOrchestratorService, AiPromptBuilderService, AiRetrieverService.
+[0834] par Việc tổ chức hệ thống theo các lớp Entity, Controller và Service giúp bảo đảm khả năng mở rộng, bảo trì và phát triển các chức năng mới trong tương lai.
+[0835] par Các lớp miền nghiệp vụ như User, Course, Enrollment, Quiz, Payment và AiChatSession được xác định từ giai đoạn phân tích, sau đó được tổ chức thành các nhóm lớp thiết kế gồm Entity, Controller, Service và Repository để phục vụ quá trình triển khai hệ thống.
+[0836] cap3 4.3.2. Các lớp thực thể
+[0837] par Dựa trên Domain Model đã được xây dựng ở Chương 3, hệ thống StackLearn bao gồm các nhóm lớp thực thể chính sau:
+[0838] bullet1 Nhóm người dùng:
+[0839] <TABLE rows=5 cols=2>
+    row 1: Lớp | Chức năng
+    row 2: User | Lưu thông tin tài khoản và phân quyền người dùng
+    row 3: Student | Đại diện học viên tham gia học tập
+    row 4: Instructor | Đại diện giảng viên xây dựng khóa học
+    row 5: Admin | Đại diện quản trị viên hệ thống
+[0842] bullet1 Nhóm khóa học:
+[0843] <TABLE rows=5 cols=2>
+    row 1: Lớp | Chức năng
+    row 2: Category | Quản lý danh mục khóa học
+    row 3: Course | Quản lý thông tin khóa học
+    row 4: Section | Quản lý chương học
+    row 5: Lecture | Quản lý bài giảng
+[0844] bullet1 Nhóm thanh toán:
+[0845] <TABLE rows=4 cols=2>
+    row 1: Lớp | Chức năng
+    row 2: Order | Quản lý đơn hàng
+    row 3: Payment | Quản lý giao dịch thanh toán
+    row 4: Coupon | Quản lý mã giảm giá
+[0847] bullet1 Nhóm học tập:
+[0848] <TABLE rows=6 cols=2>
+    row 1: Lớp | Chức năng
+    row 2: Enrollment | Quản lý ghi danh khóa học
+    row 3: LearningProgress | Theo dõi tiến độ học tập
+    row 4: Quiz | Quản lý bài kiểm tra
+    row 5: Question | Quản lý câu hỏi
+    row 6: QuizResult | Lưu kết quả làm bài
+[0849] bullet1 Nhóm AI Tutor:
+[0850] <TABLE rows=4 cols=2>
+    row 1: Lớp | Chức năng
+    row 2: ChatSession | Quản lý phiên hội thoại
+    row 3: ChatMessage | Lưu nội dung trao đổi
+    row 4: AIContext | Xây dựng ngữ cảnh học tập cho AI
+[0851] par Các lớp trên tạo thành nền tảng dữ liệu cốt lõi của hệ thống và là cơ sở để xây dựng sơ đồ lớp thiết kế tổng quát.
+[0852] cap2 4.4. THIẾT KẾ CƠ SỞ DỮ LIỆU
+[0853] cap3 4.4.1. ERD tổng thể
+[0854] <IMAGE refs=rId28 near=''>
+[0855] hinh Hình 4. 11. Sơ đồ ERD tổng thể.
+[0856] cap3 4.4.2. Nguyên tắc thiết kế cơ sở dữ liệu
+[0857] cap3 Cơ sở dữ liệu của StackLearn được thiết kế theo các nhóm nghiệp vụ chính của hệ thống LMS, gồm người dùng, khóa học, học tập, thanh toán, kiểm tra đánh giá, tương tác và AI Tutor. Mỗi nhóm bảng phục vụ một luồng chức năng cụ thể, giúp dữ liệu dễ quản lý, dễ mở rộng và thuận tiện khi triển khai bằng Laravel Eloquent.
+[0858] cap3 Các bảng được tổ chức theo mô hình quan hệ, có khóa chính để định danh bản ghi và khóa ngoại để liên kết dữ liệu giữa các nhóm nghiệp vụ. Việc thiết kế ưu tiên hạn chế trùng lặp dữ liệu, bảo đảm toàn vẹn quan hệ và phản ánh đúng các thao tác chính của hệ thống như tạo khóa học, ghi danh, thanh toán, học bài, làm quiz và hỏi đáp với AI Tutor.
+[0859] cap3 4.4.3. Nhóm bảng người dùng và phân quyền
+[0860] cap3 Nhóm bảng người dùng và phân quyền dùng để quản lý tài khoản, vai trò và trạng thái hoạt động của học viên, giảng viên và quản trị viên. Bảng users là bảng trung tâm, các bảng còn lại hỗ trợ xử lý yêu cầu trở thành giảng viên, đánh giá rủi ro giảng viên và ghi nhận nhật ký thao tác quản trị.
+[0861] Caption Bảng 4. 1. Bảng nhóm người dùng và phân quyền.
+[0862] <TABLE rows=5 cols=4>
+    row 1: Bảng | Mục đích | Khóa chính | Khóa ngoại/liên kết quan trọng
+    row 2: users | Lưu tài khoản, thông tin cá nhân, vai trò và trạng thái người dùng | id | Được tham chiếu bởi courses, enrollments, orders, course_reviews, ai_chat_sessions
+    row 3: instructor_requests | Lưu yêu cầu đăng ký trở thành giảng viên | id | user_id -> users.id
+    row 4: instructor_risk_scores | Lưu điểm rủi ro và thông tin đánh giá giảng viên | id | instructor_id -> users.id
+    row 5: admin_audit_logs | Lưu nhật ký thao tác của quản trị viên | id | admin_id -> users.id
+[0863] cap3 Quan hệ chính: Một người dùng có thể là học viên, giảng viên hoặc quản trị viên tùy theo vai trò. Giảng viên có thể tạo nhiều khóa học. Quản trị viên có thể xử lý yêu cầu giảng viên và tạo nhiều bản ghi nhật ký trong admin_audit_logs.
+[0864] cap3 4.4.4. Nhóm bảng khóa học và nội dung bài giảng
+[0865] cap3 Nhóm bảng khóa học và nội dung bài giảng dùng để quản lý danh mục, thông tin khóa học, mục tiêu học tập, chương học, bài giảng và đánh giá khóa học. Đây là nhóm dữ liệu cốt lõi phục vụ chức năng tạo khóa học của giảng viên và chức năng xem, học khóa học của học viên.
+[0866] Caption Bảng 4. 2. Bảng nhóm khóa học và nội dung bài giảng.
+[0867] <TABLE rows=9 cols=4>
+    row 1: Bảng | Mục đích | Khóa chính | Khóa ngoại/liên kết quan trọng
+    row 2: categories | Lưu danh mục chính của khóa học | id | Được tham chiếu bởi sub_categories, courses
+    row 3: sub_categories | Lưu danh mục con của khóa học | id | category_id -> categories.id
+    row 4: courses | Lưu thông tin chính của khóa học | id | instructor_id -> users.id, category_id -> categories.id, subcategory_id -> sub_categories.id
+    row 5: course_goals | Lưu mục tiêu học tập của khóa học | id | course_id -> courses.id
+    row 6: course_sections | Lưu các chương/phần học của khóa học | id | course_id -> courses.id
+    row 7: course_lectures | Lưu bài giảng, video và tài liệu học tập | id | course_id -> courses.id, section_id -> course_sections.id
+    row 8: course_quality_checks | Lưu thông tin kiểm tra chất lượng khóa học | id | course_id -> courses.id
+    row 9: course_reviews | Lưu đánh giá và nhận xét khóa học | id | course_id->courses.id, user_id -> users.id
+[0869] cap3 Quan hệ chính: Một danh mục có nhiều danh mục con. Một giảng viên có thể tạo nhiều khóa học. Một khóa học có nhiều mục tiêu, nhiều section và nhiều bài giảng. Học viên sau khi tham gia khóa học có thể để lại đánh giá trong course_reviews.
+[0870] cap3 4.4.5. Nhóm bảng ghi danh và tiến độ học tập
+[0871] cap3 Nhóm bảng ghi danh và tiến độ học tập dùng để quản lý việc học viên tham gia khóa học, theo dõi trạng thái học từng bài giảng và tổng hợp tiến độ hoàn thành khóa học.
+[0872] Caption Bảng 4. 3. Bảng nhóm ghi danh và tiến độ học tập.
+[0873] <TABLE rows=6 cols=4>
+    row 1: Bảng | Mục đích | Khóa chính | Khóa ngoại/liên kết quan trọng
+    row 2: enrollments | Lưu thông tin học viên ghi danh vào khóa học | id | user_id -> users.id, course_id -> courses.id
+    row 3: lesson_progress | Lưu tiến độ học của từng bài giảng | id | user_id -> users.id, course_id -> courses.id, lecture_id -> course_lectures.id, enrollment_id -> enrollments.id
+    row 4: course_progress | Lưu tiến độ tổng thể của học viên trong khóa học | id | user_id -> users.id, course_id -> courses.id, enrollment_id -> enrollments.id
+    row 5: lecture_notes | Lưu ghi chú cá nhân của học viên trong bài học | id | user_id -> users.id, lecture_id -> course_lectures.id
+    row 6: lecture_discussions | Lưu thảo luận, câu hỏi và phản hồi trong bài học | id | user_id -> users.id, lecture_id -> course_lectures.id, parent_id -> lecture_discussions.id
+[0874] cap3 Quan hệ chính: Một học viên có thể ghi danh nhiều khóa học. Mỗi lần ghi danh có thể phát sinh nhiều bản ghi tiến độ bài học. Tiến độ từng bài được tổng hợp thành tiến độ toàn khóa. Học viên có thể tạo ghi chú và thảo luận trong từng bài giảng.
+[0875] cap3 4.4.6. Nhóm bảng giỏ hàng, đơn hàng và thanh toán
+[0876] cap3 Nhóm bảng giỏ hàng, đơn hàng và thanh toán dùng để quản lý quá trình học viên chọn khóa học, áp dụng mã giảm giá, tạo đơn hàng, thanh toán và xử lý các yêu cầu hoàn tiền hoặc rút tiền doanh thu.
+[0877] Caption Bảng 4. 4. Bảng nhóm giỏ hàng, đơn hàng và thanh toán.
+[0878] <TABLE rows=9 cols=4>
+    row 1: Bảng | Mục đích | Khóa chính | Khóa ngoại/liên kết quan trọng
+    row 2: carts | Lưu khóa học học viên thêm vào giỏ hàng | id | user_id -> users.id, course_id -> courses.id
+    row 3: wishlists | Lưu danh sách khóa học yêu thích | id | user_id -> users.id, course_id -> courses.id
+    row 4: coupons | Lưu mã giảm giá cho khóa học | id | course_id -> courses.id, instructor_id -> users.id
+    row 5: orders | Lưu thông tin đơn hàng mua khóa học | id | user_id -> users.id, coupon_id -> coupons.id
+    row 6: payments | Lưu thông tin giao dịch thanh toán | id | order_id -> orders.id
+    row 7: refund_requests | Lưu yêu cầu hoàn tiền của học viên | id | order_id -> orders.id, user_id -> users.id
+    row 8: order_status_histories | Lưu lịch sử thay đổi trạng thái đơn hàng | id | order_id -> orders.id
+    row 9: payout_requests | Lưu yêu cầu rút tiền doanh thu của giảng viên | id | instructor_id -> users.id
+[0879] cap3 Quan hệ chính: Một học viên có thể có nhiều khóa học trong giỏ hàng và nhiều đơn hàng. Mỗi đơn hàng có thông tin thanh toán tương ứng. Khi thanh toán thành công, hệ thống tạo ghi danh cho học viên. Nếu phát sinh hoàn tiền hoặc rút tiền doanh thu, dữ liệu được lưu trong refund_requests và payout_requests.
+[0881] cap3 4.4.7. Nhóm bảng quiz và kết quả làm bài
+[0882] cap3 Nhóm bảng quiz và kết quả làm bài dùng để quản lý bài kiểm tra trong khóa học, câu hỏi, đáp án, lượt làm bài và kết quả lựa chọn của học viên.
+[0883] Caption Bảng 4. 5. Bảng nhóm quiz và kết quả làm bài.
+[0884] <TABLE rows=6 cols=4>
+    row 1: Bảng | Mục đích | Khóa chính | Khóa ngoại/liên kết quan trọng
+    row 2: quizzes | Lưu thông tin bài kiểm tra | id | course_id -> courses.id, lecture_id -> course_lectures.id
+    row 3: quiz_questions | Lưu câu hỏi thuộc bài kiểm tra | id | quiz_id -> quizzes.id
+    row 4: quiz_options | Lưu các phương án trả lời của câu hỏi | id | question_id -> quiz_questions.id
+    row 5: quiz_attempts | Lưu lượt làm bài của học viên | id | quiz_id -> quizzes.id, user_id -> users.id, course_id -> courses.id
+    row 6: quiz_attempt_answers | Lưu đáp án học viên đã chọn | id | attempt_id -> quiz_attempts.id, question_id -> quiz_questions.id, selected_option_id -> quiz_options.id
+[0885] cap3 Quan hệ chính: Một quiz có nhiều câu hỏi. Một câu hỏi có nhiều phương án trả lời. Một học viên có thể có nhiều lượt làm quiz. Mỗi lượt làm bài lưu lại các đáp án đã chọn để hệ thống chấm điểm và hiển thị kết quả.
+[0886] cap3 4.4.8. Nhóm bảng AI Tutor, transcript và tài liệu học tập
+[0887] cap3 Nhóm bảng AI Tutor, transcript và tài liệu học tập dùng để lưu phiên hội thoại, tin nhắn AI, tài liệu học tập, nội dung được chia nhỏ để truy xuất, trích dẫn phản hồi và tác vụ tạo transcript bài giảng.
+[0888] Caption Bảng 4. 6. Bảng nhóm  AI Tutor, transcript và tài liệu học tập.
+[0889] <TABLE rows=9 cols=4>
+    row 1: Bảng | Mục đích | Khóa chính | Khóa ngoại/liên kết quan trọng
+    row 2: ai_chat_sessions | Lưu phiên hội thoại giữa học viên và AI Tutor | id | user_id -> users.id, course_id -> courses.id, lecture_id -> course_lectures.id
+    row 3: ai_chat_messages | Lưu tin nhắn của học viên và phản hồi AI | id | session_id -> ai_chat_sessions.id
+    row 4: ai_documents | Lưu tài liệu học tập dùng cho AI Tutor | id | course_id -> courses.id, lecture_id -> course_lectures.id
+    row 5: ai_document_chunks | Lưu các đoạn nội dung đã được chia nhỏ từ tài liệu | id | document_id -> ai_documents.id
+    row 6: ai_message_citations | Lưu trích dẫn nguồn nội dung trong phản hồi AI | id | message_id -> ai_chat_messages.id, chunk_id -> ai_document_chunks.id
+    row 7: concepts | Lưu các khái niệm chính trong bài học hoặc tài liệu | id | Có thể liên kết với bài giảng/tài liệu theo logic xử lý của hệ thống
+    row 8: transcript_jobs | Lưu trạng thái tác vụ tạo transcript bài giảng | id | course_id -> courses.id, lecture_id -> course_lectures.id
+    row 9: gemini_settings | Lưu cấu hình kết nối Gemini API | id | Không có khóa ngoại chính
+[0891] cap3 Quan hệ chính: Một học viên có thể có nhiều phiên chat với AI Tutor. Mỗi phiên chat có nhiều tin nhắn. Tài liệu học tập có thể được chia thành nhiều đoạn nhỏ để phục vụ truy xuất nội dung. Khi AI trả lời dựa trên tài liệu, hệ thống có thể lưu trích dẫn nguồn trong ai_message_citations. Transcript bài giảng được xử lý thông qua transcript_jobs và có thể được dùng làm dữ liệu ngữ cảnh cho AI Tutor.
+[0892] cap3 4.4.9. Nhóm bảng thảo luận, chat realtime và ghi chú
+[0893] cap3 Nhóm bảng thảo luận, chat realtime và ghi chú dùng để quản lý các hoạt động tương tác giữa học viên, giảng viên và nội dung bài học, bao gồm ghi chú cá nhân, thảo luận trong bài giảng và nhắn tin realtime.
+[0894] Caption Bảng 4. 7. Bảng nhóm thảo luận, chat realtime và ghi chú .
+[0895] <TABLE rows=5 cols=4>
+    row 1: Bảng | Mục đích | Khóa chính | Khóa ngoại/liên kết quan trọng
+    row 2: lecture_notes | Lưu ghi chú cá nhân của học viên trong bài học | id | user_id -> users.id, lecture_id -> course_lectures.id
+    row 3: lecture_discussions | Lưu câu hỏi, thảo luận và phản hồi trong bài giảng | id | user_id -> users.id, lecture_id -> course_lectures.id, parent_id -> lecture_discussions.id
+    row 4: conversations | Lưu cuộc hội thoại giữa học viên và giảng viên | id | student_id -> users.id, instructor_id -> users.id, course_id -> courses.id
+    row 5: messages | Lưu tin nhắn trong từng cuộc hội thoại | id | conversation_id -> conversations.id, sender_id -> users.id
+[0896] cap3 Quan hệ chính: Một bài giảng có thể có nhiều ghi chú và nhiều thảo luận. Thảo luận có thể có phản hồi thông qua parent_id. Một cuộc hội thoại gồm nhiều tin nhắn và được dùng để hỗ trợ trao đổi realtime giữa học viên và giảng viên.
+[0897] cap3 4.4.10. Nhóm bảng quản trị, cấu hình và thống kê
+[0898] cap3 Nhóm bảng quản trị, cấu hình và thống kê dùng để lưu thông tin cấu hình hệ thống, cấu hình dịch vụ tích hợp, nội dung hiển thị trên website, nhật ký quản trị và dữ liệu phục vụ theo dõi hoạt động hệ thống.
+[0899] Caption Bảng 4. 8. Bảng nhóm quản trị, cấu hình và thống kê.
+[0900] <TABLE rows=13 cols=4>
+    row 1: Bảng | Mục đích | Khóa chính | Khóa ngoại/liên kết quan trọng
+    row 2: site_infos | Lưu thông tin chung của website | id | Không có khóa ngoại chính
+    row 3: sliders | Lưu banner/slider hiển thị ở trang chủ | id | Không có khóa ngoại chính
+    row 4: info_boxes | Lưu các khối thông tin giới thiệu trên website | id | Không có khóa ngoại chính
+    row 5: partners | Lưu thông tin đối tác hiển thị trên website | id | Không có khóa ngoại chính
+    row 6: smtps | Lưu cấu hình gửi email | id | Không có khóa ngoại chính
+    row 7: googles | Lưu cấu hình đăng nhập Google/Facebook hoặc OAuth | id | Không có khóa ngoại chính
+    row 8: stripes | Lưu cấu hình Stripe | id | Không có khóa ngoại chính
+    row 9: gemini_settings | Lưu cấu hình Gemini API | id | Không có khóa ngoại chính
+    row 10: admin_audit_logs | Lưu nhật ký thao tác của quản trị viên | id | admin_id -> users.id
+    row 11: content_reports | Lưu báo cáo nội dung vi phạm | id | reporter_id -> users.id, liên kết đến nội dung bị báo cáo
+    row 12: moderation_policies | Lưu chính sách kiểm duyệt nội dung | id | Không có khóa ngoại chính
+    row 13: moderation_action_templates | Lưu mẫu hành động/xử lý kiểm duyệt | id | Không có khóa ngoại chính
+[0901] cap3 Quan hệ chính: Các bảng cấu hình lưu dữ liệu phục vụ vận hành hệ thống và tích hợp dịch vụ bên ngoài. Bảng admin_audit_logs ghi lại thao tác của quản trị viên. Các bảng content_reports, moderation_policies và moderation_action_templates hỗ trợ quản lý, báo cáo và xử lý nội dung vi phạm.
+[0903] cap1 CHƯƠNG 5. TRIỂN KHAI HỆ THỐNG
+[0904] cap2 5.1. Môi trường cài đặt và công nghệ sử dụng
+[0905] par Môi trường phần cứng:
+[0906] Caption Bảng 5. 1. Môi trường phần cứng cài đặt hệ thống.
+[0907] <TABLE rows=5 cols=2>
+    row 1: Thành phần | Thông số
+    row 2: CPU | AMD Ryzen 5 5600H with Radeon Graphics
+    row 3: RAM | 20GB
+    row 4: Ổ cứng | Tối thiểu 256GB
+    row 5: Hệ điều hành | Windows 11
+[0908] par Môi trường phần mềm:
+[0909] Caption Bảng 5. 2. Công nghệ sử dụng trong hệ thống StackLearn.
+[0910] <TABLE rows=17 cols=2>
+    row 1: Công nghệ / Công cụ | Phiên bản / Ghi chú
+    row 2: Laravel | 12.x
+    row 3: PHP | 8.2.12
+    row 4: PostgreSQL | 16
+    row 5: Blade Template | Theo Laravel
+    row 6: Tailwind CSS | ^3.1.0
+    row 7: JavaScript | ES6
+    row 8: Laravel Breeze | 2.3
+    row 9: Laravel Socialite | Laravel Socialite ^5.24, hỗ trợ đăng nhập Google/Facebook
+    row 10: Laravel Reverb / Echo | Reverb ^1.0, Laravel Echo ^2.3.4
+    row 11: Stripe API | Tích hợp thanh toán trực tuyến
+    row 12: VNPay | Tích hợp thanh toán trực tuyến tại Việt Nam
+    row 13: Gemini API | Gemini 1.5 Flash
+    row 14: OpenAI Whisper/API | Hỗ trợ tạo transcript từ video/bài giảng
+    row 15: Cloudflare R2 / S3 | Lưu trữ file, video, tài liệu học tập
+    row 16: Queue Database | Xử lý tác vụ nền như transcript và AI document
+    row 17: Visual Studio Code | Latest
+[0911] cap2 5.2. GIAO DIỆN CHÍNH THỐNG
+[0912] cap3 5.2.1. Giao diện trang chủ
+[0913] par Mô tả: Trang chủ hiển thị danh sách khóa học nổi bật, danh mục khóa học và các thông tin giới thiệu nền tảng StackLearn.
+[0914] <IMAGE refs=rId29 near=''>
+[0915] Caption Hình 5. 1. Giao diện trang chủ
+[0916] cap3 5.2.2. Giao diện đăng ký và đăng nhập
+[0917] <IMAGE refs=rId30 near=''>
+[0918] Caption Hình 5. 2. Giao diện đăng ký tài khoản.
+[0919] par Mô tả: Giao diện đăng ký cho phép người dùng tạo tài khoản mới bằng cách nhập thông tin cá nhân, email, mật khẩu và xác nhận mật khẩu.
+[0920] <IMAGE refs=rId31 near=''>
+[0921] Caption Hình 5. 3. Giao diện đăng nhập.
+[0922] par Mô tả: Giao diện đăng nhập cho phép người dùng truy cập hệ thống bằng email và mật khẩu đã đăng ký, sau đó chuyển đến trang phù hợp với vai trò tài khoản.
+[0923] cap3 5.2.3. Giao diện quản lý khóa học
+[0924] <IMAGE refs=rId32 near=''>
+[0925] Caption Hình 5. 4. Giao diện danh sách khóa học.
+[0926] par Mô tả: Giao diện danh sách khóa học hiển thị các khóa học hiện có trên hệ thống, giúp người dùng xem thông tin cơ bản và lựa chọn khóa học phù hợp.
+[0927] <IMAGE refs=rId33 near=''>
+[0928] Caption Hình 5. 5. Giao diện tạo khóa học.
+[0929] par Mô tả: Giao diện tạo khóa học cho phép giảng viên nhập thông tin khóa học như tên, mô tả, danh mục, giá và hình ảnh trước khi lưu vào hệ thống.
+[0930] cap3 5.2.4. Giao diện học tập
+[0931] <IMAGE refs=rId34 near=''>
+[0932] Caption Hình 5. 6. Giao diện xem bài giảng.
+[0933] par Mô tả: Giao diện xem bài giảng hiển thị nội dung học tập của khóa học, giúp học viên theo dõi bài học và sử dụng các chức năng hỗ trợ trong quá trình học.
+[0934] <IMAGE refs=rId35 near=''>
+[0935] Caption Hình 5. 7. Giao diện theo dõi tiến độ học tập.
+[0936] par Mô tả: Giao diện theo dõi tiến độ học tập hiển thị trạng thái hoàn thành bài học, giúp học viên biết được quá trình học của mình trong khóa học.
+[0937] cap3 5.2.5. Giao diện làm bài kiểm tra
+[0938] <IMAGE refs=rId36 near=''>
+[0939] Caption Hình 5. 8. Giao diện làm bài kiểm tra.
+[0940] par Mô tả: Giao diện làm Quiz hiển thị các câu hỏi và đáp án để học viên lựa chọn, giúp kiểm tra mức độ hiểu bài sau khi học.
+[0941] <IMAGE refs=rId37 near=''>
+[0942] Caption Hình 5. 9. Giao diện kết quả bài kiểm tra.
+[0943] par Mô tả: Giao diện kết quả Quiz hiển thị điểm số và kết quả bài làm, giúp học viên xem lại mức độ hoàn thành bài kiểm tra.
+[0944] cap3 5.2.6. Giao diện thanh toán
+[0945] <IMAGE refs=rId38 near=''>
+[0946] Caption Hình 5. 10. Giao diện giỏ hàng.
+[0947] par Mô tả: Giao diện giỏ hàng hiển thị các khóa học người dùng đã chọn, cho phép kiểm tra thông tin khóa học trước khi thanh toán.
+[0948] <IMAGE refs=rId39 near=''>
+[0949] Caption Hình 5. 11. Giao diện thanh toán khóa học.
+[0950] par Mô tả: Giao diện thanh toán khóa học cho phép người dùng xác nhận đơn hàng, áp dụng mã giảm giá và chọn phương thức thanh toán.
+[0951] cap3 5.2.7. Giao diện AI Tutor
+[0952] <IMAGE refs=rId40 near=''>
+[0953] Caption Hình 5. 12. Giao diện AI Tutor.
+[0954] par Mô tả: Giao diện AI Tutor được tích hợp trực tiếp trong trang học bài, cho phép học viên đặt câu hỏi liên quan đến nội dung bài giảng đang học. Hệ thống tiếp nhận câu hỏi, gửi đến chatbot AI để xử lý và hiển thị phản hồi ngay trên giao diện học tập. Chức năng này giúp học viên được hỗ trợ nhanh hơn khi gặp khó khăn, đồng thời làm nổi bật điểm riêng của StackLearn so với một hệ thống LMS thông thường.
+[0955] <IMAGE refs=rId41 near=''>
+[0956] Caption Hình 5. 13. Kết quả phản hồi của AI Tutor.
+[0957] par Mô tả: Sau khi học viên gửi câu hỏi trong quá trình học. Phản hồi được hiển thị dưới dạng hội thoại, giúp học viên dễ theo dõi nội dung giải thích và tiếp tục đặt câu hỏi khi cần. Đây là chức năng hỗ trợ học tập nổi bật của hệ thống StackLearn.5.3. Đánh giá hệ thống
+[0958] Heading2 5.3. Triển khai mô hình AI Tutor
+[0959] Heading3 5.3.1. Tổng quan mô hình AI Tutor
+[0960]  AI Tutor là mô-đun hỗ trợ học tập thông minh trong hệ thống StackLearn, cho phép học viên đặt câu hỏi và nhận phản hồi dựa trên nội dung khóa học đang theo học. Khác với chatbot thông thường, AI Tutor được thiết kế theo hướng có ngữ cảnh học tập, trong đó câu trả lời được xây dựng từ thông tin khóa học, bài giảng, transcript, tài liệu học tập và lịch sử hội thoại của học viên.
+[0961]  Hệ thống không trực tiếp huấn luyện mô hình AI mới mà tích hợp Gemini API như một dịch vụ xử lý ngôn ngữ bên ngoài. StackLearn đảm nhiệm việc tiếp nhận câu hỏi, truy xuất nội dung liên quan, xây dựng prompt phù hợp, gửi yêu cầu đến Gemini API và xử lý phản hồi trả về.
+[0962]  Quy trình hoạt động tổng quát của AI Tutor gồm các bước: học viên gửi câu hỏi, hệ thống xác định ngữ cảnh khóa học và bài giảng, truy xuất dữ liệu liên quan, kết hợp với lịch sử hội thoại để tạo prompt, sau đó gửi đến Gemini API để sinh câu trả lời. Kết quả cuối cùng được lưu vào lịch sử hội thoại và hiển thị lại cho học viên.
+[0963]  Nhờ cơ chế này, AI Tutor có thể hỗ trợ giải thích khái niệm, tóm tắt nội dung bài học và trả lời câu hỏi theo ngữ cảnh, góp phần cá nhân hóa quá trình học tập trên hệ thống StackLearn.
+[0964] <IMAGE refs=rId42 near=''>
+[0965] Caption Hình 5. 14. Quy trình tổng quan của mô hình AI Tutor trong hệ thống StackLearn.
+[0969] Heading3 5.3.2. Chuẩn bị dữ liệu ngữ cảnh học tập
+[0970]  Để AI Tutor có thể trả lời theo đúng nội dung bài học, hệ thống cần chuẩn bị dữ liệu ngữ cảnh trước khi gửi yêu cầu đến mô hình Gemini. Dữ liệu ngữ cảnh bao gồm thông tin khóa học, bài giảng, transcript video, tài liệu học tập và lịch sử hội thoại của học viên.
+[0971] Caption Bảng 5. 3. Nguồn dữ liệu sử dụng cho AI Tutor.
+[0972] <TABLE rows=6 cols=3>
+    row 1: Nguồn dữ liệu | Mô tả | Vai trò trong AI Tutor
+    row 2: Thông tin khóa học | Tên khóa học, mô tả, mục tiêu học tập | Xác định phạm vi kiến thức
+    row 3: Bài giảng | Tiêu đề, nội dung, video, tài liệu đính kèm | Làm ngữ cảnh chính khi trả lời
+    row 4: Transcript | Nội dung được trích xuất từ video bài giảng | Giúp AI hiểu nội dung bài học
+    row 5: Tài liệu học tập | File PDF, tài liệu bổ sung | Bổ sung tri thức cho câu trả lời
+    row 6: Lịch sử hội thoại | Các câu hỏi và phản hồi trước đó | Duy trì mạch trao đổi với học viên
+[0973] cap4 5.3.2.1. Xử lý transcript và tài liệu bài học
+[0974]  Transcript và tài liệu bài học được hệ thống xử lý trước khi sử dụng cho AI Tutor. Đối với video bài giảng, hệ thống có thể tạo transcript để chuyển nội dung âm thanh thành văn bản. Đối với tài liệu học tập, hệ thống trích xuất nội dung văn bản từ file và lưu lại để phục vụ quá trình tìm kiếm ngữ cảnh.
+[0975]  Sau khi trích xuất, nội dung được chuẩn hóa nhằm loại bỏ các phần không cần thiết, giảm lỗi định dạng và bảo đảm dữ liệu có thể được sử dụng trong quá trình truy xuất. Bước xử lý này giúp AI Tutor có nguồn tri thức rõ ràng hơn khi tạo câu trả lời cho học viên.
+[0976] cap4 5.3.2.2. Chia nhỏ nội dung và lưu trữ tri thức
+[0977]  Do transcript và tài liệu học tập thường có nội dung dài, hệ thống chia nhỏ văn bản thành các đoạn ngắn hơn để thuận tiện cho việc tìm kiếm và đưa vào prompt. Mỗi đoạn nội dung được lưu kèm thông tin liên quan như khóa học, bài giảng, tài liệu gốc và vị trí trong nội dung.
+[0978]  Việc chia nhỏ nội dung giúp hệ thống chỉ truy xuất những đoạn có liên quan trực tiếp đến câu hỏi của học viên, thay vì gửi toàn bộ tài liệu cho mô hình. Cách làm này giúp giảm độ dài prompt, tăng độ chính xác của câu trả lời và hỗ trợ việc trích dẫn nguồn nội dung khi cần thiết.
+[0979] cap3 5.3.3. Xây dựng cơ chế truy xuất ngữ cảnh
+[0980]  Cơ chế truy xuất ngữ cảnh giúp AI Tutor lựa chọn các đoạn nội dung phù hợp với câu hỏi của học viên trước khi gửi yêu cầu đến mô hình Gemini. Thay vì đưa toàn bộ nội dung bài học vào prompt, hệ thống chỉ chọn những thông tin liên quan nhất từ transcript, tài liệu học tập và dữ liệu bài giảng.
+[0981] <IMAGE refs=rId43 near=''>
+[0982] Caption Hình 5. 15. Quy trình truy xuất ngữ cảnh cho AI Tutor.
+[0983] cap4 5.3.3.1. Tìm kiếm nội dung liên quan đến câu hỏi
+[0984]  Khi học viên gửi câu hỏi, hệ thống xác định khóa học và bài giảng hiện tại, sau đó tìm kiếm các đoạn nội dung có liên quan trong dữ liệu đã được xử lý. Các đoạn nội dung này có thể đến từ transcript video, tài liệu bài học hoặc nội dung mô tả bài giảng.
+[0985] par Việc tìm kiếm nội dung liên quan giúp AI Tutor trả lời bám sát phạm vi bài học, hạn chế việc mô hình sinh ra câu trả lời chung chung hoặc không đúng với nội dung khóa học.
+[0988] cap4 5.3.3.2. Kết hợp ngữ cảnh bài học và lịch sử hội thoại
+[0989] par Sau khi tìm được các đoạn nội dung phù hợp, hệ thống kết hợp chúng với thông tin khóa học, bài giảng hiện tại và lịch sử hội thoại gần nhất của học viên. Lịch sử hội thoại giúp mô hình hiểu được mạch trao đổi trước đó, đặc biệt trong các trường hợp học viên đặt câu hỏi nối tiếp.
+[0990] par Việc kết hợp ngữ cảnh bài học và lịch sử hội thoại giúp câu trả lời có tính liên tục, phù hợp hơn với nhu cầu học tập của từng học viên.
+[0991] cap4 5.3.3.3. Quản lý trích dẫn nguồn trả lời
+[0992] par Đối với các câu trả lời dựa trên transcript hoặc tài liệu học tập, hệ thống có thể lưu lại thông tin nguồn của các đoạn nội dung đã được sử dụng. Thông tin này gồm tài liệu gốc, bài giảng liên quan và vị trí đoạn nội dung trong dữ liệu.
+[0993] par Việc quản lý trích dẫn giúp tăng độ tin cậy của câu trả lời, đồng thời cho phép học viên biết nội dung được lấy từ bài học hoặc tài liệu nào. Đây cũng là cơ sở để kiểm tra và cải thiện chất lượng phản hồi của AI Tutor trong quá trình sử dụng.
+[0994] cap3 5.3.4. Xây dựng Prompt cho AI Tutor
+[0995] par Prompt là thành phần quan trọng giúp định hướng cách mô hình Gemini xử lý câu hỏi của học viên. Trong AI Tutor, prompt không chỉ chứa câu hỏi đầu vào mà còn bao gồm thông tin khóa học, bài giảng, ngữ cảnh truy xuất và các ràng buộc trả lời nhằm giúp mô hình phản hồi đúng phạm vi nội dung học tập.
+[0996] cap4 5.3.4.1. Cấu trúc Prompt đầu vào
+[0997] par Khi học viên gửi câu hỏi, hệ thống xây dựng prompt bằng cách kết hợp nhiều thành phần dữ liệu khác nhau. Các thành phần này giúp mô hình hiểu được vai trò cần thực hiện, nội dung câu hỏi, phạm vi bài học và nguồn tri thức cần ưu tiên sử dụng.
+[0998] Caption Bảng 5. 4. Cấu trúc Prompt đầu vào của AI Tutor.
+[0999] <TABLE rows=7 cols=3>
+    row 1: Thành phần Prompt | Nội dung | Vai trò
+    row 2: Vai trò hệ thống | Quy định AI đóng vai trò trợ giảng học tập | Định hướng cách trả lời
+    row 3: Câu hỏi học viên | Nội dung câu hỏi do học viên nhập | Xác định yêu cầu cần xử lý
+    row 4: Thông tin khóa học | Tên khóa học, bài giảng hiện tại | Giới hạn phạm vi trả lời
+    row 5: Ngữ cảnh truy xuất | Các đoạn transcript hoặc tài liệu liên quan | Cung cấp tri thức chính
+    row 6: Lịch sử hội thoại | Một số câu hỏi và câu trả lời gần nhất | Duy trì mạch trao đổi
+    row 7: Ràng buộc trả lời | Không trả lời ngoài nội dung học tập, ưu tiên dựa trên nguồn | Giảm sai lệch và trả lời lan man
+[1000] cap4 5.3.4.2. Ràng buộc phạm vi trả lời theo nội dung khóa học
+[1001] par Để hạn chế việc mô hình trả lời lan man hoặc đưa ra thông tin không liên quan, prompt được thiết kế với các ràng buộc rõ ràng. Mô hình được yêu cầu ưu tiên sử dụng nội dung từ transcript, tài liệu học tập và bài giảng hiện tại khi tạo câu trả lời.
+[1002] par Trong trường hợp câu hỏi nằm ngoài phạm vi khóa học, AI Tutor cần phản hồi theo hướng giải thích giới hạn dữ liệu hiện có, thay vì tự suy diễn nội dung không có trong ngữ cảnh. Cách thiết kế này giúp câu trả lời bám sát nội dung học tập và tăng độ tin cậy cho người dùng.
+[1003] cap4 5.3.4.3. Xử lý trường hợp thiếu ngữ cảnh
+[1004] par Không phải mọi câu hỏi của học viên đều có đủ dữ liệu liên quan trong transcript hoặc tài liệu bài học. Khi hệ thống không tìm thấy ngữ cảnh phù hợp, prompt sẽ yêu cầu mô hình trả lời thận trọng, nêu rõ rằng dữ liệu bài học hiện tại chưa cung cấp đủ thông tin.
+[1005] par Trong một số trường hợp, AI Tutor có thể đưa ra gợi ý chung ở mức khái niệm hoặc hướng dẫn học viên xem lại bài giảng liên quan. Việc xử lý thiếu ngữ cảnh giúp hạn chế câu trả lời sai lệch và đảm bảo AI Tutor hoạt động phù hợp với vai trò hỗ trợ học tập.
+[1006] cap3 5.3.5. Tích hợp Gemini API vào hệ thống
+[1007] par AI Tutor sử dụng Gemini API như dịch vụ xử lý ngôn ngữ bên ngoài để sinh câu trả lời cho học viên. Trong hệ thống StackLearn, quá trình tích hợp được tổ chức thông qua các lớp controller và service nhằm tách biệt giữa giao diện, xử lý nghiệp vụ và phần giao tiếp với API.
+[1008] <IMAGE refs=rId44 near=''>
+[1009] Caption Hình 5. 16. Quy trình tích hợp Gemini API trong AI Tutor.
+[1010] cap4 5.3.5.1. Gửi yêu cầu đến mô hình Gemini
+[1011] par Sau khi hệ thống xây dựng được prompt hoàn chỉnh, yêu cầu được chuyển đến lớp xử lý giao tiếp với Gemini API. Dữ liệu gửi đi bao gồm câu hỏi của học viên, ngữ cảnh bài học, lịch sử hội thoại và các ràng buộc trả lời đã được thiết lập trong prompt.
+[1012] par Việc gửi yêu cầu được thực hiện thông qua cấu hình API key, model và endpoint Gemini được lưu trong hệ thống. Cách tổ chức này giúp việc thay đổi cấu hình mô hình hoặc dịch vụ AI có thể thực hiện dễ dàng hơn mà không ảnh hưởng trực tiếp đến giao diện người dùng.
+[1013] cap4 5.3.5.2. Nhận và xử lý phản hồi từ mô hình
+[1014] par Sau khi Gemini API xử lý yêu cầu, hệ thống nhận lại phản hồi dưới dạng nội dung văn bản. Phản hồi này được kiểm tra và xử lý trước khi hiển thị cho học viên, nhằm đảm bảo nội dung phù hợp với ngữ cảnh học tập và định dạng trình bày trên giao diện.
+[1015] par Trong trường hợp API không phản hồi, lỗi kết nối hoặc dữ liệu trả về không hợp lệ, hệ thống cần có thông báo phù hợp để tránh làm gián đoạn trải nghiệm học tập của học viên. Việc xử lý phản hồi giúp AI Tutor hoạt động ổn định hơn trong môi trường thực tế.
+[1016] cap4 5.3.5.3. Lưu lịch sử hội thoại AI Tutor
+[1017] par Sau mỗi lượt trao đổi, hệ thống lưu lại câu hỏi của học viên và câu trả lời của AI Tutor vào lịch sử hội thoại. Dữ liệu này giúp học viên có thể xem lại nội dung đã trao đổi, đồng thời hỗ trợ hệ thống duy trì ngữ cảnh cho các câu hỏi tiếp theo.
+[1018] par Lịch sử hội thoại được quản lý theo từng phiên trò chuyện, gắn với học viên, khóa học và bài giảng cụ thể. Nhờ đó, AI Tutor có thể hỗ trợ học tập theo ngữ cảnh cá nhân hóa hơn, thay vì xử lý từng câu hỏi một cách tách rời.
+[1019] cap3 5.3.6. Quy trình hoạt động của AI Tutor trên hệ thống
+[1020] par Quy trình hoạt động của AI Tutor mô tả cách các thành phần trong hệ thống phối hợp với nhau để xử lý câu hỏi của học viên. Từ giao diện học tập, câu hỏi được gửi đến controller, sau đó hệ thống truy xuất ngữ cảnh, xây dựng prompt, gọi Gemini API và trả kết quả về cho học viên.
+[1021] <IMAGE refs=rId45 near=''>
+[1022] Caption Hình 5. 17. Quy trình hoạt động của AI Tutor trên hệ thống.
+[1023] cap4 5.3.6.1. Tiếp nhận câu hỏi của học viên
+[1024] par Khi học viên đặt câu hỏi tại giao diện học tập, hệ thống tiếp nhận nội dung câu hỏi cùng với thông tin người dùng, khóa học và bài giảng hiện tại. Các thông tin này được dùng để xác định phạm vi ngữ cảnh cần truy xuất.
+[1025] par Sau khi nhận yêu cầu, controller chuyển dữ liệu đến lớp service xử lý AI Tutor. Việc tách riêng phần xử lý vào service giúp controller gọn hơn và thuận tiện cho việc mở rộng chức năng sau này.
+[1026] cap4 5.3.6.2. Truy xuất ngữ cảnh học tập
+[1027] par Service xử lý AI Tutor tiến hành tìm kiếm các đoạn nội dung liên quan đến câu hỏi trong transcript, tài liệu học tập và dữ liệu bài giảng. Đồng thời, hệ thống có thể lấy thêm lịch sử hội thoại gần nhất để duy trì mạch trao đổi với học viên.
+[1028] par Các đoạn nội dung phù hợp được kết hợp thành ngữ cảnh học tập, sau đó đưa vào prompt gửi đến mô hình Gemini. Bước này giúp câu trả lời của AI Tutor bám sát nội dung khóa học thay vì chỉ dựa vào kiến thức tổng quát của mô hình.
+[1029] cap4 5.3.6.3. Sinh câu trả lời và hiển thị kết quả
+[1030] par Sau khi prompt được gửi đến gemini api, mô hình sinh câu trả lời dựa trên câu hỏi và ngữ cảnh đã cung cấp. hệ thống nhận phản hồi, xử lý định dạng nội dung, lưu câu hỏi và câu trả lời vào lịch sử hội thoại.
+[1031] par Cuối cùng, câu trả lời được hiển thị lại trên giao diện học tập để học viên tiếp tục theo dõi hoặc đặt câu hỏi tiếp theo. quy trình này giúp ai tutor hoạt động như một trợ lý học tập theo ngữ cảnh trong từng bài giảng cụ thể.
+[1033] cap1 CHƯƠNG 6. KIỂM THỬ VÀ ĐÁNH GIÁ
+[1034] Heading2 6.1. Mục tiêu kiểm thử
+[1035] par Mục tiêu kiểm thử của hệ thống StackLearn là đánh giá mức độ hoạt động đúng của các chức năng đã xây dựng, đồng thời kiểm tra sự ổn định của hệ thống trong quá trình sử dụng thực tế. Việc kiểm thử được thực hiện nhằm xác định các chức năng có đáp ứng đúng yêu cầu đặt ra hay không, dữ liệu có được xử lý chính xác hay không, và người dùng có thể thao tác thuận lợi trên hệ thống hay không.
+[1036] par Bên cạnh việc kiểm tra tính đúng đắn của chức năng, quá trình kiểm thử còn nhằm phát hiện các lỗi phát sinh trong luồng xử lý như đăng nhập, thanh toán, học tập, làm quiz và sử dụng chatbot AI. Kết quả kiểm thử là cơ sở để đánh giá mức độ hoàn thiện của hệ thống trước khi đưa ra nhận xét chung về chất lượng đề tài.
+[1037] Heading2 6.2. Kiểm thử các chức năng chính của hệ thống
+[1038] par Trong phạm vi đề tài, các chức năng được ưu tiên kiểm thử gồm:
+[1039] bullet1 Đăng ký, đăng nhập và phân quyền người dùng: Kiểm tra khả năng tạo tài khoản, đăng nhập hệ thống và điều hướng đúng theo vai trò học viên, giảng viên, quản trị viên.
+[1040] bullet1 Đăng nhập bằng Google/Facebook: Kiểm tra chức năng đăng nhập thông qua tài khoản mạng xã hội, bao gồm quá trình chuyển hướng đến nhà cung cấp, nhận thông tin người dùng và tạo hoặc liên kết tài khoản trong hệ thống.
+[1041] bullet1 Xem danh sách và chi tiết khóa học: Kiểm tra việc hiển thị dữ liệu khóa học, nội dung chi tiết, thông tin giảng viên, giá khóa học và các thông tin liên quan.
+[1042] bullet1 Tìm kiếm khóa học: Kiểm tra khả năng trả về kết quả phù hợp theo từ khóa người dùng nhập vào.
+[1043] bullet1 Wishlist và giỏ hàng: Kiểm tra thao tác thêm, xóa khóa học khỏi wishlist và giỏ hàng, đồng thời kiểm tra việc cập nhật số lượng, tổng tiền và dữ liệu hiển thị trên hệ thống.
+[1044] bullet1 Thanh toán và ghi danh khóa học: Kiểm tra quá trình tạo đơn hàng, áp dụng mã giảm giá, xử lý thanh toán qua Stripe hoặc VNPay và cấp quyền học sau khi thanh toán thành công.
+[1045] bullet1 Hoàn tiền đơn hàng: Kiểm tra chức năng gửi yêu cầu hoàn tiền của học viên, quản trị viên phê duyệt hoặc từ chối yêu cầu, cập nhật trạng thái đơn hàng, trạng thái thanh toán và lịch sử xử lý.
+[1046] bullet1 Yêu cầu payout của giảng viên: Kiểm tra việc giảng viên gửi yêu cầu rút doanh thu, quản trị viên xét duyệt hoặc từ chối payout và hệ thống cập nhật trạng thái yêu cầu đúng theo thao tác xử lý.
+[1047] bullet1 Học tập và theo dõi tiến độ: Kiểm tra việc mở bài học, cập nhật tiến độ học tập, lưu trạng thái hoàn thành bài giảng và tiếp tục học từ bài gần nhất.
+[1048] bullet1 Upload và truy cập tài nguyên bài giảng: Kiểm tra việc tải lên video, tài liệu học tập, tạo presigned URL và giới hạn quyền truy cập tài nguyên theo giảng viên hoặc học viên đã ghi danh.
+[1049] bullet1 Kiểm tra đánh giá: Kiểm tra hiển thị quiz, nộp bài, chấm điểm, lưu kết quả làm bài và hiển thị lịch sử làm bài của học viên.
+[1050] bullet1 Quản lý khóa học của giảng viên: Kiểm tra tạo khóa học, quản lý section, lecture, quiz, coupon và cập nhật nội dung khóa học.
+[1051] bullet1 Duyệt khóa học của quản trị viên: Kiểm tra thao tác duyệt, từ chối, ẩn khóa học và ghi nhận trạng thái kiểm duyệt nội dung.
+[1052] bullet1 Thảo luận và chat realtime: Kiểm tra việc gửi thảo luận trong bài học, phản hồi của giảng viên, gửi tin nhắn trong hội thoại và khả năng cập nhật giao diện theo thời gian thực thông qua broadcast/realtime.
+[1053] bullet1 Tạo transcript bài giảng: Kiểm tra chức năng tạo transcript từ video hoặc nguồn YouTube, theo dõi trạng thái job xử lý, lưu transcript và sử dụng transcript làm dữ liệu hỗ trợ học tập.
+[1054] bullet1 Chatbot AI hỗ trợ học tập: Kiểm tra việc tiếp nhận câu hỏi, xây dựng ngữ cảnh bài học, gửi yêu cầu đến Gemini API, tạo phản hồi phù hợp và lưu lịch sử hội thoại.
+[1055] Caption Bảng 6. 1. Bảng kết quả kiểm thử các chức năng chính của hệ thống StackLearn.
+[1056] <TABLE rows=34 cols=6>
+    row 1: STT | Chức năng kiểm thử | Dữ liệu/điều kiện kiểm thử | Kết quả mong đợi | Kết quả thực tế | Đánh giá
+    row 2: 1 | Đăng ký tài khoản | Nhập họ tên, email chưa tồn tại, mật khẩu hợp lệ | Tài khoản được tạo, người dùng được chuyển đến bước xác thực hoặc đăng nhập | Hệ thống tạo tài khoản thành công | Đạt
+    row 3: 2 | Đăng nhập | Nhập đúng email và mật khẩu | Người dùng đăng nhập thành công và được điều hướng theo vai trò | Hệ thống đăng nhập và chuyển đúng dashboard | Đạt
+    row 4: 3 | Đăng nhập Google/Facebook | Người dùng chọn đăng nhập bằng Google hoặc Facebook | Hệ thống chuyển hướng đến nhà cung cấp, nhận thông tin và đăng nhập hoặc tạo tài khoản tương ứng | Đăng nhập bằng tài khoản mạng xã hội hoạt động đúng | Đạt
+    row 5: 4 | Phân quyền người dùng | Đăng nhập bằng tài khoản student, instructor, admin | Mỗi vai trò chỉ truy cập được khu vực chức năng tương ứng | Hệ thống giới hạn quyền đúng theo vai trò | Đạt
+    row 6: 5 | Tìm kiếm khóa học | Nhập từ khóa tên khóa học | Danh sách khóa học phù hợp được hiển thị | Kết quả tìm kiếm hiển thị đúng | Đạt
+    row 7: 6 | Xem chi tiết khóa học | Chọn một khóa học đang public | Hiển thị thông tin khóa học, giảng viên, giá, nội dung bài học | Trang chi tiết hiển thị đầy đủ dữ liệu | Đạt
+    row 8: 7 | Thêm vào wishlist | Người dùng đăng nhập và chọn thêm khóa học vào wishlist | Khóa học được lưu vào danh sách yêu thích | Wishlist cập nhật đúng | Đạt
+    row 9: 8 | Thêm vào giỏ hàng | Chọn khóa học chưa mua và thêm vào giỏ hàng | Khóa học xuất hiện trong giỏ hàng, tổng tiền được cập nhật | Giỏ hàng hiển thị đúng khóa học và giá | Đạt
+    row 10: 9 | Áp dụng mã giảm giá | Nhập mã coupon hợp lệ | Tổng tiền được giảm theo cấu hình mã giảm giá | Hệ thống tính lại tổng tiền đúng | Đạt
+    row 11: 10 | Thanh toán thành công | Thanh toán đơn hàng bằng Stripe hoặc VNPay với dữ liệu hợp lệ | Đơn hàng được ghi nhận thanh toán, payment được tạo và học viên được ghi danh vào khóa học | Payment và enrollment được tạo thành công | Đạt
+    row 12: 11 | Thanh toán thất bại | Hủy thanh toán hoặc dùng giao dịch không hợp lệ | Đơn hàng không được ghi nhận là đã thanh toán, payment được đánh dấu thất bại và không tạo enrollment | Hệ thống chuyển về trạng thái thanh toán thất bại, không cấp quyền học | Đạt
+    row 13: 12 | Ghi danh khóa học | Hoàn tất thanh toán thành công | Học viên có quyền truy cập nội dung khóa học | Người dùng mở được trang học sau khi thanh toán | Đạt
+    row 14: 13 | Học bài | Học viên đã ghi danh mở bài giảng | Nội dung bài giảng hiển thị, hệ thống ghi nhận trạng thái học | Bài giảng hiển thị và tiến độ được cập nhật | Đạt
+    row 15: 14 | Theo dõi tiến độ học tập | Hoàn thành một bài giảng | Tỷ lệ tiến độ khóa học được cập nhật | Tiến độ học tập thay đổi đúng | Đạt
+    row 16: 15 | Làm quiz | Học viên chọn đáp án và nộp bài | Hệ thống chấm điểm, lưu kết quả và hiển thị điểm | Kết quả quiz được lưu và hiển thị đúng | Đạt
+    row 17: 16 | Quản lý khóa học của giảng viên | Giảng viên tạo khóa học, section, lecture, quiz | Dữ liệu khóa học được lưu đúng và hiển thị trong trang quản lý | Giảng viên tạo và cập nhật nội dung thành công | Đạt
+    row 18: 17 | Duyệt khóa học | Admin duyệt hoặc từ chối khóa học chờ xét duyệt | Trạng thái khóa học được cập nhật đúng và kết quả kiểm duyệt được ghi nhận | Hệ thống cập nhật đúng trạng thái duyệt | Đạt
+    row 19: 18 | Hoàn tiền đơn hàng | Học viên gửi yêu cầu refund cho đơn hàng hợp lệ | Admin xử lý yêu cầu, trạng thái refund/payment/order được cập nhật | Trạng thái hoàn tiền cập nhật đúng | Đạt
+    row 20: 19 | Payout giảng viên | Giảng viên gửi yêu cầu rút doanh thu | Admin phê duyệt hoặc từ chối payout, trạng thái được lưu | Yêu cầu payout được xử lý đúng | Đạt
+    row 21: 20 | Upload tài liệu/video | Giảng viên tải file bài giảng hợp lệ | File được lưu, bài giảng cập nhật đường dẫn tài nguyên | Upload thành công và tài nguyên hiển thị đúng | Đạt
+    row 22: 21 | Truy cập tài nguyên bằng presigned URL | Học viên đã ghi danh mở video/tài liệu | Hệ thống cấp URL tạm thời và chỉ cho người có quyền truy cập | Tài nguyên mở được với người có quyền | Đạt
+    row 23: 22 | Thảo luận bài giảng | Học viên gửi câu hỏi trong bài học | Nội dung thảo luận được lưu và hiển thị cho giảng viên/học viên | Thảo luận hiển thị đúng | Đạt
+    row 24: 23 | Giảng viên phản hồi thảo luận | Giảng viên gửi phản hồi trong luồng thảo luận bài giảng | Phản hồi được lưu và hiển thị cho học viên | Phản hồi hiển thị đúng trong luồng thảo luận | Đạt
+    row 25: 24 | Gửi tin nhắn realtime | Người dùng gửi tin nhắn trong hội thoại hợp lệ | Tin nhắn được lưu vào cơ sở dữ liệu và hiển thị trên giao diện | Tin nhắn hiển thị đúng sau khi gửi | Đạt
+    row 26: 25 | Broadcast realtime | Hai người dùng mở cùng hội thoại hoặc bài học trên hai trình duyệt | Nội dung mới được cập nhật trên giao diện người nhận mà không cần tải lại trang | Nội dung được cập nhật realtime trong môi trường thử nghiệm | Đạt
+    row 27: 26 | Fallback khi socket lỗi | Tắt kết nối Reverb/socket hoặc giả lập mất kết nối | Dữ liệu vẫn được lưu vào cơ sở dữ liệu, người dùng có thể tải lại trang để xem nội dung mới | Dữ liệu không bị mất và có thể xem lại sau khi tải lại | Đạt trong phạm vi thử nghiệm
+    row 28: 27 | Tạo transcript bài giảng | Giảng viên yêu cầu tạo transcript từ video hoặc YouTube | Job xử lý được tạo, transcript được lưu sau khi hoàn thành | Transcript được tạo và hiển thị | Đạt
+    row 29: 28 | AI Tutor trả lời đúng ngữ cảnh | Học viên hỏi câu liên quan đến nội dung bài học | Chatbot phản hồi dựa trên ngữ cảnh khóa học/bài học | AI Tutor trả lời đúng trọng tâm | Đạt
+    row 30: 29 | AI Tutor với câu hỏi ngoài phạm vi | Học viên hỏi nội dung không liên quan bài học | Chatbot từ chối hoặc trả lời có giới hạn, không bịa nội dung | Chatbot phản hồi ở mức chấp nhận được | Đạt một phần
+    row 31: 30 | Lỗi dịch vụ AI | Giả lập Gemini API lỗi hoặc không trả về nội dung | Hệ thống hiển thị thông báo lỗi phù hợp, không làm treo giao diện | Hệ thống xử lý lỗi và lưu trạng thái phù hợp | Đạt
+    row 32: 31 | Theo dõi audit log | Admin thực hiện thao tác như duyệt khóa học, xử lý refund hoặc thay đổi trạng thái người dùng | Hệ thống ghi nhận nhật ký với thông tin người thực hiện, hành động và thời gian | Nhật ký được lưu và hiển thị trong trang Audit Logs | Đạt
+    row 33: 32 | Xem learning analytics | Admin truy cập trang thống kê học tập với dữ liệu mẫu | Hệ thống tổng hợp dữ liệu khóa học, ghi danh, tiến độ học tập và quiz | Thống kê hiển thị đúng theo dữ liệu hiện có | Đạt
+    row 34: 33 | Giám sát system health | Admin truy cập trang kiểm tra tình trạng hệ thống | Hệ thống hiển thị trạng thái các thành phần chính như database, queue, storage và dịch vụ tích hợp | Trạng thái hệ thống được hiển thị | Đạt
+[1058] par Các test case được thực hiện trên môi trường cài đặt cục bộ với dữ liệu mẫu gồm tài khoản học viên, giảng viên, quản trị viên, khóa học mẫu, bài giảng, quiz, coupon và đơn hàng thanh toán thử nghiệm. Một test case được đánh giá là đạt khi kết quả thực tế khớp với kết quả mong đợi, dữ liệu được lưu đúng trong hệ thống và giao diện phản hồi đúng theo vai trò người dùng.
+[1059] par Đối với các chức năng tích hợp dịch vụ bên ngoài như thanh toán và AI Tutor, hệ thống cũng được kiểm tra thêm các trường hợp lỗi để đánh giá khả năng xử lý ngoại lệ.
+[1061] <IMAGE refs=rId46 near=''>
+[1062] Caption Hình 6. 1. Kết quả kiểm thử chức năng tìm kiếm khóa học.
+[1063] <IMAGE refs=rId47 near=''>
+[1064] Caption Hình 6. 2. Kết quả kiểm thử chức năng thanh toán khóa học.
+[1066] <IMAGE refs=rId48 near=''>
+[1067] Caption Hình 6. 3. Kết quả kiểm thử chức năng học tập trên hệ thống.
+[1068] cap2 6.3. Kiểm thử chức năng Chatbot AI
+[1069] cap3 6.3.1. Phương pháp kiểm thử
+[1070] par Quá trình kiểm thử Chatbot AI được thực hiện trực tiếp trên hệ thống StackLearn với các câu hỏi thuộc nhiều nhóm tình huống khác nhau. Mỗi câu hỏi được gửi vào giao diện AI Tutor, sau đó ghi nhận kết quả trả lời, trạng thái xử lý và thời gian phản hồi.
+[1071] bullet1 Kiểm thử theo test case chức năng: kiểm tra các chức năng chính như gửi câu hỏi, nhận phản hồi, trả lời theo ngữ cảnh, xử lý câu hỏi ngoài phạm vi và lưu lịch sử hội thoại.
+[1072] bullet1 Đánh giá chất lượng phản hồi theo thang điểm: chấm điểm câu trả lời dựa trên các tiêu chí như độ đúng nội dung, bám sát ngữ cảnh, đầy đủ, dễ hiểu và xử lý nguồn ngữ cảnh.
+[1073] bullet1 Đo thời gian phản hồi trung bình: ghi nhận thời gian từ lúc học viên gửi câu hỏi đến khi hệ thống hiển thị câu trả lời.
+[1074] par Các chỉ số kiểm thử được xây dựng dựa trên nguyên tắc kiểm thử theo test case, trong đó kết quả thực tế được so sánh với kết quả mong đợi để xác định trạng thái Pass/Fail. Theo ISTQB, test case được xem là đạt khi kết quả thực tế phù hợp với kết quả mong đợi, do đó tỷ lệ Pass được dùng để phản ánh mức độ hoàn thành các test case.
+[1075] par Do Chatbot AI sử dụng Gemini API kết hợp dữ liệu ngữ cảnh và không huấn luyện mô hình phân loại intent riêng, đề tài đánh giá chất lượng phản hồi bằng bộ tiêu chí chấm điểm thủ công theo thang điểm 10. Thời gian phản hồi được tính bằng trung bình cộng thời gian của các lần kiểm thử, tương tự cách các công cụ kiểm thử hiệu năng như JMeter hoặc k6 tổng hợp response time trung bình.
+[1076] cap3 6.3.2. Bộ test case kiểm thử chức năng Chatbot AI
+[1077] Caption Bảng 6. 2. Bộ test case kiểm thử chức năng Chatbot AI.
+[1078] <TABLE rows=7 cols=8>
+    row 1: Mã test | Tình huống kiểm thử | Dữ liệu đầu vào | Kết quả mong đợi | Kết quả thực tế | Thời gian phản hồi | Điểm chất lượng | Trạng thái
+    row 2: AI_TC01 | Hỏi khái niệm trong bài học | “MVC là gì?” | Trả lời đúng khái niệm theo nội dung bài học | Trả lời đúng khái niệm MVC, nêu được vai trò Model, View, Controller và liên hệ với Laravel | 3.8 giây | 9/10 | Pass
+    row 3: AI_TC02 | Hỏi tóm tắt bài giảng | “Tóm tắt bài học này” | Tóm tắt các ý chính của bài giảng hiện tại | Tóm tắt được nội dung chính của bài giảng, diễn đạt rõ ràng nhưng chưa bao quát hết chi tiết nhỏ | 4.6 giây | 8/10 | Pass
+    row 4: AI_TC03 | Hỏi theo tài liệu/transcript | “Trong bài giảng có nói gì về Laravel?” | Trả lời dựa trên transcript hoặc tài liệu bài học | Trả lời bám sát nội dung bài học, có sử dụng ngữ cảnh từ transcript/tài liệu liên quan | 5.2 giây | 8.5/10 | Pass
+    row 5: AI_TC04 | Hỏi nối tiếp theo hội thoại | “Nó có ưu điểm gì?” | Hiểu được câu hỏi dựa trên ngữ cảnh trước đó | Hiểu được câu hỏi đang nối tiếp nội dung MVC/Laravel trước đó và trả lời đúng trọng tâm | 4.3 giây | 8/10 | Pass
+    row 6: AI_TC05 | Hỏi ngoài phạm vi bài học | “Dự đoán giá vàng hôm nay?” | Từ chối hoặc phản hồi thận trọng do ngoài phạm vi học tập | Phản hồi thận trọng, cho biết nội dung không thuộc phạm vi bài học hiện tại và không tự suy đoán | 3.1 giây | 7.5/10 | Pass
+    row 7: AI_TC06 | Kiểm tra lưu lịch sử hội thoại | Gửi nhiều câu hỏi liên tiếp | Lưu được câu hỏi và phản hồi vào lịch sử | Tạo/lấy phiên hội thoại, lưu câu hỏi và câu trả lời vào lịch sử; có thể xem lại nội dung trao đổi | 3.6 giây | 9/10 | Pass
+[1080] par Từ kết quả kiểm thử ở Bảng 6.2, hệ thống có 6/6 test case đạt yêu cầu. Tỷ lệ test case đạt được tính như sau:
+[1083] par Điểm chất lượng trung bình của phản hồi Chatbot AI:
+[1085] par Thời gian phản hồi trung bình:
+[1087] cap3 6.3.3. Tiêu chí đánh giá chất lượng phản hồi
+[1088] par Để đánh giá chất lượng phản hồi của Chatbot AI, đề tài sử dụng bộ tiêu chí chấm điểm thủ công theo thang điểm 10. Phương pháp này phù hợp với hệ thống StackLearn vì AI Tutor sử dụng Gemini API kết hợp với dữ liệu ngữ cảnh học tập, không huấn luyện mô hình phân loại intent riêng như các chatbot truyền thống.
+[1089] par Mỗi câu trả lời được đánh giá dựa trên 5 tiêu chí, bao gồm: độ đúng nội dung, mức độ bám sát ngữ cảnh, độ đầy đủ thông tin, khả năng diễn đạt dễ hiểu và khả năng xử lý nguồn ngữ cảnh. Mỗi tiêu chí được chấm từ 0 đến 2 điểm, trong đó 0 điểm là chưa đạt, 1 điểm là đạt một phần và 2 điểm là đạt yêu cầu.
+[1090] Caption Bảng 6. 3. Bộ tiêu chí đánh giá chất lượng phản hồi của Chatbot AI.
+[1091] <TABLE rows=6 cols=3>
+    row 1: Tiêu chí | Mô tả | Thang điểm
+    row 2: Độ đúng nội dung | Câu trả lời đúng với kiến thức bài học | 0-2
+    row 3: Bám sát ngữ cảnh | Câu trả lời dựa trên khóa học, bài giảng hoặc tài liệu hiện tại | 0-2
+    row 4: Đầy đủ thông tin | Trả lời đủ các ý chính của câu hỏi | 0-2
+    row 5: Dễ hiểu | Diễn đạt rõ ràng, phù hợp với học viên | 0-2
+    row 6: Xử lý nguồn ngữ cảnh | Có sử dụng transcript, tài liệu hoặc phản hồi thận trọng khi thiếu dữ liệu | 0-2
+[1093] par Tổng điểm tối đa cho mỗi câu hỏi là 10 điểm.
+[1098] par 6.3.4.Kết quả đánh giá chất lượng phản hồi
+[1099] par Dựa trên bộ tiêu chí đánh giá ở Bảng 6.4, mỗi phản hồi của Chatbot AI được chấm theo thang điểm 10. Kết quả đánh giá chất lượng phản hồi được tổng hợp như sau:
+[1100] Caption Bảng 6. 4. Kết quả đánh giá chất lượng phản hồi Chatbot AI.
+[1101] <TABLE rows=7 cols=4>
+    row 1: Nhóm câu hỏi | Số câu test | Điểm trung bình | Nhận xét
+    row 2: Hỏi khái niệm trong bài học | 1 | 9.0/10 | Trả lời đúng nội dung bài học, có giải thích rõ khái niệm
+    row 3: Hỏi tóm tắt bài học | 1 | 8.0/10 | Tóm tắt được ý chính nhưng chưa bao quát hết chi tiết nhỏ
+    row 4: Hỏi theo transcript/tài liệu | 1 | 8.5/10 | Phản hồi bám sát tài liệu khi có dữ liệu ngữ cảnh
+    row 5: Hỏi nối tiếp theo hội thoại | 1 | 8.0/10 | Có khả năng duy trì mạch hội thoại cơ bản
+    row 6: Hỏi ngoài phạm vi bài học | 1 | 7.5/10 | Có phản hồi thận trọng khi thiếu ngữ cảnh
+    row 7: Kiểm tra lưu lịch sử hội thoại | 1 | 9.0/10 | Lưu được phiên hội thoại và nội dung trao đổi
+[1102] par Công thức tính điểm trung bình:
+[1104] par Tỷ lệ phản hồi đạt yêu cầu:
+[1106] par Kết quả đánh giá cho thấy toàn bộ phản hồi trong bộ kiểm thử đều đạt từ 7 điểm trở lên, do đó tỷ lệ phản hồi đạt yêu cầu là 100%. Điểm chất lượng trung bình đạt 8.33/10, cho thấy Chatbot AI có khả năng trả lời tương đối phù hợp với ngữ cảnh học tập. Các câu hỏi nằm trong phạm vi bài học có điểm cao hơn, trong khi câu hỏi ngoài phạm vi bài học có điểm thấp hơn do hệ thống chỉ phản hồi thận trọng thay vì đưa ra câu trả lời chi tiết.
+[1107] cap3 6.3.5. Đo thời gian phản hồi trung bình
+[1108] par Bên cạnh chất lượng câu trả lời, thời gian phản hồi cũng là yếu tố quan trọng ảnh hưởng đến trải nghiệm học tập của học viên. Trong quá trình kiểm thử, hệ thống ghi nhận thời gian từ lúc học viên gửi câu hỏi đến khi câu trả lời được hiển thị trên giao diện. Do Chatbot AI cần truy xuất ngữ cảnh học tập và gửi yêu cầu đến Gemini API, thời gian phản hồi thường lâu hơn các thao tác thông thường của hệ thống.
+[1109] Caption Bảng 6. 5. Kết quả đo thời gian phản hồi của Chatbot AI.
+[1110] <TABLE rows=7 cols=3>
+    row 1: Lần kiểm thử | Nhóm câu hỏi | Thời gian phản hồi
+    row 2: 1 | Hỏi khái niệm trong bài học | 3.8 giây
+    row 3: 2 | Hỏi tóm tắt bài học | 4.6 giây
+    row 4: 3 | Hỏi theo transcript/tài liệu | 5.2 giây
+    row 5: 4 | Hỏi nối tiếp hội thoại | 4.3 giây
+    row 6: 5 | Hỏi ngoài phạm vi bài học | 3.1 giây
+    row 7: 6 | Kiểm tra lưu lịch sử hội thoại | 3.6 giây
+[1111] par Công thức tính thời gian phản hồi trung bình:
+[1113] cap3 6.3.6. Nhận xét kết quả kiểm thử
+[1114] par Kết quả kiểm thử cho thấy Chatbot AI có thể thực hiện các chức năng chính như tiếp nhận câu hỏi, truy xuất ngữ cảnh học tập, gửi yêu cầu đến Gemini API, hiển thị phản hồi và lưu lịch sử hội thoại. Toàn bộ 6/6 test case đều đạt yêu cầu, tương ứng tỷ lệ Pass là 100%.
+[1115] par Về chất lượng phản hồi, Chatbot AI đạt điểm trung bình 8.33/10. Các câu hỏi nằm trong phạm vi bài học như hỏi khái niệm, tóm tắt bài học hoặc hỏi theo transcript/tài liệu cho kết quả tương đối tốt vì hệ thống có thể khai thác ngữ cảnh học tập. Đối với câu hỏi ngoài phạm vi bài học, hệ thống phản hồi thận trọng và không tự suy đoán nội dung, do đó vẫn đáp ứng được yêu cầu kiểm thử.
+[1116] par Về hiệu năng phản hồi, thời gian phản hồi trung bình của Chatbot AI là 4.27 giây. Kết quả này ở mức chấp nhận được trong phạm vi đồ án vì hệ thống cần thực hiện truy xuất ngữ cảnh, xây dựng prompt và chờ phản hồi từ Gemini API. Tuy nhiên, thời gian phản hồi vẫn phụ thuộc vào tốc độ xử lý của dịch vụ AI bên ngoài, độ dài ngữ cảnh được gửi kèm và chất lượng kết nối mạng.
+[1117] <IMAGE refs=rId49 near=''>
+[1118] Caption Hình 6. 4. Lịch sử hội thoại của học viên với Chatbot AI.
+[1120] cap2 6.4. Đánh giá hiệu năng hệ thống
+[1121] par Hiệu năng của hệ thống được đánh giá thông qua các thao tác thường dùng như đăng nhập, xem danh sách khóa học, xem chi tiết khóa học, học bài, làm quiz, thanh toán và gửi câu hỏi cho chatbot AI. Trong quá trình kiểm thử, các chức năng cơ bản của hệ thống phản hồi tương đối nhanh và không gặp lỗi nghiêm trọng khi thao tác với dữ liệu ở mức thử nghiệm.
+[1122] par Riêng chức năng chatbot AI có thời gian phản hồi lâu hơn các chức năng thông thường vì phải gửi yêu cầu đến dịch vụ AI bên ngoài và chờ kết quả trả về. Tuy nhiên, trong phạm vi đồ án, tốc độ phản hồi vẫn ở mức chấp nhận được để hỗ trợ học viên trong quá trình học. Nếu hệ thống triển khai thực tế với nhiều người dùng hơn, cần tiếp tục tối ưu truy vấn dữ liệu, xử lý bất đồng bộ và kiểm soát thời gian phản hồi của chatbot.
+[1123] Caption Bảng 6. 6. Đánh giá hiệu năng các chức năng chính của hệ thống StackLearn.
+[1124] <TABLE rows=9 cols=5>
+    row 1: STT | Chức năng kiểm thử | Tiêu chí đánh giá | Kết quả quan sát | Đánh giá
+    row 2: 1 | Đăng nhập hệ thống | Điều hướng đúng vai trò, không phát sinh lỗi | Phản hồi nhanh, chuyển đúng dashboard theo vai trò | Đạt
+    row 3: 2 | Xem danh sách khóa học | Dữ liệu hiển thị đúng, có thể thao tác tìm kiếm/lọc | Danh sách khóa học hiển thị ổn định | Đạt
+    row 4: 3 | Xem chi tiết khóa học | Tải được thông tin khóa học, giảng viên, bài giảng và giá | Thông tin khóa học và bài giảng hiển thị đầy đủ | Đạt
+    row 5: 4 | Học bài | Video/tài liệu hiển thị được, tiến độ học tập được cập nhật | Nội dung bài học hiển thị bình thường, tiến độ được lưu | Đạt
+    row 6: 5 | Làm quiz | Lưu đáp án, chấm điểm và hiển thị kết quả | Kết quả quiz được lưu và điểm hiển thị đúng | Đạt
+    row 7: 6 | Thanh toán khóa học | Tạo đơn hàng, xử lý thanh toán và ghi danh sau khi thanh toán thành công | Luồng thanh toán hoạt động đúng trong môi trường thử nghiệm | Đạt
+    row 8: 7 | Chatbot AI | Tạo phản hồi phù hợp, không làm treo giao diện khi chờ API | Phản hồi chậm hơn các chức năng thông thường do gọi Gemini API | Đạt trong phạm vi thử nghiệm
+    row 9: 8 | Tạo transcript bài giảng | Tác vụ được đưa vào queue/job và không ảnh hưởng thao tác chính | Transcript xử lý bất đồng bộ, cần thời gian chờ để hoàn thành | Đạt trong phạm vi thử nghiệm
+[1125] par Các kết quả trên được ghi nhận trong môi trường kiểm thử cục bộ với dữ liệu mẫu. Do phạm vi đồ án chưa thực hiện kiểm thử tải với số lượng người dùng lớn, kết quả đánh giá hiệu năng chủ yếu phản ánh khả năng phản hồi của hệ thống ở mức sử dụng thử nghiệm.
+[1126] cap2 6.5. Đánh giá trải nghiệm người dùng
+[1127] par Trải nghiệm người dùng của StackLearn nhìn chung ở mức dễ sử dụng. Học viên có thể xem khóa học, thêm vào giỏ hàng, thanh toán, học bài và làm quiz theo luồng khá rõ ràng. Các chức năng chính được đặt ở những vị trí dễ thao tác nên người dùng mới có thể làm quen tương đối nhanh.
+[1128] par Đối với giảng viên và quản trị viên, hệ thống đã tách riêng khu vực quản lý nên việc thao tác thuận tiện hơn. Tuy nhiên, một số màn hình quản trị có nhiều dữ liệu nên giao diện vẫn còn hơi dày, cần tiếp tục tối ưu để dễ theo dõi hơn.
+[1129] Caption Bảng 6. 7. Đánh giá trải nghiệm người dùng của hệ thống StackLearn.
+[1130] <TABLE rows=8 cols=4>
+    row 1: STT | Tiêu chí đánh giá | Nhận xét | Đánh giá
+    row 2: 1 | Giao diện học viên | Luồng xem khóa học, thêm vào giỏ hàng, thanh toán, học bài và làm quiz tương đối rõ ràng | Đạt
+    row 3: 2 | Giao diện giảng viên | Các chức năng quản lý khóa học, section, lecture, quiz và đơn hàng được chia theo khu vực chức năng | Đạt
+    row 4: 3 | Giao diện quản trị viên | Đầy đủ chức năng quản lý người dùng, khóa học, đơn hàng, cấu hình hệ thống và kiểm duyệt, nhưng một số màn hình còn nhiều dữ liệu | Đạt một phần
+    row 5: 4 | Trải nghiệm Chatbot AI | Có hỗ trợ hỏi đáp trong quá trình học, giúp tăng khả năng tương tác, nhưng chất lượng phản hồi còn phụ thuộc vào ngữ cảnh và dịch vụ AI | Đạt một phần
+    row 6: 5 | Khả năng điều hướng | Các khu vực học viên, giảng viên và quản trị viên được tách riêng, giúp người dùng thao tác đúng theo vai trò | Đạt
+    row 7: 6 | Phản hồi giao diện | Các thao tác cơ bản như thêm giỏ hàng, wishlist, nộp quiz và gửi câu hỏi AI có phản hồi trên giao diện | Đạt
+    row 8: 7 | Khả năng theo dõi trạng thái | Người dùng có thể theo dõi tiến độ học tập, trạng thái đơn hàng, kết quả quiz và lịch sử hội thoại AI | Đạt
+[1133] <IMAGE refs=rId50 near=''>
+[1134] hinh Hình 6. 5. Giao diện quản trị hệ thống StackLearn
+[1135] cap2 6.6. Đánh giá kết quả đạt được
+[1136] par Sau quá trình thực hiện, hệ thống StackLearn đã hoàn thành được các chức năng chính của một website học trực tuyến. Người dùng có thể đăng ký, đăng nhập, xem khóa học, thêm vào giỏ hàng, thanh toán và học bài trên hệ thống. Bên cạnh đó, phần giảng viên và quản trị viên cũng đã có các chức năng cần thiết để quản lý khóa học, xét duyệt nội dung và theo dõi hoạt động chung.
+[1137] par Một điểm nổi bật của đề tài là đã tích hợp thêm chatbot AI để hỗ trợ người học trong lúc học bài. Chức năng này giúp hệ thống khác với một LMS thông thường và đúng với hướng phát triển mà đề tài đặt ra từ đầu. Mặc dù chatbot vẫn còn cần cải thiện thêm, nhưng việc xây dựng được chức năng hỏi đáp và lưu lịch sử hội thoại là kết quả khá tốt trong phạm vi đồ án.
+[1138] par Nhìn chung, đề tài đã đạt được mục tiêu chính là xây dựng một hệ thống LMS có thể hoạt động được và có thêm hướng mở rộng bằng AI. Đây là nền tảng phù hợp để tiếp tục hoàn thiện trong các bước sau.
+[1139] Heading2 6.7. Hạn chế của hệ thống
+[1140]  Mặc dù hệ thống StackLearn đã hoàn thành được các chức năng chính, nhưng vẫn còn một số điểm cần cải thiện. Một số giao diện chưa thật sự tối ưu về trải nghiệm người dùng, đặc biệt ở các màn hình có nhiều dữ liệu như quản lý khóa học, đơn hàng và khu vực quản trị. Phần kiểm thử cũng mới tập trung vào các luồng chính, chưa bao phủ hết các trường hợp lỗi hoặc tình huống sử dụng phức tạp.
+[1141] par Chức năng chatbot AI đã có thể hỗ trợ hỏi đáp trong quá trình học, nhưng chất lượng phản hồi vẫn phụ thuộc vào dữ liệu bài học và khả năng xử lý của mô hình AI. Với những câu hỏi ngoài phạm vi nội dung hoặc câu hỏi quá chung, chatbot có thể trả lời chưa sát. Ngoài ra, hệ thống vẫn cần cải thiện thêm về hiệu năng, khả năng mở rộng và độ ổn định nếu triển khai với số lượng người dùng lớn.
+[1144] cap1 KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+[1145] par 1. Kết quả đạt được
+[1146] par Sau quá trình nghiên cứu, phân tích, thiết kế và xây dựng, đề tài đã hoàn thành hệ thống StackLearn - website học trực tuyến trên nền tảng Laravel. Hệ thống hỗ trợ ba nhóm người dùng chính gồm học viên, giảng viên và quản trị viên, đáp ứng các nghiệp vụ cơ bản của một hệ thống quản lý học tập trực tuyến.
+[1147] par Những kết quả chính đạt được bao gồm:
+[1148] par Xây dựng chức năng xem, tìm kiếm khóa học, wishlist, giỏ hàng, thanh toán và ghi danh khóa học.
+[1149] par Hoàn thiện đăng ký, đăng nhập, xác thực email, phân quyền theo vai trò và đăng nhập Google/Facebook.
+[1150] par Xây dựng khu vực học tập cho học viên với bài giảng, quiz, ghi chú, thảo luận và theo dõi tiến độ.
+[1151] par Xây dựng khu vực giảng viên để quản lý khóa học, bài giảng, tài liệu, quiz, thảo luận, doanh thu và yêu cầu rút tiền.
+[1152] par Xây dựng khu vực quản trị viên để quản lý người dùng, danh mục, khóa học, đơn hàng, hoàn tiền, payout, kiểm duyệt và thống kê.
+[1153] par Tích hợp AI Tutor sử dụng Gemini API để hỗ trợ học viên đặt câu hỏi theo ngữ cảnh bài học và lưu lịch sử hội thoại.
+[1154] par Nhìn chung, StackLearn đã đáp ứng được mục tiêu xây dựng một nền tảng LMS có thể vận hành với các chức năng học tập, quản lý nội dung, thanh toán và hỗ trợ học tập bằng trí tuệ nhân tạo.
+[1155] par 2. Hạn chế
+[1156] par Bên cạnh những kết quả đạt được, hệ thống vẫn còn một số hạn chế như sau:
+[1157] par Một số giao diện quản trị và giảng viên còn nhiều thông tin, cần tối ưu thêm về trải nghiệm sử dụng.
+[1158] par Chức năng AI Tutor còn phụ thuộc vào chất lượng dữ liệu bài học, transcript và khả năng phản hồi của Gemini API.
+[1159] par Việc tạo transcript, xử lý tài liệu và truy xuất ngữ cảnh cần được tối ưu thêm về tốc độ và độ ổn định.
+[1160] par Hệ thống mới được kiểm thử chủ yếu trên môi trường cục bộ, chưa đánh giá đầy đủ khi có nhiều người dùng đồng thời.
+[1161] par 3. Hướng phát triển
+[1162] par Trong thời gian tới, hệ thống có thể được mở rộng và hoàn thiện theo các hướng sau:
+[1163] par Hoàn thiện giao diện người dùng, bổ sung tìm kiếm, lọc dữ liệu và dashboard rõ ràng hơn.
+[1164] par Nâng cấp AI Tutor theo hướng RAG, kết hợp transcript, tài liệu học tập và nội dung bài giảng để tăng độ chính xác.
+[1165] par Bổ sung trích dẫn nguồn trong phản hồi của AI Tutor.
+[1166] par Tối ưu hiệu năng hệ thống bằng caching, queue/job, tối ưu truy vấn và kiểm thử tải.
+[1167] par Mở rộng chức năng học tập như chứng chỉ hoàn thành, lộ trình học tập và gợi ý khóa học.
+[1168] par Tăng cường bảo mật, kiểm duyệt nội dung, phân quyền chi tiết và giám sát hoạt động hệ thống.
+[1169]  Với các hướng phát triển trên, StackLearn có thể tiếp tục được hoàn thiện thành một nền tảng học trực tuyến có tính ứng dụng cao, hỗ trợ hiệu quả cho quá trình dạy và học trực tuyến.
+[1170] cap1 TÀI LIỆU THAM KHẢO
+[1171]  [1] laravel, “laravel 12.x documentation,” laravel documentation. Truy cập: https://laravel.com/docs/12.x/readme
+[1172]  [2] laravel, “laravel socialite,” laravel documentation. Truy cập: https://laravel.com/docs/12.x/socialite
+[1173]  [3] laravel, “broadcasting,” laravel documentation.
+[1174]  Truy cập: https://laravel.com/docs/12.x/broadcasting
+[1175]  [4] laravel, “laravel reverb,” laravel documentation.
+[1176]  Truy cập: https://laravel.com/docs/reverb
+[1177]  [5] postgresql global development group, “postgresql 16 documentation.”
+[1178]  Truy cập: https://www.postgresql.org/docs/16/
+[1179]  [6] google ai for developers, “gemini api reference.”
+[1180]  Truy cập: https://ai.google.dev/gemini-api/docs/api-overview
+[1181]  [7] stripe, “stripe api reference.”
+[1182]  Truy cập: https://docs.stripe.com/api
+[1183]  [8] stripe, “stripe apis documentation.”
+[1184]  Truy cập: https://docs.stripe.com/apis
+[1185]  [9] vnpay, “vnpay payment gateway integration documentation / sandbox technical specification.”
+[1186]  Truy cập: https://sandbox.vnpayment.vn/
+[1187]  [10] openai, “speech to text,” openai api documentation.
+[1188]  Truy cập: https://platform.openai.com/docs/guides/speech-to-text
+[1189]  [11] cloudflare, “cloudflare r2 documentation.”
+[1190]  Truy cập: https://developers.cloudflare.com/r2/

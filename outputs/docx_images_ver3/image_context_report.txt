@@ -1,0 +1,717 @@
+--- IMAGE PARA 5 blips=['rId8']
+    rId8 -> media/image1.png
+1: BỘ GIÁO DỤC VÀ ĐÀO TẠO
+2: TRƯỜNG ĐẠI HỌC NHA TRANG
+3: KHOA CÔNG NGHỆ THÔNG TIN
+5: [CURRENT IMAGE] 
+--- IMAGE PARA 35 blips=['rId8']
+    rId8 -> media/image1.png
+31: BỘ GIÁO DỤC VÀ ĐÀO TẠO
+32: TRƯỜNG ĐẠI HỌC NHA TRANG
+33: KHOA CÔNG NGHỆ THÔNG TIN
+35: [CURRENT IMAGE] 
+--- IMAGE PARA 58 blips=['rId9']
+    rId9 -> media/image2.png
+57: KHÁNH HOÀ, THÁNG 6 NĂM 2025
+58: [CURRENT IMAGE] 
+60: TRƯỜNG ĐẠI HỌC NHA TRANG
+61: KHOA CÔNG NGHỆ THÔNG TIN
+62: PHIẾU THEO DÕI TIẾN ĐỘ VÀ ĐÁNH GIÁ ĐỒ ÁN TỐT NGHIỆP
+63: (Dùng cho CBHD và nộp cùng báo cáo Đồ án của sinh viên)
+64: Tên đề tài: ​XÂY DỰNG WEBSITE HỌC TRỰC TUYẾN (E-LEARNING) TÍCH HỢP CHATBOT GIA SƯ ẢO HỖ TRỢ HỌC TẬP​
+--- IMAGE PARA 393 blips=['rId12']
+    rId12 -> media/image3.png
+388: Quản lý bài giảng và tài liệu học tập.
+389: Ghi danh và thanh toán khóa học.
+390: Kiểm tra, đánh giá kết quả học tập.
+391: Theo dõi tiến độ học tập.
+392: Hỗ trợ tương tác giữa người học và giảng viên.
+393: [CURRENT IMAGE] 
+394: Hình 2. 1. Các thành phần chính của hệ thống LMS.
+395: 2.1.3. Vai trò của LMS trong giáo dục số
+396: Trong bối cảnh chuyển đổi số, LMS đóng vai trò là nền tảng trung tâm giúp số hóa hoạt động đào tạo, giảm chi phí tổ chức lớp học truyền thống, mở rộng khả năng tiếp cận tri thức và nâng cao hiệu quả quản lý đào tạo.
+397: 2.1.4. Ứng dụng LMS trong đề tài StackLearn
+398: StackLearn được xây dựng theo mô hình LMS hỗ trợ ba nhóm người dùng gồm học viên, giảng viên và quản trị viên. Hệ thống cung cấp các chức năng quản lý khóa học, học tập trực tuyến, kiểm tra đánh giá, thanh toán và hỗ trợ
+399: 2.2. KIẾN TRÚC MVC TRONG PHÁT TRIỂN ỨNG DỤNG WEB
+--- IMAGE PARA 401 blips=['rId12']
+    rId12 -> media/image3.png
+396: Trong bối cảnh chuyển đổi số, LMS đóng vai trò là nền tảng trung tâm giúp số hóa hoạt động đào tạo, giảm chi phí tổ chức lớp học truyền thống, mở rộng khả năng tiếp cận tri thức và nâng cao hiệu quả quản lý đào tạo.
+397: 2.1.4. Ứng dụng LMS trong đề tài StackLearn
+398: StackLearn được xây dựng theo mô hình LMS hỗ trợ ba nhóm người dùng gồm học viên, giảng viên và quản trị viên. Hệ thống cung cấp các chức năng quản lý khóa học, học tập trực tuyến, kiểm tra đánh giá, thanh toán và hỗ trợ
+399: 2.2. KIẾN TRÚC MVC TRONG PHÁT TRIỂN ỨNG DỤNG WEB
+400: MVC (Model – View – Controller) là mô hình kiến trúc được sử dụng phổ biến trong phát triển ứng dụng web nhằm phân tách hệ thống thành các thành phần độc lập gồm dữ liệu, giao diện và xử lý điều khiển. Trong đó, Model đả
+401: [CURRENT IMAGE] 
+402: Hình 2. 2. Mô hình kiến trúc MVC.
+403: Trong quá trình hoạt động, các yêu cầu từ người dùng được gửi đến Controller để xử lý, sau đó Controller tương tác với Model để truy xuất hoặc cập nhật dữ liệu và trả kết quả về View để hiển thị. Nhờ cơ chế này, việc tha
+404: 2.3. FRAMEWORK LARAVEL TRONG PHÁT TRIỂN HỆ THỐNG
+405: Laravel là framework mã nguồn mở dựa trên PHP, được sử dụng phổ biến trong phát triển ứng dụng web hiện đại nhờ kiến trúc MVC rõ ràng và hệ sinh thái hỗ trợ phong phú. Framework này cung cấp nhiều thành phần quan trọng n
+406: Trong đề tài StackLearn, Laravel được sử dụng làm nền tảng backend chính để xử lý các nghiệp vụ như quản lý người dùng, khóa học, ghi danh, thanh toán, kiểm tra đánh giá và AI Tutor. Ngoài ra, Laravel còn hỗ trợ tích hợp
+407: [IMAGE ['rId12']] 
+--- IMAGE PARA 407 blips=['rId12']
+    rId12 -> media/image3.png
+402: Hình 2. 2. Mô hình kiến trúc MVC.
+403: Trong quá trình hoạt động, các yêu cầu từ người dùng được gửi đến Controller để xử lý, sau đó Controller tương tác với Model để truy xuất hoặc cập nhật dữ liệu và trả kết quả về View để hiển thị. Nhờ cơ chế này, việc tha
+404: 2.3. FRAMEWORK LARAVEL TRONG PHÁT TRIỂN HỆ THỐNG
+405: Laravel là framework mã nguồn mở dựa trên PHP, được sử dụng phổ biến trong phát triển ứng dụng web hiện đại nhờ kiến trúc MVC rõ ràng và hệ sinh thái hỗ trợ phong phú. Framework này cung cấp nhiều thành phần quan trọng n
+406: Trong đề tài StackLearn, Laravel được sử dụng làm nền tảng backend chính để xử lý các nghiệp vụ như quản lý người dùng, khóa học, ghi danh, thanh toán, kiểm tra đánh giá và AI Tutor. Ngoài ra, Laravel còn hỗ trợ tích hợp
+407: [CURRENT IMAGE] 
+408: Hình 2. 3. Framework Laravel.
+409: Trong hệ thống StackLearn, Laravel không chỉ đóng vai trò là framework backend chính mà còn cung cấp nhiều thành phần hỗ trợ quan trọng. Laravel Breeze được sử dụng cho chức năng xác thực người dùng, trong khi Laravel So
+410: Bên cạnh đó, Laravel Reverb và Echo hỗ trợ các chức năng realtime như thảo luận bài học và nhắn tin. Hệ thống cũng sử dụng filesystem/storage disk của Laravel để quản lý hình ảnh, video, tài liệu bài giảng và có thể tích
+411: 2.4. HỆ QUẢN TRỊ CƠ SỞ DỮ LIỆU POSTGRESQL
+412: PostgreSQL là hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở được sử dụng rộng rãi trong nhiều hệ thống thông tin và ứng dụng web hiện nay. Hệ quản trị này cho phép lưu trữ và quản lý dữ liệu theo mô hình quan hệ, hỗ trợ 
+413: [IMAGE ['rId12']] 
+--- IMAGE PARA 413 blips=['rId12']
+    rId12 -> media/image3.png
+408: Hình 2. 3. Framework Laravel.
+409: Trong hệ thống StackLearn, Laravel không chỉ đóng vai trò là framework backend chính mà còn cung cấp nhiều thành phần hỗ trợ quan trọng. Laravel Breeze được sử dụng cho chức năng xác thực người dùng, trong khi Laravel So
+410: Bên cạnh đó, Laravel Reverb và Echo hỗ trợ các chức năng realtime như thảo luận bài học và nhắn tin. Hệ thống cũng sử dụng filesystem/storage disk của Laravel để quản lý hình ảnh, video, tài liệu bài giảng và có thể tích
+411: 2.4. HỆ QUẢN TRỊ CƠ SỞ DỮ LIỆU POSTGRESQL
+412: PostgreSQL là hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở được sử dụng rộng rãi trong nhiều hệ thống thông tin và ứng dụng web hiện nay. Hệ quản trị này cho phép lưu trữ và quản lý dữ liệu theo mô hình quan hệ, hỗ trợ 
+413: [CURRENT IMAGE] 
+414: Hình 2. 4. Hệ quản trị cơ sở dữ liệu PostgreSQL.
+415: Trong đề tài StackLearn, PostgreSQL được sử dụng làm hệ quản trị cơ sở dữ liệu trung tâm để lưu trữ và quản lý toàn bộ dữ liệu của hệ thống, bao gồm thông tin người dùng, khóa học, bài giảng, ghi danh, kết quả học tập, g
+416: 2.5. TRÍ TUỆ NHÂN TẠO VÀ CHATBOT HỖ TRỢ HỌC TẬP
+417: 2.5.1. Tổng quan về trí tuệ nhân tạo trong giáo dục
+418: Trí tuệ nhân tạo (Artificial Intelligence - AI) là lĩnh vực nghiên cứu và phát triển các hệ thống có khả năng mô phỏng một số hoạt động tư duy của con người như học tập, suy luận, nhận biết ngôn ngữ và đưa ra quyết định.
+419: Trong môi trường giáo dục số, AI góp phần nâng cao hiệu quả dạy và học thông qua các chức năng như phân tích dữ liệu học tập, cá nhân hóa nội dung đào tạo, đánh giá kết quả học tập và hỗ trợ người học theo thời gian thực
+--- IMAGE PARA 432 blips=['rId12']
+    rId12 -> media/image3.png
+427: Hiện nay có nhiều mô hình LLM nổi bật như GPT của OpenAI, Claude của Anthropic, Llama của Meta và Gemini của Google. Trong phạm vi đề tài này, hệ thống StackLearn lựa chọn Gemini làm nền tảng xử lý ngôn ngữ cho AI Tutor.
+428: 2.5.4. Gemini API
+429: Gemini là mô hình trí tuệ nhân tạo đa phương thức được phát triển bởi Google, có khả năng xử lý và sinh nội dung dựa trên ngôn ngữ tự nhiên. Để hỗ trợ tích hợp vào các ứng dụng phần mềm, Google cung cấp Gemini API cho ph
+430: Thông qua Gemini API, các ứng dụng có thể xây dựng các chức năng như chatbot, trợ lý ảo, hỏi đáp kiến thức hoặc sinh nội dung tự động mà không cần tự huấn luyện mô hình AI từ đầu. Khi người dùng gửi câu hỏi, hệ thống sẽ 
+431: Trong StackLearn, Gemini API đóng vai trò là bộ máy xử lý ngôn ngữ trung tâm cho AI Tutor, giúp hệ thống có khả năng tương tác và hỗ trợ học viên theo thời gian thực.
+432: [CURRENT IMAGE] 
+433: Hình 2. 5. Luồng xử lý tích hợp Gemini API.
+434: 2.5.5. Prompt Engineering
+435: Prompt Engineering là kỹ thuật thiết kế và tối ưu hóa câu lệnh đầu vào (Prompt) nhằm hướng dẫn mô hình AI tạo ra kết quả phù hợp với mục tiêu sử dụng. Chất lượng của Prompt có ảnh hưởng trực tiếp đến độ chính xác và tính
+436: Trong các hệ thống AI hiện đại, Prompt không chỉ bao gồm câu hỏi của người dùng mà còn có thể chứa hướng dẫn, vai trò, quy tắc xử lý và dữ liệu ngữ cảnh liên quan. Việc xây dựng Prompt hợp lý giúp mô hình hiểu rõ nhiệm v
+437: Đối với hệ thống StackLearn, Prompt Engineering được áp dụng để kết hợp câu hỏi của học viên với nội dung bài học hiện tại, thông tin khóa học và các yêu cầu về phạm vi trả lời. Nhờ đó, AI Tutor có thể tập trung hỗ trợ k
+438: 2.5.6. Context-Aware AI Tutor
+--- IMAGE PARA 474 blips=['rId12']
+    rId12 -> media/image3.png
+469: StackLearn được xây dựng theo mô hình kiến trúc nhiều lớp. Ba nhóm người dùng chính gồm học viên, giảng viên và quản trị viên tương tác với hệ thống thông qua giao diện web. Các yêu cầu từ giao diện được gửi đến ứng dụng
+470: Lớp giao diện người dùng: Cung cấp giao diện tương tác cho học viên, giảng viên và quản trị viên thông qua trình duyệt web. Người dùng thực hiện các thao tác như đăng ký tài khoản, học tập, quản lý khóa học và trao đổi v
+471: Lớp xử lý nghiệp vụ: Được xây dựng trên nền tảng Laravel Framework, chịu trách nhiệm xử lý các nghiệp vụ của hệ thống như xác thực người dùng, quản lý khóa học, thanh toán, theo dõi tiến độ học tập, quản lý bài kiểm tra 
+472: Lớp dữ liệu: Sử dụng hệ quản trị cơ sở dữ liệu PostgreSQL để lưu trữ và quản lý toàn bộ dữ liệu của hệ thống bao gồm người dùng, khóa học, bài giảng, kết quả học tập, giao dịch thanh toán và lịch sử hội thoại với AI Tuto
+473: Lớp dịch vụ trí tuệ nhân tạo: Thông qua Gemini API, hệ thống có khả năng tiếp nhận câu hỏi của học viên, kết hợp với ngữ cảnh học tập hiện tại để tạo phản hồi phù hợp. Mô-đun AI Tutor đóng vai trò trung gian giữa hệ thốn
+474: [CURRENT IMAGE] 
+475: Hình 3. 1. Kiến trúc tổng thể hệ thống StackLearn.
+476: Như thể hiện trong Hình 3.1, học viên, giảng viên và quản trị viên tương tác với StackLearn thông qua giao diện web. Ứng dụng Laravel đóng vai trò trung tâm xử lý nghiệp vụ, kết nối với PostgreSQL để lưu trữ dữ liệu và đ
+477: 3.2. PHÂN TÍCH BÀI TOÁN HỆ THỐNG HỌC TRỰC TUYẾN STACKLEARN
+478: 3.2.1. Bối cảnh bài toán
+479: Trong những năm gần đây, mô hình học tập trực tuyến (E-learning) ngày càng phát triển mạnh mẽ nhờ sự phổ biến của Internet và các nền tảng số. Các hệ thống LMS cho phép người học tiếp cận kiến thức linh hoạt thông qua vi
+480: Tuy nhiên, trong quá trình tự học trực tuyến, học viên thường gặp nhiều khó khăn như:
+--- IMAGE PARA 631 blips=['rId13']
+    rId13 -> media/image4.png
+626: Bảng 3. 2. Các tác nhân của hệ thống.
+628: Các tác nhân trên tương tác với hệ thống thông qua các chức năng tương ứng với vai trò được phân quyền.
+630: 3.4.1. Sơ đồ Use Case tổng quát
+631: [CURRENT IMAGE] 
+632: Hình 3. 2. Sơ đồ Use Case tổng quát của hệ thống StackLearn.
+633: Hệ thống StackLearn có ba tác nhân chính gồm Học viên (Student), Giảng viên (Instructor) và Quản trị viên (Administrator). Mỗi tác nhân tương tác với hệ thống thông qua các nhóm chức năng tương ứng với vai trò được phân 
+634: Sơ đồ Use Case tổng quát thể hiện mối quan hệ giữa các tác nhân và các nhóm chức năng chính của hệ thống như quản lý người dùng, quản lý khóa học, học tập trực tuyến, thanh toán, kiểm tra đánh giá và hỗ trợ học tập thông
+636: 3.4.2. Use Case của học viên
+637: Học viên là tác nhân trung tâm của hệ thống, trực tiếp tham gia vào các hoạt động học tập trực tuyến.
+--- IMAGE PARA 638 blips=['rId14']
+    rId14 -> media/image5.png
+633: Hệ thống StackLearn có ba tác nhân chính gồm Học viên (Student), Giảng viên (Instructor) và Quản trị viên (Administrator). Mỗi tác nhân tương tác với hệ thống thông qua các nhóm chức năng tương ứng với vai trò được phân 
+634: Sơ đồ Use Case tổng quát thể hiện mối quan hệ giữa các tác nhân và các nhóm chức năng chính của hệ thống như quản lý người dùng, quản lý khóa học, học tập trực tuyến, thanh toán, kiểm tra đánh giá và hỗ trợ học tập thông
+636: 3.4.2. Use Case của học viên
+637: Học viên là tác nhân trung tâm của hệ thống, trực tiếp tham gia vào các hoạt động học tập trực tuyến.
+638: [CURRENT IMAGE] 
+639: Hình 3. 3. Sơ đồ Use Case của học viên..
+641: 3.4.3. Use Case của giảng viên
+642: Giảng viên chịu trách nhiệm xây dựng và quản lý nội dung đào tạo trên hệ thống.
+643: [IMAGE ['rId15']] 
+644: Hình 3. 4. Sơ đồ Use Case của giảng viên.
+--- IMAGE PARA 643 blips=['rId15']
+    rId15 -> media/image6.png
+638: [IMAGE ['rId14']] 
+639: Hình 3. 3. Sơ đồ Use Case của học viên..
+641: 3.4.3. Use Case của giảng viên
+642: Giảng viên chịu trách nhiệm xây dựng và quản lý nội dung đào tạo trên hệ thống.
+643: [CURRENT IMAGE] 
+644: Hình 3. 4. Sơ đồ Use Case của giảng viên.
+645: 3.4.4. Use Case của quản trị viên
+646: Quản trị viên là tác nhân có quyền cao nhất trong hệ thống, chịu trách nhiệm quản lý và giám sát toàn bộ hoạt động vận hành.
+647: [IMAGE ['rId16']] 
+648: Hình 3. 5. Sơ đồ Use Case của quản trị viên.
+649: 3.4.5. Use Case hỗ trợ học tập bằng AI Tutor
+--- IMAGE PARA 647 blips=['rId16']
+    rId16 -> media/image7.png
+642: Giảng viên chịu trách nhiệm xây dựng và quản lý nội dung đào tạo trên hệ thống.
+643: [IMAGE ['rId15']] 
+644: Hình 3. 4. Sơ đồ Use Case của giảng viên.
+645: 3.4.4. Use Case của quản trị viên
+646: Quản trị viên là tác nhân có quyền cao nhất trong hệ thống, chịu trách nhiệm quản lý và giám sát toàn bộ hoạt động vận hành.
+647: [CURRENT IMAGE] 
+648: Hình 3. 5. Sơ đồ Use Case của quản trị viên.
+649: 3.4.5. Use Case hỗ trợ học tập bằng AI Tutor
+650: AI Tutor là chức năng đặc trưng của hệ thống StackLearn nhằm hỗ trợ học viên trong quá trình học tập. Khi học viên gửi câu hỏi, hệ thống sẽ tiếp nhận yêu cầu, xây dựng ngữ cảnh học tập, gửi truy vấn tới Gemini API và trả
+651: [IMAGE ['rId17']] 
+652: Hình 3. 6. Sơ đồ Use Case AI Tutor.
+653: 3.4.6. Đặc tả một số Use Case tiêu biểu
+--- IMAGE PARA 651 blips=['rId17']
+    rId17 -> media/image8.png
+646: Quản trị viên là tác nhân có quyền cao nhất trong hệ thống, chịu trách nhiệm quản lý và giám sát toàn bộ hoạt động vận hành.
+647: [IMAGE ['rId16']] 
+648: Hình 3. 5. Sơ đồ Use Case của quản trị viên.
+649: 3.4.5. Use Case hỗ trợ học tập bằng AI Tutor
+650: AI Tutor là chức năng đặc trưng của hệ thống StackLearn nhằm hỗ trợ học viên trong quá trình học tập. Khi học viên gửi câu hỏi, hệ thống sẽ tiếp nhận yêu cầu, xây dựng ngữ cảnh học tập, gửi truy vấn tới Gemini API và trả
+651: [CURRENT IMAGE] 
+652: Hình 3. 6. Sơ đồ Use Case AI Tutor.
+653: 3.4.6. Đặc tả một số Use Case tiêu biểu
+654: Làm rõ các nghiệp vụ trọng tâm của hệ thống StackLearn, báo cáo tiến hành đặc tả một số Use Case tiêu biểu đại diện cho các nhóm chức năng của học viên, giảng viên và quản trị viên. Các đặc tả Use Case bao gồm mục tiêu, 
+655: a) Đặc tả Use Case đăng ký tài khoản
+656: Bảng 3. 3. Đặc tả Use Case đăng ký tài khoản.
+657: b) Đặc tả Use Case đăng nhập hệ thống
+--- IMAGE PARA 689 blips=['rId18']
+    rId18 -> media/image9.png
+685: 3.5. PHÂN TÍCH LUỒNG NGHIỆP VỤ
+686: Sau khi xác định các tác nhân và các Use Case của hệ thống, bước tiếp theo là mô hình hóa luồng xử lý nghiệp vụ thông qua các sơ đồ hoạt động. Các sơ đồ này giúp mô tả trình tự thực hiện các chức năng chính của hệ thống,
+687: 3.5.1. Activity Diagram đăng ký/đăng nhập hệ thống
+688: Sơ đồ hoạt động đăng ký và đăng nhập mô tả quá trình người dùng tạo tài khoản mới, xác thực thông tin đăng nhập và truy cập vào hệ thống theo quyền được cấp.
+689: [CURRENT IMAGE] 
+690: Hình 3. 7. Activity Diagram đăng ký/đăng nhập hệ thống.
+691: Thông qua quy trình này, hệ thống thực hiện kiểm tra tính hợp lệ của thông tin người dùng, xác thực tài khoản và thiết lập phiên làm việc tương ứng với vai trò của người sử dụng.
+692: 3.5.2. Activity Diagram ghi danh khóa học
+693: Sơ đồ hoạt động ghi danh khóa học mô tả quy trình học viên đăng ký tham gia một khóa học trên hệ thống sau khi đáp ứng các điều kiện cần thiết.
+694: [IMAGE ['rId19']] 
+695: Hình 3. 8. Activity Diagram ghi danh khóa học.
+--- IMAGE PARA 694 blips=['rId19']
+    rId19 -> media/image10.png
+689: [IMAGE ['rId18']] 
+690: Hình 3. 7. Activity Diagram đăng ký/đăng nhập hệ thống.
+691: Thông qua quy trình này, hệ thống thực hiện kiểm tra tính hợp lệ của thông tin người dùng, xác thực tài khoản và thiết lập phiên làm việc tương ứng với vai trò của người sử dụng.
+692: 3.5.2. Activity Diagram ghi danh khóa học
+693: Sơ đồ hoạt động ghi danh khóa học mô tả quy trình học viên đăng ký tham gia một khóa học trên hệ thống sau khi đáp ứng các điều kiện cần thiết.
+694: [CURRENT IMAGE] 
+695: Hình 3. 8. Activity Diagram ghi danh khóa học.
+696: Quá trình ghi danh bao gồm việc lựa chọn khóa học, kiểm tra trạng thái thanh toán và cấp quyền truy cập nội dung học tập cho học viên sau khi ghi danh thành công.
+698: 3.5.3. Activity Diagram tham gia học tập
+699: Sơ đồ hoạt động tham gia học tập mô tả quá trình học viên truy cập khóa học, lựa chọn bài học và thực hiện các hoạt động học tập trên hệ thống.
+700: [IMAGE ['rId19']] 
+--- IMAGE PARA 700 blips=['rId19']
+    rId19 -> media/image10.png
+695: Hình 3. 8. Activity Diagram ghi danh khóa học.
+696: Quá trình ghi danh bao gồm việc lựa chọn khóa học, kiểm tra trạng thái thanh toán và cấp quyền truy cập nội dung học tập cho học viên sau khi ghi danh thành công.
+698: 3.5.3. Activity Diagram tham gia học tập
+699: Sơ đồ hoạt động tham gia học tập mô tả quá trình học viên truy cập khóa học, lựa chọn bài học và thực hiện các hoạt động học tập trên hệ thống.
+700: [CURRENT IMAGE] 
+701: Hình 3. 9. Activity Diagram tham gia học tập.
+702: Trong quá trình học tập, hệ thống ghi nhận tiến độ học tập và cập nhật trạng thái hoàn thành của từng bài học nhằm hỗ trợ việc theo dõi kết quả học tập của học viên.
+704: 3.5.4. Activity Diagram làm bài kiểm tra
+705: Sơ đồ hoạt động làm bài kiểm tra mô tả quy trình học viên thực hiện bài đánh giá trong khóa học.
+706: [IMAGE ['rId19']] 
+--- IMAGE PARA 706 blips=['rId19']
+    rId19 -> media/image10.png
+701: Hình 3. 9. Activity Diagram tham gia học tập.
+702: Trong quá trình học tập, hệ thống ghi nhận tiến độ học tập và cập nhật trạng thái hoàn thành của từng bài học nhằm hỗ trợ việc theo dõi kết quả học tập của học viên.
+704: 3.5.4. Activity Diagram làm bài kiểm tra
+705: Sơ đồ hoạt động làm bài kiểm tra mô tả quy trình học viên thực hiện bài đánh giá trong khóa học.
+706: [CURRENT IMAGE] 
+707: Hình 3. 10. Activity Diagram làm bài kiểm tra.
+708: Sau khi hoàn thành bài kiểm tra, hệ thống tự động chấm điểm, lưu kết quả và cập nhật dữ liệu học tập của học viên.
+710: 3.5.5. Activity Diagram tương tác với AI Tutor
+711: Sơ đồ hoạt động tương tác với AI Tutor mô tả quá trình tiếp nhận câu hỏi của học viên, xử lý ngữ cảnh học tập và sinh phản hồi thông qua mô hình ngôn ngữ Gemini.
+712: [IMAGE ['rId19']] 
+--- IMAGE PARA 712 blips=['rId19']
+    rId19 -> media/image10.png
+707: Hình 3. 10. Activity Diagram làm bài kiểm tra.
+708: Sau khi hoàn thành bài kiểm tra, hệ thống tự động chấm điểm, lưu kết quả và cập nhật dữ liệu học tập của học viên.
+710: 3.5.5. Activity Diagram tương tác với AI Tutor
+711: Sơ đồ hoạt động tương tác với AI Tutor mô tả quá trình tiếp nhận câu hỏi của học viên, xử lý ngữ cảnh học tập và sinh phản hồi thông qua mô hình ngôn ngữ Gemini.
+712: [CURRENT IMAGE] 
+713: Hình 3. 11. Activity Diagram tương tác với AI Tutor.
+714: Khi học viên gửi câu hỏi, hệ thống sẽ xác định ngữ cảnh bài học hiện tại, xây dựng Prompt phù hợp, gửi yêu cầu đến Gemini API và trả kết quả cho người dùng. Toàn bộ lịch sử trao đổi được lưu lại phục vụ quá trình học tập
+716: 3.5.6. Activity Diagram quản lý khóa học
+717: Sơ đồ hoạt động quản lý khóa học mô tả quy trình giảng viên tạo mới, cập nhật và quản lý nội dung đào tạo trên hệ thống.
+718: [IMAGE ['rId19']] 
+--- IMAGE PARA 718 blips=['rId19']
+    rId19 -> media/image10.png
+713: Hình 3. 11. Activity Diagram tương tác với AI Tutor.
+714: Khi học viên gửi câu hỏi, hệ thống sẽ xác định ngữ cảnh bài học hiện tại, xây dựng Prompt phù hợp, gửi yêu cầu đến Gemini API và trả kết quả cho người dùng. Toàn bộ lịch sử trao đổi được lưu lại phục vụ quá trình học tập
+716: 3.5.6. Activity Diagram quản lý khóa học
+717: Sơ đồ hoạt động quản lý khóa học mô tả quy trình giảng viên tạo mới, cập nhật và quản lý nội dung đào tạo trên hệ thống.
+718: [CURRENT IMAGE] 
+719: Hình 3. 12. Activity Diagram quản lý khóa học.
+720: Thông qua quy trình này, giảng viên có thể xây dựng cấu trúc khóa học, bổ sung bài giảng, tài liệu học tập và gửi khóa học để xét duyệt trước khi công bố.
+721: 3.5.7. Activity Diagram duyệt khóa học
+722: Sơ đồ hoạt động duyệt khóa học mô tả quy trình kiểm tra và phê duyệt nội dung khóa học của quản trị viên trước khi khóa học được công khai trên hệ thống.
+723: [IMAGE ['rId19']] 
+724: Hình 3. 13. Activity Diagram duyệt khóa học.
+--- IMAGE PARA 723 blips=['rId19']
+    rId19 -> media/image10.png
+718: [IMAGE ['rId19']] 
+719: Hình 3. 12. Activity Diagram quản lý khóa học.
+720: Thông qua quy trình này, giảng viên có thể xây dựng cấu trúc khóa học, bổ sung bài giảng, tài liệu học tập và gửi khóa học để xét duyệt trước khi công bố.
+721: 3.5.7. Activity Diagram duyệt khóa học
+722: Sơ đồ hoạt động duyệt khóa học mô tả quy trình kiểm tra và phê duyệt nội dung khóa học của quản trị viên trước khi khóa học được công khai trên hệ thống.
+723: [CURRENT IMAGE] 
+724: Hình 3. 13. Activity Diagram duyệt khóa học.
+725: Quản trị viên tiến hành đánh giá nội dung khóa học, kiểm tra tính phù hợp và quyết định phê duyệt hoặc từ chối. Kết quả kiểm duyệt được cập nhật vào hệ thống và thông báo tới giảng viên.
+727: 3.6. SƠ ĐỒ LỚP PHÂN TÍCH
+728: [IMAGE ['rId20']] 
+729: Hình 3. 14. Domain Model và Design Class Diagram tổng quát của hệ thống StackLearn.
+--- IMAGE PARA 728 blips=['rId20']
+    rId20 -> media/image11.png
+723: [IMAGE ['rId19']] 
+724: Hình 3. 13. Activity Diagram duyệt khóa học.
+725: Quản trị viên tiến hành đánh giá nội dung khóa học, kiểm tra tính phù hợp và quyết định phê duyệt hoặc từ chối. Kết quả kiểm duyệt được cập nhật vào hệ thống và thông báo tới giảng viên.
+727: 3.6. SƠ ĐỒ LỚP PHÂN TÍCH
+728: [CURRENT IMAGE] 
+729: Hình 3. 14. Domain Model và Design Class Diagram tổng quát của hệ thống StackLearn.
+730: Sơ đồ trên được sử dụng chung để mô tả Domain Model và Design Class Diagram tổng quát của hệ thống StackLearn. Ở mức phân tích, sơ đồ thể hiện các thực thể nghiệp vụ chính như người dùng, khóa học, ghi danh, tiến độ học 
+733: CHƯƠNG 4. THIẾT KẾ HỆ THỐNG STACKLEARN
+734: 4.1. THIẾT KẾ KIẾN TRÚC HỆ THỐNG
+--- IMAGE PARA 749 blips=['rId21']
+    rId21 -> media/image12.png
+744: Cloudflare R2/S3: Lưu trữ tài nguyên học tập như video, tài liệu và hình ảnh khóa học.
+745: Laravel Reverb/Echo: Hỗ trợ các chức năng realtime như thảo luận bài giảng và nhắn tin.
+746: Queue/Job: Xử lý các tác vụ nền như tạo transcript, xử lý tài liệu AI hoặc các tác vụ cần thời gian dài.
+747: Luồng xử lý request tổng quát trong hệ thống được thực hiện như sau: người dùng thao tác trên giao diện web, yêu cầu được gửi đến route tương ứng trong Laravel. Route chuyển request đến controller để tiếp nhận dữ liệu đầ
+748: Việc áp dụng kiến trúc nhiều lớp kết hợp với các dịch vụ bên ngoài giúp hệ thống StackLearn đáp ứng tốt hơn các yêu cầu về khả năng mở rộng, bảo mật, hiệu năng và trải nghiệm học tập trực tuyến.
+749: [CURRENT IMAGE] 
+750: Hình 4. 1. Trình bày kiến trúc tổng thể của hệ thống StackLearn.
+751: Như thể hiện trong Hình 4.1, người dùng tương tác với StackLearn thông qua lớp giao diện. Các yêu cầu được chuyển đến lớp xử lý nghiệp vụ Laravel để kiểm tra, xử lý và điều phối. Khi cần lưu trữ hoặc truy xuất dữ liệu, h
+752: 4.1.2. Kiến trúc AI Tutor
+753: AI Tutor là mô-đun hỗ trợ học tập thông minh được tích hợp trong hệ thống StackLearn nhằm hỗ trợ học viên giải đáp các câu hỏi liên quan đến nội dung bài học trong quá trình học tập. Mô-đun này được xây dựng theo hướng k
+754: Khi học viên gửi câu hỏi từ giao diện học tập, hệ thống sẽ tiếp nhận nội dung câu hỏi và chuyển đến bộ xử lý AI Tutor. Trước khi gửi yêu cầu đến Gemini API, hệ thống tiến hành xây dựng ngữ cảnh học tập dựa trên các thông
+755: Quy trình xử lý của AI Tutor được thực hiện theo các bước sau:
+--- IMAGE PARA 763 blips=['rId22']
+    rId22 -> media/image13.png
+758: - Bước 3. Hệ thống thu thập thông tin bài học hiện tại, tài liệu liên quan và lịch sử hội thoại.
+759: - Bước 4. Thành phần xây dựng ngữ cảnh tạo prompt phù hợp và gửi yêu cầu đến Gemini API.
+760: - Bước 5. Gemini API xử lý yêu cầu và sinh nội dung phản hồi.
+761: - Bước 6. Hệ thống nhận kết quả, lưu lịch sử hội thoại và hiển thị câu trả lời cho học viên.
+762: Kiến trúc này giúp AI Tutor không chỉ trả lời các câu hỏi chung mà còn có khả năng hỗ trợ theo ngữ cảnh bài học cụ thể, góp phần nâng cao hiệu quả học tập và tăng cường tính tương tác trong môi trường E-learning.
+763: [CURRENT IMAGE] 
+764: Hình 4. 2. Trình bày kiến trúc hoạt động của mô-đun AI Tutor.
+765: 4.2. THIẾT KẾ TRÌNH TỰ XỬ LÝ NGHIỆP VỤ
+766: 4.2.1. Sequence Diagram đăng nhập hệ thống
+767: Chức năng đăng nhập cho phép người dùng xác thực thông tin tài khoản trước khi sử dụng các chức năng của hệ thống. Các đối tượng tham gia: User, Login Interface, AuthController, User Model, Database.
+768: Khi người dùng nhập email và mật khẩu, hệ thống sẽ gửi yêu cầu xác thực đến AuthController. Controller tiến hành kiểm tra thông tin tài khoản trong cơ sở dữ liệu. Nếu thông tin hợp lệ, hệ thống tạo phiên đăng nhập và chu
+769: [IMAGE ['rId23']] 
+--- IMAGE PARA 769 blips=['rId23']
+    rId23 -> media/image14.png
+764: Hình 4. 2. Trình bày kiến trúc hoạt động của mô-đun AI Tutor.
+765: 4.2. THIẾT KẾ TRÌNH TỰ XỬ LÝ NGHIỆP VỤ
+766: 4.2.1. Sequence Diagram đăng nhập hệ thống
+767: Chức năng đăng nhập cho phép người dùng xác thực thông tin tài khoản trước khi sử dụng các chức năng của hệ thống. Các đối tượng tham gia: User, Login Interface, AuthController, User Model, Database.
+768: Khi người dùng nhập email và mật khẩu, hệ thống sẽ gửi yêu cầu xác thực đến AuthController. Controller tiến hành kiểm tra thông tin tài khoản trong cơ sở dữ liệu. Nếu thông tin hợp lệ, hệ thống tạo phiên đăng nhập và chu
+769: [CURRENT IMAGE] 
+770: Hình 4. 3. Sequence Diagram đăng nhập hệ thống.
+771: Dữ liệu được sử dụng trong luồng này chủ yếu là bảng users để kiểm tra thông tin tài khoản, mật khẩu, vai trò và trạng thái hoạt động của người dùng. Sau khi đăng nhập thành công, hệ thống tạo phiên đăng nhập để điều hướ
+772: 4.2.2. Sequence Diagram ghi danh khóa học
+773: Chức năng ghi danh khóa học cho phép học viên tham gia một khóa học sau khi đáp ứng các điều kiện đăng ký. Các đối tượng tham gia: Student, Course Interface, EnrollmentController, Course Model, Enrollment Model, Database
+774: Khi học viên lựa chọn khóa học, hệ thống kiểm tra trạng thái ghi danh và quyền truy cập của người dùng. Nếu đủ điều kiện, hệ thống tạo bản ghi ghi danh và cấp quyền truy cập nội dung khóa học cho học viên.
+775: [IMAGE ['rId23']] 
+--- IMAGE PARA 775 blips=['rId23']
+    rId23 -> media/image14.png
+770: Hình 4. 3. Sequence Diagram đăng nhập hệ thống.
+771: Dữ liệu được sử dụng trong luồng này chủ yếu là bảng users để kiểm tra thông tin tài khoản, mật khẩu, vai trò và trạng thái hoạt động của người dùng. Sau khi đăng nhập thành công, hệ thống tạo phiên đăng nhập để điều hướ
+772: 4.2.2. Sequence Diagram ghi danh khóa học
+773: Chức năng ghi danh khóa học cho phép học viên tham gia một khóa học sau khi đáp ứng các điều kiện đăng ký. Các đối tượng tham gia: Student, Course Interface, EnrollmentController, Course Model, Enrollment Model, Database
+774: Khi học viên lựa chọn khóa học, hệ thống kiểm tra trạng thái ghi danh và quyền truy cập của người dùng. Nếu đủ điều kiện, hệ thống tạo bản ghi ghi danh và cấp quyền truy cập nội dung khóa học cho học viên.
+775: [CURRENT IMAGE] 
+776: Hình 4. 4. Sequence Diagram ghi danh khóa học.
+777: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng enrollments để lưu thông tin học viên tham gia khóa học, bảng course_progress để khởi tạo tiến độ học tập tổng thể và bảng lesson_progress để theo dõi trạng thái học từn
+778: 4.2.3. Sequence Diagram thanh toán khóa học
+779: Chức năng thanh toán hỗ trợ học viên đăng ký các khóa học có phí thông qua các cổng thanh toán trực tuyến như Stripe hoặc VNPay. Các đối tượng tham gia vào luồng xử lý gồm Student, Checkout Interface, OrderController/Che
+780: Sau khi học viên xác nhận thanh toán, hệ thống kiểm tra giỏ hàng, mã giảm giá nếu có và tạo đơn hàng ở trạng thái chờ thanh toán. Tiếp theo, học viên lựa chọn phương thức thanh toán, hệ thống gửi yêu cầu đến cổng thanh t
+781: [IMAGE ['rId24']] 
+--- IMAGE PARA 781 blips=['rId24']
+    rId24 -> media/image15.png
+776: Hình 4. 4. Sequence Diagram ghi danh khóa học.
+777: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng enrollments để lưu thông tin học viên tham gia khóa học, bảng course_progress để khởi tạo tiến độ học tập tổng thể và bảng lesson_progress để theo dõi trạng thái học từn
+778: 4.2.3. Sequence Diagram thanh toán khóa học
+779: Chức năng thanh toán hỗ trợ học viên đăng ký các khóa học có phí thông qua các cổng thanh toán trực tuyến như Stripe hoặc VNPay. Các đối tượng tham gia vào luồng xử lý gồm Student, Checkout Interface, OrderController/Che
+780: Sau khi học viên xác nhận thanh toán, hệ thống kiểm tra giỏ hàng, mã giảm giá nếu có và tạo đơn hàng ở trạng thái chờ thanh toán. Tiếp theo, học viên lựa chọn phương thức thanh toán, hệ thống gửi yêu cầu đến cổng thanh t
+781: [CURRENT IMAGE] 
+782: Hình 4. 5. Sequence Diagram thanh toán khóa học.
+783: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng carts để lấy danh sách khóa học trong giỏ hàng, bảng coupons nếu học viên áp dụng mã giảm giá, bảng orders để lưu đơn hàng, bảng payments để lưu thông tin giao dịch than
+784: 4.2.4. Sequence Diagram hoàn tiền khóa học
+785: Chức năng hoàn tiền hỗ trợ học viên gửi yêu cầu hoàn tiền đối với các khóa học đã thanh toán. Các đối tượng tham gia gồm: Student, Giao diện hoàn tiền, RefundController, Admin, Refund Model và Database.
+786: [IMAGE ['rId25']] Sau khi học viên gửi yêu cầu, hệ thống tiếp nhận, lưu thông tin hoàn tiền và cập nhật trạng thái chờ xử lý. Quản trị viên sẽ xem xét yêu cầu và thực hiện phê duyệt hoặc từ chối. Kế
+787: Hình 4. 6. Sequence Diagram hoàn tiền khóa học.
+--- IMAGE PARA 786 blips=['rId25']
+    rId25 -> media/image16.png
+781: [IMAGE ['rId24']] 
+782: Hình 4. 5. Sequence Diagram thanh toán khóa học.
+783: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng carts để lấy danh sách khóa học trong giỏ hàng, bảng coupons nếu học viên áp dụng mã giảm giá, bảng orders để lưu đơn hàng, bảng payments để lưu thông tin giao dịch than
+784: 4.2.4. Sequence Diagram hoàn tiền khóa học
+785: Chức năng hoàn tiền hỗ trợ học viên gửi yêu cầu hoàn tiền đối với các khóa học đã thanh toán. Các đối tượng tham gia gồm: Student, Giao diện hoàn tiền, RefundController, Admin, Refund Model và Database.
+786: [CURRENT IMAGE] Sau khi học viên gửi yêu cầu, hệ thống tiếp nhận, lưu thông tin hoàn tiền và cập nhật trạng thái chờ xử lý. Quản trị viên sẽ xem xét yêu cầu và thực hiện phê duyệt hoặc từ chối. Kế
+787: Hình 4. 6. Sequence Diagram hoàn tiền khóa học.
+788: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng refund_requests để lưu yêu cầu hoàn tiền, bảng orders để cập nhật trạng thái đơn hàng, bảng payments để cập nhật trạng thái hoặc số tiền hoàn và bảng order_status_histor
+789: 4.2.5. Sequence Diagram yêu cầu rút tiền
+790: Chức năng rút tiền hỗ trợ giảng viên gửi yêu cầu rút tiền từ doanh thu khóa học trên hệ thống. Các đối tượng tham gia gồm: Instructor, Giao diện doanh thu, PayoutController, Admin, Payout Model và Database.
+791: Sau khi giảng viên gửi yêu cầu, hệ thống tiếp nhận, lưu thông tin rút tiền và cập nhật trạng thái chờ xử lý. Quản trị viên sẽ xem xét yêu cầu và thực hiện phê duyệt hoặc từ chối. Kết quả xử lý sau đó được lưu vào cơ sở d
+792: [IMAGE ['rId26']] 
+--- IMAGE PARA 792 blips=['rId26']
+    rId26 -> media/image17.png
+787: Hình 4. 6. Sequence Diagram hoàn tiền khóa học.
+788: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng refund_requests để lưu yêu cầu hoàn tiền, bảng orders để cập nhật trạng thái đơn hàng, bảng payments để cập nhật trạng thái hoặc số tiền hoàn và bảng order_status_histor
+789: 4.2.5. Sequence Diagram yêu cầu rút tiền
+790: Chức năng rút tiền hỗ trợ giảng viên gửi yêu cầu rút tiền từ doanh thu khóa học trên hệ thống. Các đối tượng tham gia gồm: Instructor, Giao diện doanh thu, PayoutController, Admin, Payout Model và Database.
+791: Sau khi giảng viên gửi yêu cầu, hệ thống tiếp nhận, lưu thông tin rút tiền và cập nhật trạng thái chờ xử lý. Quản trị viên sẽ xem xét yêu cầu và thực hiện phê duyệt hoặc từ chối. Kết quả xử lý sau đó được lưu vào cơ sở d
+792: [CURRENT IMAGE] 
+793: Hình 4. 7. Sequence Diagram yêu cầu rút tiền.
+794: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng payout_requests để lưu yêu cầu rút tiền của giảng viên. Hệ thống cũng sử dụng dữ liệu từ orders và payments để tính toán doanh thu hợp lệ trước khi tạo yêu cầu payout.
+795: 4.2.6. Sequence Diagram tạo transcript bài giảng
+796: Chức năng tạo transcript hỗ trợ giảng viên chuyển nội dung bài giảng dạng âm thanh hoặc video thành văn bản để phục vụ học tập và hỗ trợ AI Tutor. Các đối tượng tham gia gồm: Instructor, Giao diện transcript, TranscriptC
+797: Sau khi giảng viên gửi yêu cầu tạo transcript, hệ thống tiếp nhận yêu cầu và tạo job xử lý ở chế độ nền. Dữ liệu bài giảng được gửi đến dịch vụ transcription để chuyển giọng nói thành văn bản. Khi xử lý thành công, hệ th
+798: [IMAGE ['rId27']] 
+--- IMAGE PARA 798 blips=['rId27']
+    rId27 -> media/image18.png
+793: Hình 4. 7. Sequence Diagram yêu cầu rút tiền.
+794: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng payout_requests để lưu yêu cầu rút tiền của giảng viên. Hệ thống cũng sử dụng dữ liệu từ orders và payments để tính toán doanh thu hợp lệ trước khi tạo yêu cầu payout.
+795: 4.2.6. Sequence Diagram tạo transcript bài giảng
+796: Chức năng tạo transcript hỗ trợ giảng viên chuyển nội dung bài giảng dạng âm thanh hoặc video thành văn bản để phục vụ học tập và hỗ trợ AI Tutor. Các đối tượng tham gia gồm: Instructor, Giao diện transcript, TranscriptC
+797: Sau khi giảng viên gửi yêu cầu tạo transcript, hệ thống tiếp nhận yêu cầu và tạo job xử lý ở chế độ nền. Dữ liệu bài giảng được gửi đến dịch vụ transcription để chuyển giọng nói thành văn bản. Khi xử lý thành công, hệ th
+798: [CURRENT IMAGE] 
+799: Hình 4. 8. Sequence Diagram tạo transcript bài giảng.
+800: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng transcript_jobs để lưu trạng thái xử lý transcript, bảng course_lectures để cập nhật nội dung transcript cho bài giảng và các bảng ai_documents, ai_document_chunks nếu t
+801: 4.2.7. Sequence Diagram chat realtime
+802: Chức năng nhắn tin realtime hỗ trợ trao đổi trực tiếp giữa học viên và giảng viên trong quá trình học tập. Các đối tượng tham gia gồm: Student, Giao diện chat, MessageController, Message Model, Database, Reverb/Broadcast
+803: Sau khi học viên nhập và gửi tin nhắn, giao diện chuyển nội dung đến MessageController để tạo và lưu tin nhắn vào cơ sở dữ liệu. Hệ thống sau đó phát sự kiện thông qua Reverb/Broadcast để cập nhật nội dung theo thời gian
+804: [IMAGE ['rId28']] 
+--- IMAGE PARA 804 blips=['rId28']
+    rId28 -> media/image19.png
+799: Hình 4. 8. Sequence Diagram tạo transcript bài giảng.
+800: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng transcript_jobs để lưu trạng thái xử lý transcript, bảng course_lectures để cập nhật nội dung transcript cho bài giảng và các bảng ai_documents, ai_document_chunks nếu t
+801: 4.2.7. Sequence Diagram chat realtime
+802: Chức năng nhắn tin realtime hỗ trợ trao đổi trực tiếp giữa học viên và giảng viên trong quá trình học tập. Các đối tượng tham gia gồm: Student, Giao diện chat, MessageController, Message Model, Database, Reverb/Broadcast
+803: Sau khi học viên nhập và gửi tin nhắn, giao diện chuyển nội dung đến MessageController để tạo và lưu tin nhắn vào cơ sở dữ liệu. Hệ thống sau đó phát sự kiện thông qua Reverb/Broadcast để cập nhật nội dung theo thời gian
+804: [CURRENT IMAGE] 
+805: Hình 4. 9. Sequence Diagram chat realtime.
+806: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng conversations để lưu phiên trao đổi giữa các người dùng và bảng messages để lưu nội dung tin nhắn. Sau khi tin nhắn được lưu, hệ thống phát sự kiện realtime thông qua La
+807: 4.2.8. Sequence Diagram tương tác với AI Tutor
+808: Đây là nghiệp vụ đặc trưng của hệ thống StackLearn, cho phép học viên nhận hỗ trợ học tập tự động từ trí tuệ nhân tạo. Các đối tượng tham gia: Student, Chat Interface, AIController, ContextBuilder, Gemini API, ChatSessio
+809: Khi học viên gửi câu hỏi, hệ thống tiếp nhận yêu cầu và xác định ngữ cảnh học tập hiện tại. ContextBuilder thu thập các thông tin liên quan như khóa học, bài học đang học và lịch sử hội thoại để xây dựng Prompt phù hợp. 
+810: [IMAGE ['rId23']] 
+--- IMAGE PARA 810 blips=['rId23']
+    rId23 -> media/image14.png
+805: Hình 4. 9. Sequence Diagram chat realtime.
+806: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng conversations để lưu phiên trao đổi giữa các người dùng và bảng messages để lưu nội dung tin nhắn. Sau khi tin nhắn được lưu, hệ thống phát sự kiện realtime thông qua La
+807: 4.2.8. Sequence Diagram tương tác với AI Tutor
+808: Đây là nghiệp vụ đặc trưng của hệ thống StackLearn, cho phép học viên nhận hỗ trợ học tập tự động từ trí tuệ nhân tạo. Các đối tượng tham gia: Student, Chat Interface, AIController, ContextBuilder, Gemini API, ChatSessio
+809: Khi học viên gửi câu hỏi, hệ thống tiếp nhận yêu cầu và xác định ngữ cảnh học tập hiện tại. ContextBuilder thu thập các thông tin liên quan như khóa học, bài học đang học và lịch sử hội thoại để xây dựng Prompt phù hợp. 
+810: [CURRENT IMAGE] 
+811: Hình 4. 10. Sequence Diagram tương tác với AI Tutor.
+812: Dữ liệu được tạo/cập nhật trong luồng này gồm bảng ai_chat_sessions để lưu phiên hội thoại, bảng ai_chat_messages để lưu câu hỏi và phản hồi, bảng ai_message_citations nếu phản hồi có trích dẫn nội dung học tập, đồng thờ
+813: 4.3. THIẾT KẾ LỚP ĐỐI TƯỢNG (DESIGN CLASS DIAGRAM)
+814: 4.3.1. Nguyên tắc thiết kế
+815: Hệ thống StackLearn được xây dựng theo mô hình kiến trúc MVC của Laravel Framework nhằm đảm bảo tính phân tách giữa giao diện người dùng, xử lý nghiệp vụ và lưu trữ dữ liệu. Kiến trúc này giúp hệ thống dễ bảo trì, mở rộn
+816: Entity Classes: Đây là các lớp biểu diễn dữ liệu và các thực thể nghiệp vụ của hệ thống. Các lớp này tương ứng với các bảng dữ liệu trong cơ sở dữ liệu và được quản lý thông qua Eloquent ORM của Laravel. Một số lớp thực 
+--- IMAGE PARA 834 blips=['rId29']
+    rId29 -> media/image20.png
+829: Nhóm học tập:
+830: Nhóm AI Tutor:
+831: Các lớp trên tạo thành nền tảng dữ liệu cốt lõi của hệ thống và là cơ sở để xây dựng sơ đồ lớp thiết kế tổng quát.
+832: 4.4. THIẾT KẾ CƠ SỞ DỮ LIỆU
+833: 4.4.1. ERD tổng thể
+834: [CURRENT IMAGE] 
+835: Hình 4. 11. Sơ đồ ERD tổng thể.
+836: 4.4.2. Nguyên tắc thiết kế cơ sở dữ liệu
+837: Cơ sở dữ liệu của StackLearn được thiết kế theo các nhóm nghiệp vụ chính của hệ thống LMS, gồm người dùng, khóa học, học tập, thanh toán, kiểm tra đánh giá, tương tác và AI Tutor. Mỗi nhóm bảng phục vụ một luồng chức năn
+838: Các bảng được tổ chức theo mô hình quan hệ, có khóa chính để định danh bản ghi và khóa ngoại để liên kết dữ liệu giữa các nhóm nghiệp vụ. Việc thiết kế ưu tiên hạn chế trùng lặp dữ liệu, bảo đảm toàn vẹn quan hệ và phản 
+839: 4.4.3. Nhóm bảng người dùng và phân quyền
+840: Nhóm bảng người dùng và phân quyền dùng để quản lý tài khoản, vai trò và trạng thái hoạt động của học viên, giảng viên và quản trị viên. Bảng users là bảng trung tâm, các bảng còn lại hỗ trợ xử lý yêu cầu trở thành giảng
+--- IMAGE PARA 884 blips=['rId30']
+    rId30 -> media/image21.png
+879: Môi trường phần mềm:
+880: Bảng 5. 2. Công nghệ sử dụng trong hệ thống StackLearn.
+881: 5.2. GIAO DIỆN CHÍNH THỐNG
+882: 5.2.1. Giao diện trang chủ
+883: Mô tả: Trang chủ hiển thị danh sách khóa học nổi bật, danh mục khóa học và các thông tin giới thiệu nền tảng StackLearn.
+884: [CURRENT IMAGE] 
+885: Hình 5. 1. Giao diện trang chủ
+886: 5.2.2. Giao diện đăng ký và đăng nhập
+887: [IMAGE ['rId31']] 
+888: Hình 5. 2. Giao diện đăng ký tài khoản.
+889: Mô tả: Giao diện đăng ký cho phép người dùng tạo tài khoản mới bằng cách nhập thông tin cá nhân, email, mật khẩu và xác nhận mật khẩu.
+890: [IMAGE ['rId32']] 
+--- IMAGE PARA 887 blips=['rId31']
+    rId31 -> media/image22.png
+882: 5.2.1. Giao diện trang chủ
+883: Mô tả: Trang chủ hiển thị danh sách khóa học nổi bật, danh mục khóa học và các thông tin giới thiệu nền tảng StackLearn.
+884: [IMAGE ['rId30']] 
+885: Hình 5. 1. Giao diện trang chủ
+886: 5.2.2. Giao diện đăng ký và đăng nhập
+887: [CURRENT IMAGE] 
+888: Hình 5. 2. Giao diện đăng ký tài khoản.
+889: Mô tả: Giao diện đăng ký cho phép người dùng tạo tài khoản mới bằng cách nhập thông tin cá nhân, email, mật khẩu và xác nhận mật khẩu.
+890: [IMAGE ['rId32']] 
+891: Hình 5. 3. Giao diện đăng nhập.
+892: Mô tả: Giao diện đăng nhập cho phép người dùng truy cập hệ thống bằng email và mật khẩu đã đăng ký, sau đó chuyển đến trang phù hợp với vai trò tài khoản.
+893: 5.2.3. Giao diện quản lý khóa học
+--- IMAGE PARA 890 blips=['rId32']
+    rId32 -> media/image23.png
+885: Hình 5. 1. Giao diện trang chủ
+886: 5.2.2. Giao diện đăng ký và đăng nhập
+887: [IMAGE ['rId31']] 
+888: Hình 5. 2. Giao diện đăng ký tài khoản.
+889: Mô tả: Giao diện đăng ký cho phép người dùng tạo tài khoản mới bằng cách nhập thông tin cá nhân, email, mật khẩu và xác nhận mật khẩu.
+890: [CURRENT IMAGE] 
+891: Hình 5. 3. Giao diện đăng nhập.
+892: Mô tả: Giao diện đăng nhập cho phép người dùng truy cập hệ thống bằng email và mật khẩu đã đăng ký, sau đó chuyển đến trang phù hợp với vai trò tài khoản.
+893: 5.2.3. Giao diện quản lý khóa học
+894: [IMAGE ['rId33']] 
+895: Hình 5. 4. Giao diện danh sách khóa học.
+896: Mô tả: Giao diện danh sách khóa học hiển thị các khóa học hiện có trên hệ thống, giúp người dùng xem thông tin cơ bản và lựa chọn khóa học phù hợp.
+--- IMAGE PARA 894 blips=['rId33']
+    rId33 -> media/image24.png
+889: Mô tả: Giao diện đăng ký cho phép người dùng tạo tài khoản mới bằng cách nhập thông tin cá nhân, email, mật khẩu và xác nhận mật khẩu.
+890: [IMAGE ['rId32']] 
+891: Hình 5. 3. Giao diện đăng nhập.
+892: Mô tả: Giao diện đăng nhập cho phép người dùng truy cập hệ thống bằng email và mật khẩu đã đăng ký, sau đó chuyển đến trang phù hợp với vai trò tài khoản.
+893: 5.2.3. Giao diện quản lý khóa học
+894: [CURRENT IMAGE] 
+895: Hình 5. 4. Giao diện danh sách khóa học.
+896: Mô tả: Giao diện danh sách khóa học hiển thị các khóa học hiện có trên hệ thống, giúp người dùng xem thông tin cơ bản và lựa chọn khóa học phù hợp.
+897: [IMAGE ['rId34']] 
+898: Hình 5. 5. Giao diện tạo khóa học.
+899: Mô tả: Giao diện tạo khóa học cho phép giảng viên nhập thông tin khóa học như tên, mô tả, danh mục, giá và hình ảnh trước khi lưu vào hệ thống.
+900: 5.2.4. Giao diện học tập
+--- IMAGE PARA 897 blips=['rId34']
+    rId34 -> media/image25.png
+892: Mô tả: Giao diện đăng nhập cho phép người dùng truy cập hệ thống bằng email và mật khẩu đã đăng ký, sau đó chuyển đến trang phù hợp với vai trò tài khoản.
+893: 5.2.3. Giao diện quản lý khóa học
+894: [IMAGE ['rId33']] 
+895: Hình 5. 4. Giao diện danh sách khóa học.
+896: Mô tả: Giao diện danh sách khóa học hiển thị các khóa học hiện có trên hệ thống, giúp người dùng xem thông tin cơ bản và lựa chọn khóa học phù hợp.
+897: [CURRENT IMAGE] 
+898: Hình 5. 5. Giao diện tạo khóa học.
+899: Mô tả: Giao diện tạo khóa học cho phép giảng viên nhập thông tin khóa học như tên, mô tả, danh mục, giá và hình ảnh trước khi lưu vào hệ thống.
+900: 5.2.4. Giao diện học tập
+901: [IMAGE ['rId35']] 
+902: Hình 5. 6. Giao diện xem bài giảng.
+903: Mô tả: Giao diện xem bài giảng hiển thị nội dung học tập của khóa học, giúp học viên theo dõi bài học và sử dụng các chức năng hỗ trợ trong quá trình học.
+--- IMAGE PARA 901 blips=['rId35']
+    rId35 -> media/image26.png
+896: Mô tả: Giao diện danh sách khóa học hiển thị các khóa học hiện có trên hệ thống, giúp người dùng xem thông tin cơ bản và lựa chọn khóa học phù hợp.
+897: [IMAGE ['rId34']] 
+898: Hình 5. 5. Giao diện tạo khóa học.
+899: Mô tả: Giao diện tạo khóa học cho phép giảng viên nhập thông tin khóa học như tên, mô tả, danh mục, giá và hình ảnh trước khi lưu vào hệ thống.
+900: 5.2.4. Giao diện học tập
+901: [CURRENT IMAGE] 
+902: Hình 5. 6. Giao diện xem bài giảng.
+903: Mô tả: Giao diện xem bài giảng hiển thị nội dung học tập của khóa học, giúp học viên theo dõi bài học và sử dụng các chức năng hỗ trợ trong quá trình học.
+904: [IMAGE ['rId36']] 
+905: Hình 5. 7. Giao diện theo dõi tiến độ học tập.
+906: Mô tả: Giao diện theo dõi tiến độ học tập hiển thị trạng thái hoàn thành bài học, giúp học viên biết được quá trình học của mình trong khóa học.
+907: 5.2.5. Giao diện làm bài kiểm tra
+--- IMAGE PARA 904 blips=['rId36']
+    rId36 -> media/image27.png
+899: Mô tả: Giao diện tạo khóa học cho phép giảng viên nhập thông tin khóa học như tên, mô tả, danh mục, giá và hình ảnh trước khi lưu vào hệ thống.
+900: 5.2.4. Giao diện học tập
+901: [IMAGE ['rId35']] 
+902: Hình 5. 6. Giao diện xem bài giảng.
+903: Mô tả: Giao diện xem bài giảng hiển thị nội dung học tập của khóa học, giúp học viên theo dõi bài học và sử dụng các chức năng hỗ trợ trong quá trình học.
+904: [CURRENT IMAGE] 
+905: Hình 5. 7. Giao diện theo dõi tiến độ học tập.
+906: Mô tả: Giao diện theo dõi tiến độ học tập hiển thị trạng thái hoàn thành bài học, giúp học viên biết được quá trình học của mình trong khóa học.
+907: 5.2.5. Giao diện làm bài kiểm tra
+908: [IMAGE ['rId37']] 
+909: Hình 5. 8. Giao diện làm bài kiểm tra.
+910: Mô tả: Giao diện làm Quiz hiển thị các câu hỏi và đáp án để học viên lựa chọn, giúp kiểm tra mức độ hiểu bài sau khi học.
+--- IMAGE PARA 908 blips=['rId37']
+    rId37 -> media/image28.png
+903: Mô tả: Giao diện xem bài giảng hiển thị nội dung học tập của khóa học, giúp học viên theo dõi bài học và sử dụng các chức năng hỗ trợ trong quá trình học.
+904: [IMAGE ['rId36']] 
+905: Hình 5. 7. Giao diện theo dõi tiến độ học tập.
+906: Mô tả: Giao diện theo dõi tiến độ học tập hiển thị trạng thái hoàn thành bài học, giúp học viên biết được quá trình học của mình trong khóa học.
+907: 5.2.5. Giao diện làm bài kiểm tra
+908: [CURRENT IMAGE] 
+909: Hình 5. 8. Giao diện làm bài kiểm tra.
+910: Mô tả: Giao diện làm Quiz hiển thị các câu hỏi và đáp án để học viên lựa chọn, giúp kiểm tra mức độ hiểu bài sau khi học.
+911: [IMAGE ['rId38']] 
+912: Hình 5. 9. Giao diện kết quả bài kiểm tra.
+913: Mô tả: Giao diện kết quả Quiz hiển thị điểm số và kết quả bài làm, giúp học viên xem lại mức độ hoàn thành bài kiểm tra.
+914: 5.2.6. Giao diện thanh toán
+--- IMAGE PARA 911 blips=['rId38']
+    rId38 -> media/image29.png
+906: Mô tả: Giao diện theo dõi tiến độ học tập hiển thị trạng thái hoàn thành bài học, giúp học viên biết được quá trình học của mình trong khóa học.
+907: 5.2.5. Giao diện làm bài kiểm tra
+908: [IMAGE ['rId37']] 
+909: Hình 5. 8. Giao diện làm bài kiểm tra.
+910: Mô tả: Giao diện làm Quiz hiển thị các câu hỏi và đáp án để học viên lựa chọn, giúp kiểm tra mức độ hiểu bài sau khi học.
+911: [CURRENT IMAGE] 
+912: Hình 5. 9. Giao diện kết quả bài kiểm tra.
+913: Mô tả: Giao diện kết quả Quiz hiển thị điểm số và kết quả bài làm, giúp học viên xem lại mức độ hoàn thành bài kiểm tra.
+914: 5.2.6. Giao diện thanh toán
+915: [IMAGE ['rId39']] 
+916: Hình 5. 10. Giao diện giỏ hàng.
+917: Mô tả: Giao diện giỏ hàng hiển thị các khóa học người dùng đã chọn, cho phép kiểm tra thông tin khóa học trước khi thanh toán.
+--- IMAGE PARA 915 blips=['rId39']
+    rId39 -> media/image30.png
+910: Mô tả: Giao diện làm Quiz hiển thị các câu hỏi và đáp án để học viên lựa chọn, giúp kiểm tra mức độ hiểu bài sau khi học.
+911: [IMAGE ['rId38']] 
+912: Hình 5. 9. Giao diện kết quả bài kiểm tra.
+913: Mô tả: Giao diện kết quả Quiz hiển thị điểm số và kết quả bài làm, giúp học viên xem lại mức độ hoàn thành bài kiểm tra.
+914: 5.2.6. Giao diện thanh toán
+915: [CURRENT IMAGE] 
+916: Hình 5. 10. Giao diện giỏ hàng.
+917: Mô tả: Giao diện giỏ hàng hiển thị các khóa học người dùng đã chọn, cho phép kiểm tra thông tin khóa học trước khi thanh toán.
+918: [IMAGE ['rId40']] 
+919: Hình 5. 11. Giao diện thanh toán khóa học.
+920: Mô tả: Giao diện thanh toán khóa học cho phép người dùng xác nhận đơn hàng, áp dụng mã giảm giá và chọn phương thức thanh toán.
+921: 5.2.7. Giao diện AI Tutor
+--- IMAGE PARA 918 blips=['rId40']
+    rId40 -> media/image31.png
+913: Mô tả: Giao diện kết quả Quiz hiển thị điểm số và kết quả bài làm, giúp học viên xem lại mức độ hoàn thành bài kiểm tra.
+914: 5.2.6. Giao diện thanh toán
+915: [IMAGE ['rId39']] 
+916: Hình 5. 10. Giao diện giỏ hàng.
+917: Mô tả: Giao diện giỏ hàng hiển thị các khóa học người dùng đã chọn, cho phép kiểm tra thông tin khóa học trước khi thanh toán.
+918: [CURRENT IMAGE] 
+919: Hình 5. 11. Giao diện thanh toán khóa học.
+920: Mô tả: Giao diện thanh toán khóa học cho phép người dùng xác nhận đơn hàng, áp dụng mã giảm giá và chọn phương thức thanh toán.
+921: 5.2.7. Giao diện AI Tutor
+922: [IMAGE ['rId41']] 
+923: Hình 5. 12. Giao diện AI Tutor.
+924: Mô tả: Giao diện AI Tutor được tích hợp trực tiếp trong trang học bài, cho phép học viên đặt câu hỏi liên quan đến nội dung bài giảng đang học. Hệ thống tiếp nhận câu hỏi, gửi đến chatbot AI để xử lý và hiển thị phản hồi
+--- IMAGE PARA 922 blips=['rId41']
+    rId41 -> media/image32.png
+917: Mô tả: Giao diện giỏ hàng hiển thị các khóa học người dùng đã chọn, cho phép kiểm tra thông tin khóa học trước khi thanh toán.
+918: [IMAGE ['rId40']] 
+919: Hình 5. 11. Giao diện thanh toán khóa học.
+920: Mô tả: Giao diện thanh toán khóa học cho phép người dùng xác nhận đơn hàng, áp dụng mã giảm giá và chọn phương thức thanh toán.
+921: 5.2.7. Giao diện AI Tutor
+922: [CURRENT IMAGE] 
+923: Hình 5. 12. Giao diện AI Tutor.
+924: Mô tả: Giao diện AI Tutor được tích hợp trực tiếp trong trang học bài, cho phép học viên đặt câu hỏi liên quan đến nội dung bài giảng đang học. Hệ thống tiếp nhận câu hỏi, gửi đến chatbot AI để xử lý và hiển thị phản hồi
+925: [IMAGE ['rId42']] 
+926: Hình 5. 13. Kết quả phản hồi của AI Tutor.
+927: Mô tả: Sau khi học viên gửi câu hỏi trong quá trình học. Phản hồi được hiển thị dưới dạng hội thoại, giúp học viên dễ theo dõi nội dung giải thích và tiếp tục đặt câu hỏi khi cần. Đây là chức năng hỗ trợ học tập nổi bật 
+928: 5.3. Triển khai mô hình AI Tutor
+--- IMAGE PARA 925 blips=['rId42']
+    rId42 -> media/image33.png
+920: Mô tả: Giao diện thanh toán khóa học cho phép người dùng xác nhận đơn hàng, áp dụng mã giảm giá và chọn phương thức thanh toán.
+921: 5.2.7. Giao diện AI Tutor
+922: [IMAGE ['rId41']] 
+923: Hình 5. 12. Giao diện AI Tutor.
+924: Mô tả: Giao diện AI Tutor được tích hợp trực tiếp trong trang học bài, cho phép học viên đặt câu hỏi liên quan đến nội dung bài giảng đang học. Hệ thống tiếp nhận câu hỏi, gửi đến chatbot AI để xử lý và hiển thị phản hồi
+925: [CURRENT IMAGE] 
+926: Hình 5. 13. Kết quả phản hồi của AI Tutor.
+927: Mô tả: Sau khi học viên gửi câu hỏi trong quá trình học. Phản hồi được hiển thị dưới dạng hội thoại, giúp học viên dễ theo dõi nội dung giải thích và tiếp tục đặt câu hỏi khi cần. Đây là chức năng hỗ trợ học tập nổi bật 
+928: 5.3. Triển khai mô hình AI Tutor
+929: 5.3.1. Tổng quan mô hình AI Tutor
+930: AI Tutor là mô-đun hỗ trợ học tập thông minh trong hệ thống StackLearn, cho phép học viên đặt câu hỏi và nhận phản hồi dựa trên nội dung khóa học đang theo học. Khác với chatbot thông thường, AI Tutor được thiết kế theo 
+931: Hệ thống không trực tiếp huấn luyện mô hình AI mới mà tích hợp Gemini API như một dịch vụ xử lý ngôn ngữ bên ngoài. StackLearn đảm nhiệm việc tiếp nhận câu hỏi, truy xuất nội dung liên quan, xây dựng prompt phù hợp, gửi 
+--- IMAGE PARA 934 blips=['rId43']
+    rId43 -> media/image34.png
+929: 5.3.1. Tổng quan mô hình AI Tutor
+930: AI Tutor là mô-đun hỗ trợ học tập thông minh trong hệ thống StackLearn, cho phép học viên đặt câu hỏi và nhận phản hồi dựa trên nội dung khóa học đang theo học. Khác với chatbot thông thường, AI Tutor được thiết kế theo 
+931: Hệ thống không trực tiếp huấn luyện mô hình AI mới mà tích hợp Gemini API như một dịch vụ xử lý ngôn ngữ bên ngoài. StackLearn đảm nhiệm việc tiếp nhận câu hỏi, truy xuất nội dung liên quan, xây dựng prompt phù hợp, gửi 
+932: Quy trình hoạt động tổng quát của AI Tutor gồm các bước: học viên gửi câu hỏi, hệ thống xác định ngữ cảnh khóa học và bài giảng, truy xuất dữ liệu liên quan, kết hợp với lịch sử hội thoại để tạo prompt, sau đó gửi đến Ge
+933: Nhờ cơ chế này, AI Tutor có thể hỗ trợ giải thích khái niệm, tóm tắt nội dung bài học và trả lời câu hỏi theo ngữ cảnh, góp phần cá nhân hóa quá trình học tập trên hệ thống StackLearn.
+934: [CURRENT IMAGE] 
+935: Hình 5. 14. Quy trình tổng quan của mô hình AI Tutor trong hệ thống StackLearn.
+939: 5.3.2. Chuẩn bị dữ liệu ngữ cảnh học tập
+940: Để AI Tutor có thể trả lời theo đúng nội dung bài học, hệ thống cần chuẩn bị dữ liệu ngữ cảnh trước khi gửi yêu cầu đến mô hình Gemini. Dữ liệu ngữ cảnh bao gồm thông tin khóa học, bài giảng, transcript video, tài liệu h
+--- IMAGE PARA 950 blips=['rId44']
+    rId44 -> media/image35.png
+945: 5.3.2.2. Chia nhỏ nội dung và lưu trữ tri thức
+946: Do transcript và tài liệu học tập thường có nội dung dài, hệ thống chia nhỏ văn bản thành các đoạn ngắn hơn để thuận tiện cho việc tìm kiếm và đưa vào prompt. Mỗi đoạn nội dung được lưu kèm thông tin liên quan như khóa h
+947: Việc chia nhỏ nội dung giúp hệ thống chỉ truy xuất những đoạn có liên quan trực tiếp đến câu hỏi của học viên, thay vì gửi toàn bộ tài liệu cho mô hình. Cách làm này giúp giảm độ dài prompt, tăng độ chính xác của câu trả
+948: 5.3.3. Xây dựng cơ chế truy xuất ngữ cảnh
+949: Cơ chế truy xuất ngữ cảnh giúp AI Tutor lựa chọn các đoạn nội dung phù hợp với câu hỏi của học viên trước khi gửi yêu cầu đến mô hình Gemini. Thay vì đưa toàn bộ nội dung bài học vào prompt, hệ thống chỉ chọn những thông
+950: [CURRENT IMAGE] 
+951: Hình 5. 15. Quy trình truy xuất ngữ cảnh cho AI Tutor.
+952: 5.3.3.1. Tìm kiếm nội dung liên quan đến câu hỏi
+953: Khi học viên gửi câu hỏi, hệ thống xác định khóa học và bài giảng hiện tại, sau đó tìm kiếm các đoạn nội dung có liên quan trong dữ liệu đã được xử lý. Các đoạn nội dung này có thể đến từ transcript video, tài liệu bài h
+954: Việc tìm kiếm nội dung liên quan giúp AI Tutor trả lời bám sát phạm vi bài học, hạn chế việc mô hình sinh ra câu trả lời chung chung hoặc không đúng với nội dung khóa học.
+--- IMAGE PARA 976 blips=['rId45']
+    rId45 -> media/image36.png
+971: 5.3.4.3. Xử lý trường hợp thiếu ngữ cảnh
+972: Không phải mọi câu hỏi của học viên đều có đủ dữ liệu liên quan trong transcript hoặc tài liệu bài học. Khi hệ thống không tìm thấy ngữ cảnh phù hợp, prompt sẽ yêu cầu mô hình trả lời thận trọng, nêu rõ rằng dữ liệu bài 
+973: Trong một số trường hợp, AI Tutor có thể đưa ra gợi ý chung ở mức khái niệm hoặc hướng dẫn học viên xem lại bài giảng liên quan. Việc xử lý thiếu ngữ cảnh giúp hạn chế câu trả lời sai lệch và đảm bảo AI Tutor hoạt động p
+974: 5.3.5. Tích hợp Gemini API vào hệ thống
+975: AI Tutor sử dụng Gemini API như dịch vụ xử lý ngôn ngữ bên ngoài để sinh câu trả lời cho học viên. Trong hệ thống StackLearn, quá trình tích hợp được tổ chức thông qua các lớp controller và service nhằm tách biệt giữa gi
+976: [CURRENT IMAGE] 
+977: Hình 5. 16. Quy trình tích hợp Gemini API trong AI Tutor.
+978: 5.3.5.1. Gửi yêu cầu đến mô hình Gemini
+979: Sau khi hệ thống xây dựng được prompt hoàn chỉnh, yêu cầu được chuyển đến lớp xử lý giao tiếp với Gemini API. Dữ liệu gửi đi bao gồm câu hỏi của học viên, ngữ cảnh bài học, lịch sử hội thoại và các ràng buộc trả lời đã đ
+980: Việc gửi yêu cầu được thực hiện thông qua cấu hình API key, model và endpoint Gemini được lưu trong hệ thống. Cách tổ chức này giúp việc thay đổi cấu hình mô hình hoặc dịch vụ AI có thể thực hiện dễ dàng hơn mà không ảnh
+981: 5.3.5.2. Nhận và xử lý phản hồi từ mô hình
+982: Sau khi Gemini API xử lý yêu cầu, hệ thống nhận lại phản hồi dưới dạng nội dung văn bản. Phản hồi này được kiểm tra và xử lý trước khi hiển thị cho học viên, nhằm đảm bảo nội dung phù hợp với ngữ cảnh học tập và định dạn
+--- IMAGE PARA 989 blips=['rId46']
+    rId46 -> media/image37.png
+984: 5.3.5.3. Lưu lịch sử hội thoại AI Tutor
+985: Sau mỗi lượt trao đổi, hệ thống lưu lại câu hỏi của học viên và câu trả lời của AI Tutor vào lịch sử hội thoại. Dữ liệu này giúp học viên có thể xem lại nội dung đã trao đổi, đồng thời hỗ trợ hệ thống duy trì ngữ cảnh ch
+986: Lịch sử hội thoại được quản lý theo từng phiên trò chuyện, gắn với học viên, khóa học và bài giảng cụ thể. Nhờ đó, AI Tutor có thể hỗ trợ học tập theo ngữ cảnh cá nhân hóa hơn, thay vì xử lý từng câu hỏi một cách tách rờ
+987: 5.3.6. Quy trình hoạt động của AI Tutor trên hệ thống
+988: Quy trình hoạt động của AI Tutor mô tả cách các thành phần trong hệ thống phối hợp với nhau để xử lý câu hỏi của học viên. Từ giao diện học tập, câu hỏi được gửi đến controller, sau đó hệ thống truy xuất ngữ cảnh, xây dự
+989: [CURRENT IMAGE] 
+990: Hình 5. 17. Quy trình hoạt động của AI Tutor trên hệ thống.
+991: 5.3.6.1. Tiếp nhận câu hỏi của học viên
+992: Khi học viên đặt câu hỏi tại giao diện học tập, hệ thống tiếp nhận nội dung câu hỏi cùng với thông tin người dùng, khóa học và bài giảng hiện tại. Các thông tin này được dùng để xác định phạm vi ngữ cảnh cần truy xuất.
+993: Sau khi nhận yêu cầu, controller chuyển dữ liệu đến lớp service xử lý AI Tutor. Việc tách riêng phần xử lý vào service giúp controller gọn hơn và thuận tiện cho việc mở rộng chức năng sau này.
+994: 5.3.6.2. Truy xuất ngữ cảnh học tập
+995: Service xử lý AI Tutor tiến hành tìm kiếm các đoạn nội dung liên quan đến câu hỏi trong transcript, tài liệu học tập và dữ liệu bài giảng. Đồng thời, hệ thống có thể lấy thêm lịch sử hội thoại gần nhất để duy trì mạch tr
+--- IMAGE PARA 1028 blips=['rId47']
+    rId47 -> media/image38.png
+1023: Bảng 6. 1. Bảng kết quả kiểm thử các chức năng chính của hệ thống StackLearn.
+1025: Các test case được thực hiện trên môi trường cài đặt cục bộ với dữ liệu mẫu gồm tài khoản học viên, giảng viên, quản trị viên, khóa học mẫu, bài giảng, quiz, coupon và đơn hàng thanh toán thử nghiệm. Một test case được đ
+1026: Đối với các chức năng tích hợp dịch vụ bên ngoài như thanh toán và AI Tutor, hệ thống cũng được kiểm tra thêm các trường hợp lỗi để đánh giá khả năng xử lý ngoại lệ.
+1028: [CURRENT IMAGE] 
+1029: Hình 6. 1. Kết quả kiểm thử chức năng tìm kiếm khóa học.
+1030: [IMAGE ['rId48']] 
+1031: Hình 6. 2. Kết quả kiểm thử chức năng thanh toán khóa học.
+1033: [IMAGE ['rId49']] 
+1034: Hình 6. 3. Kết quả kiểm thử chức năng học tập trên hệ thống.
+--- IMAGE PARA 1030 blips=['rId48']
+    rId48 -> media/image39.png
+1025: Các test case được thực hiện trên môi trường cài đặt cục bộ với dữ liệu mẫu gồm tài khoản học viên, giảng viên, quản trị viên, khóa học mẫu, bài giảng, quiz, coupon và đơn hàng thanh toán thử nghiệm. Một test case được đ
+1026: Đối với các chức năng tích hợp dịch vụ bên ngoài như thanh toán và AI Tutor, hệ thống cũng được kiểm tra thêm các trường hợp lỗi để đánh giá khả năng xử lý ngoại lệ.
+1028: [IMAGE ['rId47']] 
+1029: Hình 6. 1. Kết quả kiểm thử chức năng tìm kiếm khóa học.
+1030: [CURRENT IMAGE] 
+1031: Hình 6. 2. Kết quả kiểm thử chức năng thanh toán khóa học.
+1033: [IMAGE ['rId49']] 
+1034: Hình 6. 3. Kết quả kiểm thử chức năng học tập trên hệ thống.
+1035: 6.3. Kiểm thử chức năng Chatbot AI
+1036: 6.3.1. Phương pháp kiểm thử
+--- IMAGE PARA 1033 blips=['rId49']
+    rId49 -> media/image40.png
+1028: [IMAGE ['rId47']] 
+1029: Hình 6. 1. Kết quả kiểm thử chức năng tìm kiếm khóa học.
+1030: [IMAGE ['rId48']] 
+1031: Hình 6. 2. Kết quả kiểm thử chức năng thanh toán khóa học.
+1033: [CURRENT IMAGE] 
+1034: Hình 6. 3. Kết quả kiểm thử chức năng học tập trên hệ thống.
+1035: 6.3. Kiểm thử chức năng Chatbot AI
+1036: 6.3.1. Phương pháp kiểm thử
+1037: Quá trình kiểm thử Chatbot AI được thực hiện trực tiếp trên hệ thống StackLearn với các câu hỏi thuộc nhiều nhóm tình huống khác nhau. Mỗi câu hỏi được gửi vào giao diện AI Tutor, sau đó ghi nhận kết quả trả lời, trạng t
+1038: Kiểm thử theo test case chức năng: kiểm tra các chức năng chính như gửi câu hỏi, nhận phản hồi, trả lời theo ngữ cảnh, xử lý câu hỏi ngoài phạm vi và lưu lịch sử hội thoại.
+1039: Đánh giá chất lượng phản hồi theo thang điểm: chấm điểm câu trả lời dựa trên các tiêu chí như độ đúng nội dung, bám sát ngữ cảnh, đầy đủ, dễ hiểu và xử lý nguồn ngữ cảnh.
+--- IMAGE PARA 1080 blips=['rId50']
+    rId50 -> media/image41.png
+1076: 6.3.6. Nhận xét kết quả kiểm thử
+1077: Kết quả kiểm thử cho thấy Chatbot AI có thể thực hiện các chức năng chính như tiếp nhận câu hỏi, truy xuất ngữ cảnh học tập, gửi yêu cầu đến Gemini API, hiển thị phản hồi và lưu lịch sử hội thoại. Toàn bộ 6/6 test case đ
+1078: Về chất lượng phản hồi, Chatbot AI đạt điểm trung bình 8.33/10. Các câu hỏi nằm trong phạm vi bài học như hỏi khái niệm, tóm tắt bài học hoặc hỏi theo transcript/tài liệu cho kết quả tương đối tốt vì hệ thống có thể khai
+1079: Về hiệu năng phản hồi, thời gian phản hồi trung bình của Chatbot AI là 4.27 giây. Kết quả này ở mức chấp nhận được trong phạm vi đồ án vì hệ thống cần thực hiện truy xuất ngữ cảnh, xây dựng prompt và chờ phản hồi từ Gemi
+1080: [CURRENT IMAGE] 
+1081: Hình 6. 4. Lịch sử hội thoại của học viên với Chatbot AI.
+1083: 6.4. Đánh giá hiệu năng hệ thống
+1084: Hiệu năng của hệ thống được đánh giá thông qua các thao tác thường dùng như đăng nhập, xem danh sách khóa học, xem chi tiết khóa học, học bài, làm quiz, thanh toán và gửi câu hỏi cho chatbot AI. Trong quá trình kiểm thử,
+1085: Riêng chức năng chatbot AI có thời gian phản hồi lâu hơn các chức năng thông thường vì phải gửi yêu cầu đến dịch vụ AI bên ngoài và chờ kết quả trả về. Tuy nhiên, trong phạm vi đồ án, tốc độ phản hồi vẫn ở mức chấp nhận 
+1086: Bảng 6. 6. Đánh giá hiệu năng các chức năng chính của hệ thống StackLearn.
+--- IMAGE PARA 1094 blips=['rId51']
+    rId51 -> media/image42.png
+1089: Trải nghiệm người dùng của StackLearn nhìn chung ở mức dễ sử dụng. Học viên có thể xem khóa học, thêm vào giỏ hàng, thanh toán, học bài và làm quiz theo luồng khá rõ ràng. Các chức năng chính được đặt ở những vị trí dễ t
+1090: Đối với giảng viên và quản trị viên, hệ thống đã tách riêng khu vực quản lý nên việc thao tác thuận tiện hơn. Tuy nhiên, một số màn hình quản trị có nhiều dữ liệu nên giao diện vẫn còn hơi dày, cần tiếp tục tối ưu để dễ 
+1091: Bảng 6. 7. Đánh giá trải nghiệm người dùng của hệ thống StackLearn.
+1094: [CURRENT IMAGE] 
+1095: Hình 6. 5. Giao diện quản trị hệ thống StackLearn
+1096: 6.6. Đánh giá kết quả đạt được
+1097: Sau quá trình thực hiện, hệ thống StackLearn đã hoàn thành được các chức năng chính của một website học trực tuyến. Người dùng có thể đăng ký, đăng nhập, xem khóa học, thêm vào giỏ hàng, thanh toán và học bài trên hệ thố
+1098: Một điểm nổi bật của đề tài là đã tích hợp thêm chatbot AI để hỗ trợ người học trong lúc học bài. Chức năng này giúp hệ thống khác với một LMS thông thường và đúng với hướng phát triển mà đề tài đặt ra từ đầu. Mặc dù cha
+1099: Nhìn chung, đề tài đã đạt được mục tiêu chính là xây dựng một hệ thống LMS có thể hoạt động được và có thêm hướng mở rộng bằng AI. Đây là nền tảng phù hợp để tiếp tục hoàn thiện trong các bước sau.
+1100: 6.7. Hạn chế của hệ thống
+MEDIA_DIR C:\xampp\htdocs\LMS\StackLearn\outputs\docx_images_ver3
+MEDIA_COUNT 42

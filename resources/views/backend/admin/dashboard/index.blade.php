@@ -31,12 +31,12 @@
                             </h4>
                             <div class="d-flex align-items-center" style="font-size: 0.78rem;">
                                 @if ($card['trend']['direction'] === 'up')
-                                    <span class="badge bg-success bg-opacity-10 text-success d-flex align-items-center px-2 py-1" style="border-radius: 8px;">
+                                    <span class="badge bg-light border border-success text-success d-flex align-items-center px-2 py-1" style="border-radius: 8px;">
                                         <span class="material-symbols-outlined" style="font-size: 14px;">trending_up</span>
                                         <span class="ms-1">+{{ $card['trend']['percent'] }}%</span>
                                     </span>
                                 @else
-                                    <span class="badge bg-danger bg-opacity-10 text-danger d-flex align-items-center px-2 py-1" style="border-radius: 8px;">
+                                    <span class="badge bg-light border border-danger text-danger d-flex align-items-center px-2 py-1" style="border-radius: 8px;">
                                         <span class="material-symbols-outlined" style="font-size: 14px;">trending_down</span>
                                         <span class="ms-1">-{{ $card['trend']['percent'] }}%</span>
                                     </span>
@@ -118,17 +118,17 @@
                             <span class="material-symbols-outlined me-1" style="font-size: 16px;">subdirectory_arrow_right</span>
                             Quiz
                         </div>
-                        <div class="badge bg-info bg-opacity-10 text-info px-3 py-2" style="border-radius: 10px;">
+                        <div class="badge bg-light border border-info text-info px-3 py-2" style="border-radius: 10px;">
                             <span class="material-symbols-outlined align-middle" style="font-size: 16px;">quiz</span>
                             {{ number_format($flowStats['total_quiz_attempts']) }} attempts
                         </div>
                         <span class="material-symbols-outlined text-muted">arrow_forward</span>
-                        <div class="badge bg-success bg-opacity-10 text-success px-3 py-2" style="border-radius: 10px;">
+                        <div class="badge bg-light border border-success text-success px-3 py-2" style="border-radius: 10px;">
                             <span class="material-symbols-outlined align-middle" style="font-size: 16px;">check_circle</span>
                             {{ number_format($flowStats['total_quiz_passed']) }} passed
                         </div>
                         <span class="mx-3 text-muted">|</span>
-                        <div class="badge bg-success bg-opacity-10 text-success px-3 py-2" style="border-radius: 10px;">
+                        <div class="badge bg-light border border-success text-success px-3 py-2" style="border-radius: 10px;">
                             <span class="material-symbols-outlined align-middle" style="font-size: 16px;">workspace_premium</span>
                             {{ number_format($flowStats['total_course_completed']) }} course completed
                         </div>
@@ -161,7 +161,7 @@
                                 <tbody>
                                     @forelse($topCourses as $i => $course)
                                         <tr>
-                                            <td><span class="badge bg-primary bg-opacity-10 text-primary">{{ $i + 1 }}</span></td>
+                                            <td><span class="badge bg-light border border-primary text-primary">{{ $i + 1 }}</span></td>
                                             <td class="text-truncate" style="max-width: 200px;">{{ $course->course_title ?? 'N/A' }}</td>
                                             <td class="text-center">{{ $course->total_sales }}</td>
                                             <td class="text-end fw-semibold">{{ number_format($course->revenue, 0, ',', '.') }} đ</td>
@@ -190,7 +190,7 @@
                                 <tbody>
                                     @forelse($topInstructors as $i => $inst)
                                         <tr>
-                                            <td><span class="badge bg-danger bg-opacity-10 text-danger">{{ $i + 1 }}</span></td>
+                                            <td><span class="badge bg-light border border-danger text-danger">{{ $i + 1 }}</span></td>
                                             <td>{{ $inst->instructor_name ?? 'N/A' }}</td>
                                             <td class="text-center">{{ $inst->total_sales }}</td>
                                             <td class="text-end fw-semibold">{{ number_format($inst->revenue, 0, ',', '.') }} đ</td>
@@ -271,7 +271,7 @@
                                     <div style="font-size: 0.85rem;">
                                         <strong>{{ $log->admin->name ?? 'System' }}</strong>
                                         <span class="text-muted">{{ $log->action ?? '' }}</span>
-                                        <span class="badge bg-secondary bg-opacity-10 text-secondary ms-1" style="font-size: 0.7rem;">{{ $log->entity_type ?? '' }}</span>
+                                        <span class="badge bg-light border border-secondary text-secondary ms-1" style="font-size: 0.7rem;">{{ $log->entity_type ?? '' }}</span>
                                     </div>
                                     <small class="text-muted">{{ $log->created_at->diffForHumans() }}</small>
                                 </div>

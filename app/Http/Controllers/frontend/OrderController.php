@@ -33,26 +33,34 @@ class OrderController extends Controller
 
     public function order(OrderRequest $request)
     {
-        // 1. Re-calculate and verify all prices from Database to prevent tampering
+        // xác thực giá tiền từ database
         $verifiedData = $this->getVerifiedOrderData($request->course_id, $request->validated());
 
-        // 2. Store clean data into Session
+        if ($verifiedData['payment_type'] === 'stripe' && $verifiedData['total_price'] < 15000) {
+            return redirect()->back()->with('error', 'Số tiền thanh toán qua Stripe tối thiểu là 15,000 đ (khoảng 0.50 USD). Vui lòng chọn phương thức thanh toán khác.');
+        }
+
+        // lưu dữ liệu đã xác thực vào session để lát sauy khi thanh toán thành công lấy ra đối chiếu
         session()->put('stripe_data', $verifiedData);
-        
-        return $this->paymentService->processPayment($verifiedData);
+
+        try {
+            return $this->paymentService->processPayment($verifiedData);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Đã xảy ra lỗi khi xử lý thanh toán: ' . $e->getMessage());
+        }
     }
 
 
     public function success(Request $request)
     {
-        //lấy mã số mã kiểm soát do Stripe trả về trên URL
+        //lấy mã session_id mà Stripe gửi về trên URL
         $sessionId = $request->query('session_id');
         $stripe = new StripeClient(config('stripe.stripe_sk'));
 
         try {
-            // Gọi thẳng lên API Stripe kiểm tra xem sessionId này đã thực sự thu tiền thành công chưa
+            // gọi thẳng lên API Stripe kiểm tra xem sessionId này đã thực sự thu tiền thành công chưa
             $session = $stripe->checkout->sessions->retrieve($sessionId);
-            // Lấy thông tin thanh toán
+            // lấy thông tin thanh toán
             $paymentIntent = $stripe->paymentIntents->retrieve($session->payment_intent);
 
             DB::transaction(function () use ($session, $paymentIntent) {
@@ -167,14 +175,14 @@ class OrderController extends Controller
             "vnp_TxnRef" => $vnp_TxnRef
         );
 
-        // 5. Sắp xếp dữ liệu theo thứ tự Alphabet (Bắt buộc)
+        // 5. Sắp xếp dữ liệu theo thứ tự Alphabet
         ksort($inputData);
 
         $query = "";
         $i = 0;
         $hashdata = "";
 
-        // 6. Chuẩn hóa chuỗi dữ liệu (Query String)
+        // 6. Chuẩn hóa chuỗi dữ liệu
         foreach ($inputData as $key => $value) {
             if ($i == 1) {
                 $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
@@ -294,4 +302,3 @@ class OrderController extends Controller
         ]);
     }
 }
-

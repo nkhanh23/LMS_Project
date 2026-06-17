@@ -11,22 +11,89 @@ use App\Models\CourseSection;
 use App\Models\InfoBox;
 use App\Models\Order;
 use App\Models\Partner;
+use App\Models\Wishlist;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
 
 class FrontEndDashBoardController extends Controller
 {
     public function home()
     {
-        $all_slider = Slider::latest()->get();
-        $all_info = InfoBox::latest()->get();
-        $all_category = Category::inRandomOrder()->limit(6)->get();
-        $all_partners = Partner::latest()->get();
+        $wishlistCourseIds = collect();
+        if (Auth::check()) {
+            $wishlistCourseIds = Wishlist::query()
+                ->where('user_id', Auth::id())
+                ->pluck('course_id')
+                ->flip();
+        }
 
-        $categories = Category::all();
-        $course_category = Category::with('course', 'course.user', 'course.goals')->get();
-        return view('frontend.index', compact('all_slider', 'all_info', 'all_category', 'categories', 'course_category', 'all_partners'));
+        $all_slider = Cache::remember('frontend.home.sliders', now()->addMinutes(5), function () {
+            return Slider::query()
+                ->select('id', 'title', 'short_description', 'video_url', 'image')
+                ->latest()
+                ->get();
+        });
+
+        $all_info = Cache::remember('frontend.home.info_boxes', now()->addMinutes(5), function () {
+            return InfoBox::query()
+                ->select('id', 'icon', 'title', 'description')
+                ->latest()
+                ->get();
+        });
+
+        $all_category = Cache::remember('frontend.home.featured_categories', now()->addMinutes(5), function () {
+            return Category::query()
+                ->select('id', 'name', 'slug', 'image')
+                ->inRandomOrder()
+                ->limit(6)
+                ->get();
+        });
+
+        $all_partners = Cache::remember('frontend.home.partners', now()->addMinutes(5), function () {
+            return Partner::query()
+                ->select('id', 'name')
+                ->latest()
+                ->get();
+        });
+
+        $categories = Cache::remember('frontend.home.categories', now()->addMinutes(5), function () {
+            return Category::query()
+                ->select('id', 'name', 'slug')
+                ->orderBy('name', 'asc')
+                ->get();
+        });
+
+        $course_category = Cache::remember('frontend.home.course_category', now()->addMinutes(5), function () {
+            return Category::query()
+                ->select('id', 'name', 'slug')
+                ->with(['course' => function ($query) {
+                    $query->where('approval_status', 'published')
+                        ->where('status', 1)
+                        ->select(
+                            'id',
+                            'category_id',
+                            'instructor_id',
+                            'course_name',
+                            'course_name_slug',
+                            'course_image',
+                            'selling_price',
+                            'discount_price',
+                            'bestseller',
+                            'featured',
+                            'highestrated',
+                            'label',
+                            'description'
+                        )
+                        ->with(['user:id,name', 'goals'])
+                        ->latest();
+                }])
+                ->orderBy('name', 'asc')
+                ->get();
+        });
+
+        return view('frontend.index', compact('all_slider', 'all_info', 'all_category', 'categories', 'course_category', 'all_partners', 'wishlistCourseIds'));
     }
 
     public function view($slug)
@@ -171,15 +238,17 @@ class FrontEndDashBoardController extends Controller
             ->with([
                 'category:id,name',
                 'user:id,name',
-                'sections:id,course_id',
-                'sections.lecture:id,section_id,video_duration'
             ])
             ->withAvg(['reviews' => function ($q) {
                 $q->where('is_approved', true);
             }], 'rating')
-            ->withCount(['reviews' => function ($q) {
-                $q->where('is_approved', true);
-            }]);
+            ->withCount([
+                'reviews' => function ($q) {
+                    $q->where('is_approved', true);
+                },
+                'lectures as lectures_count',
+            ])
+            ->withSum('lectures as lectures_duration_sum', 'video_duration');
 
         // Lọc theo từ khóa tìm kiếm
         if ($keyword !== '') {
@@ -227,23 +296,27 @@ class FrontEndDashBoardController extends Controller
             return response()->json([]);
         }
 
-        $courses = Course::where('approval_status', 'published')
-            ->where('status', 1)
-            ->where('course_name', 'like', '%' . $keyword . '%')
-            ->select('id', 'course_name', 'course_name_slug', 'course_image', 'discount_price', 'instructor_id')
-            ->with(['user:id,name', 'category:id,name'])
-            ->limit(6)
-            ->get()
-            ->map(fn ($c) => [
-                'id'    => $c->id,
-                'name'  => $c->course_name,
-                'slug'  => $c->course_name_slug,
-                'image' => asset($c->course_image),
-                'price' => number_format($c->discount_price, 0, ',', '.') . ' ₫',
-                'instructor' => $c->user->name ?? '',
-                'category'   => $c->category->name ?? '',
-                'url'   => route('chi-tiet', $c->course_name_slug),
-            ]);
+        $cacheKey = 'frontend.search_suggestions.' . md5($keyword);
+        $courses = Cache::remember($cacheKey, now()->addSeconds(30), function () use ($keyword) {
+            return Course::query()
+                ->where('approval_status', 'published')
+                ->where('status', 1)
+                ->where('course_name', 'like', '%' . $keyword . '%')
+                ->select('id', 'course_name', 'course_name_slug', 'course_image', 'discount_price', 'instructor_id', 'category_id')
+                ->with(['user:id,name', 'category:id,name'])
+                ->limit(6)
+                ->get()
+                ->map(fn ($c) => [
+                    'id'    => $c->id,
+                    'name'  => $c->course_name,
+                    'slug'  => $c->course_name_slug,
+                    'image' => asset($c->course_image),
+                    'price' => number_format($c->discount_price, 0, ',', '.') . ' ₫',
+                    'instructor' => $c->user->name ?? '',
+                    'category'   => $c->category->name ?? '',
+                    'url'   => route('chi-tiet', $c->course_name_slug),
+                ]);
+        });
 
         return response()->json($courses);
     }

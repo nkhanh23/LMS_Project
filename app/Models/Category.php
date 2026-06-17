@@ -8,6 +8,12 @@ class Category extends Model
 {
     protected $guarded = [];
 
+    protected static function booted()
+    {
+        static::saved(fn () => \Illuminate\Support\Facades\Cache::forget('global_categories'));
+        static::deleted(fn () => \Illuminate\Support\Facades\Cache::forget('global_categories'));
+    }
+
     public function subcategory()
     {
         return $this->hasMany(SubCategory::class, 'category_id', 'id');

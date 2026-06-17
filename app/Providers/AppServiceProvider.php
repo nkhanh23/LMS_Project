@@ -31,7 +31,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         try {
-            $site_info = SiteInfo::first();
+            $site_info = \Illuminate\Support\Facades\Cache::remember('site_info', now()->addHours(24), function () {
+                return SiteInfo::first();
+            });
             View::share('site_info', $site_info);
         } catch (\Exception $e) {
             // Database table may not exist yet during testing or migrations

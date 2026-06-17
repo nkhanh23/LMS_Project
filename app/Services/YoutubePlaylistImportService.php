@@ -88,21 +88,20 @@ class YoutubePlaylistImportService
                         'source' => 'youtube_playlist_import',
                         'video_id' => $video['video_id'],
                         'video_url' => $lecture->url,
-                        'transcript_api_url' => config('services.youtube_transcript.api_url'),
                     ],
                 ]);
 
                 $transcriptJobs[] = [
                     'id' => $transcriptJob->id,
-                    'delay_seconds' => $index * (int) config('services.youtube_transcript.dispatch_delay_seconds', 30),
+                    'delay_seconds' => $index * (int) config('services.transcript.dispatch_delay_seconds', 30),
                 ];
             }
 
             DB::afterCommit(function () use ($transcriptJobs) {
                 foreach ($transcriptJobs as $transcriptJob) {
                     GenerateTranscriptJob::dispatch($transcriptJob['id'])
-                        ->onConnection(config('services.youtube_transcript.queue_connection', 'database'))
-                        ->onQueue(config('services.youtube_transcript.queue', 'transcripts'))
+                        ->onConnection(config('services.transcript.queue_connection', 'database'))
+                        ->onQueue(config('services.transcript.queue', 'transcripts'))
                         ->delay(now()->addSeconds($transcriptJob['delay_seconds']));
                 }
             });

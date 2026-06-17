@@ -52,8 +52,11 @@ class CartRepository
             // lấy guest_token từ cookie
             $guestToken = $request->cookie('guest_token');
             // lấy tất cả cart của guest_token
-            $cart = Cart::with('course')
+            $cart = Cart::with(['course' => function ($query) {
+                    $query->select('id', 'course_name', 'discount_price', 'selling_price', 'course_image');
+                }])
                 ->where('guest_token', $guestToken)
+                ->select('id', 'guest_token', 'course_id', 'quantity', 'created_at')
                 ->latest()
                 ->get();
 

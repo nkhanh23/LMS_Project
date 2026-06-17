@@ -13,10 +13,17 @@ class CheckoutController extends Controller
     public function index(Request $request)
     {
         $guestToken = $request->cookie('guest_token') ?? Str::uuid();
-        $cart = Cart::with('course')->where('guest_token', $guestToken)->get();
-        // tính tổng tiền
+        $cart = Cart::with(['course' => function ($query) {
+                $query->select('id', 'course_name', 'discount_price', 'selling_price', 'course_image', 'instructor_id');
+            }])
+            ->where('guest_token', $guestToken)
+            ->select('id', 'guest_token', 'course_id', 'quantity', 'created_at')
+            ->get()
+            ->filter(fn ($item) => $item->course !== null)
+            ->values();
+
         $total = $cart->sum(function ($item) {
-            return $item->course->discount_price ?? $item->course->selling_price;
+            return $item->course->discount_price ?: $item->course->selling_price;
         });
         $user = Auth::user();
         return view('frontend.pages.checkout.index', compact('cart', 'total', 'user'));

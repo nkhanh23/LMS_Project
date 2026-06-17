@@ -53,10 +53,10 @@ class NewLecturePublishedNotification extends Notification implements ShouldQueu
         ]);
 
         return (new MailMessage)
-            ->subject("📚 Bài học mới: {$this->lecture->lecture_title}")
+            ->subject("Bài học mới: {$this->lecture->lecture_title}")
             ->greeting("Xin chào {$notifiable->name}!")
             ->line("Khóa học **{$this->course->course_name}** vừa được cập nhật bài học mới:")
-            ->line("📖 **{$this->lecture->lecture_title}**")
+            ->line("**{$this->lecture->lecture_title}**")
             ->action('Vào học ngay', $url)
             ->line('Chúc bạn học tập hiệu quả!');
     }

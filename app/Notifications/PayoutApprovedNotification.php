@@ -46,12 +46,12 @@ class PayoutApprovedNotification extends Notification implements ShouldQueue
         $amount = number_format($this->payout->amount, 0, ',', '.');
 
         return (new MailMessage)
-            ->subject("✅ Yêu cầu rút tiền #{$this->payout->id} đã được duyệt")
+            ->subject("Yêu cầu rút tiền #{$this->payout->id} đã được duyệt")
             ->greeting("Xin chào {$notifiable->name}!")
             ->line("Yêu cầu rút tiền của bạn đã được Admin phê duyệt thành công.")
-            ->line("💰 **Số tiền:** {$amount} VNĐ")
-            ->line("🏦 **Mã yêu cầu:** #{$this->payout->id}")
-            ->line("📝 **Mã giao dịch:** {$this->payout->transaction_reference}")
+            ->line("**Số tiền:** {$amount} VNĐ")
+            ->line("**Mã yêu cầu:** #{$this->payout->id}")
+            ->line("**Mã giao dịch:** {$this->payout->transaction_reference}")
             ->action('Xem chi tiết doanh thu', route('instructor.revenue.dashboard'))
             ->line('Cảm ơn bạn đã đồng hành cùng StackLearn!');
     }

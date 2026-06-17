@@ -65,14 +65,28 @@ return [
         'language' => env('OPENAI_TRANSCRIPTION_LANGUAGE', 'vi'),
     ],
 
-    'youtube_transcript' => [
-        'api_url' => env('YOUTUBE_TRANSCRIPT_API_URL', 'http://127.0.0.1:9000/transcript'),
-        'timeout' => (int) env('YOUTUBE_TRANSCRIPT_API_TIMEOUT', 45),
-        'fallback_enabled' => env('YOUTUBE_TRANSCRIPT_FALLBACK_ENABLED', true),
-        'queue_connection' => env('YOUTUBE_TRANSCRIPT_QUEUE_CONNECTION', 'database'),
-        'queue' => env('YOUTUBE_TRANSCRIPT_QUEUE', 'transcripts'),
+    'transcription_provider' => env('TRANSCRIPTION_PROVIDER', 'openai'),
+
+    'local_whisper' => [
+        'enabled' => env('LOCAL_WHISPER_ENABLED', false),
+        'bin' => env('LOCAL_WHISPER_BIN', 'whisper'),
+        'model' => env('LOCAL_WHISPER_MODEL', 'base'),
+        'model_dir' => env('LOCAL_WHISPER_MODEL_DIR'),
+        'language' => env('LOCAL_WHISPER_LANGUAGE', 'Vietnamese'),
+        'device' => env('LOCAL_WHISPER_DEVICE', 'auto'),
+        'timeout' => (int) env('LOCAL_WHISPER_TIMEOUT', 3600),
+    ],
+
+    'transcript' => [
+        'queue_connection' => env('TRANSCRIPT_QUEUE_CONNECTION', 'database'),
+        'queue' => env('TRANSCRIPT_QUEUE', 'transcripts'),
         'document_queue' => env('AI_DOCUMENT_QUEUE', 'ai-documents'),
-        'dispatch_delay_seconds' => (int) env('YOUTUBE_TRANSCRIPT_DISPATCH_DELAY_SECONDS', 30),
+        'dispatch_delay_seconds' => (int) env('TRANSCRIPT_DISPATCH_DELAY_SECONDS', 30),
+    ],
+
+    'yt_dlp' => [
+        'bin' => env('YT_DLP_BIN', 'yt-dlp'),
+        'timeout' => (int) env('YT_DLP_TIMEOUT', 3600),
     ],
 
     'ffmpeg' => [

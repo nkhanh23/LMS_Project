@@ -10,6 +10,7 @@ use RuntimeException;
 
 class OpenAiTranscriptionService
 {
+    // hàm xử lý chính
     public function transcribeLecture(CourseLecture $lecture): array
     {
         $this->ensureEnabled();
@@ -22,43 +23,49 @@ class OpenAiTranscriptionService
             $audioPath = $this->extractAudioToMp3($sourceVideoPath, $workingDir);
             $chunkPaths = $this->splitAudioIntoChunks($audioPath, $workingDir);
 
+            // mảng chứa chữ mà openai dịch của từng chunk
             $chunkTranscripts = [];
             $previousTranscriptTail = '';
 
             foreach ($chunkPaths as $index => $chunkPath) {
+                // biến text lưu chữ mà openai dịch của từng chunk
                 $text = $this->transcribeChunk(
                     chunkPath: $chunkPath,
                     lecture: $lecture,
+                    // giữ lại 1200 kí tự trước đó để không bị ngắt câu
                     previousTranscriptTail: $previousTranscriptTail
                 );
-
+                // lưu chữ đã dịch của từng chunk vào mảng
                 $chunkTranscripts[] = [
                     'index' => $index,
                     'file_name' => basename($chunkPath),
                     'text' => $text,
                 ];
-
+                // lấy 1200 kí tự cuối cùng để nối vào chunk sau tránh bị ngắt câu
                 $previousTranscriptTail = $this->tailText(
                     trim($previousTranscriptTail . "\n" . $text),
                     1200
                 );
             }
 
+            // nối chữ của các chunk lại
             $rawText = collect($chunkTranscripts)
                 ->pluck('text')
                 ->filter()
                 ->implode("\n\n");
 
+            // xóa bỏ các ký tự không cần thiết
             $cleanedText = $this->cleanTranscript($rawText);
 
+            // đảm bảo văn bản không bị trống không
             if ($cleanedText === '') {
                 throw new RuntimeException('Không tạo được transcript hợp lệ từ OpenAI transcription.');
             }
 
             return [
-                'raw_text' => $rawText,
-                'cleaned_text' => $cleanedText,
-                'segments' => $chunkTranscripts,
+                'raw_text' => $rawText, // bản thô
+                'cleaned_text' => $cleanedText, // bản đã làm sạch
+                'segments' => $chunkTranscripts, // mảng chữ đã dịch của từng chunk
                 'language' => config('services.openai_transcription.language', 'vi'),
                 'meta' => [
                     'provider' => 'openai',
@@ -71,6 +78,7 @@ class OpenAiTranscriptionService
         }
     }
 
+    // hàm đảm bảo OpenAI transcription được bật
     protected function ensureEnabled(): void
     {
         if (! config('services.openai_transcription.enabled')) {
@@ -82,6 +90,7 @@ class OpenAiTranscriptionService
         }
     }
 
+    // hàm đảm bảo lecture hợp lệ để tạo transcript
     protected function ensureLectureIsTranscribable(CourseLecture $lecture): void
     {
         if (! in_array($lecture->type, ['video', 'r2_video'], true)) {
@@ -93,6 +102,7 @@ class OpenAiTranscriptionService
         }
     }
 
+    // hàm tạo thư mục làm việc cho transcription
     protected function makeWorkingDirectory(): string
     {
         $dir = storage_path('app/tmp/transcription_' . Str::uuid());
@@ -104,6 +114,7 @@ class OpenAiTranscriptionService
         return $dir;
     }
 
+    // hàm download video từ lecture
     protected function downloadLectureVideo(CourseLecture $lecture, string $workingDir): string
     {
         $sourceUrl = (string) $lecture->url;
@@ -119,6 +130,10 @@ class OpenAiTranscriptionService
 
         if ($sourceUrl === '' || !Str::startsWith($sourceUrl, ['http://', 'https://'])) {
             throw new RuntimeException('URL video không hợp lệ hoặc không có scheme (http/https): ' . ($sourceUrl ?: 'trống'));
+        }
+
+        if ($this->isYoutubeUrl($sourceUrl)) {
+            return $this->downloadYoutubeVideo($sourceUrl, $workingDir);
         }
 
         $extension = $this->guessExtensionFromLecture($lecture);
@@ -145,6 +160,40 @@ class OpenAiTranscriptionService
         return $targetPath;
     }
 
+    protected function isYoutubeUrl(string $url): bool
+    {
+        return Str::contains($url, ['youtube.com', 'youtu.be']);
+    }
+
+    protected function downloadYoutubeVideo(string $sourceUrl, string $workingDir): string
+    {
+        $targetPath = $workingDir . DIRECTORY_SEPARATOR . 'source.mp4';
+        $ytDlp = config('services.yt_dlp.bin', 'yt-dlp');
+
+        $result = Process::timeout((int) config('services.yt_dlp.timeout', 3600))->run([
+            $ytDlp,
+            '--no-playlist',
+            '-f',
+            'bv*+ba/best',
+            '--merge-output-format',
+            'mp4',
+            '-o',
+            $targetPath,
+            $sourceUrl,
+        ]);
+
+        if ($result->failed()) {
+            throw new RuntimeException('yt-dlp download video loi: ' . trim($result->errorOutput() ?: $result->output()));
+        }
+
+        if (! file_exists($targetPath) || filesize($targetPath) === 0) {
+            throw new RuntimeException('yt-dlp khong tao duoc file video tam.');
+        }
+
+        return $targetPath;
+    }
+
+    // hàm đoán extension từ lecture
     protected function guessExtensionFromLecture(CourseLecture $lecture): string
     {
         $fileName = (string) ($lecture->file_name ?? '');
@@ -171,6 +220,7 @@ class OpenAiTranscriptionService
         };
     }
 
+    // hàm extract audio từ video
     protected function extractAudioToMp3(string $sourceVideoPath, string $workingDir): string
     {
         $audioPath = $workingDir . DIRECTORY_SEPARATOR . 'audio.mp3';
@@ -178,17 +228,17 @@ class OpenAiTranscriptionService
 
         $result = Process::timeout(600)->run([
             $ffmpeg,
-            '-y',
-            '-i',
+            '-y', // ghi đè file cũ nếu có
+            '-i', // đường dẫn input file
             $sourceVideoPath,
-            '-vn',
-            '-ac',
+            '-vn', // không xuất video
+            '-ac', // gom thành 1 channel
             '1',
-            '-ar',
+            '-ar', // giảm tần số xuống 16kHz
             '16000',
-            '-b:a',
+            '-b:a', // nén bitrate xuống 32kbps (nhỏ, đủ nghe)
             '32k',
-            $audioPath,
+            $audioPath, // đường dẫn output file
         ]);
 
         if ($result->failed()) {
@@ -202,10 +252,12 @@ class OpenAiTranscriptionService
         return $audioPath;
     }
 
+    // hàm split audio thành các chunk
     protected function splitAudioIntoChunks(string $audioPath, string $workingDir): array
     {
-        $maxApiBytes = 24 * 1024 * 1024;
+        $maxApiBytes = 24 * 1024 * 1024; // 24MB OpenAI limit
 
+        // nhỏ hơn 24mb thì không cần split
         if (filesize($audioPath) <= $maxApiBytes) {
             return [$audioPath];
         }
@@ -218,18 +270,19 @@ class OpenAiTranscriptionService
         $ffmpeg = config('services.ffmpeg.bin', 'ffmpeg');
         $pattern = $chunksDir . DIRECTORY_SEPARATOR . 'chunk_%03d.mp3';
 
+        // nếu lớn hơn 24mb thì split ra 540s mỗi chunk
         $result = Process::timeout(600)->run([
             $ffmpeg,
             '-y',
             '-i',
             $audioPath,
             '-f',
-            'segment',
+            'segment', // kích hoạt chế độ cắt file
             '-segment_time',
-            '540',
+            '540', // cứ 540s (9p) thì cắt ra thành 1 file mp3 mới
             '-c',
-            'copy',
-            $pattern,
+            'copy', // không nén lại nữa mà copy nguyên bản cho nhanh
+            $pattern, // output pattern
         ]);
 
         if ($result->failed()) {
@@ -246,6 +299,7 @@ class OpenAiTranscriptionService
         return $chunkPaths;
     }
 
+    // hàm transcribe chunk
     protected function transcribeChunk(
         string $chunkPath,
         CourseLecture $lecture,
@@ -259,8 +313,10 @@ class OpenAiTranscriptionService
 
         $prompt = $this->buildPrompt($lecture, $previousTranscriptTail);
 
+        // gửi yêu cầu tới openai
         $response = Http::timeout($timeout)
             ->withToken($apiKey)
+            // đính kèm file audio chunk cần transcribe
             ->attach(
                 'file',
                 fopen($chunkPath, 'r'),
@@ -289,6 +345,7 @@ class OpenAiTranscriptionService
         return $text;
     }
 
+    // hàm build prompt để đưa vào OpenAI
     protected function buildPrompt(CourseLecture $lecture, string $previousTranscriptTail = ''): string
     {
         $lectureTitle = trim((string) ($lecture->lecture_title ?? ''));
@@ -307,13 +364,17 @@ class OpenAiTranscriptionService
 
     protected function cleanTranscript(string $text): string
     {
+        // đưa tất cả về định dạng dấu xuống dòng 
         $text = str_replace(["\r\n", "\r"], "\n", $text);
+        // thay thế các ký tự tab, space liên tiếp 
         $text = preg_replace('/[ \t]+/u', ' ', $text);
+        // nếu có nhiều hơn 2 dấu xuống dòng liên tiếp thì chỉ giữ lại 2 dấu
         $text = preg_replace('/\n{3,}/u', "\n\n", $text);
 
         return trim((string) $text);
     }
 
+    // hàm cắt đuôi văn bản
     protected function tailText(string $text, int $maxChars): string
     {
         $text = trim($text);
@@ -325,6 +386,7 @@ class OpenAiTranscriptionService
         return mb_substr($text, -$maxChars);
     }
 
+    // hàm dọn dẹp thư mục
     protected function cleanupDirectory(string $dir): void
     {
         if (! is_dir($dir)) {

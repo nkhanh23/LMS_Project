@@ -13,8 +13,7 @@ class AiDocumentIndexService
         protected AiChunkingService $chunkingService,
         protected AiDocumentExtractionService $extractionService,
         protected AiEmbeddingService $embeddingService,
-    ) {
-    }
+    ) {}
 
     public function process(AiDocument $document): void
     {
@@ -38,6 +37,7 @@ class AiDocumentIndexService
         ]);
 
         $createdChunkIds = DB::transaction(function () use ($document, $preparedText) {
+            //xóa chunk cũ nếu có để tránh trùng lặp dữ liệu
             AiDocumentChunk::query()
                 ->where('document_id', $document->id)
                 ->delete();
@@ -137,7 +137,7 @@ class AiDocumentIndexService
     public function vectorLiteral(array $values): string
     {
         return '[' . implode(',', array_map(
-            fn ($v) => is_float($v) || is_int($v) ? (string) $v : (string) ((float) $v),
+            fn($v) => is_float($v) || is_int($v) ? (string) $v : (string) ((float) $v),
             $values
         )) . ']';
     }

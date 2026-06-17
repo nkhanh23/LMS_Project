@@ -180,31 +180,35 @@
 
                         <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                             @forelse ($cart as $item)
+                                @php
+                                    $course = $item->course;
+                                @endphp
+                                @continue(!$course)
                                 <div
                                     class="flex items-start space-x-4 border-b-4 border-black pb-4 last:border-0 last:pb-0">
                                     <div
                                         class="w-16 h-16 flex-shrink-0 retro-border overflow-hidden bg-[#1E1E2E] shadow-[2px_2px_0_0_rgba(0,0,0,1)]">
-                                        <img src="{{ asset($item->course->course_image) }}"
+                                        <img src="{{ asset($course->course_image) }}"
                                             onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=Course'"
-                                            alt="{{ $item->course->course_name }}" class="w-full h-full object-cover">
+                                            alt="{{ $course->course_name }}" class="w-full h-full object-cover">
                                     </div>
-                                    <input type="hidden" name="course_id[]" value="{{ $item->course->id }}">
-                                    <input type="hidden" name="course_name[]" value="{{ $item->course->course_name }}">
+                                    <input type="hidden" name="course_id[]" value="{{ $course->id }}">
+                                    <input type="hidden" name="course_name[]" value="{{ $course->course_name }}">
                                     <input type="hidden" name="course_price[]"
-                                        value="{{ $item->course->discount_price ?? $item->course->selling_price }}">
+                                        value="{{ $course->discount_price ?: $course->selling_price }}">
                                     <input type="hidden" name="course_image[]"
-                                        value="{{ $item->course->course_image }}">
-                                    <input type="hidden" name="instructor_id[]" value="{{ $item->course->user->id }}">
+                                        value="{{ $course->course_image }}">
+                                    <input type="hidden" name="instructor_id[]" value="{{ $course->instructor_id }}">
                                     <div class="flex-1">
                                         <h5 class="text-sm font-bold text-slate-100 line-clamp-2 leading-tight mb-1">
-                                            {{ $item->course->course_name }}
+                                            {{ $course->course_name }}
                                         </h5>
                                         <div class="flex flex-col">
                                             <span
-                                                class="font-black text-[#4bf425]">{{ number_format($item->course->discount_price ?? $item->course->selling_price, 0, ',', '.') }}đ</span>
-                                            @if ($item->course->discount_price)
+                                                class="font-black text-[#4bf425]">{{ number_format($course->discount_price ?: $course->selling_price, 0, ',', '.') }}đ</span>
+                                            @if ($course->discount_price)
                                                 <span
-                                                    class="text-[#FF5252] line-through text-xs font-bold">{{ number_format($item->course->selling_price, 0, ',', '.') }}đ</span>
+                                                    class="text-[#FF5252] line-through text-xs font-bold">{{ number_format($course->selling_price, 0, ',', '.') }}đ</span>
                                             @endif
                                         </div>
                                     </div>

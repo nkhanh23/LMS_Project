@@ -52,14 +52,7 @@
                             </div>
 
                             @php
-                                if (auth()->check()) {
-                                    $user_id = auth()->user()->id;
-                                    $isWishlisted = \App\Models\Wishlist::where('user_id', $user_id)
-                                        ->where('course_id', $course->id)
-                                        ->first();
-                                } else {
-                                    $isWishlisted = null;
-                                }
+                                $isWishlisted = isset($wishlistCourseIds) && $wishlistCourseIds->has($course->id);
                             @endphp
                         </div>
 
