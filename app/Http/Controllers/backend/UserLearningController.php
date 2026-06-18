@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AiChatSession;
 use App\Models\Enrollment;
 use App\Models\QuizAttempt;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserLearningController extends Controller
@@ -96,21 +97,31 @@ class UserLearningController extends Controller
         return view('backend.user.quiz-history.show', compact('attempt'));
     }
 
-    public function aiTutorHistory()
+    public function aiTutorHistory(Request $request)
     {
+        $activeMode = $request->string('mode')->toString();
+        if (! in_array($activeMode, ['website', 'lesson'], true)) {
+            $activeMode = 'lesson';
+        }
+
         $sessions = AiChatSession::with([
             'course',
             'lecture',
-            'messages',
+            'messages' => fn($query) => $query->latest('id'),
         ])
             ->where('user_id', Auth::id())
+            ->where('mode', $activeMode)
             ->latest('last_activity_at')
             ->paginate(10);
 
-        return view('backend.user.ai-tutor.history', compact('sessions'));
+        $sessions->appends([
+            'mode' => $activeMode,
+        ]);
+
+        return view('backend.user.ai-tutor.history', compact('sessions', 'activeMode'));
     }
 
-    public function aiTutorSessionDetail(AiChatSession $session)
+    public function aiTutorSessionDetail(Request $request, AiChatSession $session)
     {
         abort_unless($session->user_id === Auth::id(), 403);
 
@@ -121,6 +132,11 @@ class UserLearningController extends Controller
             'messages.citations.chunk',
         ]);
 
-        return view('backend.user.ai-tutor.show', compact('session'));
+        $historyMode = $request->string('mode')->toString();
+        if (! in_array($historyMode, ['website', 'lesson'], true)) {
+            $historyMode = $session->mode === 'website' ? 'website' : 'lesson';
+        }
+
+        return view('backend.user.ai-tutor.show', compact('session', 'historyMode'));
     }
 }

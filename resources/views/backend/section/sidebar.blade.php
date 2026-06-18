@@ -122,6 +122,10 @@
                     <a href="{{ route('admin.gemini-setting') }}"><i class='bx bx-radio-circle'></i>Gemini</a>
                 </li>
 
+                <li class="{{ setSidebar(['admin.website-kb*']) }}">
+                    <a href="{{ route('admin.website-kb.index') }}"><i class='bx bx-radio-circle'></i>Website KB</a>
+                </li>
+
             </ul>
         </li>
 

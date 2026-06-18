@@ -141,7 +141,7 @@
         </div>
     </main>
 
-    @include('frontend.pages.learning.partials.chatbot-panel', [
+    @include('frontend.section.chatBot', [
         'course' => $course,
         'currentLecture' => $currentLecture,
     ])
@@ -204,8 +204,8 @@
                         }
                         
                         // 3.3 Sync Chatbot (New Panel)
-                        if (window.StackLearnLessonChatbot) {
-                            window.StackLearnLessonChatbot.reload({
+                        if (window.StackLearnAssistantPanel) {
+                            window.StackLearnAssistantPanel.reloadLessonContext({
                                 courseId: data.lecture.course_id,
                                 lectureId: data.lecture.id,
                                 lectureTitle: data.lecture.title
@@ -279,7 +279,7 @@
             });
         });
     </script>
-    <script src="{{ asset('customjs/learning/chatbot.js') }}"></script>
+    <script src="{{ asset('customjs/assistant/panel.js') }}"></script>
 </body>
 
 </html>

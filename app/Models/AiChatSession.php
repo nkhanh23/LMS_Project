@@ -11,6 +11,7 @@ class AiChatSession extends Model
 
     protected $casts = [
         'last_activity_at' => 'datetime',
+        'closed_at' => 'datetime',
     ];
 
     public function user()
@@ -45,6 +46,17 @@ class AiChatSession extends Model
     {
         $this->update([
             'status' => 'closed',
+            'closed_at' => now(),
         ]);
+    }
+
+    public function isWebsiteMode(): bool
+    {
+        return $this->mode === 'website';
+    }
+
+    public function isLessonMode(): bool
+    {
+        return $this->mode === 'lesson';
     }
 }

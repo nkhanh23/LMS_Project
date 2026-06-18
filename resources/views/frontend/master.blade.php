@@ -46,6 +46,7 @@
 
     <!-- ========== SCRIPTS ========== -->
     @include('frontend.section.script')
+    <script src="{{ asset('customjs/assistant/panel.js') }}"></script>
     @stack('script')
     @auth
         @include('components.notifications._notification-toast')

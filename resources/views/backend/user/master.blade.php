@@ -33,6 +33,9 @@
         </main>
     </div>
 
+    @include('frontend.section.chatBot')
+    <script src="{{ asset('customjs/assistant/panel.js') }}"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sidebar = document.getElementById('sidebar');

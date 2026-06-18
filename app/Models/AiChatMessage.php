@@ -47,6 +47,26 @@ class AiChatMessage extends Model
         return (array) data_get($this->meta_json, 'retrieved_chunk_ids', []);
     }
 
+    public function getIntentAttribute(): ?string
+    {
+        return data_get($this->meta_json, 'intent');
+    }
+
+    public function getResolvedEntitiesAttribute(): array
+    {
+        return (array) data_get($this->meta_json, 'resolved_entities', []);
+    }
+
+    public function getSourceTypeAttribute(): ?string
+    {
+        return data_get($this->meta_json, 'source_type');
+    }
+
+    public function getDataStatusAttribute(): ?string
+    {
+        return data_get($this->meta_json, 'data_status');
+    }
+
     public function isAssistant(): bool
     {
         return $this->role === 'assistant';

@@ -43,6 +43,7 @@ use App\Http\Controllers\backend\InstructorTranscriptController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserLearningController;
 use App\Http\Controllers\backend\UserProfileController;
+use App\Http\Controllers\backend\WebsiteKnowledgeDocumentController;
 use App\Http\Controllers\backend\YoutubePlaylistImportController;
 use App\Http\Controllers\frontend\ChatbotController;
 use App\Http\Controllers\frontend\CheckoutController;
@@ -55,6 +56,7 @@ use App\Http\Controllers\frontend\LectureNoteController;
 use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\QuizAttempController;
 use App\Http\Controllers\frontend\UserOrderController;
+use App\Http\Controllers\frontend\WebsiteAssistantController;
 use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NotificationController;
@@ -148,6 +150,7 @@ Route::middleware('auth', 'verified', 'role:admin')->prefix('admin')->name('admi
     Route::get('/gemini-setting', [SettingController::class, 'geminiSetting'])->name('gemini-setting');
     //Lưu gemini setting
     Route::put('/gemini-setting/update', [SettingController::class, 'updateGeminiSettings'])->name('setting.gemini.update');
+    Route::resource('website-kb', WebsiteKnowledgeDocumentController::class)->except(['show']);
 
 
     /* Control Course */
@@ -548,6 +551,10 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['throttle:20,1'])->group(function () {
         Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
         Route::get('/chatbot/history', [ChatbotController::class, 'history'])->name('chatbot.history');
+        Route::post('/chatbot/new-session', [ChatbotController::class, 'newSession'])->name('chatbot.new-session');
+        Route::post('/website-assistant/ask', [WebsiteAssistantController::class, 'ask'])->name('website-assistant.ask');
+        Route::get('/website-assistant/history', [WebsiteAssistantController::class, 'history'])->name('website-assistant.history');
+        Route::post('/website-assistant/new-session', [WebsiteAssistantController::class, 'newSession'])->name('website-assistant.new-session');
     });
 
     /*  PRIVATE CHAT ROUTES  */

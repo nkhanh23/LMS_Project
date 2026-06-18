@@ -96,6 +96,42 @@ class ChatbotController extends Controller
         }
     }
 
+    public function newSession(ChatbotAskRequest $request): JsonResponse
+    {
+        try {
+            [$user, $course, $lecture] = $this->resolveAccessibleContext($request);
+
+            $session = $this->chatSessionService->createNewSessionForMode(
+                mode: 'lesson',
+                userId: (int) $user->id,
+                courseId: (int) $course->id,
+                lectureId: (int) $lecture->id
+            );
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Đã tạo phiên chat mới cho bài học này.',
+                'data' => [
+                    'session_id' => $session->id,
+                    'course_id' => $course->id,
+                    'lecture_id' => $lecture->id,
+                    'mode' => $session->mode,
+                    'scope' => $session->scope,
+                    'session_status' => $session->status,
+                    'last_activity_at' => optional($session->last_activity_at)->toDateTimeString(),
+                    'messages' => [],
+                ],
+            ]);
+        } catch (Throwable $e) {
+            report($e);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Không thể tạo phiên chat mới lúc này.',
+            ], 500);
+        }
+    }
+
     private function resolveAccessibleContext(ChatbotAskRequest $request): array
     {
         $user = Auth::user();
