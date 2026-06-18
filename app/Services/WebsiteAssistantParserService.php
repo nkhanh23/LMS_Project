@@ -27,6 +27,7 @@ class WebsiteAssistantParserService
             $decoded = $this->decodeJson($rawAnswer);
             $validated = $this->validateOutput($decoded, $question);
 
+            // ghi log de test
             Log::info('Website assistant parser output', [
                 'question' => $question,
                 'primary_intent' => $validated['primary_intent'],
@@ -43,7 +44,7 @@ class WebsiteAssistantParserService
                 'error' => $e->getMessage(),
             ]);
 
-            throw new RuntimeException('AI dang qua tai, vui long thu lai sau.', previous: $e);
+            throw new RuntimeException('AI đang quá tải, vui lòng thử lại sau.', previous: $e);
         }
     }
 
@@ -132,6 +133,7 @@ Cau hoi hien tai: "{$question}"
 PROMPT;
     }
 
+    //hàm loại bỏ các ký tự đặc biệt (không phải JSON) ra khỏi chuỗi JSON
     protected function decodeJson(string $rawAnswer): array
     {
         $cleaned = preg_replace('/^```(?:json)?|```$/m', '', $rawAnswer) ?? $rawAnswer;
@@ -163,23 +165,24 @@ PROMPT;
         $allowedReferenceModes = $this->allowedReferenceModes();
 
         $validator = Validator::make($normalized, [
-            'primary_intent' => ['required', 'string', 'in:' . implode(',', $allowedIntents)],
-            'candidate_intents' => ['required', 'array', 'min:1', 'max:3'],
-            'candidate_intents.*.intent' => ['required', 'string', 'in:' . implode(',', $allowedIntents)],
-            'candidate_intents.*.confidence' => ['required', 'numeric', 'min:0', 'max:1'],
-            'entities' => ['required', 'array'],
-            'entities.course_name' => ['nullable', 'string'],
-            'entities.quiz_name' => ['nullable', 'string'],
-            'entities.feature_name' => ['nullable', 'string', 'in:' . implode(',', $allowedFeatures)],
-            'entities.order_reference' => ['nullable', 'string'],
-            'entities.refund_reference' => ['nullable', 'string'],
-            'requested_fields' => ['required', 'array'],
-            'requested_fields.*' => ['string', 'in:' . implode(',', $allowedRequestedFields)],
-            'reference_mode' => ['required', 'string', 'in:' . implode(',', $allowedReferenceModes)],
-            'needs_clarification' => ['required', 'boolean'],
-            'clarification_question' => ['nullable', 'string'],
-            'clarification_reason' => ['nullable', 'string'],
-            'reasoning_summary' => ['required', 'string'],
+            //kiểm tra các trường trong JSON
+            'primary_intent' => ['required', 'string', 'in:' . implode(',', $allowedIntents)], //kiểm tra intent chính có trong danh sách intent hợp lệ không
+            'candidate_intents' => ['required', 'array', 'min:1', 'max:3'], //kiểm tra candidate_intents có phải là mảng và có ít nhất 1 phần tử
+            'candidate_intents.*.intent' => ['required', 'string', 'in:' . implode(',', $allowedIntents)], //kiểm tra intent trong candidate_intents có trong danh sách intent hợp lệ không
+            'candidate_intents.*.confidence' => ['required', 'numeric', 'min:0', 'max:1'], //kiểm tra confidence có phải là số và nằm trong khoảng từ 0 đến 1
+            'entities' => ['required', 'array'], //kiểm tra entities có phải là mảng
+            'entities.course_name' => ['nullable', 'string'], //kiểm tra course_name có phải là chuỗi
+            'entities.quiz_name' => ['nullable', 'string'], //kiểm tra quiz_name có phải là chuỗi
+            'entities.feature_name' => ['nullable', 'string', 'in:' . implode(',', $allowedFeatures)], //kiểm tra feature_name có phải là chuỗi và nằm trong danh sách feature hợp lệ không
+            'entities.order_reference' => ['nullable', 'string'], //kiểm tra order_reference có phải là chuỗi
+            'entities.refund_reference' => ['nullable', 'string'], //kiểm tra refund_reference có phải là chuỗi
+            'requested_fields' => ['required', 'array'], //kiểm tra requested_fields có phải là mảng
+            'requested_fields.*' => ['string', 'in:' . implode(',', $allowedRequestedFields)], //kiểm tra requested_fields có phải là chuỗi và nằm trong danh sách requested_fields hợp lệ không
+            'reference_mode' => ['required', 'string', 'in:' . implode(',', $allowedReferenceModes)], //kiểm tra reference_mode có phải là chuỗi và nằm trong danh sách reference_mode hợp lệ không
+            'needs_clarification' => ['required', 'boolean'], //kiểm tra needs_clarification có phải là boolean
+            'clarification_question' => ['nullable', 'string'], //kiểm tra clarification_question có phải là chuỗi
+            'clarification_reason' => ['nullable', 'string'], //kiểm tra clarification_reason có phải là chuỗi
+            'reasoning_summary' => ['required', 'string'], //kiểm tra reasoning_summary có phải là chuỗi
         ]);
 
         if ($validator->fails()) {
@@ -189,7 +192,7 @@ PROMPT;
                 'normalized_output' => $normalized,
             ]);
 
-            throw new RuntimeException('AI dang qua tai, vui long thu lai sau.');
+            throw new RuntimeException('AI đang quá tải, vui lòng thử lại sau.');
         }
 
         return $validator->validated();
@@ -226,7 +229,7 @@ PROMPT;
                     'confidence' => max(0, min(1, $confidence)),
                 ];
             })
-            ->filter(fn ($item) => in_array($item['intent'], $this->allowedIntents(), true))
+            ->filter(fn($item) => in_array($item['intent'], $this->allowedIntents(), true))
             ->take(3)
             ->values()
             ->all();
@@ -312,8 +315,8 @@ PROMPT;
         $fields = is_array($rawFields) ? $rawFields : [];
 
         $normalized = collect($fields)
-            ->map(fn ($field) => trim((string) $field))
-            ->filter(fn ($field) => in_array($field, $this->allowedRequestedFields(), true))
+            ->map(fn($field) => trim((string) $field))
+            ->filter(fn($field) => in_array($field, $this->allowedRequestedFields(), true))
             ->values()
             ->all();
 

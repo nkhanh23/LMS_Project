@@ -17,6 +17,7 @@ class QuizEntityResolverService
         ?int $courseId = null,
         ?int $contextQuizId = null
     ): array {
+        // lấy tất cả các bài quiz của user
         $quizzes = $this->learnerAssistantRepository->getUserQuizCandidates($userId, $courseId)
             ->map(function ($quiz) {
                 $course = $quiz->course ?? $quiz->lecture?->course;
@@ -31,7 +32,9 @@ class QuizEntityResolverService
             ->filter()
             ->values();
 
+        // Nếu không có quiz_name thì kiểm tra contextQuizId
         if ($quizName === null || trim($quizName) === '') {
+            //Kiểm tra xem Backend có nhồi ngữ cảnh (Context ID) vào không?
             if ($contextQuizId !== null) {
                 $contextQuiz = $quizzes->firstWhere('quiz_id', $contextQuizId);
 
@@ -65,7 +68,7 @@ class QuizEntityResolverService
                     'match_type' => $score >= 0.999 ? 'exact' : 'fuzzy',
                 ]);
             })
-            ->filter(fn ($quiz) => $quiz['match_score'] >= 0.45)
+            ->filter(fn($quiz) => $quiz['match_score'] >= 0.45)
             ->sortByDesc('match_score')
             ->values();
 
@@ -108,7 +111,7 @@ class QuizEntityResolverService
             'status' => 'ambiguous',
             'candidates' => $matches
                 ->take(3)
-                ->map(fn ($match) => [
+                ->map(fn($match) => [
                     'quiz_id' => $match['quiz_id'],
                     'quiz_name' => $match['quiz_name'],
                     'course_name' => $match['course_name'],
@@ -122,7 +125,6 @@ class QuizEntityResolverService
     {
         $ascii = Str::ascii(mb_strtolower(trim($value)));
         $collapsed = preg_replace('/[^a-z0-9]+/i', ' ', $ascii) ?? $ascii;
-
         return trim(preg_replace('/\s+/', ' ', $collapsed) ?? $collapsed);
     }
 

@@ -52,29 +52,6 @@ class WebsiteAssistantAnswerService
         };
     }
 
-    public function generateResolutionResponse(array $resolutionPayload): array
-    {
-        $prompt = $this->buildResolutionPrompt($resolutionPayload);
-        $answerPayload = $this->aiProvider->generateAnswer($prompt, [
-            'temperature' => 0.1,
-            'max_output_tokens' => 220,
-        ]);
-
-        $content = trim((string) ($answerPayload['answer'] ?? ''));
-
-        if ($content === '') {
-            $content = $this->fallbackResolutionContent($resolutionPayload);
-        }
-
-        return [
-            'content' => $content,
-            'provider' => $answerPayload['provider'] ?? null,
-            'model' => $answerPayload['model'] ?? null,
-            'source_type' => 'resolution',
-            'answer_status' => $resolutionPayload['status'] ?? 'resolution',
-        ];
-    }
-
     protected function buildTemplateResponse(
         string $content,
         string $sourceType,
@@ -207,50 +184,6 @@ SUPPORTING_DOCUMENTS:
 PROMPT;
     }
 
-    protected function buildResolutionPrompt(array $resolutionPayload): string
-    {
-        $status = (string) ($resolutionPayload['status'] ?? 'resolution');
-        $reason = (string) ($resolutionPayload['reason'] ?? 'generic');
-        $intent = (string) ($resolutionPayload['intent'] ?? 'unknown');
-        $question = (string) ($resolutionPayload['question'] ?? '');
-        $resolvedEntities = json_encode($resolutionPayload['resolved_entities'] ?? [], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-        $candidates = json_encode($resolutionPayload['candidates'] ?? [], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-        $systemData = json_encode($resolutionPayload['system_data'] ?? [], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-
-        return <<<PROMPT
-Ban la tro ly LMS cho nguoi hoc.
-
-Nhiem vu cua ban la DIEN DAT ket qua xu ly he thong thanh 1 cau tieng Viet tu nhien.
-Ban KHONG duoc thay doi nghia cua ket qua he thong.
-Ban KHONG duoc tu bia du lieu moi.
-Neu la clarification hoac ambiguous, hay hoi lai gon, ro, dung trong tam.
-Neu co danh sach candidate, co the nhac ten candidate de user chon.
-Neu la not_found, hay noi ro rang la he thong khong tim thay du lieu phu hop.
-Chi tra loi bang 1 doan ngan gon, khong markdown, khong giai thich dai dong.
-
-STATUS:
-{$status}
-
-REASON:
-{$reason}
-
-INTENT:
-{$intent}
-
-USER_QUESTION:
-{$question}
-
-RESOLVED_ENTITIES:
-{$resolvedEntities}
-
-CANDIDATES:
-{$candidates}
-
-SYSTEM_DATA:
-{$systemData}
-PROMPT;
-    }
-
     protected function buildMissingDataContent(string $intent, string $dataStatus): string
     {
         return match ($dataStatus) {
@@ -261,28 +194,6 @@ PROMPT;
                 default => 'Mình chưa tìm thấy dữ liệu phù hợp để trả lời câu hỏi này.',
             },
             default => 'Mình chưa có đủ dữ liệu để trả lời chính xác câu hỏi này.',
-        };
-    }
-
-    protected function fallbackResolutionContent(array $resolutionPayload): string
-    {
-        $status = (string) ($resolutionPayload['status'] ?? 'resolution');
-        $reason = (string) ($resolutionPayload['reason'] ?? 'generic');
-        $candidates = collect($resolutionPayload['candidates'] ?? []);
-
-        return match ($reason) {
-            'ambiguous_quiz' => $candidates->isNotEmpty()
-                ? 'Minh thay co nhieu quiz phu hop: ' . $candidates->implode(', ') . '. Ban muon hoi quiz nao?'
-                : 'Minh thay co nhieu quiz phu hop. Ban noi ro ten quiz giup minh nhe.',
-            'quiz_not_found' => 'Minh chua tim thay quiz phu hop trong lich su lam bai cua ban.',
-            'ambiguous_course' => $candidates->isNotEmpty()
-                ? 'Minh thay co nhieu khoa phu hop: ' . $candidates->implode(', ') . '. Ban muon hoi khoa nao?'
-                : 'Minh thay co nhieu khoa phu hop. Ban noi ro ten khoa giup minh nhe.',
-            'course_not_found' => 'Minh chua tim thay khoa hoc phu hop trong danh sach khoa ban dang co.',
-            'clarification' => (string) ($resolutionPayload['system_data']['clarification_question'] ?? 'Minh can ban lam ro them cau hoi nay.'),
-            default => $status === 'not_found'
-                ? 'Minh chua tim thay du lieu phu hop cho cau hoi nay.'
-                : 'Minh can ban lam ro them cau hoi nay.',
         };
     }
 

@@ -149,7 +149,7 @@ class WebsiteAssistantService
     protected function parseQuestion(AiChatSession $session, string $message): array
     {
         $conversationHistory = $this->chatSessionService->getRecentMessages($session, 6)
-            ->map(fn ($chatMessage) => [
+            ->map(fn($chatMessage) => [
                 'role' => $chatMessage->role,
                 'content' => $chatMessage->content,
             ])
@@ -171,6 +171,7 @@ class WebsiteAssistantService
     protected function resolveEntities(int $userId, string $intent, array &$resolvedEntities): array
     {
         $quizResolution = null;
+        // Kiểm tra xem intent có phải là quiz_history hoặc có quiz_name thì gọi quizEntityResolverService
         if ($intent === 'quiz_history' || ! empty($resolvedEntities['quiz_name'])) {
             $quizResolution = $this->quizEntityResolverService->resolveForUser(
                 $userId,
@@ -190,6 +191,7 @@ class WebsiteAssistantService
         }
 
         $courseResolution = null;
+        // Kiểm tra xem có course_name không và chưa có course_id và chưa có quiz_id thì gọi courseEntityResolverService
         if (
             ! empty($resolvedEntities['course_name'])
             && empty($resolvedEntities['course_id'])
